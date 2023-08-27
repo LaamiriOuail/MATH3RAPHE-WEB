@@ -1,0 +1,175 @@
+*{
+  margin: 0px 2px;
+  padding: 0;
+}
+.grapheop{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-auto-rows: minmax(30px,auto);
+  gap: 2px;
+}
+.buttonManupilation{
+  grid-column: 1/4;
+  grid-row: 1/2;
+}
+.screen {
+  grid-column: 1/4;
+  grid-row: 3/4;
+}
+#info{
+  background-color: white;/*Dark*/
+  grid-column: 1/4;
+  grid-row: 4/5;
+}
+.button-list{
+  display: flex;
+  gap: 2px;
+  background-color: white;/*Dark*/
+  flex-wrap: wrap;
+  flex-flow: space-around;
+}
+.button-list:active {
+  background-color: #fff;
+  color: #000;
+  box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+  transform: translateY(0);
+  }
+.button-list button,
+.button-list .select {
+  align-items: center;
+  background-clip: padding-box;
+  background-color: #000;/*Dark*/
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: white;/*Dark*/
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 1rem;
+  padding: 14px;/*calc(.875rem - 1px) calc(1.5rem - 1px)*/
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+  transition: 0.4s;
+}
+.button-list select{
+  background-color: #000;
+  color: #fff;
+}
+/* .button-list :hover,
+.button-list :focus {
+background-color: #fff;
+color: #000;
+box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+} */
+
+.button-list :hover {
+  background-color: #fff;
+color: #000;
+box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+transform: translateY(-1px);
+}
+.button-list button:active,
+.button-list select:active {
+  background-color: #fff;
+  color: #000;
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  transform: translateY(0);
+}
+
+
+.formAddEdges{
+display: none;
+}
+
+#msg{
+  grid-column: 1/4;
+  grid-row: 2/3;
+}
+
+
+
+/* Light Mode*/
+
+
+.light .grapheop{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-auto-rows: minmax(30px,auto);
+  gap: 2px;
+}
+.light .buttonManupilation{
+  grid-column: 1/4;
+  grid-row: 1/2;
+}
+
+.light #info{
+  background-color: white;/*Dark*/
+  grid-column: 1/4;
+  grid-row: 4/5;
+}
+.light .button-list{
+  margin-top: 15px;
+  display: flex;
+  gap: 2px;
+  flex-wrap: wrap;
+  flex-flow: space-around;
+}
+.light .button-list button,select {
+align-items: center;
+background-clip: padding-box;
+background-color: #fff;/*Dark*/
+border: 1px solid transparent;
+border-radius: .25rem;
+box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+box-sizing: border-box;
+color: #000;/*Dark*/
+cursor: pointer;
+display: inline-flex;
+font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+font-size: 14px;
+font-weight: 600;
+justify-content: center;
+line-height: 1.25;
+margin: 0;
+min-height: 1rem;
+padding: 14px;/*calc(.875rem - 1px) calc(1.5rem - 1px)*/
+position: relative;
+text-decoration: none;
+transition: all 250ms;
+user-select: none;
+-webkit-user-select: none;
+touch-action: manipulation;
+vertical-align: baseline;
+width: auto;
+transition: 0.4s;
+}
+.light .button-list select{
+  background-color: #fff;
+  color: #000;
+}
+
+.light .button-list :hover {
+  background-color: #000;
+color: #fff;
+box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+transform: translateY(-1px);
+}
+
+
+
+
+
+

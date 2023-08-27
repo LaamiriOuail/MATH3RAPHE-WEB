@@ -1,0 +1,49 @@
+<div [ngClass]="{'light': !darkModeS.isDarkMode}">
+    <div class="grapheop">
+        <div class="buttonManupilation">
+            <div class="button-list" dir='{{"info.dir"|translate}}'>
+                <select name="type" id="typeGraphe" [(ngModel)]="typeGraphe" (ngModelChange)="grapheS.changeTypeGraphe(this)">
+                    <option value="" disabled selected>{{"screenbox.msg1"|translate}}</option>
+                    <option value="Directed Weighted">{{"screenbox.msg2"|translate}}</option>
+                    <option value="Directed Unweighted">{{"screenbox.msg3"|translate}}</option>
+                    <option value="Undirected Weighted">{{"screenbox.msg4"|translate}}</option>
+                    <option value="Undirected Unweighted">{{"screenbox.msg5"|translate}}</option>
+                </select>
+                <!--<app-select [Class]="ClassSelect" [container]="this" [functionHandler]="grapheS.changeTypeGraphe" [disableLabell]="disableTypeGraphe" [items]="TypeGrapheItems" (selected)="chngeTypeGraphe($event)"/>-->
+                <button id="restore" (click)="getButtonClickedId($event)"><i class="fa fa-undo"></i> &nbsp;{{"screenbox.msg6"|translate}}</button>
+                <button id="default" (click)="getButtonClickedId($event)"><i class="fa fa-star"></i> &nbsp;{{"screenbox.msg7"|translate}}</button>
+                <button id="addVertices" (click)="getButtonClickedId($event)"><i class="fa fa-plus"></i>&nbsp;  {{"screenbox.msg8"|translate}}</button>
+                <button id="addEdges" (click)="getButtonClickedId($event)"><i class="fa fa-plus"></i>&nbsp; {{"screenbox.msg9"|translate}}</button>
+                <select name="type" id="saveUpload" [(ngModel)]="saveUpload" (ngModelChange)="saveUploadS.OnSaveUploadChange(this)">
+                    <option value="" disabled selected>{{"screenbox.msg10"|translate}}</option>
+                    <option value="save">{{"screenbox.msg11"|translate}}</option>
+                    <option value="upload">{{"screenbox.msg12"|translate}}</option>
+                    <option value="saveJPG">{{"screenbox.msg25"|translate}}</option>
+                    <option value="saveJPGScreen">{{"screenbox.msg27"|translate}}</option>
+                    <option value="savePNG">{{"screenbox.msg24"|translate}}</option>
+                    <option value="savePNGScreen">{{"screenbox.msg26"|translate}}</option>
+                </select>
+                <select name="type" id="remove" [(ngModel)]="remove" (ngModelChange)="grapheS.onRemoveChange(this)">
+                    <option value="" disabled selected>{{"screenbox.msg13"|translate}}</option>
+                    <option value="remove edges">{{"screenbox.msg14"|translate}}</option>
+                    <option value="remove nodes">{{"screenbox.msg15"|translate}}</option>
+                    <option value="remove all">{{"screenbox.msg16"|translate}}</option>
+                    <option value="reset graphe">{{"screenbox.msg17"|translate}}</option>
+                </select>
+                <select name="type" id="Algorithm" [(ngModel)]="algorithm" (ngModelChange)="algoS.changeAlgorithm(this)">
+                    <option value="" disabled selected>{{"screenbox.msg18"|translate}}</option>
+                    <option value="bfs">bfs</option>
+                    <option value="dfs">dfs</option>
+                    <option value="dijkstra">dijkstra</option>
+                    <option value="dijkstraAB">dijkstra a->b</option>
+                    <option value="floydWarshall">floyd Warshall</option>
+                    <option value="kruskal">kruskal</option>
+                </select>
+            </div>
+            <app-add-weighted-edge class="formAddEdges" [nodeS]="selectedNode[0]" [nodeT]="selectedNode[1]" [container]="this" (weight)="onWeightChange($event)" />
+        </div>
+        <app-message [message]="message" id="msg" [style.height.px]="containerHeight" />
+        <app-screen class="screen" />
+        <app-info id="info" [grapheS]="grapheS" [algoS]="algoS"/>
+     </div> 
+</div>

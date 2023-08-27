@@ -1,0 +1,181 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  background-color: black;/*Dark*/
+  color: #f0f0f0;/*Dark*/
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  transition: 0.4s;
+}
+
+.logo {
+  margin-left: 15px;
+  font-size: 24px;
+  font-weight: bold;
+  margin-right: auto;
+  cursor: pointer;
+  position: relative;
+  
+}
+
+.logo::before,
+.logo::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: white;/*Dark*/
+  left: 0;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: transform 0.3s ease, visibility 0.3s ease;
+}
+.logo:hover{
+  color: #fcf802;/*Dark*/
+}
+.logo::before {
+  top: 0;
+}
+
+.logo::after {
+  bottom: 0;
+}
+.logo:hover::before,
+.logo:hover::after {
+  visibility: visible;
+  transform: scaleX(1);
+  background-color: #fcf802;/*Dark*/
+  color: #fcf802;/*Dark*/
+}
+
+.nav {
+  margin-left: auto; 
+  padding: 15px;
+}
+
+.nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.nav li {
+  margin-right: 20px;
+}
+
+.nav a {
+  color: #fff;/*Dark*/
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.language-select{
+  border:none;
+  margin-right: 10px;
+  margin-bottom: 7px;
+  background-color: black;
+  color:white;
+}
+
+.nav a:hover {
+  color: #fcf802;/*Dark*/
+} 
+.svg-container1:hover svg {
+  fill: #302f2f; /* Replace with your desired hover color */
+  transition: fill 0.7s; /* Smooth transition */
+}
+/*light mode */
+
+
+.light .header {
+  background-color: rgb(238, 247, 255);/*Dark*/
+  color: #000;/*Dark*/
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  transition: 0.4s;
+}
+.light .language-select{
+  border:none;
+  margin-right: 10px;
+  margin-bottom: 7px;
+  background-color: rgb(238, 247, 255);
+  color:black;
+}
+.light .logo {
+  margin-left: 15px;
+  font-size: 24px;
+  font-weight: bold;
+  margin-right: auto;
+  cursor: pointer;
+  position: relative;
+  
+}
+
+.light .logo::before,
+.logo::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: black;/*Dark*/
+  left: 0;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: transform 0.3s ease, visibility 0.3s ease;
+}
+.light .logo:hover{
+  color: #12A6BD;/*Dark*/
+}
+.light .logo::before {
+  top: 0;
+}
+
+.light .logo::after {
+  bottom: 0;
+}
+.light .logo:hover::before,
+.logo:hover::after {
+  visibility: visible;
+  transform: scaleX(1);
+  background-color: #12A6BD;/*Dark*/
+  color: #12A6BD;/*Dark*/
+}
+
+.light .nav {
+  margin-left: auto; 
+  padding: 15px;
+}
+
+.light .nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.light .nav li {
+  margin-right: 20px;
+}
+
+.light .nav a {
+  color: #000;/*Dark*/
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.light .nav a:hover {
+  color: #12A6BD;/*Dark*/
+} 
+.dark-mode-toggle{
+  margin-right: 20px;
+}
+.svg-container2:hover svg {
+  fill: rgb(180, 197, 212); /* Replace with your desired hover color */
+  transition: fill 0.7s; /* Smooth transition */
+}

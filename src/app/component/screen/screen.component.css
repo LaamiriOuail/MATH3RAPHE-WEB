@@ -1,0 +1,19 @@
+.scr{
+  background-color: #F5F5F5 ;
+  height: 400px;
+  min-height: 200px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden; 
+}
+
+.light-scr .scr {
+    background-color: rgb(238, 247, 255); 
+    height: 400px;
+    min-height: 200px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;  
+  } 

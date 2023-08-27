@@ -1,0 +1,21 @@
+<div class="info">
+    <div id='{{"info.classLeft"|translate}}' dir='{{"info.dir"|translate}}'>
+        <p>{{ "info.typeGraphe" | translate }} : {{ (grapheS.typeGraphe.split(" ")[0] == "Directed") ? ("grapheS.msg18" | translate) : ("grapheS.msg19" | translate) }} {{ (grapheS.typeGraphe.split(" ")[1] == "Weighted") ? ("grapheS.msg20" | translate) : ("grapheS.msg21" | translate) }}</p>
+        <p>{{ "info.graphDirected" | translate }} : {{ (grapheS.typeGraphe.split(" ")[0] == "Directed") ? ("info.yes" | translate) : ("info.no" | translate) }}</p>
+        <p>{{ "info.graphWeighted" | translate }} : {{ (grapheS.typeGraphe.split(" ")[1] == "Weighted") ? ("info.yes" | translate) : ("info.no" | translate) }}</p>
+        <p>{{ "info.numberOfNodes" | translate }} : {{ grapheS.cy?.nodes().length || 0 }}</p>
+        <p>{{ "info.numberOfEdges" | translate }} : {{ grapheS.cy?.edges().length || 0 }}</p>
+        <p>{{ "info.listOfEdges" | translate }} : {{ grapheS.getListeOfEdge() || ("info.empty" | translate) }} &nbsp;&nbsp;<span *ngIf="(grapheS.cy?.edges().length ?? 0) >= 1">[{{"info.s"|translate}} : {{ "info.source" | translate }} , {{"info.t"|translate}} : {{ "info.target" | translate }} 
+            <span *ngIf="grapheS.typeGraphe.split(' ')[1] == 'Weighted'"> , {{'info.w'|translate}} : {{'info.weight' | translate }} </span> 
+            ]
+            </span></p>
+        <p>{{ "info.listOfNodes" | translate }} : {{ grapheS.getListOfNode() || ("info.empty" | translate) }}</p>
+        <p>{{ "info.connected" | translate }} : {{ (algoS.isGraphConnected(this))?("info.yes" | translate) : ("info.no" | translate) }}</p>
+    </div>
+    <div id='{{"info.classRight"|translate}}'>
+        <!--
+            <app-matrix [adjacencyMatrixFormatted]="grapheS.formatMatrixForLatex()"/>
+        -->
+        
+    </div>
+</div>

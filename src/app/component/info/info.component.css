@@ -1,0 +1,29 @@
+.info{
+    margin-top: 10px;
+    height: auto;
+    min-height: 200px;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: 1;
+  }
+  .info #info-left{
+    grid-column: 1/2;
+    grid-row: 1/1;
+    padding: 10px;
+    margin-right: 10px;
+  }
+  .info #info-right{
+    grid-column: 2/3;
+    grid-row: 1/1;
+  }
+  .info p {
+    font-size: 20px;
+    margin: 0;
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  
+  .info p span {
+    color: #999;
+    font-size: 12px;
+  }

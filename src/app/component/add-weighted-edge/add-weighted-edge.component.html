@@ -1,0 +1,7 @@
+<div  class="formEdge">
+    <input type="text" class="form-input" value="{{nodeS}}" disabled>
+    <input type="text" class="form-input" value="{{nodeT}}" disabled>
+    <input type="number" class="form-input" placeholder='{{"screenbox.msg22"|translate}}' [(ngModel)]="weightForm" (ngModelChange)="onWeightFormChange()">
+    <button type="button" class="form-button form-button-primary" (click)="grapheS.addWeightedEdge(container,this)">{{"screenbox.msg20"|translate}}</button>
+    <button type="button" class="form-button form-button-secondary" (click)="grapheS.RejeterAddEdgeWeighted(container,this)">{{"screenbox.msg21"|translate}}</button>
+</div>
