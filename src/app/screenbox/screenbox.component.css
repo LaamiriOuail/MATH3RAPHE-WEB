@@ -93,7 +93,9 @@ transform: translateY(-1px);
 .formAddEdges{
 display: none;
 }
-
+.formChangeNodeId{
+  display: none;
+  }
 #msg{
   grid-column: 1/4;
   grid-row: 2/3;

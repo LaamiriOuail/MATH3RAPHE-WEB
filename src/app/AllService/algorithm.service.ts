@@ -185,6 +185,7 @@ floydWarshallAlgorithm(container: any): void {
 }
 changeAlgorithm(container:any):void{
   //DRY
+  container.changeSelect="";
   container.remove="";
   container.buttonClicked="";
   container.saveUpload = "";
@@ -192,8 +193,10 @@ changeAlgorithm(container:any):void{
   container.selectedNode=[];
   //
   container.grapheS.resetColors();
-  const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
-  formAddEdge.style.display="none";
+  const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
+    const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
+    formChangeNodeId.style.display="none";
+    formAddEdge.style.display="none";
   if(container.algorithm!="" && container.typeGraphe!=""){
     container.message=this.translate.instant("algoS.msg7",{algorithm:container.algorithm});
     if(container.algorithm=="floydWarshall"){

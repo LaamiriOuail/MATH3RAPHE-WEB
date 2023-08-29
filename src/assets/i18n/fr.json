@@ -61,7 +61,11 @@
     "msg24": "Enregistrer en PNG (Graphe)",
     "msg25": "Enregistrer en JPG (Graphe)",
     "msg26": "Enregistrer en PNG (Écran)",
-    "msg27": "Enregistrer en JPG (Écran)"
+    "msg27": "Enregistrer en JPG (Écran)",
+    "msg28": "Entrez le nouvel identifiant de nœud",
+    "msg29":"Changer",
+    "msg30": "Id d'un nœud"
+
   },
   "grapheS": {
     "msg1": "Le graphe est actuellement de type : ",
@@ -84,7 +88,11 @@
     "msg18": "Orienté",
     "msg19":"Non Orienté",
     "msg20":"Pondéré",
-    "msg21":"Non Pondéré"
+    "msg21":"Non Pondéré",
+    "msg22": "Le processus de changement de l'ID du nœud a été rejeté !",
+    "msg23": "Il n'est pas possible de nommer deux nœuds avec le même nom",
+    "msg24": "Cliquez sur un nœud pour changer son identifiant",
+    "msg25": "L'ID du nœud a été modifié avec succès de {{last}} à {{new}}"
   },
   "algoS": {
     "msg1": "Chemin Parcours en Largeur (BFS) : ",

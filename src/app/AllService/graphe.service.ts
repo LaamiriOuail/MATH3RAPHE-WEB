@@ -24,6 +24,24 @@ export class GrapheService {
   private DATA_EDGE_COLOR_ALGO:string="blue";
   //----------------------------------------------------------------
   constructor(private translate:TranslateService) { }
+  changeChanges(container:any){
+    //DRY
+    container.selectedNode=[];
+    container.algorithm="";
+    container.saveUpload = "";
+    container.remove="";
+    container.containerHeight=70;
+    container.buttonClicked="";
+    const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
+    const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
+    formChangeNodeId.style.display="none";
+    formAddEdge.style.display="none";
+    //
+    if(container.changeSelect=="changeIdNode"){
+      container.message=this.translate.instant("grapheS.msg24")
+    }
+
+  }
   changeTypeGraphe(container:any):void{
     //DRY
     container.selectedNode=[];
@@ -31,10 +49,13 @@ export class GrapheService {
     container.algorithm="";
     container.saveUpload = "";
     container.remove="";
+    
     //
     this.typeGraphe=container.typeGraphe;
     this.resetColors();
     const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
+    const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
+    formChangeNodeId.style.display="none";
     container.containerHeight=70;
     formAddEdge.style.display="none";
     container.nodeId=0;
@@ -103,6 +124,7 @@ export class GrapheService {
   }
   onChangeButtonClicked(container:any):void{
     //DRY
+    container.changeSelect="";
     container.selectedNode=[];
     container.algorithm="";
     container.saveUpload = "";
@@ -110,19 +132,21 @@ export class GrapheService {
     container.containerHeight=70;
     //
     const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
+    const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
     formAddEdge.style.display="none";
+    formChangeNodeId.style.display="none";
     if(this.typeGraphe!=""){
       if(container.buttonClicked=="default"){
         container.message=this.translate.instant("grapheS.msg2");
-        this.cy.fit();
+        // this.cy.fit();
       }else if(container.buttonClicked=="addVertices"){
         container.message=this.translate.instant("grapheS.msg3");
       }else if(container.buttonClicked=="addEdges"){
         container.message=this.translate.instant("grapheS.msg4");
-      }else if(container.buttonClicked=="removeObject"){
-        container.message=this.translate.instant("grapheS.msg5");
       }
-      //New code
+      // else if(container.buttonClicked=="removeObject"){
+      //   container.message=this.translate.instant("grapheS.msg5");
+      // }
       else if(container.buttonClicked=="restore"){
         container.message=this.translate.instant("grapheS.msg6");
         this.restoreGraphe(container);
@@ -132,6 +156,7 @@ export class GrapheService {
   addWeightedEdge(container:any,container2:any):void{
     const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
     if(container.weight!=0){
+      this.isEdgeRemove(container.selectedNode[0],container.selectedNode[1],container);
       let data={
         source:container.selectedNode[0],
         target:container.selectedNode[1],
@@ -163,11 +188,104 @@ export class GrapheService {
     container.message=this.translate.instant("grapheS.msg9");
     container2.weightForm=null;
   }
+  changeNodeId(container:any,container2:any):void{
+    const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
+    let idExists=false;
+    this.cy.nodes().forEach((node:any)=>{
+      if(node.data('id')==container2.newNodeId){
+        container.message=this.translate.instant("grapheS.msg23");
+        idExists=true;
+      }
+    })
+
+    if(idExists==false){
+      let node = this.cy.getElementById(container.selectedNode[0]);
+      let elem:any;
+      let nodeNew=this.cy.add({ group: 'nodes', data: { id: container2.newNodeId}, position: { x: node.position('x'),y: node.position('y'),}});
+      
+      this.cy.edges().forEach((edge:any)=>{
+        if(this.typeGraphe.split(" ")[1]=="Unweighted"){
+            if (edge.source().id() === node.id()) {
+              elem={status:"remove",element:edge};
+              container.restoreArray.push(elem);
+              this.cy.add({
+                  group: 'edges',
+                  data: {
+                      source: nodeNew.id(),
+                      target: edge.target().id(),
+                  }
+              });
+            } else if (edge.target().id() === node.id()) {
+              elem={status:"remove",element:edge};
+              container.restoreArray.push(elem);
+                this.cy.add({
+                    group: 'edges',
+                    data: {
+                        source: edge.source().id(),
+                        target: nodeNew.id(),
+                    }
+                });
+            }
+        }else if(this.typeGraphe.split(" ")[1]=="Weighted"){
+            if (edge.source().id() === node.id()) {
+              elem={status:"remove",element:edge};
+              container.restoreArray.push(elem);
+              this.cy.add({
+                  group: 'edges',
+                  data: {
+                      source: nodeNew.id(),
+                      target: edge.target().id(),
+                      weight: edge.data('weight') 
+                  }
+              });
+            } else if (edge.target().id() === node.id()) {
+              elem={status:"remove",element:edge};
+              container.restoreArray.push(elem);
+                this.cy.add({
+                    group: 'edges',
+                    data: {
+                        source: edge.source().id(),
+                        target: nodeNew.id(),
+                        weight: edge.data('weight') 
+                    }
+                });
+            }
+        }
+      })
+      //Restore
+      elem={status:"remove",element:node};
+      container.restoreArray.push(elem);
+      this.cy.remove(node);
+      elem={status:"add",element:nodeNew};
+      container.restoreArray.push(elem);
+      //Log message 
+      container.message=this.translate.instant("grapheS.msg25",{last:container.selectedNode[0],new:container2.newNodeId});
+      //Initialiation
+      container.nodeIdChanged=container2.newNodeId;
+      formChangeNodeId.style.display = 'none';
+      container.selectedNode=[];
+      container2.newNodeId=null;
+      this.resetColors();
+    }
+  }
+  RejeterChangeNodeId(container:any,container2:any):void{
+    const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
+    formChangeNodeId.style.display = 'none';
+    container.selectedNode=[];
+    container2.newNodeId=null;
+    this.resetColors();
+    container.message=this.translate.instant("grapheS.msg22");
+  }
   OnScreenTap(container:any):void{
     this.cy.on('tap', (evt:any)=> {
       if (evt.target === this.cy && container.buttonClicked==="addVertices" && this.typeGraphe!="") {
           var pos = evt.position || evt.cyPosition;
-          let node=this.cy.add({ group: 'nodes', data: { id: ++container.nodeId}, position: pos });
+          let node:any;
+          if(container.nodeIdChanged){
+            node=this.cy.add({ group: 'nodes', data: { id: container.nodeIdChanged+ ++container.nodeId}, position: pos });
+          }else{
+            node=this.cy.add({ group: 'nodes', data: { id: ++container.nodeId}, position: pos });
+          }
            //NEW CODE
            let elem={status:"add",element:node};
            container.restoreArray.push(elem);
@@ -192,6 +310,7 @@ export class GrapheService {
   }
   OnNodeTap(container:any):void{
     const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
+    const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
     this.cy.on('tap', 'node',  (evt:any)=> {
       var node = evt.target;
       if(container.remove=="remove nodes" || container.remove=="remove all"){
@@ -202,6 +321,13 @@ export class GrapheService {
         container.restoreArray.push(elem);
         //
         container.message=this.translate.instant("grapheS.msg12",{nodeId:node.data('id')});
+      }else if(container.changeSelect==="changeIdNode"){
+        if(container.selectedNode.length!=0){
+          container.selectedNode=[];
+        }
+        this.changeColorNode(node, this.BACKGROUND_COLOR_NODE_ALGO,this.COLOR_NODE_ALGO);
+        container.selectedNode.push(node.data('id'));
+        formChangeNodeId.style.display = 'block';
       }else if(container.buttonClicked==="addEdges"){
           this.resetColors();
           if(container.selectedNode.length<1){
@@ -215,6 +341,7 @@ export class GrapheService {
                   formAddEdge.style.display = 'block';
                   container.message=this.translate.instant("grapheS.msg14",{selectedNode1:container.selectedNode[0],selectedNode2:container.selectedNode[1]});
               }else{
+                this.isEdgeRemove(container.selectedNode[0],container.selectedNode[1],container);
                   let edge=this.cy.add({
                     data: {
                         source: container.selectedNode[0],
@@ -315,6 +442,7 @@ export class GrapheService {
   }
   onRemoveChange(container:any):void{
     //DRY
+    container.changeSelect="";
     container.buttonClicked="";
     container.containerHeight=70;
     container.selectedNode=[];
@@ -322,6 +450,8 @@ export class GrapheService {
     //
     const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
     formAddEdge.style.display="none";
+    const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
+    formChangeNodeId.style.display="none";
     if(container.remove=="reset graphe"){
       container.nodeId=0;
       this.cy.remove(this.cy.elements());
@@ -400,5 +530,14 @@ export class GrapheService {
       adjacencyMatrix.push(row);
     }
     return adjacencyMatrix;
+  }
+  isEdgeRemove(node1:any,node2:any,container:any):void{
+      this.cy.edges().forEach((edge:any)=>{
+        if((edge.source().id()==node1 && edge.target().id()==node2) || (edge.source().id()==node2 && edge.target().id()==node1)){
+          this.cy.remove(edge);
+          let elem={status:"remove",element:edge};
+          container.restoreArray.push(elem);
+        }
+      })
   }
 }

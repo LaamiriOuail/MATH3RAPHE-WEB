@@ -61,7 +61,11 @@
     "msg24": "Save png (Graph)",
     "msg25": "Save jpg (Graph)",
     "msg26": "Save png (Screen)",
-    "msg27": "Save jpg (Screen)"
+    "msg27": "Save jpg (Screen)",
+    "msg28":"Enter new node id",
+    "msg29":"Change",
+    "msg30": "Id of node"
+
   },
   "grapheS": {
     "msg1": "The graph is currently of type: ",
@@ -84,7 +88,12 @@
     "msg18": "Directed",
     "msg19":"Undirected",
     "msg20":"Weighted",
-    "msg21":"Unweighted"
+    "msg21":"Unweighted",
+    "msg22": "The process of changing a node id has been rejected!",
+    "msg23": "It is not possible to name two node with the same name",
+    "msg24": "Click on an node to change id of it",
+    "msg25": "Node ID has been successfully changed from {{last}} to {{new}}"
+    
   },
   "algoS": {
     "msg1": "Breadth First Search (BFS) Path: ",

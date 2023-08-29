@@ -22,10 +22,12 @@ export class ScreenboxComponent implements OnInit,OnDestroy {
   nodeNamingMethode:string="";
   remove:string="";
   saveUpload:string="";
+  changeSelect:string="";
   //------  Type graphe selection --------------------
   
   //---------------------------------------------------
   private nodeId:number=0;//Increment and assign a new node
+  private nodeIdChanged:any;
   constructor(private el: ElementRef,protected grapheS:GrapheService,protected algoS:AlgorithmService,protected saveUploadS:SaveUploadService,private translate:TranslateService,protected darkModeS:DarkModeService) {
   }
   ngOnInit(): void {

@@ -1,4 +1,4 @@
-import { Component, Input, Output,EventEmitter,ElementRef } from '@angular/core';
+import { Component, Input, Output,EventEmitter } from '@angular/core';
 import { GrapheService } from 'src/app/AllService/graphe.service';
 
 @Component({
@@ -12,7 +12,7 @@ export class AddWeightedEdgeComponent {
   @Input() container:any;
   @Output() weight: EventEmitter<number> = new EventEmitter<number>();;
   weightForm:any;
-  constructor(protected grapheS:GrapheService,private el: ElementRef){
+  constructor(protected grapheS:GrapheService){
   }
   onWeightFormChange():void{
     this.weight.emit(this.weightForm);
