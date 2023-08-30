@@ -2,7 +2,7 @@
     <div class="grapheop">
         <div class="buttonManupilation">
             <div class="button-list" dir='{{"info.dir"|translate}}'>
-                <select name="type" id="typeGraphe" [(ngModel)]="typeGraphe" (ngModelChange)="grapheS.changeTypeGraphe(this)">
+                <select  id="typeGraphe" [(ngModel)]="typeGraphe" (ngModelChange)="grapheS.changeTypeGraphe(this)">
                     <option value="" disabled selected>{{"screenbox.msg1"|translate}}</option>
                     <option value="Directed Weighted">{{"screenbox.msg2"|translate}}</option>
                     <option value="Directed Unweighted">{{"screenbox.msg3"|translate}}</option>
@@ -14,23 +14,14 @@
                 <button id="default" (click)="getButtonClickedId($event)"><i class="fa fa-star"></i> &nbsp;{{"screenbox.msg7"|translate}}</button>
                 <button id="addVertices" (click)="getButtonClickedId($event)"><i class="fa fa-plus"></i>&nbsp;  {{"screenbox.msg8"|translate}}</button>
                 <button id="addEdges" (click)="getButtonClickedId($event)"><i class="fa fa-plus"></i>&nbsp; {{"screenbox.msg9"|translate}}</button>
-                <select name="type" id="saveUpload" [(ngModel)]="saveUpload" (ngModelChange)="saveUploadS.OnSaveUploadChange(this)">
-                    <option value="" disabled selected>{{"screenbox.msg10"|translate}}</option>
-                    <option value="save">{{"screenbox.msg11"|translate}}</option>
-                    <option value="upload">{{"screenbox.msg12"|translate}}</option>
-                    <option value="saveJPG">{{"screenbox.msg25"|translate}}</option>
-                    <option value="saveJPGScreen">{{"screenbox.msg27"|translate}}</option>
-                    <option value="savePNG">{{"screenbox.msg24"|translate}}</option>
-                    <option value="savePNGScreen">{{"screenbox.msg26"|translate}}</option>
-                </select>
-                <select name="type" id="remove" [(ngModel)]="remove" (ngModelChange)="grapheS.onRemoveChange(this)">
+                <select  id="remove" [(ngModel)]="remove" (ngModelChange)="grapheS.onRemoveChange(this)">
                     <option value="" disabled selected>{{"screenbox.msg13"|translate}}</option>
                     <option value="remove edges">{{"screenbox.msg14"|translate}}</option>
                     <option value="remove nodes">{{"screenbox.msg15"|translate}}</option>
                     <option value="remove all">{{"screenbox.msg16"|translate}}</option>
                     <option value="reset graphe">{{"screenbox.msg17"|translate}}</option>
                 </select>
-                <select name="type" id="Algorithm" [(ngModel)]="algorithm" (ngModelChange)="algoS.changeAlgorithm(this)">
+                <select  id="Algorithm" [(ngModel)]="algorithm" (ngModelChange)="algoS.changeAlgorithm(this)">
                     <option value="" disabled selected>{{"screenbox.msg18"|translate}}</option>
                     <option value="bfs">bfs</option>
                     <option value="dfs">dfs</option>
@@ -39,13 +30,35 @@
                     <option value="floydWarshall">floyd Warshall</option>
                     <option value="kruskal">kruskal</option>
                 </select>
-                <select name="type" id="changeSelect" [(ngModel)]="changeSelect" (ngModelChange)="grapheS.changeChanges(this)">
+                <select  id="changeSelect" [(ngModel)]="changeSelect" (ngModelChange)="grapheS.changeChanges(this)">
                     <option value="" disabled selected>{{"screenbox.msg29"|translate}}</option>
                     <option value="changeIdNode">{{"screenbox.msg30"|translate}}</option>
+                    <option value="changeColorNodes">{{"screenbox.msg31"|translate}}</option>
+                    <option value="changeColorEdges">{{"screenbox.msg32"|translate}}</option>
+                    <option value="changeColorNodesAlgo">{{"screenbox.msg36"|translate}}</option>
+                    <option value="changeColorEdgesAlgo">{{"screenbox.msg37"|translate}}</option>
+                    <option value="changeColorScreen">{{"screenbox.msg38"|translate}}</option>
+                </select>
+                <select  id="saveUpload" [(ngModel)]="saveUpload" (ngModelChange)="saveUploadS.OnSaveUploadChange(this)">
+                    <option value="" disabled selected>{{"screenbox.msg10"|translate}}</option>
+                    <option value="save">{{"screenbox.msg11"|translate}}</option>
+                    <option value="upload">{{"screenbox.msg12"|translate}}</option>
+                    <option value="saveJPG">{{"screenbox.msg25"|translate}}</option>
+                    <option value="saveJPGScreen">{{"screenbox.msg27"|translate}}</option>
+                    <option value="savePNG">{{"screenbox.msg24"|translate}}</option>
+                    <option value="savePNGScreen">{{"screenbox.msg26"|translate}}</option>
+                </select>
+                <select id="nodeEnumeration" [(ngModel)]="nodeName" (ngModelChange)="grapheS.changeNodeEnum(this)">
+                    <option value="" disabled selected>{{'screenbox.msg42'|translate}}</option>
+                    <option value="numerique">1,2,3,...</option>
+                    <option value="alphabic">A,B,C,...</option>
+                    <option value="customText">{{'screenbox.msg40'|translate}}</option>
                 </select>
             </div>
             <app-add-weighted-edge dir='{{"info.dir"|translate}}' class="formAddEdges" [nodeS]="selectedNode[0]" [nodeT]="selectedNode[1]" [container]="this" (weight)="onWeightChange($event)" />
             <app-change-id-node dir='{{"info.dir"|translate}}' class="formChangeNodeId" [lastNodeId]="selectedNode[0]" [container]="this"/>
+            <app-change-color dir='{{"info.dir"|translate}}' class="formChangeColor" [container]="this"/>
+            <app-add-node dir='{{"info.dir"|translate}}' class="formAddNode" [container]="this"/>
         </div>
         <app-message [message]="message" id="msg" [style.height.px]="containerHeight" />
         <app-screen class="screen" />

@@ -1,0 +1,14 @@
+<div  class="formEdge">
+    <span *ngIf="(container.changeSelect=='changeColorNodes' || container.typeGraphe.split(' ')[1]=='Weighted')&&(container.changeSelect!='changeColorScreen')">
+        <label for="color">{{"screenbox.msg33" |translate}} &nbsp;&nbsp;:&nbsp;</label>
+        <input id="color" type="color" class="form-input"  [(ngModel)]="color">&nbsp;&nbsp;&nbsp;&nbsp;
+    </span>
+    <label for="bgcolor">{{"screenbox.msg34" |translate}} &nbsp;&nbsp;:&nbsp;</label>
+    <input id="bgcolor" type="color" class="form-input"  [(ngModel)]="bgColor">&nbsp;&nbsp;&nbsp;&nbsp;
+    <span *ngIf="container.typeGraphe.split(' ')[0]=='Directed' && (container.changeSelect=='changeColorEdges'||container.changeSelect=='changeColorEdgesAlgo')">
+        <label for="fcolor">{{"screenbox.msg35" |translate}} &nbsp;&nbsp;:&nbsp;</label>
+        <input id="fcolor" type="color" class="form-input"  [(ngModel)]="fColor">
+    </span>
+    <button type="button" class="form-button form-button-primary" (click)="grapheS.changeColor(container,this)">{{"screenbox.msg20"|translate}}</button>
+    <button type="button" class="form-button form-button-secondary" (click)="grapheS.RejeterChangeColor(container)">{{"screenbox.msg21"|translate}}</button>
+</div>

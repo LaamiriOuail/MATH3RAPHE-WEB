@@ -64,8 +64,19 @@
     "msg27": "Enregistrer en JPG (Écran)",
     "msg28": "Entrez le nouvel identifiant de nœud",
     "msg29":"Changer",
-    "msg30": "Id d'un nœud"
-
+    "msg30": "Id d'un sommet",
+    "msg31": "Color des sommets",
+    "msg32": "Color des arêtes(arcs)",
+    "msg33": "Choisir une couleur",
+    "msg34": "Choisissez une couleur de fond",
+    "msg35": "choisir la couleur de flèche",
+    "msg36": "Color des sommets[algorithm]",
+    "msg37": "Color des arêtes(arcs)[algorithm]",
+    "msg38": "Couleur de l'écran",
+    "msg39": "Entrez l'ID du nœud",
+    "msg40": "Texte personnalisé",
+    "msg41": "entrez un identifiant de nœud valide",
+    "msg42": "Énumération des sommets"
   },
   "grapheS": {
     "msg1": "Le graphe est actuellement de type : ",
@@ -92,8 +103,20 @@
     "msg22": "Le processus de changement de l'ID du nœud a été rejeté !",
     "msg23": "Il n'est pas possible de nommer deux nœuds avec le même nom",
     "msg24": "Cliquez sur un nœud pour changer son identifiant",
-    "msg25": "L'ID du nœud a été modifié avec succès de {{last}} à {{new}}"
-  },
+    "msg25": "L'ID du nœud a été modifié avec succès de {{last}} à {{new}}",
+    "msg26": "Choisissez une couleur pour tous les nœuds",
+    "msg27": "Choisissez une couleur pour tous les arretes(arcs)",
+    "msg28": "Le processus de changement de couleur des nœuds a été annulé",
+    "msg29": "Le processus de changement de couleur des arrets(arcs) a été annulé",
+    "msg30": "La couleur de tous les nœuds a été modifiée avec succès",
+    "msg31": "La couleur de tous les arretes(arcs) a été modifiée avec succès",
+    "msg32": "La couleur de tous les nœuds a été modifiée avec succès(Algorithme)",
+    "msg33": "La couleur de tous les arretes(arcs) a été modifiée avec succès(Algorithm)",
+    "msg34": "Choisissez une couleur pour tous les nœuds [Algorithme]",
+    "msg35": "Choisissez une couleur pour tous les arretes(arcs) [Algorithme]",
+    "msg36": "Choisissez une couleur pour l'écran"
+
+  },  
   "algoS": {
     "msg1": "Chemin Parcours en Largeur (BFS) : ",
     "msg2": "Chemin Parcours en Profondeur (DFS) : ",

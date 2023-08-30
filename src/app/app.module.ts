@@ -24,6 +24,8 @@ import { AddWeightedEdgeComponent } from './components/add-weighted-edge/add-wei
 import { MatrixComponent } from './components/matrix/matrix.component';
 import { SelectComponent } from './components/select/select.component';
 import { ChangeIdNodeComponent } from './components/change-id-node/change-id-node.component';
+import { ChangeColorComponent } from './components/change-color/change-color.component';
+import { AddNodeComponent } from './components/add-node/add-node.component';
 
 
 // Function to load translations
@@ -46,6 +48,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatrixComponent,
     SelectComponent,
     ChangeIdNodeComponent,
+    ChangeColorComponent,
+    AddNodeComponent,
   ],
   imports: [
     BrowserModule,

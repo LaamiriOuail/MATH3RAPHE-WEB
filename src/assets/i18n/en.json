@@ -56,16 +56,27 @@
     "msg19": "Select Language",
     "msg20": "Submit",
     "msg21": "Reject",
-    "msg22":"Enter Edge Weight",
-    "msg23":"Select type of graphe",
+    "msg22": "Enter Edge Weight",
+    "msg23": "Select type of graphe",
     "msg24": "Save png (Graph)",
     "msg25": "Save jpg (Graph)",
     "msg26": "Save png (Screen)",
     "msg27": "Save jpg (Screen)",
-    "msg28":"Enter new node id",
-    "msg29":"Change",
-    "msg30": "Id of node"
-
+    "msg28": "Enter new node id",
+    "msg29": "Change",
+    "msg30": "Id of node",
+    "msg31": "Color of nodes",
+    "msg32": "Color of edges",
+    "msg33": "Choose a color",
+    "msg34": "Choose a background color",
+    "msg35": "choose arrow color",
+    "msg36": "Color of nodes[algorithm]",
+    "msg37": "Color of edges[algorithm]",
+    "msg38": "Color of Screen",
+    "msg39": "Enter the point ID",
+    "msg40": "Custom text",
+    "msg41": "enter a valid node id",
+    "msg42": "Vertex enumeration"
   },
   "grapheS": {
     "msg1": "The graph is currently of type: ",
@@ -92,8 +103,19 @@
     "msg22": "The process of changing a node id has been rejected!",
     "msg23": "It is not possible to name two node with the same name",
     "msg24": "Click on an node to change id of it",
-    "msg25": "Node ID has been successfully changed from {{last}} to {{new}}"
-    
+    "msg25": "Node ID has been successfully changed from {{last}} to {{new}}",
+    "msg26": "Choose a color for all nodes",
+    "msg27": "Choose a color for all edges",
+    "msg28": "The process of changing the color of the nodes has been cancelled",
+    "msg29":  "The process of changing the color of the edges (arcs) has been canceled",
+    "msg30": "The color of all nodes has been successfully changed",
+    "msg31":  "The color of all edges has been successfully changed",
+    "msg32": "The color of all nodes has been successfully changed(Algorithm)",
+    "msg33":  "The color of all edges has been successfully changed(Algorithm)",
+    "msg34": "Choose a color for all nodes(Algorithm)",
+    "msg35": "Choose a color for all edges(Algorithm)",
+    "msg36": "Choose a color for screen"
+
   },
   "algoS": {
     "msg1": "Breadth First Search (BFS) Path: ",

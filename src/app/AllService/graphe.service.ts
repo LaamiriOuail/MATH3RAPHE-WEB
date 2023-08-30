@@ -10,20 +10,44 @@ import * as cytoscape from 'cytoscape';
 export class GrapheService {
   public cy:any;
   public typeGraphe:string="";
+  alphabets: string[] = Array.from({ length: 26 }, (_, i) =>
+    String.fromCharCode(65 + i)
+  );
+  Alphabets: string[] = this.alphabets.concat(this.alphabets.map(letter => letter + '1'));
+  counter:number = 0;
+  position:any;
   //----------------------------------------------------------------
-  private COLOR_NODE:string="white";
-  private BACKGROUND_COLOR_NODE:string="black";
-  private COLOR_LINE_EDGE:string="black";
-  private TARGET_ARROW_COLOR:string="blue";
-  private DATA_EDGE_COLOR:string="red";
+  private COLOR_NODE:any="white";
+  private BACKGROUND_COLOR_NODE:any="black";
+  private COLOR_LINE_EDGE:any="black";
+  private TARGET_ARROW_COLOR:any="blue";
+  private DATA_EDGE_COLOR:any="red";
   //----------------------------------------------------------------
-  private TARGET_ARROW_COLOR_ALGO:string="black"; 
-  private COLOR_LINE_EDGE_ALGO:string="yellow";
-  private COLOR_NODE_ALGO:string="black";
-  private BACKGROUND_COLOR_NODE_ALGO:string="yellow";
-  private DATA_EDGE_COLOR_ALGO:string="blue";
+  private TARGET_ARROW_COLOR_ALGO:any="black"; 
+  private COLOR_LINE_EDGE_ALGO:any="yellow";
+  private COLOR_NODE_ALGO:any="black";
+  private BACKGROUND_COLOR_NODE_ALGO:any="yellow";
+  private DATA_EDGE_COLOR_ALGO:any="blue";
   //----------------------------------------------------------------
-  constructor(private translate:TranslateService) { }
+  constructor(private translate:TranslateService) { 
+    
+  }
+  changeNodeEnum(container:any):void{
+    //DRY
+    container.selectedNode=[];
+    container.algorithm="";
+    container.saveUpload = "";
+    container.remove="";
+    container.containerHeight=70;
+    const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
+    const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
+    const formChangeColor = container.el.nativeElement.querySelector('.formChangeColor');
+    formChangeNodeId.style.display="none";
+    formAddEdge.style.display="none";
+    formChangeColor.style.display="none";
+    container.changeSelect="";
+    //
+  }
   changeChanges(container:any){
     //DRY
     container.selectedNode=[];
@@ -34,12 +58,30 @@ export class GrapheService {
     container.buttonClicked="";
     const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
     const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
+    const formChangeColor = container.el.nativeElement.querySelector('.formChangeColor');
     formChangeNodeId.style.display="none";
     formAddEdge.style.display="none";
+    formChangeColor.style.display="none";
     //
-    if(container.changeSelect=="changeIdNode"){
-      container.message=this.translate.instant("grapheS.msg24")
+    if(this.typeGraphe!=""){
+      if(container.changeSelect=="changeIdNode"){
+        container.message=this.translate.instant("grapheS.msg24")
+      }else if(container.changeSelect=="changeColorNodes" || container.changeSelect=="changeColorEdges" || container.changeSelect=="changeColorNodesAlgo" || container.changeSelect=="changeColorEdgesAlgo" || container.changeSelect=="changeColorScreen"){
+        if(container.changeSelect=="changeColorNodes"){
+          container.message=this.translate.instant("grapheS.msg26")
+        }else if(container.changeSelect=="changeColorEdges") {
+          container.message=this.translate.instant("grapheS.msg27")
+        }if(container.changeSelect=="changeColorNodesAlgo"){
+          container.message=this.translate.instant("grapheS.msg34")
+        }else if(container.changeSelect=="changeColorEdgesAlgo") {
+          container.message=this.translate.instant("grapheS.msg35")
+        }else if(container.changeSelect=="changeColorScreen") {
+          container.message=this.translate.instant("grapheS.msg36")
+        }
+        formChangeColor.style.display="block";
+      }
     }
+    
 
   }
   changeTypeGraphe(container:any):void{
@@ -49,12 +91,14 @@ export class GrapheService {
     container.algorithm="";
     container.saveUpload = "";
     container.remove="";
-    
     //
     this.typeGraphe=container.typeGraphe;
     this.resetColors();
     const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
     const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
+    const formAddNode=container.el.nativeElement.querySelector('.formAddNode');
+    formAddNode.style.display="none";
+    this.position="";
     formChangeNodeId.style.display="none";
     container.containerHeight=70;
     formAddEdge.style.display="none";
@@ -133,6 +177,9 @@ export class GrapheService {
     //
     const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
     const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
+    const formAddNode=container.el.nativeElement.querySelector('.formAddNode');
+    formAddNode.style.display="none";
+    this.position="";
     formAddEdge.style.display="none";
     formChangeNodeId.style.display="none";
     if(this.typeGraphe!=""){
@@ -276,21 +323,111 @@ export class GrapheService {
     this.resetColors();
     container.message=this.translate.instant("grapheS.msg22");
   }
+  changeColor(container:any,container2:any){
+    const formChangeColor = container.el.nativeElement.querySelector('.formChangeColor');
+    const screen=container.el.nativeElement.querySelector('.scr');
+    if(container.changeSelect=="changeColorNodes"){
+      this.COLOR_NODE=container2.color;
+      this.BACKGROUND_COLOR_NODE=container2.bgColor;
+      this.changeColorNodes();
+      container.message=this.translate.instant("grapheS.msg30")
+    }else if(container.changeSelect=="changeColorEdges"){
+      if(this.typeGraphe.split(" ")[1]=="Weighted"){
+        this.DATA_EDGE_COLOR=container2.color;
+      }
+      this.COLOR_LINE_EDGE=container2.bgColor;
+      if(this.typeGraphe.split(" ")[0]=="Directed"){
+        this.TARGET_ARROW_COLOR=container2.fColor;
+      }
+      this.changeColorEdges();
+      container.message=this.translate.instant("grapheS.msg31")
+    }else if(container.changeSelect=="changeColorNodesAlgo"){
+      this.COLOR_NODE_ALGO=container2.color;
+      this.BACKGROUND_COLOR_NODE_ALGO=container2.bgColor;
+      container.message=this.translate.instant("grapheS.msg32")
+    }else if(container.changeSelect=="changeColorEdgesAlgo"){
+      if(this.typeGraphe.split(" ")[1]=="Weighted"){
+        this.DATA_EDGE_COLOR_ALGO=container2.color;
+      }
+      this.COLOR_LINE_EDGE_ALGO=container2.bgColor;
+      if(this.typeGraphe.split(" ")[0]=="Directed"){
+        this.TARGET_ARROW_COLOR_ALGO=container2.fColor;
+      }
+      container.message=this.translate.instant("grapheS.msg33")
+    }else if(container.changeSelect=="changeColorScreen"){
+      screen.style.backgroundColor=container2.bgColor;
+    }
+    container.changeSelect="";
+    formChangeColor.style.display="none";
+  }
+  RejeterChangeColor(container:any):void {
+    const formChangeColor = container.el.nativeElement.querySelector('.formChangeColor');
+    if(container.changeSelect=="changeColorNodes"){
+      container.message=this.translate.instant("grapheS.msg28")
+    }else{
+      container.message=this.translate.instant("grapheS.msg29")
+    }
+    container.changeSelect="";
+    formChangeColor.style.display="none";
+  }
+  addNode(container:any,container2:any):void{
+    const formAddNode=container.el.nativeElement.querySelector('.formAddNode');
+    let exist:boolean=false;
+    if(container2.nodeId){
+      this.cy.nodes().forEach((node:any)=>{
+        if(node.data('id')==container2.nodeId){
+          container.message=this.translate.instant('grapheS.msg23');
+          exist=true;
+        }
+      })
+      if(!exist){
+        let node=this.cy.add({ group: 'nodes', data: { id: container2.nodeId}, position: this.position });
+        let elem={status:"add",element:node};
+        container.restoreArray.push(elem);
+        container.message=this.translate.instant("grapheS.msg10",{nodeId:node.data('id')});
+        formAddNode.style.display="none";
+        this.position="";
+        container2.nodeId=null;
+      }
+    }else{
+      container.message=this.translate.instant('screenbox.msg41');
+    }
+  }
+  RejeterAddNode(container:any,container2:any):void{
+    const formAddNode=container.el.nativeElement.querySelector('.formAddNode');
+    formAddNode.style.display="none";
+    this.position="";
+    container2.nodeId=null;
+  }
   OnScreenTap(container:any):void{
     this.cy.on('tap', (evt:any)=> {
       if (evt.target === this.cy && container.buttonClicked==="addVertices" && this.typeGraphe!="") {
-          var pos = evt.position || evt.cyPosition;
+          let pos = evt.position || evt.cyPosition;
           let node:any;
-          if(container.nodeIdChanged){
-            node=this.cy.add({ group: 'nodes', data: { id: container.nodeIdChanged+ ++container.nodeId}, position: pos });
-          }else{
-            node=this.cy.add({ group: 'nodes', data: { id: ++container.nodeId}, position: pos });
+          if(container.nodeName=="numerique"){
+            this.cy.nodes().forEach((node:any)=>{
+              if(node.data('id')==this.counter+1){
+                ++this.counter;
+              }
+            })
+            node=this.cy.add({ group: 'nodes', data: { id: ++this.counter}, position: pos });
+          }else if(container.nodeName=="alphabic"){
+            this.cy.nodes().forEach((node:any)=>{
+              if(node.data('id')==this.Alphabets[0]){
+                this.Alphabets.shift();
+              }
+            })
+            node=this.cy.add({ group: 'nodes', data: { id: this.Alphabets.shift()}, position: pos });
+          }else if(container.nodeName=="customText"){
+            const formAddNode=container.el.nativeElement.querySelector('.formAddNode');
+            formAddNode.style.display="block";
+            this.position=pos;
           }
-           //NEW CODE
-           let elem={status:"add",element:node};
-           container.restoreArray.push(elem);
-           //
-          container.message=this.translate.instant("grapheS.msg10",{nodeId:container.nodeId});
+          if(container.nodeName!="customText"){
+            let elem={status:"add",element:node};
+            container.restoreArray.push(elem);
+            container.message=this.translate.instant("grapheS.msg10",{nodeId:node.data('id')});
+          }
       }
     });
   }
@@ -433,6 +570,27 @@ export class GrapheService {
     setTimeout(() => {
       node.style('background-color',bgcolor);
       node.style('color',color);
+    },10)
+  }
+  changeColorNodes(): void {
+    setTimeout(() => {
+      this.cy.nodes().forEach((node:any)=>{
+        node.style('background-color',this.BACKGROUND_COLOR_NODE);
+        node.style('color',this.COLOR_NODE);
+      })
+    },10)
+  }
+  changeColorEdges(): void {
+    setTimeout(() => {
+      this.cy.edges().forEach((edge:any)=>{
+        edge.style('line-color',this.COLOR_LINE_EDGE);
+        if(this.typeGraphe.split(" ")[1]=="Weighted"){
+          edge.style('color',this.DATA_EDGE_COLOR);
+        }
+        if(this.typeGraphe.split(" ")[0]=="Directed"){
+          edge.style('target-arrow-color', this.TARGET_ARROW_COLOR);
+        }
+      })
     },10)
   }
   OnMessageLengthChange(container:any):void {

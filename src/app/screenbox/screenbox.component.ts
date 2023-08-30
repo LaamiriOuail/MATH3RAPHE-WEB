@@ -23,6 +23,7 @@ export class ScreenboxComponent implements OnInit,OnDestroy {
   remove:string="";
   saveUpload:string="";
   changeSelect:string="";
+  nodeName:string="numerique";
   //------  Type graphe selection --------------------
   
   //---------------------------------------------------

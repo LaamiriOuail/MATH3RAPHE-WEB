@@ -96,6 +96,12 @@ display: none;
 .formChangeNodeId{
   display: none;
   }
+.formChangeColor{
+  display: none;
+}
+.formAddNode{
+  display:none;
+}
 #msg{
   grid-column: 1/4;
   grid-row: 2/3;
