@@ -38,6 +38,7 @@
                     <option value="changeColorNodesAlgo">{{"screenbox.msg36"|translate}}</option>
                     <option value="changeColorEdgesAlgo">{{"screenbox.msg37"|translate}}</option>
                     <option value="changeColorScreen">{{"screenbox.msg38"|translate}}</option>
+                    <option value="changeSizeScreen">{{"screenbox.msg43"|translate}}</option>
                 </select>
                 <select  id="saveUpload" [(ngModel)]="saveUpload" (ngModelChange)="saveUploadS.OnSaveUploadChange(this)">
                     <option value="" disabled selected>{{"screenbox.msg10"|translate}}</option>
@@ -59,6 +60,7 @@
             <app-change-id-node dir='{{"info.dir"|translate}}' class="formChangeNodeId" [lastNodeId]="selectedNode[0]" [container]="this"/>
             <app-change-color dir='{{"info.dir"|translate}}' class="formChangeColor" [container]="this"/>
             <app-add-node dir='{{"info.dir"|translate}}' class="formAddNode" [container]="this"/>
+            <app-change-size-screen dir='{{"info.dir"|translate}}' class="formAChangeSizeScreen" [container]="this"/>
         </div>
         <app-message [message]="message" id="msg" [style.height.px]="containerHeight" />
         <app-screen class="screen" />

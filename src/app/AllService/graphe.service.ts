@@ -33,37 +33,45 @@ export class GrapheService {
     
   }
   changeNodeEnum(container:any):void{
-    //DRY
-    container.selectedNode=[];
-    container.algorithm="";
-    container.saveUpload = "";
-    container.remove="";
-    container.containerHeight=70;
-    const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
-    const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
-    const formChangeColor = container.el.nativeElement.querySelector('.formChangeColor');
-    formChangeNodeId.style.display="none";
-    formAddEdge.style.display="none";
-    formChangeColor.style.display="none";
-    container.changeSelect="";
-    //
+    if(this.typeGraphe!=""){
+      //DRY
+      container.selectedNode=[];
+      container.algorithm="";
+      container.saveUpload = "";
+      container.remove="";
+      container.containerHeight=70;
+      const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
+      const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
+      const formChangeColor = container.el.nativeElement.querySelector('.formChangeColor');
+      formChangeNodeId.style.display="none";
+      formAddEdge.style.display="none";
+      formChangeColor.style.display="none";
+      container.changeSelect="";
+      //
+    }else{
+      container.nodeName="numerique";
+    }
+    
   }
   changeChanges(container:any){
-    //DRY
-    container.selectedNode=[];
-    container.algorithm="";
-    container.saveUpload = "";
-    container.remove="";
-    container.containerHeight=70;
-    container.buttonClicked="";
-    const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
-    const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
-    const formChangeColor = container.el.nativeElement.querySelector('.formChangeColor');
-    formChangeNodeId.style.display="none";
-    formAddEdge.style.display="none";
-    formChangeColor.style.display="none";
-    //
     if(this.typeGraphe!=""){
+      //DRY
+      container.selectedNode=[];
+      container.algorithm="";
+      container.saveUpload = "";
+      container.remove="";
+      container.containerHeight=70;
+      container.buttonClicked="";
+      const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
+      const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
+      const formAChangeSizeScreen = container.el.nativeElement.querySelector('.formAChangeSizeScreen');
+      const formChangeColor = container.el.nativeElement.querySelector('.formChangeColor');
+      formChangeNodeId.style.display="none";
+      formAddEdge.style.display="none";
+      formChangeColor.style.display="none";
+      formAChangeSizeScreen.style.display="none";
+      this.position="";
+      //
       if(container.changeSelect=="changeIdNode"){
         container.message=this.translate.instant("grapheS.msg24")
       }else if(container.changeSelect=="changeColorNodes" || container.changeSelect=="changeColorEdges" || container.changeSelect=="changeColorNodesAlgo" || container.changeSelect=="changeColorEdgesAlgo" || container.changeSelect=="changeColorScreen"){
@@ -79,7 +87,12 @@ export class GrapheService {
           container.message=this.translate.instant("grapheS.msg36")
         }
         formChangeColor.style.display="block";
+      }else if(container.changeSelect=="changeSizeScreen"){
+        container.message=this.translate.instant("grapheS.msg39")
+        formAChangeSizeScreen.style.display="block";
       }
+    }else{
+      container.changeSelect="";
     }
     
 
@@ -96,12 +109,14 @@ export class GrapheService {
     this.resetColors();
     const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
     const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
+    const formAChangeSizeScreen = container.el.nativeElement.querySelector('.formAChangeSizeScreen');
     const formAddNode=container.el.nativeElement.querySelector('.formAddNode');
+    formAChangeSizeScreen.style.display="none";
     formAddNode.style.display="none";
-    this.position="";
     formChangeNodeId.style.display="none";
-    container.containerHeight=70;
     formAddEdge.style.display="none";
+    this.position="";
+    container.containerHeight=70;
     container.nodeId=0;
     this.cy.remove(this.cy.elements());
     container.message=this.translate.instant("grapheS.msg1");
@@ -167,38 +182,59 @@ export class GrapheService {
       }
   }
   onChangeButtonClicked(container:any):void{
-    //DRY
-    container.changeSelect="";
-    container.selectedNode=[];
-    container.algorithm="";
-    container.saveUpload = "";
-    container.remove="";
-    container.containerHeight=70;
-    //
-    const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
-    const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
-    const formAddNode=container.el.nativeElement.querySelector('.formAddNode');
-    formAddNode.style.display="none";
-    this.position="";
-    formAddEdge.style.display="none";
-    formChangeNodeId.style.display="none";
     if(this.typeGraphe!=""){
+      //DRY
+      container.changeSelect="";
+      container.selectedNode=[];
+      container.algorithm="";
+      container.saveUpload = "";
+      container.remove="";
+      container.containerHeight=70;
+      //
+      const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
+      const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
+      const formAChangeSizeScreen = container.el.nativeElement.querySelector('.formAChangeSizeScreen');
+      const formAddNode=container.el.nativeElement.querySelector('.formAddNode');
+      formAddNode.style.display="none";
+      formAChangeSizeScreen.style.display="none";
+      this.position="";
+      formAddEdge.style.display="none";
+      formChangeNodeId.style.display="none";
+    
       if(container.buttonClicked=="default"){
         container.message=this.translate.instant("grapheS.msg2");
-        // this.cy.fit();
+        this.cy.fit();
       }else if(container.buttonClicked=="addVertices"){
         container.message=this.translate.instant("grapheS.msg3");
       }else if(container.buttonClicked=="addEdges"){
         container.message=this.translate.instant("grapheS.msg4");
-      }
-      // else if(container.buttonClicked=="removeObject"){
-      //   container.message=this.translate.instant("grapheS.msg5");
-      // }
-      else if(container.buttonClicked=="restore"){
+      }else if(container.buttonClicked=="restore"){
         container.message=this.translate.instant("grapheS.msg6");
         this.restoreGraphe(container);
       }
+    }else{
+      container.buttonClicked="";
     }
+  }
+  changeSizeScreen(container:any,container2:any):void{
+    const formAChangeSizeScreen = container.el.nativeElement.querySelector('.formAChangeSizeScreen');
+    const screen=container.el.nativeElement.querySelector('.scr');
+    if(container2.height){
+      screen.style.height =container2.height+'px';
+      container.message=this.translate.instant("grapheS.msg37",{height:container2.height});
+    }else{
+      container.message=this.translate.instant("grapheS.msg38");
+    }
+    container.changeSelect="";
+    container2.height=null;
+    formAChangeSizeScreen.style.display="none";
+  }
+  RejeterChangeSizeScreen(container:any,container2:any):void{
+    const formAChangeSizeScreen = container.el.nativeElement.querySelector('.formAChangeSizeScreen');
+    container2.height=null;
+    container.changeSelect="";
+    formAChangeSizeScreen.style.display="none";
+    container.message=this.translate.instant("grapheS.msg40")
   }
   addWeightedEdge(container:any,container2:any):void{
     const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
@@ -599,22 +635,32 @@ export class GrapheService {
     container.containerHeight=height* (container.message.length/103 + 1);
   }
   onRemoveChange(container:any):void{
-    //DRY
-    container.changeSelect="";
-    container.buttonClicked="";
-    container.containerHeight=70;
-    container.selectedNode=[];
-    container.algorithm="";
-    //
-    const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
-    formAddEdge.style.display="none";
-    const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
-    formChangeNodeId.style.display="none";
-    if(container.remove=="reset graphe"){
-      container.nodeId=0;
-      this.cy.remove(this.cy.elements());
-      container.message=this.translate.instant("grapheS.msg17");
+    if(container.typeGraphe!=""){
+      //DRY
+      container.changeSelect="";
+      container.buttonClicked="";
+      container.containerHeight=70;
+      container.selectedNode=[];
+      container.algorithm="";
+      //
+      const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
+      const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
+      const formAChangeSizeScreen = container.el.nativeElement.querySelector('.formAChangeSizeScreen');
+      const formChangeColor = container.el.nativeElement.querySelector('.formChangeColor');
+      formChangeNodeId.style.display="none";
+      formAddEdge.style.display="none";
+      formChangeColor.style.display="none";
+      formAChangeSizeScreen.style.display="none";
+      container.grapheS.position="";
+      if(container.remove=="reset graphe"){
+        container.nodeId=0;
+        this.cy.remove(this.cy.elements());
+        container.message=this.translate.instant("grapheS.msg17");
+      }
+    }else{
+      container.remove="";
     }
+    
   }
   searcheEdgeChnageBC(container:any,source:string,target:string,lineColor:string):void{
     const edges = this.cy.elements('edge'); // Select only edges

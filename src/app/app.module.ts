@@ -26,6 +26,7 @@ import { SelectComponent } from './components/select/select.component';
 import { ChangeIdNodeComponent } from './components/change-id-node/change-id-node.component';
 import { ChangeColorComponent } from './components/change-color/change-color.component';
 import { AddNodeComponent } from './components/add-node/add-node.component';
+import { ChangeSizeScreenComponent } from './components/change-size-screen/change-size-screen.component';
 
 
 // Function to load translations
@@ -50,6 +51,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ChangeIdNodeComponent,
     ChangeColorComponent,
     AddNodeComponent,
+    ChangeSizeScreenComponent,
   ],
   imports: [
     BrowserModule,

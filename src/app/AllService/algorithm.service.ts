@@ -184,20 +184,25 @@ floydWarshallAlgorithm(container: any): void {
   });
 }
 changeAlgorithm(container:any):void{
-  //DRY
-  container.changeSelect="";
-  container.remove="";
-  container.buttonClicked="";
-  container.saveUpload = "";
-  container.containerHeight=70;
-  container.selectedNode=[];
-  //
-  container.grapheS.resetColors();
-  const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
+  if(container.typeGraphe!==""){
+    //DRY
+    container.changeSelect="";
+    container.remove="";
+    container.buttonClicked="";
+    container.saveUpload = "";
+    container.containerHeight=70;
+    container.selectedNode=[];
+    //
+    container.grapheS.resetColors();
+    const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
     const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
+    const formAChangeSizeScreen = container.el.nativeElement.querySelector('.formAChangeSizeScreen');
+    const formChangeColor = container.el.nativeElement.querySelector('.formChangeColor');
     formChangeNodeId.style.display="none";
     formAddEdge.style.display="none";
-  if(container.algorithm!="" && container.typeGraphe!=""){
+    formChangeColor.style.display="none";
+    formAChangeSizeScreen.style.display="none";
+    container.grapheS.position="";
     container.message=this.translate.instant("algoS.msg7",{algorithm:container.algorithm});
     if(container.algorithm=="floydWarshall"){
       this.floydWarshallAlgorithm(container);
@@ -210,6 +215,8 @@ changeAlgorithm(container:any):void{
         container.message=container.translate.instant("algoS.msg8");
       }
     }
+  }else{
+    container.algorithm="";
   }
 }
 bfs(node:any,visitedNodes:any):void {

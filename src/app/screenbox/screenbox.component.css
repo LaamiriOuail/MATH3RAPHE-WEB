@@ -102,6 +102,9 @@ display: none;
 .formAddNode{
   display:none;
 }
+.formAChangeSizeScreen{
+  display: none;
+}
 #msg{
   grid-column: 1/4;
   grid-row: 2/3;

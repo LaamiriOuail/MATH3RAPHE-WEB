@@ -120,19 +120,40 @@ savePNG(container:any,fullGraph:boolean=true):void{
     input.click();
   }
   OnSaveUploadChange(container:any):void{
-    if(container.saveUpload=="save"){
-      this.saveJSON(container);
-    }else if(container.saveUpload=="upload"){
-      this.uploadJSON(container);
-    }else if(container.saveUpload=="saveJPG"){
-      this.saveJPG(container);
-    }else if(container.saveUpload=="saveJPGScreen"){
-       this.saveJPG(container,false);
-    }else if(container.saveUpload=="savePNG"){
-      this.savePNG(container);
-    }else if(container.saveUpload=="savePNGScreen"){
-       this.savePNG(container,false);
+    if(container.typeGraphe!=""){
+      container.changeSelect="";
+      container.remove="";
+      container.buttonClicked="";
+      container.saveUpload = "";
+      container.containerHeight=70;
+      container.selectedNode=[];
+      container.algorithm="";
+      const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
+      const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
+      const formAChangeSizeScreen = container.el.nativeElement.querySelector('.formAChangeSizeScreen');
+      const formChangeColor = container.el.nativeElement.querySelector('.formChangeColor');
+      formChangeNodeId.style.display="none";
+      formAddEdge.style.display="none";
+      formChangeColor.style.display="none";
+      formAChangeSizeScreen.style.display="none";
+      container.grapheS.position="";
+      if(container.saveUpload=="save"){
+        this.saveJSON(container);
+      }else if(container.saveUpload=="upload"){
+        this.uploadJSON(container);
+      }else if(container.saveUpload=="saveJPG"){
+        this.saveJPG(container);
+      }else if(container.saveUpload=="saveJPGScreen"){
+        this.saveJPG(container,false);
+      }else if(container.saveUpload=="savePNG"){
+        this.savePNG(container);
+      }else if(container.saveUpload=="savePNGScreen"){
+        this.savePNG(container,false);
+      }
+    }else{
+      container.saveUpload="";
     }
+    
   }
 }
 

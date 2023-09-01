@@ -73,10 +73,15 @@
     "msg36": "Color of nodes[algorithm]",
     "msg37": "Color of edges[algorithm]",
     "msg38": "Color of Screen",
-    "msg39": "Enter the point ID",
+    "msg39": "Enter the node ID",
     "msg40": "Custom text",
     "msg41": "enter a valid node id",
-    "msg42": "Vertex enumeration"
+    "msg42": "Vertex enumeration",
+    "msg43": "Size of Screen",
+    "msg44": "Enter screen width",
+    "msg45": "Enter screen height"
+
+
   },
   "grapheS": {
     "msg1": "The graph is currently of type: ",
@@ -114,8 +119,11 @@
     "msg33":  "The color of all edges has been successfully changed(Algorithm)",
     "msg34": "Choose a color for all nodes(Algorithm)",
     "msg35": "Choose a color for all edges(Algorithm)",
-    "msg36": "Choose a color for screen"
-
+    "msg36": "Choose a color for screen",
+    "msg37": "The screen height has been changed to {{height}}.",
+    "msg38": "The current screen size has been adopted.",
+    "msg39": "Enter the new screen height.",
+    "msg40": "The screen size change operation has been canceled."
   },
   "algoS": {
     "msg1": "Breadth First Search (BFS) Path: ",
