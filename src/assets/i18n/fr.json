@@ -121,18 +121,22 @@
     "msg37": "La hauteur de l'écran a été modifiée à {{height}}.",
     "msg38": "La taille actuelle de l'écran a été adoptée.",
     "msg39": "Entrez la nouvelle hauteur de l'écran.",
-    "msg40": "L'opération de changement de taille de l'écran a été annulée."
+    "msg40": "L'opération de changement de taille de l'écran a été annulée.",
+    "msg41": "Le graphe ne contient aucun nœud !"
   },  
   "algoS": {
     "msg1": "Chemin Parcours en Largeur (BFS) : ",
     "msg2": "Chemin Parcours en Profondeur (DFS) : ",
-    "msg3": "{{rootNodeId}} à {{targetNodeId}} : {{pathString}} (Distance : {{distanceToTarget}})",
-    "msg4": "{{rootNodeId}} à {{targetNodeId}} : {{pathString}} (Distance : {{distanceToTarget}}) ||",
-    "msg5": "{{rootNodeId}} à {{targetNodeId}} : {{pathString}} (Distance : {{distance}}) ||",
+    "msg3": "{{rootNodeId}} à {{targetNodeId}} : {{pathString}} (d : {{distanceToTarget}})",
+    "msg4": "{{rootNodeId}} à {{targetNodeId}} : {{pathString}} (d : {{distanceToTarget}}) ||",
+    "msg5": "{{rootNodeId}} à {{targetNodeId}} : {{pathString}} (d : {{distance}}) ||",
     "msg6": "{{rootNodeId}} à {{targetNodeId}} : Pas de chemin trouvé ||",
     "msg7": "Sélectionnez un nœud pour appliquer l'algorithme {{algorithm}}",
     "msg8": "L'algorithme de Kruskal n'est applicable qu'à un graphe non orienté connexe pondéré",
-    "msg9":"L'algorithme de Kruskal est maintenant appliqué à..."
+    "msg9":"L'algorithme de Kruskal est maintenant appliqué à...",
+    "msg10":"L'algorithme de Dijkstra n'est applicable qu'à un graphe positif pondéré",
+    "msg11": "Le graphe est vide"
+    
   },
   "saveUploadS": {
     "msg1": "Fichier téléchargé avec succès",

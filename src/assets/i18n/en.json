@@ -123,18 +123,22 @@
     "msg37": "The screen height has been changed to {{height}}.",
     "msg38": "The current screen size has been adopted.",
     "msg39": "Enter the new screen height.",
-    "msg40": "The screen size change operation has been canceled."
+    "msg40": "The screen size change operation has been canceled.",
+    "msg41": "The graph contains no nodes!"
   },
   "algoS": {
     "msg1": "Breadth First Search (BFS) Path: ",
     "msg2": "Depth First Search (DFS) Path: ",
-    "msg3": "{{rootNodeId}} to {{targetNodeId}}: {{pathString}} (Distance: {{distanceToTarget}})",
-    "msg4": "{{rootNodeId}} to {{targetNodeId}}: {{pathString}} (Distance: {{distanceToTarget}}) ||",
-    "msg5": "{{rootNodeId}} to {{targetNodeId}}: {{pathString}} (Distance: {{distance}}) ||",
+    "msg3": "{{rootNodeId}} to {{targetNodeId}}: {{pathString}} (d: {{distanceToTarget}})",
+    "msg4": "{{rootNodeId}} to {{targetNodeId}}: {{pathString}} (d: {{distanceToTarget}}) ||",
+    "msg5": "{{rootNodeId}} to {{targetNodeId}}: {{pathString}} (d: {{distance}}) ||",
     "msg6": "{{rootNodeId}} to {{targetNodeId}}: No path found ||",
     "msg7": "Select a node to apply the {{algorithm}} algorithm",
-    "msg8": "Kruskal's algorithm is only applicable to a weighted connected undirected graph",
-    "msg9": "Kruskal's algorithm is now applied to..."
+    "msg8": "Kruskal algorithm is only applicable to a weighted connected undirected graph",
+    "msg9": "Kruskal algorithm is now applied to...",
+    "msg10": "Dijkstra's algorithm is only applicable to a weighted positive graph",
+    "msg11": "The graph is empty",
+    "msg12": "Prime algorithm is only applicable to a weighted connected undirected graph"
   },
   "saveUploadS": {
     "msg1": "File uploaded successfully",

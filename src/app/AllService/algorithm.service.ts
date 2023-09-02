@@ -111,11 +111,9 @@ dijkstraAlgorithm(rootNodeId: string, container: any): void {
           const distanceToTarget = dijkstra.distanceTo(container.grapheS.cy.$(`#${targetNodeId}`));
           const pathNodes = pathToTarget.nodes().map((node:any) => node.data('id'));
           const pathString = pathNodes.join(' -> ');
-          container.message += this.translate.instant('algoS.msg3', { rootNodeId,targetNodeId,pathString,distanceToTarget });
-          console.log(this.translate.instant('algoS.msg3', { rootNodeId,targetNodeId,pathString,distanceToTarget }));
+          container.message += this.translate.instant('algoS.msg4', { rootNodeId,targetNodeId,pathString,distanceToTarget });
         }
   });
-  container.grapheS.OnMessageLengthChange(container);
 }
 dijkstraAnimation(rootNodeId: string, targetNodeId: string, container: any): void {
   const root = container.grapheS.cy.$(`#${rootNodeId}`);
@@ -148,7 +146,7 @@ dijkstraAnimation(rootNodeId: string, targetNodeId: string, container: any): voi
     i++;
   });
   const pathString = pathNodes.join(' -> ');
-  container.message = this.translate.instant("algoS.msg4",{rootNodeId,targetNodeId,pathString,distanceToTarget});
+  container.message = this.translate.instant("algoS.msg3",{rootNodeId,targetNodeId,pathString,distanceToTarget});
 }
 
 floydWarshallAlgorithm(container: any): void {
@@ -184,13 +182,13 @@ floydWarshallAlgorithm(container: any): void {
   });
 }
 changeAlgorithm(container:any):void{
-  if(container.typeGraphe!==""){
+  if(container.typeGraphe!="" && container.grapheS.cy.nodes().length){
     //DRY
     container.changeSelect="";
     container.remove="";
     container.buttonClicked="";
     container.saveUpload = "";
-    container.containerHeight=70;
+    container.containerHeight=50;
     container.selectedNode=[];
     //
     container.grapheS.resetColors();
@@ -198,24 +196,41 @@ changeAlgorithm(container:any):void{
     const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
     const formAChangeSizeScreen = container.el.nativeElement.querySelector('.formAChangeSizeScreen');
     const formChangeColor = container.el.nativeElement.querySelector('.formChangeColor');
+    const formAddNode = container.el.nativeElement.querySelector('.formAddNode');
     formChangeNodeId.style.display="none";
     formAddEdge.style.display="none";
+    formAddNode.style.display="none";
     formChangeColor.style.display="none";
     formAChangeSizeScreen.style.display="none";
     container.grapheS.position="";
     container.message=this.translate.instant("algoS.msg7",{algorithm:container.algorithm});
     if(container.algorithm=="floydWarshall"){
       this.floydWarshallAlgorithm(container);
-      container.grapheS.OnMessageLengthChange(container);
-    }else if(container.algorithm=="kruskal"){
-      if(this.isGraphConnected(container)==true && container.typeGraphe.split(" ")[0]=="Undirected" && container.typeGraphe.split(" ")[1]=="Weighted"){
+    }else if((container.algorithm=="dijkstra" || container.algorithm=="dijkstraAB")&& !this.isAllEdgePositive(container)){
+      container.message=container.translate.instant("algoS.msg10");
+      container.algorithm="";
+    }else if(container.algorithm=="kruskal" || container.algorithm=="prime"){
+      if(this.isGraphConnected(container)==true && container.typeGraphe.split(" ")[0]=="Undirected" /*&& container.typeGraphe.split(" ")[1]=="Weighted"*/){
         container.grapheS.resetColors();
-        container.message=container.translate.instant("algoS.msg9");
+        if(container.algorithm=="kruskal"){
+          this.kruskalAnimation(container);
+          container.message="Kruskal(MST): ";
+        }else{
+          this.primeAniamantion(container);
+          container.message="Prime(MST): ";
+        }
       }else{
-        container.message=container.translate.instant("algoS.msg8");
+        if(container.algorithm=="kruskal"){
+          container.message=container.translate.instant("algoS.msg8");
+        }else{
+          container.message=container.translate.instant("algoS.msg12");
+        }
       }
     }
   }else{
+    if(!container.grapheS.cy.nodes().length){
+      container.message=container.translate.instant("algoS.msg11");
+    }
     container.algorithm="";
   }
 }
@@ -241,5 +256,76 @@ isGraphConnected(container:any):boolean{
   this.bfs(startNode,visitedNodes);
   return visitedNodes.size === container.grapheS.cy.nodes().size();
 }
-
+isAllEdgePositive(container:any):boolean{
+  let allPositive:boolean=true;
+  if(container.typeGraphe.split(" ")[1]=="Weighted"){
+    container.grapheS.cy.edges().forEach((edge:any)=>{
+      if(edge.data('weight')<=0){
+        allPositive=false;
+      }
+    })
+  }
+  return allPositive;
+   
+}
+MinimumSpanningTreeEdges(container:any): Array<any> {
+  const edges = container.grapheS.cy.edges().toArray();
+  edges.sort((a:any, b:any) => {
+    const weightA = a.data('weight') || 1;
+    const weightB = b.data('weight') || 1;
+    return weightA - weightB;
+  });
+  const treeEdges: Array<any> = [];
+  const treeNodes = new Set<number>();
+  for (const edge of edges) {
+    const sourceId:any = edge.source().id();
+    const targetId:any = edge.target().id();
+    if (!treeNodes.has(sourceId) || !treeNodes.has(targetId)) {
+      treeEdges.push(edge);
+      treeNodes.add(sourceId);
+      treeNodes.add(targetId);
+    }
+    if (treeEdges.length === container.grapheS.cy.nodes().length - 1) {
+      break; // L'arbre de poids minimal est complet
+    }
+  }
+  return treeEdges;
+}
+kruskalAnimation(container:any):void{
+  let i:number=0;
+  let j:number=0;
+  this.MinimumSpanningTreeEdges(container).forEach((edge:any)=>{
+    container.grapheS.changeColorEdge(edge,container.grapheS.DATA_EDGE_COLOR_ALGO,container.grapheS.COLOR_LINE_EDGE_ALGO,container.grapheS.TARGET_ARROW_COLOR_ALGO,j=++i*2000);
+    if(i!=container.grapheS.cy.nodes().length - 1){
+      setTimeout(()=>{
+        container.message+=`(s:${edge.source().id()},t:${edge.target().id()},w:${edge.data("weight")||1})  ||`;
+      },j)
+    }else{
+      setTimeout(()=>{
+        container.message+=`(s:${edge.source().id()},t:${edge.target().id()},w:${edge.data("weight")||1})`;
+      },j)
+    }
+  })
+  container.grapheS.cy.nodes().forEach((node:any)=>{
+     container.grapheS.changeColorNode(node, container.grapheS.BACKGROUND_COLOR_NODE_ALGO,container.grapheS.COLOR_NODE_ALGO,++i*2000);
+  })
+}
+primeAniamantion(container:any):void{
+  let i:number=0;
+  let j:number=0;
+  this.MinimumSpanningTreeEdges(container).forEach((edge:any)=>{
+    container.grapheS.changeColorNode(edge.source(), container.grapheS.BACKGROUND_COLOR_NODE_ALGO,container.grapheS.COLOR_NODE_ALGO,++i*2000);
+    container.grapheS.changeColorEdge(edge,container.grapheS.DATA_EDGE_COLOR_ALGO,container.grapheS.COLOR_LINE_EDGE_ALGO,container.grapheS.TARGET_ARROW_COLOR_ALGO,j=++i*2000);
+    if(i/2!=container.grapheS.cy.nodes().length - 1){
+      setTimeout(()=>{
+        container.message+=`(s:${edge.source().id()},t:${edge.target().id()},w:${edge.data("weight")||1})  ||`;
+      },j)
+    }else{
+      container.grapheS.changeColorNode(edge.target(), container.grapheS.BACKGROUND_COLOR_NODE_ALGO,container.grapheS.COLOR_NODE_ALGO,j);
+      setTimeout(()=>{
+        container.message+=`(s:${edge.source().id()},t:${edge.target().id()},w:${edge.data("weight")||1})`;
+      },j)
+    }
+  })
+}
 }

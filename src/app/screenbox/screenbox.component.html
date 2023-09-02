@@ -29,6 +29,7 @@
                     <option value="dijkstraAB">dijkstra a->b</option>
                     <option value="floydWarshall">floyd Warshall</option>
                     <option value="kruskal">kruskal</option>
+                    <option value="prime">prime</option>
                 </select>
                 <select  id="changeSelect" [(ngModel)]="changeSelect" (ngModelChange)="grapheS.changeChanges(this)">
                     <option value="" disabled selected>{{"screenbox.msg29"|translate}}</option>
@@ -62,7 +63,7 @@
             <app-add-node dir='{{"info.dir"|translate}}' class="formAddNode" [container]="this"/>
             <app-change-size-screen dir='{{"info.dir"|translate}}' class="formAChangeSizeScreen" [container]="this"/>
         </div>
-        <app-message [message]="message" id="msg" [style.height.px]="containerHeight" />
+        <app-message [message]="message" class="msgBoxC"  [container]="this"/>
         <app-screen class="screen" />
         <app-info id="info" [grapheS]="grapheS" [algoS]="algoS"/>
      </div> 

@@ -7,6 +7,7 @@
   grid-template-columns: repeat(3,1fr);
   grid-auto-rows: minmax(30px,auto);
   gap: 2px;
+  border-top: 10px;
 }
 .buttonManupilation{
   grid-column: 1/4;
@@ -105,16 +106,27 @@ display: none;
 .formAChangeSizeScreen{
   display: none;
 }
-#msg{
+/* #msg{
   grid-column: 1/4;
   grid-row: 2/3;
+} */
+.msgBoxC {
+  grid-column: 1/4;
+  grid-row: 2/3;
+  background-color: #000;
+  color: #fff;
 }
 
 
 
 /* Light Mode*/
 
-
+.light .msgBoxC {
+  grid-column: 1/4;
+  grid-row: 2/3;
+  background-color: #fff;
+  color: #000;
+}
 .light .grapheop{
   display: grid;
   grid-template-columns: repeat(3,1fr);

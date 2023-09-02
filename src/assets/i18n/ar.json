@@ -130,18 +130,21 @@
     "msg37": "تم تغيير طول الشاشة ب {{height}}",
     "msg38": "لقد تم إعتماد نفس حجم الشاشة الحالي",
     "msg39": "أدخل طول الشاشة الجديد",
-    "msg40": "لقد تم إلغاء عملية تغيير حجم الشاشة"
+    "msg40": "لقد تم إلغاء عملية تغيير حجم الشاشة",
+    "msg41": "الرسم البياني لا يحتوي على نقاط !"
   },
   "algoS": {
     "msg1": "مسار البحث أولاً في العرض (BFS): ",
     "msg2": "مسار البحث أولاً في العمق (DFS): ",
-    "msg3": "{{rootNodeId}} إلى {{targetNodeId}}: {{pathString}} (المسافة: {{distanceToTarget}})",
-    "msg4": "{{rootNodeId}} إلى {{targetNodeId}}: {{pathString}} (المسافة: {{distanceToTarget}}) ||",
-    "msg5": "{{rootNodeId}} إلى {{targetNodeId}}: {{pathString}} (المسافة: {{distance}}) ||",
+    "msg3": "{{rootNodeId}} إلى {{targetNodeId}}: {{pathString}} (م: {{distanceToTarget}})",
+    "msg4": "{{rootNodeId}} إلى {{targetNodeId}}: {{pathString}} (م: {{distanceToTarget}}) ||",
+    "msg5": "{{rootNodeId}} إلى {{targetNodeId}}: {{pathString}} (م: {{distance}}) ||",
     "msg6": "{{rootNodeId}} إلى {{targetNodeId}}: لا توجد مسار ||",
     "msg7": "حدد نقطة لتطبيق خوارزمية {{algorithm}}",
     "msg8":"خوارزمية Kruskal قابلة للتطبيق فقط على رسم بياني وازن متصل غير موجه",
-    "msg9":"خوارزمية كروسكال تطبق على الان ..."
+    "msg9":"خوارزمية كروسكال تطبق على الان ...",
+    "msg10":"لا تنطبق خوارزمية Dijkstra إلا على الرسم البياني الإيجابي الوزن",
+    "msg11": "الرسم البياني فارغ"
   },
   "saveUploadS": {
     "msg1": "تم تحميل الملف بنجاح",

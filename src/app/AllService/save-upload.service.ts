@@ -120,12 +120,10 @@ savePNG(container:any,fullGraph:boolean=true):void{
     input.click();
   }
   OnSaveUploadChange(container:any):void{
-    if(container.typeGraphe!=""){
       container.changeSelect="";
       container.remove="";
       container.buttonClicked="";
-      container.saveUpload = "";
-      container.containerHeight=70;
+      container.containerHeight=50;
       container.selectedNode=[];
       container.algorithm="";
       const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
@@ -137,23 +135,26 @@ savePNG(container:any,fullGraph:boolean=true):void{
       formChangeColor.style.display="none";
       formAChangeSizeScreen.style.display="none";
       container.grapheS.position="";
-      if(container.saveUpload=="save"){
-        this.saveJSON(container);
-      }else if(container.saveUpload=="upload"){
+      if(container.saveUpload=="upload"){
         this.uploadJSON(container);
-      }else if(container.saveUpload=="saveJPG"){
-        this.saveJPG(container);
-      }else if(container.saveUpload=="saveJPGScreen"){
-        this.saveJPG(container,false);
-      }else if(container.saveUpload=="savePNG"){
-        this.savePNG(container);
-      }else if(container.saveUpload=="savePNGScreen"){
-        this.savePNG(container,false);
+      }else if(container.typeGraphe!="" && container.grapheS.cy.nodes().length){
+        if(container.saveUpload=="save"){
+          this.saveJSON(container);
+        }else if(container.saveUpload=="saveJPG"){
+          this.saveJPG(container);
+        }else if(container.saveUpload=="saveJPGScreen"){
+          this.saveJPG(container,false);
+        }else if(container.saveUpload=="savePNG"){
+          this.savePNG(container);
+        }else if(container.saveUpload=="savePNGScreen"){
+          this.savePNG(container,false);
+        }
+      }else{
+          if(!container.grapheS.cy.nodes().length && container.typeGraphe!=""){
+            container.message=this.translate.instant("algoS.msg11");
+          } 
+          container.typeGraphe="";
       }
-    }else{
-      container.saveUpload="";
-    }
-    
   }
 }
 

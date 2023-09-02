@@ -10,10 +10,11 @@ import * as cytoscape from 'cytoscape';
 export class GrapheService {
   public cy:any;
   public typeGraphe:string="";
-  alphabets: string[] = Array.from({ length: 26 }, (_, i) =>
-    String.fromCharCode(65 + i)
-  );
-  Alphabets: string[] = this.alphabets.concat(this.alphabets.map(letter => letter + '1'));
+  alphabets0: string[] = Array.from({ length: 26 }, (_, i) =>
+  String.fromCharCode(65 + i)
+);
+  alphabets: string[] = this.alphabets0.concat(this.alphabets0.map(letter => letter + '1'));
+  Alphabets: string[] = this.alphabets.concat(this.alphabets0.map(letter => letter + '2'));
   counter:number = 0;
   position:any;
   //----------------------------------------------------------------
@@ -39,7 +40,8 @@ export class GrapheService {
       container.algorithm="";
       container.saveUpload = "";
       container.remove="";
-      container.containerHeight=70;
+      container.containerHeight=50;
+      this.resetColors();
       const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
       const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
       const formChangeColor = container.el.nativeElement.querySelector('.formChangeColor');
@@ -60,7 +62,7 @@ export class GrapheService {
       container.algorithm="";
       container.saveUpload = "";
       container.remove="";
-      container.containerHeight=70;
+      container.containerHeight=50;
       container.buttonClicked="";
       const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
       const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
@@ -71,6 +73,7 @@ export class GrapheService {
       formChangeColor.style.display="none";
       formAChangeSizeScreen.style.display="none";
       this.position="";
+      this.resetColors();
       //
       if(container.changeSelect=="changeIdNode"){
         container.message=this.translate.instant("grapheS.msg24")
@@ -104,7 +107,10 @@ export class GrapheService {
     container.algorithm="";
     container.saveUpload = "";
     container.remove="";
+    this.Alphabets=this.alphabets.concat(this.alphabets0.map(letter => letter + '2'));
+    this.counter=0;
     //
+    
     this.typeGraphe=container.typeGraphe;
     this.resetColors();
     const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
@@ -116,7 +122,7 @@ export class GrapheService {
     formChangeNodeId.style.display="none";
     formAddEdge.style.display="none";
     this.position="";
-    container.containerHeight=70;
+    container.containerHeight=50;
     container.nodeId=0;
     this.cy.remove(this.cy.elements());
     container.message=this.translate.instant("grapheS.msg1");
@@ -189,7 +195,7 @@ export class GrapheService {
       container.algorithm="";
       container.saveUpload = "";
       container.remove="";
-      container.containerHeight=70;
+      container.containerHeight=50;
       //
       const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
       const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
@@ -207,9 +213,16 @@ export class GrapheService {
       }else if(container.buttonClicked=="addVertices"){
         container.message=this.translate.instant("grapheS.msg3");
       }else if(container.buttonClicked=="addEdges"){
-        container.message=this.translate.instant("grapheS.msg4");
+        if(this.cy.nodes().length){
+          container.message=this.translate.instant("grapheS.msg4");
+        }else{
+          container.message=this.translate.instant("grapheS.msg41");
+          container.buttonClicked="";
+        }
       }else if(container.buttonClicked=="restore"){
         container.message=this.translate.instant("grapheS.msg6");
+        this.Alphabets=this.alphabets.concat(this.alphabets0.map(letter => letter + '2'));
+        this.counter=0;
         this.restoreGraphe(container);
       }
     }else{
@@ -602,11 +615,22 @@ export class GrapheService {
       this.cy.edges().style('target-arrow-color', this.TARGET_ARROW_COLOR);
     },10)
   }
-  changeColorNode(node:any,bgcolor:string,color:string): void {
+  changeColorNode(node:any,bgcolor:string,color:string,time:number=10): void {
     setTimeout(() => {
       node.style('background-color',bgcolor);
       node.style('color',color);
-    },10)
+    },time);
+  }
+  changeColorEdge(edge:any,color:any,lineEdgeColor:any,targetArrowColor:any,time:number=10): void {
+    setTimeout(() => {
+        edge.style('line-color',lineEdgeColor);
+        if(this.typeGraphe.split(" ")[1]=="Weighted"){
+          edge.style('color',color);
+        }
+        if(this.typeGraphe.split(" ")[0]=="Directed"){
+          edge.style('target-arrow-color', targetArrowColor);
+        }
+      },time)
   }
   changeColorNodes(): void {
     setTimeout(() => {
@@ -629,17 +653,13 @@ export class GrapheService {
       })
     },10)
   }
-  OnMessageLengthChange(container:any):void {
-    const specialLength = 150; // Adjust this as needed 103
-    const height = 70; // Initial height of the zone
-    container.containerHeight=height* (container.message.length/103 + 1);
-  }
+
   onRemoveChange(container:any):void{
     if(container.typeGraphe!=""){
       //DRY
       container.changeSelect="";
       container.buttonClicked="";
-      container.containerHeight=70;
+      container.containerHeight=50;
       container.selectedNode=[];
       container.algorithm="";
       //
