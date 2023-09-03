@@ -11,5 +11,5 @@ export class ChangeSizeScreenComponent {
 
   }
   @Input() container:any;
-  height:any;
+  height:any="400";
 }

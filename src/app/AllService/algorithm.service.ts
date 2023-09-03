@@ -103,7 +103,8 @@ dijkstraAlgorithm(rootNodeId: string, container: any): void {
       weight: (edge:any) => edge.data('weight')||1,
       directed:directed
   });
-  container.message="||";
+  let lastMessage:string="||";
+  let i:number=0;
   container.grapheS.cy.nodes().forEach((node:any) => {
       if (node.id() !== rootNodeId) {
           const targetNodeId = node.data('id');
@@ -111,9 +112,18 @@ dijkstraAlgorithm(rootNodeId: string, container: any): void {
           const distanceToTarget = dijkstra.distanceTo(container.grapheS.cy.$(`#${targetNodeId}`));
           const pathNodes = pathToTarget.nodes().map((node:any) => node.data('id'));
           const pathString = pathNodes.join(' -> ');
-          container.message += this.translate.instant('algoS.msg4', { rootNodeId,targetNodeId,pathString,distanceToTarget });
+          setTimeout(()=>{
+            container.grapheS.resetColors();
+            this.dijkstraAnimation(rootNodeId,targetNodeId,container);
+            lastMessage += this.translate.instant('algoS.msg4', { rootNodeId,targetNodeId,pathString,distanceToTarget });
+          },i++*10000);
         }
   });
+  setTimeout(()=>{
+    container.grapheS.resetColors();
+    container.message=lastMessage;
+  },i*10000)
+  
 }
 dijkstraAnimation(rootNodeId: string, targetNodeId: string, container: any): void {
   const root = container.grapheS.cy.$(`#${rootNodeId}`);

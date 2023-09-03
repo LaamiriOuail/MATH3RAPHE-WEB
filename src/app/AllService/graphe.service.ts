@@ -236,15 +236,17 @@ export class GrapheService {
       screen.style.height =container2.height+'px';
       container.message=this.translate.instant("grapheS.msg37",{height:container2.height});
     }else{
+      screen.style.height =400+'px';//default value
       container.message=this.translate.instant("grapheS.msg38");
     }
     container.changeSelect="";
-    container2.height=null;
+    // container2.height=null;
     formAChangeSizeScreen.style.display="none";
   }
   RejeterChangeSizeScreen(container:any,container2:any):void{
     const formAChangeSizeScreen = container.el.nativeElement.querySelector('.formAChangeSizeScreen');
-    container2.height=null;
+    const screen=container.el.nativeElement.querySelector('.scr');
+    container2.height=screen.style.height.slice(0,-2);
     container.changeSelect="";
     formAChangeSizeScreen.style.display="none";
     container.message=this.translate.instant("grapheS.msg40")
@@ -554,6 +556,7 @@ export class GrapheService {
         container.algoS.dfsAnimation(node.data('id'),container);
       }else if(container.algorithm=="dijkstra"){
         this.resetColors();
+        this.changeColorNode(node, this.BACKGROUND_COLOR_NODE_ALGO,this.COLOR_NODE_ALGO);
         container.algoS.dijkstraAlgorithm(node.data('id'),container);
       }else if(container.algorithm=="dijkstraAB"){
         this.resetColors();
