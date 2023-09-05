@@ -56,49 +56,52 @@ export class GrapheService {
     
   }
   changeChanges(container:any){
-    if(this.typeGraphe!=""){
-      //DRY
-      container.selectedNode=[];
-      container.algorithm="";
-      container.saveUpload = "";
-      container.remove="";
-      container.containerHeight=50;
-      container.buttonClicked="";
-      const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
-      const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
-      const formAChangeSizeScreen = container.el.nativeElement.querySelector('.formAChangeSizeScreen');
-      const formChangeColor = container.el.nativeElement.querySelector('.formChangeColor');
-      formChangeNodeId.style.display="none";
-      formAddEdge.style.display="none";
-      formChangeColor.style.display="none";
-      formAChangeSizeScreen.style.display="none";
-      this.position="";
-      this.resetColors();
-      //
-      if(container.changeSelect=="changeIdNode"){
-        container.message=this.translate.instant("grapheS.msg24")
-      }else if(container.changeSelect=="changeColorNodes" || container.changeSelect=="changeColorEdges" || container.changeSelect=="changeColorNodesAlgo" || container.changeSelect=="changeColorEdgesAlgo" || container.changeSelect=="changeColorScreen"){
-        if(container.changeSelect=="changeColorNodes"){
-          container.message=this.translate.instant("grapheS.msg26")
-        }else if(container.changeSelect=="changeColorEdges") {
-          container.message=this.translate.instant("grapheS.msg27")
-        }if(container.changeSelect=="changeColorNodesAlgo"){
-          container.message=this.translate.instant("grapheS.msg34")
-        }else if(container.changeSelect=="changeColorEdgesAlgo") {
-          container.message=this.translate.instant("grapheS.msg35")
-        }else if(container.changeSelect=="changeColorScreen") {
-          container.message=this.translate.instant("grapheS.msg36")
-        }
-        formChangeColor.style.display="block";
-      }else if(container.changeSelect=="changeSizeScreen"){
-        container.message=this.translate.instant("grapheS.msg39")
-        formAChangeSizeScreen.style.display="block";
+    //DRY
+    container.selectedNode=[];
+    container.algorithm="";
+    container.saveUpload = "";
+    container.remove="";
+    container.containerHeight=50;
+    container.buttonClicked="";
+    const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
+    const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
+    const formAChangeSizeScreen = container.el.nativeElement.querySelector('.formAChangeSizeScreen');
+    const formChangeColor = container.el.nativeElement.querySelector('.formChangeColor');
+    formChangeNodeId.style.display="none";
+    formAddEdge.style.display="none";
+    formChangeColor.style.display="none";
+    formAChangeSizeScreen.style.display="none";
+    this.position="";
+    this.resetColors();
+    //
+    if(container.changeSelect=="changeColorNodes" || container.changeSelect=="changeColorEdges" || container.changeSelect=="changeColorNodesAlgo" || container.changeSelect=="changeColorEdgesAlgo" || container.changeSelect=="changeColorScreen"){
+      if(container.changeSelect=="changeColorNodes"){
+        container.message=this.translate.instant("grapheS.msg26")
+      }else if(container.changeSelect=="changeColorEdges") {
+        container.message=this.translate.instant("grapheS.msg27")
+      }if(container.changeSelect=="changeColorNodesAlgo"){
+        container.message=this.translate.instant("grapheS.msg34")
+      }else if(container.changeSelect=="changeColorEdgesAlgo") {
+        container.message=this.translate.instant("grapheS.msg35")
+      }else if(container.changeSelect=="changeColorScreen") {
+        container.message=this.translate.instant("grapheS.msg36")
       }
-    }else{
-      container.changeSelect="";
+      formChangeColor.style.display="block";
+    }else if(container.changeSelect=="changeSizeScreen"){
+      container.message=this.translate.instant("grapheS.msg39")
+      formAChangeSizeScreen.style.display="block";
+    }else if(container.changeSelect=="changeIdNode"){
+      if(this.typeGraphe && this.cy.nodes().length){
+        container.message=this.translate.instant("grapheS.msg24")
+      }else{
+        if(this.typeGraphe==""){
+          container.message=this.translate.instant("screenbox.msg23");
+        }else if(this.cy.nodes().length==0){
+          container.message=this.translate.instant("grapheS.msg41");
+        }
+        container.changeSelect="";
+      }
     }
-    
-
   }
   changeTypeGraphe(container:any):void{
     //DRY
@@ -107,6 +110,7 @@ export class GrapheService {
     container.algorithm="";
     container.saveUpload = "";
     container.remove="";
+    container.changeSelect="";
     this.Alphabets=this.alphabets.concat(this.alphabets0.map(letter => letter + '2'));
     this.counter=0;
     //

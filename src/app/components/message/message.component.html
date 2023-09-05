@@ -1,6 +1,14 @@
 <div [ngClass]="{'light-msg': !darkModeS.isDarkMode}" dir="{{'info.dir'|translate}}">
     <div id="msgBox">
-        {{message|| "screenbox.msg23"|translate}}
+        {{message|| "screenbox.msg23"|translate}} 
+        <span *ngIf="container.buttonClicked=='addVertices'">
+            <select id="nodeEnumeration" [(ngModel)]="container.nodeName" (ngModelChange)="grapheS.changeNodeEnum(container)">
+                <option value="" disabled selected>{{'screenbox.msg42'|translate}}</option>
+                <option value="numerique">1,2,3,...</option>
+                <option value="alphabic">A,B,C,...</option>
+                <option value="customText">{{'screenbox.msg40'|translate}}</option>
+            </select>
+        </span>
     </div>
 </div>
 

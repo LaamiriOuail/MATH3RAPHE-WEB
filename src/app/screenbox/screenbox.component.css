@@ -25,10 +25,12 @@
 .button-list{
   display: flex;
   gap: 2px;
-  background-color: white;/*Dark*/
+  background-color: white;
   flex-wrap: wrap;
   flex-flow: space-around;
-}
+} 
+
+
 .button-list:active {
   background-color: #fff;
   color: #000;
@@ -116,7 +118,6 @@ display: none;
   background-color: #000;
   color: #fff;
 }
-
 
 
 /* Light Mode*/

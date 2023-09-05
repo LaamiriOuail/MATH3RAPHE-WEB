@@ -1,4 +1,4 @@
-import { Component,Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { DarkModeService } from 'src/app/AllService/dark-mode.service';
 
 @Component({

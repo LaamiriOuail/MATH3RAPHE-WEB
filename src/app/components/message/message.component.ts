@@ -10,7 +10,7 @@ import { GrapheService } from 'src/app/AllService/graphe.service';
 export class MessageComponent implements OnChanges {
   @Input() message:string="";
   @Input() container:any;
-  constructor(protected darkModeS:DarkModeService,private grapheS:GrapheService){}
+  constructor(protected darkModeS:DarkModeService,protected grapheS:GrapheService){}
   ngOnChanges(changes: SimpleChanges): void {
     this.OnMessageLengthChange();
   }

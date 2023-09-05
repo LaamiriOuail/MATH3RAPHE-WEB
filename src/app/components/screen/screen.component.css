@@ -1,5 +1,5 @@
 .scr{
-  background-color: #F5F5F5 ;
+  background-color: rgb(238, 247, 255) ;
   height: 400px;
   min-height: 200px;
   border: 1px solid #ccc;
@@ -9,7 +9,6 @@
 }
 
 .light-scr .scr {
-    background-color: rgb(238, 247, 255); 
     height: 400px;
     min-height: 200px;
     border: 1px solid #ccc;

@@ -29,7 +29,7 @@ export class ScreenboxComponent implements OnInit,OnDestroy {
   //---------------------------------------------------
   private nodeId:number=0;//Increment and assign a new node
   private nodeIdChanged:any;
-  constructor(private el: ElementRef,protected grapheS:GrapheService,protected algoS:AlgorithmService,protected saveUploadS:SaveUploadService,private translate:TranslateService,protected darkModeS:DarkModeService) {
+  constructor(private el: ElementRef,protected grapheS:GrapheService,protected algoS:AlgorithmService,protected saveUploadS:SaveUploadService,protected translate:TranslateService,protected darkModeS:DarkModeService) {
   }
   ngOnInit(): void {
     this.grapheS.OnInit(this);
