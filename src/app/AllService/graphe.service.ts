@@ -384,15 +384,41 @@ export class GrapheService {
     if(container.changeSelect=="changeColorNodes"){
       this.COLOR_NODE=container2.color;
       this.BACKGROUND_COLOR_NODE=container2.bgColor;
+      this.cy.style()
+          .selector('node') 
+          .style({
+            'background-color': this.BACKGROUND_COLOR_NODE,
+            'color': this.COLOR_NODE
+          })
+          .update();
       this.changeColorNodes();
       container.message=this.translate.instant("grapheS.msg30")
     }else if(container.changeSelect=="changeColorEdges"){
+      this.COLOR_LINE_EDGE=container2.bgColor;
+      this.cy.style()
+          .selector('edge') // Apply the style to all edges
+          .style({
+              'line-color': this.COLOR_LINE_EDGE,
+          })
+          .update();
       if(this.typeGraphe.split(" ")[1]=="Weighted"){
         this.DATA_EDGE_COLOR=container2.color;
+        this.cy.style()
+          .selector('edge') // Apply the style to all edges
+          .style({
+              'color': this.DATA_EDGE_COLOR
+          })
+          .update();
       }
-      this.COLOR_LINE_EDGE=container2.bgColor;
+      
       if(this.typeGraphe.split(" ")[0]=="Directed"){
         this.TARGET_ARROW_COLOR=container2.fColor;
+        this.cy.style()
+          .selector('edge') // Apply the style to all edges
+          .style({
+              'target-arrow-color': this.TARGET_ARROW_COLOR,
+          })
+          .update();
       }
       this.changeColorEdges();
       container.message=this.translate.instant("grapheS.msg31")
@@ -401,10 +427,11 @@ export class GrapheService {
       this.BACKGROUND_COLOR_NODE_ALGO=container2.bgColor;
       container.message=this.translate.instant("grapheS.msg32")
     }else if(container.changeSelect=="changeColorEdgesAlgo"){
+      this.COLOR_LINE_EDGE_ALGO=container2.bgColor;
       if(this.typeGraphe.split(" ")[1]=="Weighted"){
         this.DATA_EDGE_COLOR_ALGO=container2.color;
       }
-      this.COLOR_LINE_EDGE_ALGO=container2.bgColor;
+      
       if(this.typeGraphe.split(" ")[0]=="Directed"){
         this.TARGET_ARROW_COLOR_ALGO=container2.fColor;
       }
