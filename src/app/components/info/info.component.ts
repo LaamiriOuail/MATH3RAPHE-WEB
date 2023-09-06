@@ -1,20 +1,27 @@
-import { Component, OnChanges, OnInit,Input } from '@angular/core';
-import { GrapheService } from '../../AllService/graphe.service';
-import { TranslateService } from '@ngx-translate/core';
+import { Component, Input } from '@angular/core';
 
+/**
+ * Angular component for displaying information about the graph and algorithms.
+ */
 @Component({
   selector: 'app-info',
   templateUrl: './info.component.html',
   styleUrls: ['./info.component.css']
 })
-export class InfoComponent implements OnChanges,OnInit{
-  @Input() grapheS:any;
-  @Input() algoS:any;
-  constructor()  {
-  }
-  ngOnChanges(){
+export class InfoComponent {
+  /**
+   * Input property to receive data from a parent component related to the graph.
+   */
+  @Input() grapheS: any;
 
-  }
-  ngOnInit(): void {
+  /**
+   * Input property to receive data from a parent component related to algorithms.
+   */
+  @Input() algoS: any;
+
+  /**
+   * Initializes a new instance of the InfoComponent class.
+   */
+  constructor() {
   }
 }

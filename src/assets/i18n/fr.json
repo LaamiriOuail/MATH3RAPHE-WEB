@@ -48,8 +48,8 @@
     "msg11": "Enregistrer json",
     "msg12": "Télécharger json",
     "msg13": "Supprimer",
-    "msg14": "les arêtes",
-    "msg15": "les sommets",
+    "msg14": "arête",
+    "msg15": "sommet",
     "msg16": "Tout",
     "msg17": "Réinitialiser",
     "msg18": "Algorithme",
@@ -122,7 +122,8 @@
     "msg38": "La taille actuelle de l'écran a été adoptée.",
     "msg39": "Entrez la nouvelle hauteur de l'écran.",
     "msg40": "L'opération de changement de taille de l'écran a été annulée.",
-    "msg41": "Le graphe ne contient aucun nœud !"
+    "msg41": "Le graphe ne contient aucun nœud !",
+    "msg42": "Algorithme de Bellman Ford : Premier sommet sélectionné avec l'identifiant : {{nodeId}}. Sélectionnez maintenant le deuxième sommet."
   },  
   "algoS": {
     "msg1": "Chemin Parcours en Largeur (BFS) : ",

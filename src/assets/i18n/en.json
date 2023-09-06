@@ -99,7 +99,7 @@
     "msg13": "Adding an edge: First node selected with ID: {{nodeId}}. Now select the second node.",
     "msg14": "Adding an edge: Edge source = {{selectedNode1}}, edge target = {{selectedNode2}}. Now enter the weight.",
     "msg15": "Edge added successfully: (s:{{selectedNode1}}, t:{{selectedNode2}})",
-    "msg16": "Dijkstra's algorithm: First node selected with ID: {{nodeId}}. Now select the second node.",
+    "msg16": "Dijkstra algorithm: First node selected with ID: {{nodeId}}. Now select the second node.",
     "msg17": "Graph initialized",
     "msg18": "Directed",
     "msg19":"Undirected",
@@ -124,7 +124,8 @@
     "msg38": "The current screen size has been adopted.",
     "msg39": "Enter the new screen height.",
     "msg40": "The screen size change operation has been canceled.",
-    "msg41": "The graph contains no nodes!"
+    "msg41": "The graph contains no nodes!",
+    "msg42": "Bellman Ford algorithm: First node selected with ID: {{nodeId}}. Now select the second node."
   },
   "algoS": {
     "msg1": "Breadth First Search (BFS) Path: ",

@@ -27,6 +27,7 @@ import { ChangeIdNodeComponent } from './components/change-id-node/change-id-nod
 import { ChangeColorComponent } from './components/change-color/change-color.component';
 import { AddNodeComponent } from './components/add-node/add-node.component';
 import { ChangeSizeScreenComponent } from './components/change-size-screen/change-size-screen.component';
+import { DarkModeService } from './AllService/dark-mode.service';
 
 
 // Function to load translations
@@ -68,7 +69,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     CommonModule
     
   ],
-  providers: [GrapheService,AlgorithmService,SaveUploadService],
+  providers: [GrapheService,AlgorithmService,SaveUploadService,DarkModeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

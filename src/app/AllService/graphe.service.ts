@@ -1,38 +1,94 @@
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import * as cytoscape from 'cytoscape';
-// import {cytoscape} from 'cytoscape';
 
-
+/**
+ * Service for managing and interacting with the Cytoscape graph.
+ */
 @Injectable({
   providedIn: 'root'
 })
 export class GrapheService {
-  public cy:any;
-  public typeGraphe:string="";
+  /** The Cytoscape instance used to manage and render the graph. */
+  public cy: any;
+
+  /** The type of the graph (e.g., Directed, Undirected, Weighted). */
+  public typeGraphe: string = "";
+
+  /** Array of lowercase alphabet characters. */
   alphabets0: string[] = Array.from({ length: 26 }, (_, i) =>
-  String.fromCharCode(65 + i)
-);
-  alphabets: string[] = this.alphabets0.concat(this.alphabets0.map(letter => letter + '1'));
-  Alphabets: string[] = this.alphabets.concat(this.alphabets0.map(letter => letter + '2'));
-  counter:number = 0;
-  position:any;
+    String.fromCharCode(65 + i)
+  );
+
+  /** Array of lowercase alphabet characters followed by '1'. */
+  alphabets: string[] = this.alphabets0.concat(
+    this.alphabets0.map(letter => letter + '1')
+  );
+
+  /** Array of lowercase alphabet characters followed by '2'. */
+  Alphabets: string[] = this.alphabets.concat(
+    this.alphabets0.map(letter => letter + '2')
+  );
+
+  /** A counter variable for tracking. */
+  counter: number = 0;
+
+  /** The position of something (needs a description). */
+  position: any;
+
   //----------------------------------------------------------------
-  private COLOR_NODE:any="white";
-  private BACKGROUND_COLOR_NODE:any="black";
-  private COLOR_LINE_EDGE:any="black";
-  private TARGET_ARROW_COLOR:any="blue";
-  private DATA_EDGE_COLOR:any="red";
+  // Private Constants for Colors
   //----------------------------------------------------------------
-  private TARGET_ARROW_COLOR_ALGO:any="black"; 
-  private COLOR_LINE_EDGE_ALGO:any="yellow";
-  private COLOR_NODE_ALGO:any="black";
-  private BACKGROUND_COLOR_NODE_ALGO:any="yellow";
-  private DATA_EDGE_COLOR_ALGO:any="blue";
+
+  /** The color of nodes. */
+  private COLOR_NODE: any = "white";
+
+  /** The background color of nodes. */
+  private BACKGROUND_COLOR_NODE: any = "black";
+
+  /** The color of edges. */
+  private COLOR_LINE_EDGE: any = "black";
+
+  /** The color of the target arrow on edges. */
+  private TARGET_ARROW_COLOR: any = "blue";
+
+  /** The color of data associated with edges. */
+  private DATA_EDGE_COLOR: any = "red";
+
   //----------------------------------------------------------------
-  constructor(private translate:TranslateService) { 
-    
+  // Private Constants for Algorithm Colors
+  //----------------------------------------------------------------
+
+  /** The color of the target arrow in algorithm animations. */
+  private TARGET_ARROW_COLOR_ALGO: any = "black";
+
+  /** The color of edges in algorithm animations. */
+  private COLOR_LINE_EDGE_ALGO: any = "yellow";
+
+  /** The color of nodes in algorithm animations. */
+  private COLOR_NODE_ALGO: any = "black";
+
+  /** The background color of nodes in algorithm animations. */
+  private BACKGROUND_COLOR_NODE_ALGO: any = "yellow";
+
+  /** The color of data associated with edges in algorithm animations. */
+  private DATA_EDGE_COLOR_ALGO: any = "blue";
+
+  //----------------------------------------------------------------
+
+  /**
+   * Constructor for the GrapheService.
+   *
+   * @param {TranslateService} translate - The translation service for internationalization.
+   */
+  constructor(private translate: TranslateService) {
+    // Constructor logic here
   }
+
+  /**
+   * Changes the node enumeration.
+   * @param {ScreenboxComponent} container - The container object.
+   */
   changeNodeEnum(container:any):void{
     if(this.typeGraphe!=""){
       //DRY
@@ -55,6 +111,11 @@ export class GrapheService {
     }
     
   }
+  /**
+  * Changes a setting or performs an action based on the selected option(chnage colors & sizes).
+  *
+  * @param {ScreenboxComponent} container - The container object.
+  */
   changeChanges(container:any){
     //DRY
     container.selectedNode=[];
@@ -103,6 +164,11 @@ export class GrapheService {
       }
     }
   }
+  /**
+   * Changes the type of graph (e.g., Directed, Undirected, Weighted).
+   *
+   * @param {ScreenboxComponent} container - The container object.
+   */
   changeTypeGraphe(container:any):void{
     //DRY
     container.selectedNode=[];
@@ -191,6 +257,11 @@ export class GrapheService {
         container.message+=this.translate.instant("grapheS.msg19")+" "+this.translate.instant("grapheS.msg21");;
       }
   }
+  /**
+ * Handles button clicks and performs actions based on the selected option.
+ *
+ * @param {ScreenboxComponent} container - The container object.
+ */
   onChangeButtonClicked(container:any):void{
     if(this.typeGraphe!=""){
       //DRY
@@ -233,6 +304,12 @@ export class GrapheService {
       container.buttonClicked="";
     }
   }
+  /**
+   * Changes the size of the screen.
+   *
+   * @param {ScreenboxComponent} container - The container object.
+   * @param {ChangeSizeScreenComponent} container2 - Another container object.
+   */
   changeSizeScreen(container:any,container2:any):void{
     const formAChangeSizeScreen = container.el.nativeElement.querySelector('.formAChangeSizeScreen');
     const screen=container.el.nativeElement.querySelector('.scr');
@@ -247,6 +324,12 @@ export class GrapheService {
     // container2.height=null;
     formAChangeSizeScreen.style.display="none";
   }
+  /**
+   * Rejects the changes made to the screen size and restores the previous size.
+   *
+   * @param {ScreenboxComponent} container - The container object.
+   * @param {ChangeSizeScreenComponent} container2 - Another container object.
+   */
   RejeterChangeSizeScreen(container:any,container2:any):void{
     const formAChangeSizeScreen = container.el.nativeElement.querySelector('.formAChangeSizeScreen');
     const screen=container.el.nativeElement.querySelector('.scr');
@@ -255,6 +338,12 @@ export class GrapheService {
     formAChangeSizeScreen.style.display="none";
     container.message=this.translate.instant("grapheS.msg40")
   }
+  /**
+   * Adds a weighted edge between selected nodes.
+   *
+   * @param {ScreenboxComponent} container - The container object.
+   * @param {AddWeightedEdgeComponent} container2 - Another container object.
+   */
   addWeightedEdge(container:any,container2:any):void{
     const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
     if(container.weight!=0){
@@ -281,6 +370,12 @@ export class GrapheService {
       container.message=this.translate.instant("grapheS.msg8")
     }
   }
+  /**
+   * Rejects the addition of a weighted edge and resets the form.
+   *
+   * @param {ScreenboxComponent} container - The container object.
+   * @param {AddWeightedEdgeComponent} container2 - Another container object.
+   */
   RejeterAddEdgeWeighted(container:any,container2:any):void{
     container.selectedNode=[];
     container.weight=null;
@@ -290,6 +385,12 @@ export class GrapheService {
     container.message=this.translate.instant("grapheS.msg9");
     container2.weightForm=null;
   }
+  /**
+   * Changes the ID of a node in the graph.
+   *
+   * @param {ScreenboxComponent} container - The container object.
+   * @param {ChangeIdNodeComponent} container2 - Another container object.
+   */
   changeNodeId(container:any,container2:any):void{
     const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
     let idExists=false;
@@ -370,6 +471,12 @@ export class GrapheService {
       this.resetColors();
     }
   }
+  /**
+   * Rejects the node ID change and resets the form.
+   *
+   * @param {ScreenboxComponent} container - The container object.
+   * @param {ChangeIdNodeComponent} container2 - Another container object.
+   */
   RejeterChangeNodeId(container:any,container2:any):void{
     const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
     formChangeNodeId.style.display = 'none';
@@ -378,6 +485,12 @@ export class GrapheService {
     this.resetColors();
     container.message=this.translate.instant("grapheS.msg22");
   }
+  /**
+   * Changes the colors of nodes, edges, or the screen based on user selection.
+   *
+   * @param {ScreenboxComponent} container - The container object.
+   * @param {ChangeColorComponent} container2 - Another container object.
+   */
   changeColor(container:any,container2:any){
     const formChangeColor = container.el.nativeElement.querySelector('.formChangeColor');
     const screen=container.el.nativeElement.querySelector('.scr');
@@ -442,6 +555,11 @@ export class GrapheService {
     container.changeSelect="";
     formChangeColor.style.display="none";
   }
+  /**
+   * Rejects the color changes and resets the form.
+   *
+   * @param {ScreenboxComponent} container - The container object.
+   */
   RejeterChangeColor(container:any):void {
     const formChangeColor = container.el.nativeElement.querySelector('.formChangeColor');
     if(container.changeSelect=="changeColorNodes"){
@@ -452,6 +570,12 @@ export class GrapheService {
     container.changeSelect="";
     formChangeColor.style.display="none";
   }
+  /**
+   * Adds a new node to the graph if it doesn't already exist.
+   *
+   * @param {ScreenboxComponent} container - The container object.
+   * @param {AddNodeComponent} container2 - Another container object containing the new node ID.
+   */
   addNode(container:any,container2:any):void{
     const formAddNode=container.el.nativeElement.querySelector('.formAddNode');
     let exist:boolean=false;
@@ -475,12 +599,23 @@ export class GrapheService {
       container.message=this.translate.instant('screenbox.msg41');
     }
   }
+  /**
+   * Rejects the addition of a new node and resets the form.
+   *
+   * @param {ScreenboxComponent} container - The container object.
+   * @param {AddNodeComponent} container2 - Another container object containing the new node ID.
+   */
   RejeterAddNode(container:any,container2:any):void{
     const formAddNode=container.el.nativeElement.querySelector('.formAddNode');
     formAddNode.style.display="none";
     this.position="";
     container2.nodeId=null;
   }
+  /**
+   * Listens for a tap event on the screen background and adds a new node when conditions are met.
+   *
+   * @param {ScreenboxComponent} container - The container object.
+   */
   OnScreenTap(container:any):void{
     this.cy.on('tap', (evt:any)=> {
       if (evt.target === this.cy && container.buttonClicked==="addVertices" && this.typeGraphe!="") {
@@ -513,6 +648,11 @@ export class GrapheService {
       }
     });
   }
+  /**
+   * Listens for a tap event on edges and removes edges when the 'remove edges' or 'remove all' action is selected.
+   *
+   * @param {ScreenboxComponent} container - The container object.
+   */
   OnEdgeTap(container:any):void{
     this.cy.on('tap', 'edge',  (evt:any)=> {
       var edge = evt.target;
@@ -527,6 +667,11 @@ export class GrapheService {
       }
     });
   }
+  /**
+   * Listens for a tap event on nodes and handles various actions based on the container state.
+   *
+   * @param {ScreenboxComponent} container - The container object.
+   */
   OnNodeTap(container:any):void{
     const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
     const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
@@ -601,10 +746,31 @@ export class GrapheService {
           container.algoS.dijkstraAnimation(container.selectedNode[0],container.selectedNode[1],container);
           container.selectedNode=[];
         }
+      }else if(container.algorithm=="bellmanFordAB"){
+        this.resetColors();
+        if(container.selectedNode.length<1){
+          container.message=this.translate.instant("grapheS.msg42",{nodeId:node.data('id')});
+          container.selectedNode.push(node.data('id'));
+          this.changeColorNode(node, this.BACKGROUND_COLOR_NODE_ALGO,this.COLOR_NODE_ALGO);
+        }else if(container.selectedNode.length==1){
+          this.changeColorNode(node, this.BACKGROUND_COLOR_NODE_ALGO,this.COLOR_NODE_ALGO);
+          container.selectedNode.push(node.data('id'));
+          container.algoS.bellmanFordAnimation(container.selectedNode[0],container.selectedNode[1],container);
+          container.selectedNode=[];
+        }
+      }else if(container.algorithm=="bellmanFord"){
+        this.resetColors();
+        this.changeColorNode(node, this.BACKGROUND_COLOR_NODE_ALGO,this.COLOR_NODE_ALGO);
+        container.algoS.bellmanFordAlgorithm(node.data('id'),container);
       }
   });
   this.cy.emit("tap");
   }
+  /**
+   * Initializes the graph using Cytoscape and sets up the initial style and layout.
+   *
+   * @param {ScreenboxComponent} Container - The container element for the graph.
+   */
   OnInit(Container:any):void{
     const container = Container.el.nativeElement.querySelector('.scr');
       this.cy = cytoscape({
@@ -640,6 +806,9 @@ export class GrapheService {
         }
     });
   }
+  /**
+   * Resets the visual styles of nodes and edges in the graph to their default colors.
+   */
   resetColors(): void {
     setTimeout(() => {
       this.cy.nodes().style('background-color', this.BACKGROUND_COLOR_NODE);
@@ -649,13 +818,30 @@ export class GrapheService {
       this.cy.edges().style('target-arrow-color', this.TARGET_ARROW_COLOR);
     },10)
   }
+  /**
+   * Changes the background color and text color of a given node.
+   *
+   * @param {any} node - The node to change the colors of.
+   * @param {string} bgcolor - The new background color.
+   * @param {string} color - The new text color.
+   * @param {number} time - Optional. Time delay before applying the color change.
+   */
   changeColorNode(node:any,bgcolor:string,color:string,time:number=10): void {
     setTimeout(() => {
       node.style('background-color',bgcolor);
       node.style('color',color);
     },time);
   }
-  changeColorEdge(edge:any,color:any,lineEdgeColor:any,targetArrowColor:any,time:number=10): void {
+  /**
+   * Changes the visual styles of a given edge, including line color, data color, and target arrow color.
+   *
+   * @param {any} edge - The edge to change the visual styles of.
+   * @param {string} color - The new data color (used for weighted graphs).
+   * @param {string} lineEdgeColor - The new line color.
+   * @param {string} targetArrowColor - The new target arrow color (used for directed graphs).
+   * @param {number} time - Optional. Time delay before applying the color change.
+   */
+  changeColorEdge(edge:any,color:string,lineEdgeColor:string,targetArrowColor:string,time:number=10): void {
     setTimeout(() => {
         edge.style('line-color',lineEdgeColor);
         if(this.typeGraphe.split(" ")[1]=="Weighted"){
@@ -666,6 +852,9 @@ export class GrapheService {
         }
       },time)
   }
+  /**
+   * Resets the visual styles of all nodes in the graph to their default colors.
+   */
   changeColorNodes(): void {
     setTimeout(() => {
       this.cy.nodes().forEach((node:any)=>{
@@ -674,6 +863,9 @@ export class GrapheService {
       })
     },10)
   }
+  /**
+   * Resets the visual styles of all edges in the graph to their default colors.
+   */
   changeColorEdges(): void {
     setTimeout(() => {
       this.cy.edges().forEach((edge:any)=>{
@@ -687,7 +879,11 @@ export class GrapheService {
       })
     },10)
   }
-
+  /**
+   * Handles actions related to removing elements from the graph and resetting the graph properties.
+   *
+   * @param {ScreenboxComponent} container - The container object containing graph-related properties.
+   */
   onRemoveChange(container:any):void{
     if(container.typeGraphe!=""){
       //DRY
@@ -716,6 +912,14 @@ export class GrapheService {
     }
     
   }
+  /**
+   * Searches for an edge between two specified nodes and changes its line color.
+   *
+   * @param {any} container - The container object containing graph-related properties.
+   * @param {string} source - The source node ID.
+   * @param {string} target - The target node ID.
+   * @param {string} lineColor - The new line color for the edge.
+   */
   searcheEdgeChnageBC(container:any,source:string,target:string,lineColor:string):void{
     const edges = this.cy.elements('edge'); // Select only edges
     edges.forEach((edge:any) => {
@@ -726,6 +930,11 @@ export class GrapheService {
         }
     });
   }
+  /**
+   * Restores the graph by adding or removing elements based on the restoreArray.
+   *
+   * @param {ScreenboxComponent} container - The container object containing graph-related properties.
+   */
   restoreGraphe(container:any):void{
     if(container.restoreArray.length!=0){
       let elem=container.restoreArray.pop();
@@ -741,6 +950,11 @@ export class GrapheService {
       }
     }
   }
+  /**
+   * Generates a formatted list of edges in the graph.
+   *
+   * @returns {string} - A formatted string representing the list of edges.
+   */
   getListeOfEdge():string {
     let listOfEdge:string="";
     let i:number=0;
@@ -759,6 +973,11 @@ export class GrapheService {
     });
     return listOfEdge;
   }
+  /**
+   * Generates a formatted list of nodes in the graph.
+   *
+   * @returns {string} - A formatted string representing the list of nodes.
+   */
   getListOfNode():string{
     let listOfNode:string="";
     let i:number=0;
@@ -771,10 +990,19 @@ export class GrapheService {
     });
     return listOfNode;
   }
+  /**
+   * Performs cleanup operations when the component is destroyed.
+   * Destroys the CytoScape instance.
+   */
   OnDestroy():void{
     this.cy.destroy();
   }
-  matrixAdjancy():any{
+  /**
+   * Generates an adjacency matrix representation of the graph.
+   * 
+   * @returns {Array<any>} - A 2D array representing the adjacency matrix.
+   */
+  matrixAdjancy():Array<any>{
     let adjacencyMatrix:Array<any>=[];
     const nodes = this.cy.nodes();
     const numNodes = nodes.length;
@@ -789,6 +1017,13 @@ export class GrapheService {
     }
     return adjacencyMatrix;
   }
+  /**
+   * Checks if an edge between two nodes exists and removes it from the graph if found.
+   * 
+   * @param {any} node1 - The ID of the first node.
+   * @param {any} node2 - The ID of the second node.
+   * @param {ScreenboxComponent} container - The container object containing graph-related properties.
+   */
   isEdgeRemove(node1:any,node2:any,container:any):void{
       this.cy.edges().forEach((edge:any)=>{
         if((edge.source().id()==node1 && edge.target().id()==node2) || (edge.source().id()==node2 && edge.target().id()==node1)){

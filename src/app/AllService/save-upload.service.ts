@@ -1,12 +1,24 @@
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import html2canvas from 'html2canvas';
-
+/**
+ * Service responsible for handling save and upload operations.
+ * It provides methods to save and upload data, and uses the TranslateService for localization.
+ */
 @Injectable({
   providedIn: 'root'
 })
 export class SaveUploadService {
-  constructor(private translate:TranslateService) { }
+  /**
+   * Initializes a new instance of the SaveUploadService.
+   *
+   * @param {TranslateService} translate - The TranslateService for localization.
+   */
+  constructor(private translate: TranslateService) { }
+  /**
+   * Saves the current graph as a JSON file.
+   *
+   * @param {ScreenboxComponent} container - The container object containing the Cytoscape instance and other data.
+   */
   saveJSON(container:any) {
     // Get the Cytoscape elements in JSON format
     let elementsJson = container.grapheS.cy.json();
@@ -25,7 +37,13 @@ export class SaveUploadService {
     // Clean up the temporary URL
     URL.revokeObjectURL(url);
   }
-
+  
+  /**
+   * Saves the current graph as a JPG image.
+   *
+   * @param {ScreenboxComponent} container - The container object containing the Cytoscape instance and other data.
+   * @param {boolean} [fullGraphe=true] - Whether to export the full graph or just the current viewport view.
+   */
   saveJPG(container:any,fullGraphe:boolean=true):void{
   // Get a reference to the Cytoscape instance
   const cy = container.grapheS.cy;
@@ -48,34 +66,45 @@ export class SaveUploadService {
       a.click();
       container.saveUpload="";
   });
-}
-savePNG(container:any,fullGraph:boolean=true):void{
-  // Get a reference to the Cytoscape instance
-  const cy = container.grapheS.cy;
+  }
+  /**
+   * Saves the current graph as a PNG image.
+   *
+   * @param {ScreenboxComponent} container - The container object containing the Cytoscape instance and other data.
+   * @param {boolean} [fullGraph=true] - Whether to export the full graph or just the current viewport view.
+   */
+  savePNG(container:any,fullGraph:boolean=true):void{
+    // Get a reference to the Cytoscape instance
+    const cy = container.grapheS.cy;
+      
+    // Export the current graph view as a PNG image
+    const pngPromise = cy.png({
+        output: 'blob-promise', // Use 'blob-promise' to make it non-blocking
+        bg: 'white', // Set the background color to white (optional)
+        full: fullGraph, // Export the current viewport view (change to true for full graph)
+        scale: 1, // Set the scale (1 for original size)
+        maxWidth: 900, // Maximum width (optional)
+        maxHeight: 800, // Maximum height (optional)
+    });
     
-  // Export the current graph view as a PNG image
-  const pngPromise = cy.png({
-      output: 'blob-promise', // Use 'blob-promise' to make it non-blocking
-      bg: 'white', // Set the background color to white (optional)
-      full: fullGraph, // Export the current viewport view (change to true for full graph)
-      scale: 1, // Set the scale (1 for original size)
-      maxWidth: 900, // Maximum width (optional)
-      maxHeight: 800, // Maximum height (optional)
-  });
-  
-  pngPromise.then((blob: any) => {
-      // Create an anchor element for the download
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = 'graph.png';
-      
-      // Trigger the download
-      a.click();
-      
-      // Optionally, you can perform additional actions after the download
-      container.saveUpload = "";
-  });
-}
+    pngPromise.then((blob: any) => {
+        // Create an anchor element for the download
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'graph.png';
+        
+        // Trigger the download
+        a.click();
+        
+        // Optionally, you can perform additional actions after the download
+        container.saveUpload = "";
+    });
+  }
+  /**
+   * Uploads a JSON file and updates the graph with the uploaded data.
+   *
+   * @param {ScreenboxComponent} container - The container object containing the Cytoscape instance and other data.
+   */
   uploadJSON(container:any) {
     const input = document.createElement('input');
     input.type = 'file';
@@ -119,6 +148,11 @@ savePNG(container:any,fullGraph:boolean=true):void{
     };
     input.click();
   }
+  /**
+   * Handles the change in the save/upload option and performs the corresponding action.
+   *
+   * @param {ScreenboxComponent} container - The container object containing the Cytoscape instance and other data.
+   */
   OnSaveUploadChange(container:any):void{
       container.changeSelect="";
       container.remove="";
