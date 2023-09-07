@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { GrapheService } from 'src/app/AllService/graphe.service';
 
 @Component({
@@ -9,14 +10,12 @@ import { GrapheService } from 'src/app/AllService/graphe.service';
 export class GrapheFromMatrixAdjaComponent {
   @Input() container:any;
   matrixText:string="";
-  constructor(protected grapheS:GrapheService){}
+  constructor(protected grapheS:GrapheService,protected translate:TranslateService){}
   generateGraph() {
     // Parse the matrix into a 2D array
     const adjacencyMatrix = this.parseAdjacencyMatrix(this.matrixText);
     if(adjacencyMatrix){
       const elements:Array<any>=this.createGraphElements(adjacencyMatrix);
-      console.log("directed : "+!this.isSymmetric(adjacencyMatrix));
-      console.log("weighted : "+this.isWeighted(adjacencyMatrix));
       this.grapheS.createGrapheFromAdjancyMatrix(elements,!this.isSymmetric(adjacencyMatrix),this.isWeighted(adjacencyMatrix),this.container);
       const screen=this.container.el.nativeElement.querySelector('.screen');
       const buttonManupilation=this.container.el.nativeElement.querySelector('.buttonManupilation');
@@ -25,7 +24,7 @@ export class GrapheFromMatrixAdjaComponent {
       buttonManupilation.style.display="block";
       addGrapheWithMatrix.style.display="none";
       this.matrixText="";
-      this.container.message="";
+      this.container.message=this.translate.instant("grapheFromMatrix.msg4");
       this.container.changeSelect="";
     }
   }
@@ -37,7 +36,7 @@ export class GrapheFromMatrixAdjaComponent {
     let matrix:any;
     // Check if the input is empty
     if (matrixText.length === 0) {
-        this.container.message="Input is empty.";//*************** */
+        this.container.message=this.translate.instant('grapheFromMatrix.msg2');
         err=true;
     }
     if(!err){
@@ -57,11 +56,20 @@ export class GrapheFromMatrixAdjaComponent {
           }
           return values;
       });
-
+      for (let i = 0; i < matrix.length; i++) {
+        for (let j = 0; j < matrix[i].length; j++) {
+          if (Number.isNaN(matrix[i][j])) {
+            err=true;
+            this.container.message=this.translate.instant('grapheFromMatrix.msg1');
+            break;
+          }
+        }
+      }
+      
       // Check if the matrix is square
       if (!isSquare) {
         err=true;
-        this.container.message="The matrix is not square.";/****************** */
+        this.container.message=this.translate.instant('grapheFromMatrix.msg3');
       }
     }
     if(err==true){
@@ -71,7 +79,6 @@ export class GrapheFromMatrixAdjaComponent {
   }
   createGraphElements(adjacencyMatrix: Array<Array<number>>): Array<any> {
     let elements: Array<any> = [];
-    console.log(adjacencyMatrix);
     const isDirected: boolean = !this.isSymmetric(adjacencyMatrix);
     const isWeighted: boolean = this.isWeighted(adjacencyMatrix);
   

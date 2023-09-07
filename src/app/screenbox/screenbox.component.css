@@ -13,6 +13,11 @@
   grid-column: 1/4;
   grid-row: 1/2;
 }
+.addGrapheWithMatrix{
+  grid-column: 1/4;
+  grid-row: 1/2;
+  display: none;
+}
 .screen {
   grid-column: 1/4;
   grid-row: 3/4;

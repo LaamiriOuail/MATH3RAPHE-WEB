@@ -107,6 +107,7 @@ export class GrapheService {
       container.changeSelect="";
       //
     }else{
+      container.message=this.translate.instant("screenbox.msg23");
       container.nodeName="numerique";
     }
     
@@ -148,6 +149,14 @@ export class GrapheService {
         container.message=this.translate.instant("grapheS.msg36")
       }
       formChangeColor.style.display="block";
+    }else if(container.changeSelect=="addGrapheFromMatrix"){
+      const screen=container.el.nativeElement.querySelector('.screen');
+      const buttonManupilation=container.el.nativeElement.querySelector('.buttonManupilation');
+      const addGrapheWithMatrix=container.el.nativeElement.querySelector('.addGrapheWithMatrix');
+      screen.style.display="none";
+      buttonManupilation.style.display="none";
+      addGrapheWithMatrix.style.display="block";
+      container.message=this.translate.instant("grapheFromMatrix.msg6");
     }else if(container.changeSelect=="changeSizeScreen"){
       container.message=this.translate.instant("grapheS.msg39")
       formAChangeSizeScreen.style.display="block";
@@ -301,6 +310,7 @@ export class GrapheService {
         this.restoreGraphe(container);
       }
     }else{
+      container.message=this.translate.instant("screenbox.msg23");
       container.buttonClicked="";
     }
   }
@@ -908,6 +918,7 @@ export class GrapheService {
         container.message=this.translate.instant("grapheS.msg17");
       }
     }else{
+      container.message=this.translate.instant("screenbox.msg23");
       container.remove="";
     }
     
@@ -1040,13 +1051,118 @@ export class GrapheService {
       this.cy.nodes().forEach((node:any) => {
         obj={
           id:node.data('id'),
-          indegree:node.indegree()||null,
-          outdegree:node.outdegree()||null,
+          indegree:node.indegree(),
+          outdegree:node.outdegree(),
           degree:node.degree()
         }; 
         nodesDegre.push(obj);
       })
     }
     return nodesDegre;
+  }
+  createGrapheFromAdjancyMatrix(elements:any,directed:boolean,weighted:boolean,container:any):void{
+    this.cy.elements().remove();
+    if(directed && weighted){
+      container.typeGraphe=this.typeGraphe="Directed Weighted";
+      this.cy.style()
+          .selector('edge') 
+          .style({
+              'width': 4,
+              'line-color': this.COLOR_LINE_EDGE,
+              'target-arrow-color': this.TARGET_ARROW_COLOR,
+              'target-arrow-shape': 'triangle',
+              'color': this.DATA_EDGE_COLOR,
+              'curve-style': 'bezier',
+              'label': "data(weight)",
+              'text-margin-y': -12
+          })
+          .update();
+      container.message=""////////////////////////////////
+    }else if (directed) {
+        container.typeGraphe=this.typeGraphe="Directed Unweighted";
+        this.cy.style()
+          .selector('edge') // Apply the style to all edges
+          .style({
+              'width': 4,
+              'line-color': this.COLOR_LINE_EDGE,
+              'target-arrow-color': this.TARGET_ARROW_COLOR,
+              'target-arrow-shape': 'triangle',
+              'color': this.DATA_EDGE_COLOR,
+              'curve-style': 'bezier',
+              'label': ""
+          })
+          .update();
+          container.message+="";////////////////////////////////////////////////////////////////////////////////
+    }else if (weighted) {
+        container.typeGraphe=this.typeGraphe="Undirected Weighted";
+        this.cy.style()
+              .selector('edge') // Apply the style to all edges
+              .style({
+                  'width': 4,
+                  'line-color': this.COLOR_LINE_EDGE,
+                  'target-arrow-color': this.TARGET_ARROW_COLOR,
+                  'target-arrow-shape': 'triangle',
+                  'color': this.DATA_EDGE_COLOR,
+                  'curve-style': 'haystack',
+                  'label': "data(weight)",
+                  'text-margin-y': -12
+              })
+              .update();
+          container.message+="";////////////////////////////////////////////////////////////////
+    }else{
+        container.typeGraphe=this.typeGraphe="Undirected Unweighted";
+        this.cy.style()
+              .selector('edge') // Apply the style to all edges
+              .style({
+                  'width': 4,
+                  'line-color': this.COLOR_LINE_EDGE,
+                  'target-arrow-color': this.TARGET_ARROW_COLOR,
+                  'target-arrow-shape': 'triangle',
+                  'color': this.DATA_EDGE_COLOR,
+                  'curve-style': 'haystack',
+                  'label': ""
+              })
+              .update();
+        container.message+="";////////////////////////////////////////////////////////////////////////////////////
+    }
+    let i:number=0;
+    elements.forEach((element:any)=>{
+      if(element.id){
+        const pos = { x: ++i*100+i**2, y: i*50-i**2 };
+        this.cy.add({ group: 'nodes', data: { id: element.id}, position: pos });
+      }else{
+        if(weighted){
+          if(element.source && element.target && element.weight){
+              this.cy.add({data:{
+                source: element.source,
+                target: element.target,
+                weight: element.weight
+              }
+              }); 
+          }
+        }else{
+          if(element.source && element.target){
+            this.cy.add({
+              data: {
+              source: element.source,
+              target: element.target,
+              }
+            }); 
+          }
+        }
+      }
+    });
+    this.cy.fit();
+  }
+  rejeterGenerateGraphFromMatrixAdjancy(container:any,container2:any):void {
+    const screen=container.el.nativeElement.querySelector('.screen');
+    const buttonManupilation=container.el.nativeElement.querySelector('.buttonManupilation');
+    const addGrapheWithMatrix=container.el.nativeElement.querySelector('.addGrapheWithMatrix');
+    screen.style.display="block";
+    buttonManupilation.style.display="block";
+    addGrapheWithMatrix.style.display="none";
+    container2.matrixText="";
+    container.message=this.translate.instant("grapheFromMatrix.msg5");
+    container.changeSelect="";
   }
 }

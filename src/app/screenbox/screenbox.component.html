@@ -36,7 +36,8 @@
                     </select>
                     <select  id="changeSelect" [(ngModel)]="changeSelect" (ngModelChange)="grapheS.changeChanges(this)">
                         <option value="" disabled selected>{{"screenbox.msg29"|translate}}</option>
-                        <option value="changeIdNode">{{"screenbox.msg30"|translate}}</option>
+                        <option value="addGrapheFromMatrix">{{"screenbox.msg46"|translate}}</option>
+                        <option value="changeIdNode" >{{"screenbox.msg30"|translate}}</option>
                         <option value="changeColorNodes">{{"screenbox.msg31"|translate}}</option>
                         <option value="changeColorEdges">{{"screenbox.msg32"|translate}}</option>
                         <option value="changeColorNodesAlgo">{{"screenbox.msg36"|translate}}</option>
@@ -61,8 +62,10 @@
             <app-add-node dir='{{"info.dir"|translate}}' class="formAddNode" [container]="this"/>
             <app-change-size-screen dir='{{"info.dir"|translate}}' class="formAChangeSizeScreen" [container]="this"/>
         </div>
+        <app-graphe-from-matrix-adja class="addGrapheWithMatrix" [container]="this" dir='{{"info.dir"|translate}}'/>
         <app-message [message]="message" class="msgBoxC"  [container]="this"/>
         <app-screen class="screen" />
+
         <app-info id="info" [grapheS]="grapheS" [algoS]="algoS"/>
      </div> 
 </div>

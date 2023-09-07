@@ -184,9 +184,11 @@ export class SaveUploadService {
           this.savePNG(container,false);
         }
       }else{
-          if(!container.grapheS.cy.nodes().length && container.typeGraphe!=""){
+          if(!container.grapheS.cy.nodes().length){
             container.message=this.translate.instant("algoS.msg11");
-          } 
+          } else if(container.typeGraphe==""){
+            container.message=this.translate.instant("screenbox.msg23");
+          }
           container.typeGraphe="";
       }
   }

@@ -83,7 +83,8 @@
     "msg42": "Vertex enumeration",
     "msg43": "Size of Screen",
     "msg44": "Enter screen width",
-    "msg45": "Enter screen height"
+    "msg45": "Enter screen height",
+    "msg46": "Create using adjacency matrix"
 
 
   },
@@ -149,5 +150,13 @@
   "saveUploadS": {
     "msg1": "File uploaded successfully",
     "msg2": "Error reading the file!"
+  },
+  "grapheFromMatrix": {
+    "msg1": "This matrix contains not only numbers",
+    "msg2": "Input is empty.",
+    "msg3": "The matrix is not square.",
+    "msg4": "Graphe generate from matrix successfully",
+    "msg5": "The process of generate graphe from matrix is rejected",
+    "msg6": "Enter the adjancency matrix to genearate graphe"
   }
 }

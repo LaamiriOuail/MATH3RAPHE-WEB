@@ -28,6 +28,7 @@ import { ChangeColorComponent } from './components/change-color/change-color.com
 import { AddNodeComponent } from './components/add-node/add-node.component';
 import { ChangeSizeScreenComponent } from './components/change-size-screen/change-size-screen.component';
 import { DarkModeService } from './AllService/dark-mode.service';
+import { GrapheFromMatrixAdjaComponent } from './components/graphe-from-matrix-adja/graphe-from-matrix-adja.component';
 
 
 // Function to load translations
@@ -53,6 +54,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ChangeColorComponent,
     AddNodeComponent,
     ChangeSizeScreenComponent,
+    GrapheFromMatrixAdjaComponent,
   ],
   imports: [
     BrowserModule,

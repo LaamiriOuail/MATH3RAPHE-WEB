@@ -83,7 +83,8 @@
     "msg42": "Énumération des sommets",
     "msg43": "Size de l'écran",
     "msg44": "Entrez la largeur de l'écran",
-    "msg45": "Entrez la hauteur de l'écran"
+    "msg45": "Entrez la hauteur de l'écran",
+    "msg46": "Créer avec matrice adjace"
   },
   "grapheS": {
     "msg1": "Le graphe est actuellement de type : ",
@@ -149,7 +150,12 @@
     "msg1": "Fichier téléchargé avec succès",
     "msg2": "Erreur lors de la lecture du fichier !"
   },
-  "placeholder": {
-    
+  "grapheFromMatrix": {
+    "msg1": "Cette matrice contient non seulement des nombres",
+    "msg2": "L'entrée est vide.",
+    "msg3": "La matrice n'est pas carrée.",
+    "msg4": "Graphique généré à partir de la matrice avec succès",
+    "msg5": "Le processus de génération du graphique à partir de la matrice a été rejeté",
+    "msg6": "Entrez la matrice d'adjacence pour générer le graphe"
   }
 }

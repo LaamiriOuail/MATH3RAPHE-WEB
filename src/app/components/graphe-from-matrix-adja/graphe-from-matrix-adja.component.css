@@ -13,13 +13,13 @@
 
 textarea {
     grid-template-columns: 1/2;
-    width: 50%;
-    height: 200px;
+    width: 40%;
+    height: 400px;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 3px;
-    font-size: 16px;
+    font-size: 100px;
     /* margin-left: 190px;
     margin-right: 190px; */
     font-size: 25px;

@@ -386,6 +386,8 @@ export class AlgorithmService {
     }else{
       if(!container.grapheS.cy.nodes().length){
         container.message=container.translate.instant("algoS.msg11");
+      }else if(container.typeGraphe==""){
+        container.message=this.translate.instant("screenbox.msg23");
       }
       container.algorithm="";
     }
