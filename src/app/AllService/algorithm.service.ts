@@ -358,18 +358,22 @@ export class AlgorithmService {
       container.message=this.translate.instant("algoS.msg7",{algorithm:container.algorithm});
       if(container.algorithm=="floydWarshall"){
         this.floydWarshallAlgorithm(container);
-      }else if((container.algorithm=="dijkstra" || container.algorithm=="dijkstraAB")&& !this.isAllEdgePositive(container)){
+      }else if(container.algorithm=="tarjan"){
+        container.message="Tarjan(SCCs): ";
+        this.tarjanStronglyComponentAnimation(container);
+      }
+      else if((container.algorithm=="dijkstra" || container.algorithm=="dijkstraAB")&& !this.isAllEdgePositive(container)){
         container.message=container.translate.instant("algoS.msg10");
         container.algorithm="";
       }else if(container.algorithm=="kruskal" || container.algorithm=="prime"){
         if(this.isGraphConnected(container)==true && container.typeGraphe.split(" ")[0]=="Undirected" /*&& container.typeGraphe.split(" ")[1]=="Weighted"*/){
           container.grapheS.resetColors();
           if(container.algorithm=="kruskal"){
-            this.kruskalAnimation(container);
             container.message="Kruskal(MST): ";
+            this.kruskalAnimation(container);
           }else{
-            this.primeAniamantion(container);
             container.message="Prime(MST): ";
+            this.primeAniamantion(container);
           }
         }else{
           if(container.algorithm=="kruskal"){
@@ -519,6 +523,74 @@ export class AlgorithmService {
       }
     })
   }
-  //Tarjan Strongly Component 
+  /**
+   * Get a random color.
+   *
+   * @returns {string} - A randomly generated color in hexadecimal format.
+   */
+  getRandomColor():string {
+    const letters:string = '0123456789ABCDEF';
+    let color:string = '#';
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+  /**
+   * Animate Tarjan's strongly connected components algorithm by changing node and edge colors.
+   *
+   * @param {ScreenboxComponent} container - The container for the graph and visualization.
+   */
+  tarjanStronglyComponentAnimation(container:any):void{
+    const { cut, components } = container.grapheS.cy.elements().tarjanStronglyConnected();
+    let message:string="";
+    let i:number=0;
+    components.forEach((component:any, index:any) => {
+      setTimeout(()=>{
+        message=this.translate.instant("algoS.msg13",{index:++i});
+        const color:string = this.getRandomColor(); 
+        const backgroundColor:string = this.getRandomColor();
+        const fleshColor:string=this.getRandomColor();
+        setTimeout(()=>{
+          component.nodes().style({
+            'background-color': backgroundColor,
+            'border-color': color,
+            'color': color,
+          });
+        },10)
+        component.nodes().forEach((node:any)=>{
+          message+=node.data('id')+","
+        })
+        message=message.substring(0, message.length-1);
+        setTimeout(()=>{
+          component.edges().style({
+            'line-color':backgroundColor,
+          });
+        },10)
+       
+        if(container.typeGraphe.split(" ")[1]=="Weighted"){
+          setTimeout(()=>{
+            component.edges().style({
+              'color': color,
+            });
+          },10)
+          
+        }
+        if(container.typeGraphe.split(" ")[0]=="Directed"){
+          setTimeout(()=>{
+            component.edges().style({
+              'target-arrow-color': fleshColor,
+            });
+          },10)
+        }
+        container.message+=message+" || ";
+      },i*20000)
+      
+    });
+    
+  }
+  
+  aStarAnimation(container:any):void{
 
+  }
 }

@@ -136,11 +136,16 @@
     "msg8": "L'algorithme de Kruskal n'est applicable qu'à un graphe non orienté connexe pondéré",
     "msg9":"L'algorithme de Kruskal est maintenant appliqué à...",
     "msg10":"L'algorithme de Dijkstra n'est applicable qu'à un graphe positif pondéré",
-    "msg11": "Le graphe est vide"
+    "msg11": "Le graphe est vide",
+    "msg12": "L'algorithme premier n'est applicable qu'à un graphe non orienté connecté pondéré",
+    "msg13": "Composante : {{index}} : "
     
   },
   "saveUploadS": {
     "msg1": "Fichier téléchargé avec succès",
     "msg2": "Erreur lors de la lecture du fichier !"
+  },
+  "placeholder": {
+    
   }
 }

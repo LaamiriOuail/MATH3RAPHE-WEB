@@ -139,7 +139,8 @@
     "msg9": "Kruskal algorithm is now applied to...",
     "msg10": "Dijkstra's algorithm is only applicable to a weighted positive graph",
     "msg11": "The graph is empty",
-    "msg12": "Prime algorithm is only applicable to a weighted connected undirected graph"
+    "msg12": "Prime algorithm is only applicable to a weighted connected undirected graph",
+    "msg13": "Component {{index}} : "
   },
   "saveUploadS": {
     "msg1": "File uploaded successfully",
