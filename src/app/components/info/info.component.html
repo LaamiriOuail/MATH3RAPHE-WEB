@@ -11,6 +11,27 @@
             </span></p>
         <p>{{ "info.listOfNodes" | translate }} : {{ grapheS.getListOfNode() || ("info.empty" | translate) }}</p>
         <p>{{ "info.connected" | translate }} : {{ (algoS.isGraphConnected(this))?("info.yes" | translate) : ("info.no" | translate) }}</p>
+        <span *ngIf="grapheS.cy.nodes().length">
+            <table class="degree-table">
+                <thead>
+                    <tr>
+                        <th>{{"info.idNode"|translate}}</th>
+                        <th *ngIf="grapheS.typeGraphe.split(' ')[0] == 'Directed'">{{"info.indegree"|translate}}</th>
+                        <th *ngIf="grapheS.typeGraphe.split(' ')[0] == 'Directed'">{{"info.outdegree"|translate}}</th>
+                        <th>{{"info.degree"|translate}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let node of grapheS.getDegreeNodes()">
+                        <td>{{node.id}}</td>
+                        <td *ngIf="grapheS.typeGraphe.split(' ')[0] == 'Directed'">{{node.indegree}}</td>
+                        <td *ngIf="grapheS.typeGraphe.split(' ')[0] == 'Directed'">{{node.outdegree}}</td>
+                        <td>{{node.degree}}</td>
+                    </tr>
+                </tbody>
+            </table> 
+        </span>
+        
     </div>
     <div id='{{"info.classRight"|translate}}'>
         <!--

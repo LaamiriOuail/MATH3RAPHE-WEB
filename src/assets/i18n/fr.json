@@ -32,7 +32,11 @@
     "yes": "Oui",
     "no": "Non",
     "closeBracket": "]",
-    "connected": "Graphe connexe  "
+    "connected": "Graphe connexe  ",
+    "degree": "Degré",
+    "indegree": "In-Degré",
+    "outdegree": "Out-Degré",
+    "idNode": "Id du nœud"
   },
   "screenbox": {
     "msg1": "Type de graphe",

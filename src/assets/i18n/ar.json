@@ -40,7 +40,11 @@
     "yes": "نعم",
     "no": "لا",
     "closeBracket": "]",
-    "connected": "الرسم البياني متصل "
+    "connected": "الرسم البياني متصل ",
+    "degree": "درجة",
+    "indegree": "درجة الوارد",
+    "outdegree": "درجة الصادر",
+    "idNode": "معرف العقدة"
   },
   "screenbox": {
     "msg1": "نوع الرسم البياني",

@@ -32,7 +32,11 @@
     "yes": "Yes",
     "no": "No",
     "closeBracket": "]",
-    "connected":"Connected Graph  "
+    "connected":"Connected Graph  ",
+    "degree":"Degree",
+    "indegree":"In-Degree",
+    "outdegree":"Out-Degree",
+    "idNode":"Node Id"
   },
   "screenbox": {
     "msg1": "Type of graph",

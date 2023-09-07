@@ -1033,4 +1033,20 @@ export class GrapheService {
         }
       })
   }
+  getDegreeNodes():Array<any>{
+    let nodesDegre:Array<any> = [];
+    let obj:any;
+    if(this.cy.nodes().length){
+      this.cy.nodes().forEach((node:any) => {
+        obj={
+          id:node.data('id'),
+          indegree:node.indegree()||null,
+          outdegree:node.outdegree()||null,
+          degree:node.degree()
+        }; 
+        nodesDegre.push(obj);
+      })
+    }
+    return nodesDegre;
+  }
 }

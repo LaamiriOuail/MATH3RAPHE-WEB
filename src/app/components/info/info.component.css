@@ -27,3 +27,26 @@
     color: #999;
     font-size: 12px;
   }
+  .degree-table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+.degree-table th, .degree-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.degree-table th {
+    background-color: #f2f2f2;
+}
+
+.degree-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.degree-table tr:hover {
+    background-color: #ddd;
+}
