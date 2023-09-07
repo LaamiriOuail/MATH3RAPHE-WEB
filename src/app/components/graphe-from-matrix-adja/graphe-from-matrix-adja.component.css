@@ -1,0 +1,56 @@
+/* Example CSS styling for your elements */
+
+.graph-container {
+    display: grid;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    margin-top: 10px;
+
+}
+
+textarea {
+    grid-template-columns: 1/2;
+    width: 50%;
+    height: 200px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+    /* margin-left: 190px;
+    margin-right: 190px; */
+    font-size: 25px;
+}
+.action-button{
+    grid-template-columns: 2/3;
+
+}
+.action-button {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 10px;
+    /* margin-left: 190px; */
+    /* margin-right: 190px; */
+
+}
+
+.action-button:hover {
+    background-color: #258cd1;
+}
+
+.reject-button {
+    margin-left: 15px;
+    background-color: #e74c3c;
+}
+
+.reject-button:hover {
+    background-color: #c73a2b;
+}

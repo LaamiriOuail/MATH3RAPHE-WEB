@@ -1,0 +1,8 @@
+<div class="graph-container">
+    <textarea id="adjacencyMatrix" dir="ltr" [(ngModel)]="matrixText" placeholder="Enter adjacency matrix here..."></textarea>
+    <div class="buttons">
+        <button (click)="generateGraph()" class="action-button">Generate Graph</button>
+        <button (click)="grapheS.rejeterGenerateGraphFromMatrixAdjancy(container, this)" class="action-button reject-button">Rejeter</button>
+    </div>
+</div>
+
