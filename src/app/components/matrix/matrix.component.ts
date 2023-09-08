@@ -1,4 +1,6 @@
-import { Component, Input, AfterViewChecked } from '@angular/core';
+import { Component, Input, ElementRef } from '@angular/core';
+import { DarkModeService } from 'src/app/AllService/dark-mode.service';
+import { GrapheService } from 'src/app/AllService/graphe.service';
 
 /**
  * Angular component for displaying a matrix.
@@ -8,23 +10,10 @@ import { Component, Input, AfterViewChecked } from '@angular/core';
   templateUrl: './matrix.component.html',
   styleUrls: ['./matrix.component.css']
 })
-export class MatrixComponent implements AfterViewChecked {
-  /**
-   * Input property representing the formatted adjacency matrix.
-   */
-  @Input() adjacencyMatrixFormatted: string = "";
-
+export class MatrixComponent {
   /**
    * Initializes a new instance of the MatrixComponent class.
    */
-  constructor() {}
-
-  /**
-   * Angular lifecycle hook called after the view has been checked.
-   * This hook is used for rendering MathJax content in the matrix.
-   */
-  ngAfterViewChecked(): void {
-    // Call MathJax rendering here if needed
-    // Example: MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
-  }
+  constructor(private el:ElementRef,protected grapheS:GrapheService,protected darkModeS:DarkModeService) {}
+  
 }

@@ -1,3 +1,41 @@
-<div>
-    
+<div [ngClass]="{'dark': darkModeS.isDarkMode}">
+    <div id="matrix">
+        <h3>{{"matrix.adjMatrix"|translate}}</h3>
+        <span *ngIf="grapheS.cy.nodes().length">
+            <table class="degree-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th *ngFor="let nodeId of grapheS.getNodeIds()">{{nodeId}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let row of grapheS.matrixAdjancy(); let i = index">
+                        <td class="vertical-header"><b>{{ grapheS.getNodeIds()[i] }}</b></td> 
+                        <td *ngFor="let element of row">{{ element }}</td>
+                    </tr>
+                </tbody>
+            </table> 
+        </span>
+        <br/><br/>
+        <h3>{{"matrix.IncMatrix"|translate}}</h3>
+        <span *ngIf="grapheS.cy.edges().length">
+            <table class="degree-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th *ngFor="let edgeId of grapheS.getEdgeIds()">{{edgeId}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let row of grapheS.incidenceMatrix(); let i = index">
+                        <td class="vertical-header"><b>{{ grapheS.getNodeIds()[i] }}</b></td> 
+                        <td *ngFor="let element of row">{{element}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </span>
+            
+        
+    </div>
 </div>
