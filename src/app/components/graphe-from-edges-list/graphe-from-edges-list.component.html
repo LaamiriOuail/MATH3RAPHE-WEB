@@ -1,0 +1,26 @@
+<div class="graph-container">
+    <div class="part1">
+        <textarea id="adjacencyMatrix" dir="ltr" [(ngModel)]="listEdgeTextArea" placeholder="Enter adjacency matrix here..."></textarea>
+        <div class="buttons">
+            <button (click)="grapheS.createGrapheFromListEdges(container,this)" class="action-button">{{"grapheFromEdgeList.msg4"|translate}}</button>
+            <button (click)="grapheS.rejeterGenerateGraphFromListEdges(container,this)" class="action-button reject-button">{{"grapheFromEdgeList.msg5"|translate}}</button>
+        </div>
+    </div>
+    <div class="logic">
+       <div class="logicano">
+            <h2>
+                Extended format
+                Using extended format you may set up directed and weighted edges.
+            </h2><br/>
+            <h3>Undirected Unweighted</h3>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp; node1-node2</span>
+            <h3>Directed Unweighted</h3>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp; node1>node2</span>
+            <h3>Undirected Weighted</h3>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp; node1-(weight)-node2</span>
+            <h3>Directed Weighted</h3>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp; node1-(weight)->node2</span>
+       </div>
+    </div>
+</div>
+
