@@ -1,6 +1,11 @@
 <div class="graph-container">
     <div class="part1">
-        <textarea id="adjacencyMatrix" dir="ltr" [(ngModel)]="listEdgeTextArea" placeholder="Enter adjacency matrix here..."></textarea>
+        <textarea id="adjacencyMatrix" dir="ltr" [(ngModel)]="listEdgeTextArea" placeholder="Examples: 
+        A-B 
+        A>B 
+        A-(2.6)-B 
+        A-(2.6)->B">
+        </textarea>
         <div class="buttons">
             <button (click)="grapheS.createGrapheFromListEdges(container,this)" class="action-button">{{"grapheFromEdgeList.msg4"|translate}}</button>
             <button (click)="grapheS.rejeterGenerateGraphFromListEdges(container,this)" class="action-button reject-button">{{"grapheFromEdgeList.msg5"|translate}}</button>
@@ -8,18 +13,16 @@
     </div>
     <div class="logic">
        <div class="logicano">
-            <h2>
-                Extended format
-                Using extended format you may set up directed and weighted edges.
-            </h2><br/>
-            <h3>Undirected Unweighted</h3>
-            <span>&nbsp;&nbsp;&nbsp;&nbsp; node1-node2</span>
-            <h3>Directed Unweighted</h3>
-            <span>&nbsp;&nbsp;&nbsp;&nbsp; node1>node2</span>
-            <h3>Undirected Weighted</h3>
-            <span>&nbsp;&nbsp;&nbsp;&nbsp; node1-(weight)-node2</span>
-            <h3>Directed Weighted</h3>
-            <span>&nbsp;&nbsp;&nbsp;&nbsp; node1-(weight)->node2</span>
+        <h2>{{ 'extendedFormat.title' | translate }}</h2>
+        <p>{{ 'extendedFormat.description' | translate }}</p>
+        <h3>{{ 'extendedFormat.undirectedUnweighted' | translate }}</h3>
+        <h4>&nbsp;&nbsp;&nbsp;&nbsp; node1-node2</h4>
+        <p>{{ 'extendedFormat.directedUnweighted' | translate }}</p>
+        <h4>&nbsp;&nbsp;&nbsp;&nbsp; node1>node2</h4>
+        <h3>{{ 'extendedFormat.undirectedWeighted' | translate }}</h3>
+        <h4>&nbsp;&nbsp;&nbsp;&nbsp; node1-(weight)-node2</h4>
+        <p>{{ 'extendedFormat.directedWeighted' | translate }}</p>
+        <h4>&nbsp;&nbsp;&nbsp;&nbsp; node1(weight)->node2</h4>
        </div>
     </div>
 </div>

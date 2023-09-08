@@ -1,3 +1,6 @@
+/**
+ * Angular component responsible for parsing and handling graph data from a list of edges.
+ */
 import { Component, Input } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { GrapheService } from 'src/app/AllService/graphe.service';
@@ -8,9 +11,26 @@ import { GrapheService } from 'src/app/AllService/graphe.service';
   styleUrls: ['./graphe-from-edges-list.component.css']
 })
 export class GrapheFromEdgesListComponent {
+  /**
+   * Constructor for the GrapheFromEdgesListComponent.
+   *
+   * @param {GrapheService} grapheS - The GrapheService instance for handling graph operations.
+   * @param {TranslateService} translate - The TranslateService for language localization.
+   */
   constructor(protected grapheS:GrapheService,protected translate:TranslateService){}
+  /**
+   * The text area input for the list of edges.
+   */
   listEdgeTextArea:string="";
+  /**
+   * Input container object for handling graph-related properties.
+   */
   @Input() container:any;
+  /**
+   * Parses the extended format list of edges and returns an array of parsed edge objects.
+   *
+   * @returns {Array<any>} - An array of parsed edge objects.
+   */
   parseExtendedFormat():Array<any> {
     const lines = this.listEdgeTextArea.split('\n');
     const edges:Array<any> = [];
@@ -29,6 +49,12 @@ export class GrapheFromEdgesListComponent {
   
     return edges;
   }
+  /**
+   * Parses a single edge from a line of text and returns an edge object.
+   *
+   * @param {string} line - The input line containing edge information.
+   * @returns {any} - The parsed edge object.
+   */
   parseEdge(line:string):any {
     const matchDirectedWeighted = line.match(/\s*([^(-]*)\s*-\(([\d.]+)\)->\s*([^(-]*)\s*/);
     const matchDirected = line.match(/\s*([^(-]*)\s*>\s*([^(-]*)\s*/);
@@ -68,6 +94,12 @@ export class GrapheFromEdgesListComponent {
   
     return null;
   }
+  /**
+  * Checks if all edges have the same type of graph (e.g., Directed Weighted).
+  *
+  * @param {Array<any>} edges - An array of edge objects to check.
+  * @returns {boolean} - `true` if all edges have the same type, otherwise `false`.
+  */
   isSameTypeGraphe(edges:Array<any>): boolean {
     let isSameTypeGraphe:boolean=true;
     let firstType:string=edges[0]?.type;
@@ -84,6 +116,11 @@ export class GrapheFromEdgesListComponent {
     }
     return isSameTypeGraphe;
   }
+  /**
+   * Sends the parsed graph elements to the parent component.
+   *
+   * @returns {any} - The parsed graph elements or `false` if there is a type mismatch.
+   */
   sendElements():any{
     if(this.isSameTypeGraphe(this.parseExtendedFormat())){
       return this.parseExtendedFormat();
@@ -92,6 +129,12 @@ export class GrapheFromEdgesListComponent {
       return false;
     }
   }
+  /**
+   * Checks if a given input string contains invalid characters.
+   *
+   * @param {string} inputString - The input string to check for invalid characters.
+   * @returns {boolean} - `true` if the input contains invalid characters, otherwise `false`.
+   */
   containsInvalidCharacters(inputString:string) :boolean{
     // Define a regular expression pattern for valid characters
     const invalidCharactersPattern = /[<> ()&;:-]/;

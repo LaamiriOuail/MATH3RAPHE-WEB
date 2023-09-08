@@ -1,3 +1,6 @@
+/**
+ * Angular component responsible for generating a graph from an adjacency matrix.
+ */
 import { Component, Input } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { GrapheService } from 'src/app/AllService/graphe.service';
@@ -8,9 +11,24 @@ import { GrapheService } from 'src/app/AllService/graphe.service';
   styleUrls: ['./graphe-from-matrix-adja.component.css']
 })
 export class GrapheFromMatrixAdjaComponent {
+  /**
+   * Input container object for handling graph-related properties.
+   */
   @Input() container:any;
+  /**
+   * The adjacency matrix in text format.
+   */
   matrixText:string="";
+  /**
+   * Constructor for the GrapheFromMatrixAdjaComponent.
+   *
+   * @param {GrapheService} grapheS - The GrapheService instance for handling graph operations.
+   * @param {TranslateService} translate - The TranslateService for language localization.
+   */
   constructor(protected grapheS:GrapheService,protected translate:TranslateService){}
+  /**
+   * Generates a graph based on the provided adjacency matrix.
+   */
   generateGraph() {
     // Parse the matrix into a 2D array
     const adjacencyMatrix = this.parseAdjacencyMatrix(this.matrixText);
@@ -28,7 +46,12 @@ export class GrapheFromMatrixAdjaComponent {
       this.container.changeSelect="";
     }
   }
-
+  /**
+   * Parses the input adjacency matrix in text format and returns a 2D array.
+   *
+   * @param {string} matrixText - The adjacency matrix in text format.
+   * @returns {any} - The parsed 2D array representing the adjacency matrix or `false` if parsing fails.
+   */
   parseAdjacencyMatrix(matrixText:string):any {
     // Remove leading and trailing whitespace
     matrixText = matrixText.trim();
@@ -77,6 +100,12 @@ export class GrapheFromMatrixAdjaComponent {
     }
     return matrix;
   }
+  /**
+   * Creates graph elements (nodes and edges) from the parsed adjacency matrix.
+   *
+   * @param {Array<Array<number>>} adjacencyMatrix - The parsed adjacency matrix.
+   * @returns {Array<any>} - An array of graph elements.
+   */
   createGraphElements(adjacencyMatrix: Array<Array<number>>): Array<any> {
     let elements: Array<any> = [];
     const isDirected: boolean = !this.isSymmetric(adjacencyMatrix);
@@ -109,7 +138,12 @@ export class GrapheFromMatrixAdjaComponent {
   
     return elements;
   }
-
+  /**
+   * Checks if the adjacency matrix represents a weighted graph.
+   *
+   * @param {Array<Array<number>>} adjacencyMatrix - The adjacency matrix.
+   * @returns {boolean} - `true` if the graph is weighted, otherwise `false`.
+   */
   isWeighted(adjacencyMatrix:Array<Array<number>>):boolean{
     let weighted:boolean=false;
     for (let i = 0; i < adjacencyMatrix.length; i++) {
@@ -125,6 +159,12 @@ export class GrapheFromMatrixAdjaComponent {
     }
     return weighted;
   }
+  /**
+   * Checks if the adjacency matrix is symmetric, indicating an undirected graph.
+   *
+   * @param {Array<Array<number>>} matrix - The adjacency matrix.
+   * @returns {boolean} - `true` if the matrix is symmetric, indicating an undirected graph, otherwise `false`.
+   */
   isSymmetric(matrix:Array<Array<number>>) {
     if (!Array.isArray(matrix) || matrix.length === 0 || matrix[0].length === 0) {
       return false; // Not a valid matrix
