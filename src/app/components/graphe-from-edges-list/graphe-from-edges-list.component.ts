@@ -4,6 +4,75 @@
 import { Component, Input } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { GrapheService } from 'src/app/AllService/graphe.service';
+/**
+ * Represents a weighted edge in a graph.
+ *
+ * @interface IWeightedEdgeTyped
+ */
+interface IWeightedEdgeTyped {
+  /**
+   * The source node of the edge.
+   *
+   * @type {string}
+   * @memberof IWeightedEdgeTyped
+   */
+  source: string;
+
+  /**
+   * The target node of the edge.
+   *
+   * @type {string}
+   * @memberof IWeightedEdgeTyped
+   */
+  target: string;
+
+  /**
+   * The weight of the edge.
+   *
+   * @type {number}
+   * @memberof IWeightedEdgeTyped
+   */
+  weight: number;
+
+  /**
+   * The type of the edge.
+   *
+   * @type {string}
+   * @memberof IWeightedEdgeTyped
+   */
+  type: string;
+}
+
+/**
+ * Represents an unweighted edge in a graph.
+ *
+ * @interface IUnweightedEdgeTyped
+ */
+interface IUnweightedEdgeTyped {
+  /**
+   * The source node of the edge.
+   *
+   * @type {string}
+   * @memberof IUnweightedEdgeTyped
+   */
+  source: string;
+
+  /**
+   * The target node of the edge.
+   *
+   * @type {string}
+   * @memberof IUnweightedEdgeTyped
+   */
+  target: string;
+
+  /**
+   * The type of the edge.
+   *
+   * @type {string}
+   * @memberof IUnweightedEdgeTyped
+   */
+  type: string;
+}
 
 @Component({
   selector: 'app-graphe-from-edges-list',
@@ -53,9 +122,9 @@ export class GrapheFromEdgesListComponent {
    * Parses a single edge from a line of text and returns an edge object.
    *
    * @param {string} line - The input line containing edge information.
-   * @returns {any} - The parsed edge object.
+   * @returns {IWeightedEdgeTyped|IUnweightedEdgeTyped|null} - The parsed edge object.
    */
-  parseEdge(line:string):any {
+  parseEdge(line:string):IWeightedEdgeTyped|IUnweightedEdgeTyped|null {
     const matchDirectedWeighted = line.match(/\s*([^(-]*)\s*-\(([\d.]+)\)->\s*([^(-]*)\s*/);
     const matchDirected = line.match(/\s*([^(-]*)\s*>\s*([^(-]*)\s*/);
     const matchUndirectedWeighted = line.match(/\s*([^(-]*)\s*-\(([\d.]+)\)-\s*([^(-]*)\s*/);
@@ -97,7 +166,7 @@ export class GrapheFromEdgesListComponent {
   /**
   * Checks if all edges have the same type of graph (e.g., Directed Weighted).
   *
-  * @param {Array<any>} edges - An array of edge objects to check.
+  * @param {Array<IUnweightedEdge|IWeightedEdge|null>} edges - An array of edge objects to check.
   * @returns {boolean} - `true` if all edges have the same type, otherwise `false`.
   */
   isSameTypeGraphe(edges:Array<any>): boolean {

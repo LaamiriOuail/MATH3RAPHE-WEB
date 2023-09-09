@@ -4,7 +4,59 @@
 import { Component, Input } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { GrapheService } from 'src/app/AllService/graphe.service';
+/**
+ * Represents a weighted edge in a graph.
+ *
+ * @interface IWeightedEdge
+ */
+interface IWeightedEdge {
+  /**
+   * The source node of the edge.
+   *
+   * @type {string}
+   * @memberof IWeightedEdge
+   */
+  source: string;
 
+  /**
+   * The target node of the edge.
+   *
+   * @type {string}
+   * @memberof IWeightedEdge
+   */
+  target: string;
+
+  /**
+   * The weight of the edge.
+   *
+   * @type {number}
+   * @memberof IWeightedEdge
+   */
+  weight: number;
+}
+
+/**
+ * Represents an unweighted edge in a graph.
+ *
+ * @interface IUnweightedEdge
+ */
+interface IUnweightedEdge {
+  /**
+   * The source node of the edge.
+   *
+   * @type {string}
+   * @memberof IUnweightedEdge
+   */
+  source: string;
+
+  /**
+   * The target node of the edge.
+   *
+   * @type {string}
+   * @memberof IUnweightedEdge
+   */
+  target: string;
+}
 @Component({
   selector: 'app-graphe-from-matrix-adja',
   templateUrl: './graphe-from-matrix-adja.component.html',
@@ -119,8 +171,9 @@ export class GrapheFromMatrixAdjaComponent {
     // Create edges based on adjacency matrix
     for (let i = 0; i < adjacencyMatrix.length; i++) {
       for (let j = 0; j < adjacencyMatrix[i].length; j++) {
+        let edge:IUnweightedEdge|IWeightedEdge;
         if (i !== j && adjacencyMatrix[i][j] !== 0) {
-          let edge:any = {
+          edge = {
             source: i.toString(),
             target: j.toString(),
           };
