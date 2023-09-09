@@ -1,0 +1,6 @@
+<div  class="formEdge">
+    <input type="text" [(ngModel)]="sourceId" class="form-input" placeholder="source">
+    <input type="text" [(ngModel)]="targetId" class="form-input" placeholder="target">
+    <button type="button" class="form-button form-button-primary" (click)="grapheS.removeEdge(container,this)">{{"screenbox.msg20"|translate}}</button>
+    <button type="button" class="form-button form-button-secondary" (click)="grapheS.RejeterRemoveEdge(container,this)">{{"screenbox.msg21"|translate}}</button>
+</div>
