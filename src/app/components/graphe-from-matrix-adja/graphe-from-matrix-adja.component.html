@@ -1,8 +1,21 @@
 <div class="graph-container">
-    <textarea id="adjacencyMatrix" dir="ltr" [(ngModel)]="matrixText" placeholder="Enter adjacency matrix here..."></textarea>
-    <div class="buttons">
-        <button (click)="generateGraph()" class="action-button">{{"grapheFromMatrix.msg7"|translate}}</button>
-        <button (click)="grapheS.rejeterGenerateGraphFromMatrixAdjancy(container, this)" class="action-button reject-button">{{"grapheFromMatrix.msg8"|translate}}</button>
+    <div class="part1">
+        <textarea id="adjacencyMatrix" dir="ltr" [(ngModel)]="matrixText" placeholder="Enter adjacency matrix here..."></textarea>
+        <div class="buttons">
+            <button (click)="generateGraph()" class="action-button">{{"grapheFromMatrix.msg7"|translate}}</button>
+            <button (click)="grapheS.rejeterGenerateGraphFromMatrixAdjancy(container, this)" class="action-button reject-button">{{"grapheFromMatrix.msg8"|translate}}</button>
+            <app-enumeration-node [container]="container"/>
+        </div>
     </div>
+    <div class="logic">
+        <div class="logicano" dir="ltr">
+            <h2>{{ 'extendedFormat.title' | translate }}</h2>
+            &nbsp;&nbsp;<span><b>0&nbsp; 1&nbsp; 1&nbsp; 0&nbsp; 0</b></span>
+            &nbsp;&nbsp;<span><b>1&nbsp; 0&nbsp; 1&nbsp; 1&nbsp; 0</b></span>
+            &nbsp;&nbsp;<span><b>1&nbsp; 1&nbsp; 0&nbsp; 1&nbsp; 1</b></span>
+            &nbsp;&nbsp;<span><b>0&nbsp; 1&nbsp; 1&nbsp; 0&nbsp; 1</b></span>
+            &nbsp;&nbsp;<span><b>0&nbsp; 0&nbsp; 1&nbsp; 1&nbsp; 0</b></span>
+        </div>
+    </div>
+    
 </div>
-

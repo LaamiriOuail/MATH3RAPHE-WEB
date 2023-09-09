@@ -1,0 +1,6 @@
+<select id="nodeEnumeration" [(ngModel)]="container.nodeName" (ngModelChange)="grapheS.changeNodeEnum(container)">
+    <option value="" disabled selected>{{'screenbox.msg42'|translate}}</option>
+    <option value="numerique">1,2,3,...</option>
+    <option value="alphabic">A,B,C,...</option>
+    <option value="customText" [disabled]="container.changeSelect=='addGrapheFromMatrix'">{{'screenbox.msg40'|translate}}</option>
+</select>

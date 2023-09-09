@@ -162,33 +162,64 @@ export class GrapheFromMatrixAdjaComponent {
     let elements: Array<any> = [];
     const isDirected: boolean = !this.isSymmetric(adjacencyMatrix);
     const isWeighted: boolean = this.isWeighted(adjacencyMatrix);
-  
+    
     // Create nodes
     for (let i = 0; i < adjacencyMatrix.length; i++) {
-      elements.push({ id: i.toString() });
+      if(this.container.nodeName=="numerique"){
+        this.grapheS.counter=i;
+        elements.push({id:++this.grapheS.counter});
+      }else if(this.container.nodeName=="alphabic"){
+        this.grapheS.counter=i;
+        elements.push({id:this.grapheS.Alphabets[i]});
+      }
     }
-  
+    let arrayNemming:Array<any>=[];
+    if(this.container.nodeName=="numerique"){
+      arrayNemming=this.grapheS.numbersArray;
+    }else if(this.container.nodeName=="alphabic"){
+      arrayNemming=this.grapheS.Alphabets;
+    }
     // Create edges based on adjacency matrix
     for (let i = 0; i < adjacencyMatrix.length; i++) {
       for (let j = 0; j < adjacencyMatrix[i].length; j++) {
-        let edge:IUnweightedEdge|IWeightedEdge;
+        let edge:any;
         if (i !== j && adjacencyMatrix[i][j] !== 0) {
-          edge = {
-            source: i.toString(),
-            target: j.toString(),
-          };
           if (isWeighted) {
-            edge = {
-              source: i.toString(),
-              target: j.toString(),
-              weight: adjacencyMatrix[i][j]
-            };
+            if(this.container.nodeName=="numerique"){
+              edge = {
+                source: (i+1).toString(),
+                target: (j+1).toString(),
+                weight: adjacencyMatrix[i][j]
+              };
+            }else if(this.container.nodeName=="alphabic"){
+              edge = {
+                source: arrayNemming[i],
+                target: arrayNemming[j],
+                weight: adjacencyMatrix[i][j]
+              };
+            }
+          }else{
+            if(this.container.nodeName=="numerique"){
+              edge = {
+                source: (i+1).toString(),
+                target: (j+1).toString()              };
+            }else if(this.container.nodeName=="alphabic"){
+              edge = {
+                source: arrayNemming[i],
+                target: arrayNemming[j],
+              };
+            }
           }
           elements.push(edge);
         }
       }
     }
-  
+    if(this.container.nodeName=="alphabic"){
+      for(let i=0;i<this.grapheS.counter;i++){
+        this.grapheS.Alphabets.shift();
+      }
+      this.grapheS.counter=0;
+    }
     return elements;
   }
   /**
