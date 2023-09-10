@@ -18,6 +18,11 @@
   grid-row: 1/2;
   display: none;
 }
+.addGrapheFromEdgesList{
+  grid-column: 1/4;
+  grid-row: 1/2;
+  display: none;
+}
 .screen {
   grid-column: 1/4;
   grid-row: 3/4;
@@ -42,6 +47,10 @@
   box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
   transform: translateY(0);
   }
+.disabled-button{
+  background-color: #000;/*Dark*/
+  color: white;/*Dark*/
+}
 .button-list button,
 .button-list .select {
   align-items: center;
@@ -101,6 +110,12 @@ transform: translateY(-1px);
 .formAddEdges{
 display: none;
 }
+.formRemoveNode{
+  display: none;
+  }
+.formRemoveEdge{
+  display: none;
+  }
 .formChangeNodeId{
   display: none;
   }

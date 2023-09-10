@@ -106,6 +106,12 @@
                                     <a href="../components/FooterComponent.html" >FooterComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/GrapheFromEdgesListComponent.html" >GrapheFromEdgesListComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/GrapheFromMatrixAdjaComponent.html" >GrapheFromMatrixAdjaComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/HeaderComponent.html" >HeaderComponent</a>
                                 </li>
                                 <li class="link">
@@ -116,6 +122,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/MessageComponent.html" >MessageComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/RemoveEdgeComponent.html" >RemoveEdgeComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/ScreenComponent.html" >ScreenComponent</a>
@@ -158,6 +167,31 @@
                         </ul>
                     </li>
             
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-info"></span>
+                            <span>Interfaces</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-interfaces-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-interfaces-links"
+                            >
+                                <li class="link">
+                                    <a href="../interfaces/IUnweightedEdge.html" >IUnweightedEdge</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/IUnweightedEdgeTyped.html" >IUnweightedEdgeTyped</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/IWeightedEdge.html" >IWeightedEdge</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/IWeightedEdgeTyped.html" >IWeightedEdgeTyped</a>
+                                </li>
+                        </ul>
+                    </li>
             
             
             
@@ -268,6 +302,12 @@
                                            <a href="../components/FooterComponent.html" >FooterComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/GrapheFromEdgesListComponent.html" >GrapheFromEdgesListComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/GrapheFromMatrixAdjaComponent.html" >GrapheFromMatrixAdjaComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/HeaderComponent.html" >HeaderComponent</a>
                                        </li>
                                        <li class="link">
@@ -278,6 +318,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/MessageComponent.html" >MessageComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/RemoveEdgeComponent.html" >RemoveEdgeComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/ScreenComponent.html" >ScreenComponent</a>
@@ -320,6 +363,31 @@
                                </ul>
                            </li>
                    
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-info"></span>
+                                   <span>Interfaces</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#interfaces-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="interfaces-links"
+                   >
+                                       <li class="link">
+                                           <a href="../interfaces/IUnweightedEdge.html" >IUnweightedEdge</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/IUnweightedEdgeTyped.html" >IUnweightedEdgeTyped</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/IWeightedEdge.html" >IWeightedEdge</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/IWeightedEdgeTyped.html" >IWeightedEdgeTyped</a>
+                                       </li>
+                               </ul>
+                           </li>
                    
                    
                    
@@ -1992,6 +2060,499 @@
                             </tr>
                         </tbody>
                     </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> getDegreeNodes</b>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            <code>getDegreeNodes()</code>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Get the degrees of all nodes in the graph.</p>
+            </div>
+                                        <div class="io-description">
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns: </b>    <code>any[]</code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                <ul>
+            <li>An array of objects containing node IDs, in-degrees, out-degrees, and degrees.</li>
+            </ul>
+            
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> createGrapheFromAdjancyMatrix</b>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            <code>createGrapheFromAdjancyMatrix(elements: any, directed: boolean, weighted: boolean, container: any)</code>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Create a graph from an adjacency matrix.</p>
+            </div>
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <ul class="jsdoc-params">
+                                                        <li>
+                                                            <div>
+                                                                <b>elements</b>
+                                                            </div>
+                                                            <div>
+                                                                <ul>
+            <li>Graph elements, including nodes and edges.</li>
+            </ul>
+            
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div>
+                                                                <b>directed</b>
+                                                            </div>
+                                                            <div>
+                                                                <ul>
+            <li>Whether the graph is directed.</li>
+            </ul>
+            
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div>
+                                                                <b>weighted</b>
+                                                            </div>
+                                                            <div>
+                                                                <ul>
+            <li>Whether the graph is weighted.</li>
+            </ul>
+            
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div>
+                                                                <b>container</b>
+                                                                    :     <code>ScreenboxComponent</code>
+            
+                                                            </div>
+                                                            <div>
+                                                                <ul>
+            <li>The container object containing graph-related properties.</li>
+            </ul>
+            
+                                                            </div>
+                                                        </li>
+                                                </ul>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns: </b>    <code>void</code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> rejeterGenerateGraphFromMatrixAdjancy</b>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            <code>rejeterGenerateGraphFromMatrixAdjancy(container: any, container2: any)</code>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Reject the generation of a graph from an adjacency matrix.</p>
+            </div>
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <ul class="jsdoc-params">
+                                                        <li>
+                                                            <div>
+                                                                <b>container</b>
+                                                                    :     <code>ScreenboxComponent</code>
+            
+                                                            </div>
+                                                            <div>
+                                                                <ul>
+            <li>The container object containing graph-related properties.</li>
+            </ul>
+            
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div>
+                                                                <b>container2</b>
+                                                                    :     <code>GrapheFromMatrixAdjaComponent</code>
+            
+                                                            </div>
+                                                            <div>
+                                                                <ul>
+            <li>Another container object.</li>
+            </ul>
+            
+                                                            </div>
+                                                        </li>
+                                                </ul>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns: </b>    <code>void</code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> changeStyleGraphe</b>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            <code>changeStyleGraphe(typeGraphe: string)</code>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Change the style of the graph based on its type.</p>
+            </div>
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <ul class="jsdoc-params">
+                                                        <li>
+                                                            <div>
+                                                                <b>typeGraphe</b>
+                                                            </div>
+                                                            <div>
+                                                                <ul>
+            <li>The type of the graph (e.g., Directed Weighted).</li>
+            </ul>
+            
+                                                            </div>
+                                                        </li>
+                                                </ul>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns: </b>    <code>void</code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> createGrapheFromListEdges</b>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            <code>createGrapheFromListEdges(container: any, container2: any)</code>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Create a graph from a list of edges.</p>
+            </div>
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <ul class="jsdoc-params">
+                                                        <li>
+                                                            <div>
+                                                                <b>container</b>
+                                                                    :     <code>ScreenboxComponent</code>
+            
+                                                            </div>
+                                                            <div>
+                                                                <ul>
+            <li>The container object containing graph-related properties.</li>
+            </ul>
+            
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div>
+                                                                <b>container2</b>
+                                                                    :     <code>GrapheFromEdgesListComponent</code>
+            
+                                                            </div>
+                                                            <div>
+                                                                <ul>
+            <li>Another container object.</li>
+            </ul>
+            
+                                                            </div>
+                                                        </li>
+                                                </ul>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns: </b>    <code>void</code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> rejeterGenerateGraphFromListEdges</b>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            <code>rejeterGenerateGraphFromListEdges(container: any, container2: any)</code>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Reject the generation of a graph from a list of edges.</p>
+            </div>
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <ul class="jsdoc-params">
+                                                        <li>
+                                                            <div>
+                                                                <b>container</b>
+                                                                    :     <code>ScreenboxComponent</code>
+            
+                                                            </div>
+                                                            <div>
+                                                                <ul>
+            <li>The container object containing graph-related properties.</li>
+            </ul>
+            
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div>
+                                                                <b>container2</b>
+                                                                    :     <code>GrapheFromEdgesListComponent</code>
+            
+                                                            </div>
+                                                            <div>
+                                                                <ul>
+            <li>Another container object.</li>
+            </ul>
+            
+                                                            </div>
+                                                        </li>
+                                                </ul>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns: </b>    <code>void</code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> getDensityOfGraphe</b>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            <code>getDensityOfGraphe()</code>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Get the density of the graph.</p>
+            </div>
+                                        <div class="io-description">
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns: </b>    <code>number</code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                <ul>
+            <li>The density of the graph.</li>
+            </ul>
+            
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> getNodeIds</b>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            <code>getNodeIds()</code>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description">
+                                            <b>Returns: </b>    <code>any[]</code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> incidenceMatrix</b>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            <code>incidenceMatrix()</code>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description">
+                                            <b>Returns: </b>    <code>any[]</code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> getEdgeIds</b>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            <code>getEdgeIds()</code>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description">
+                                            <b>Returns: </b>    <code>any[]</code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> removeEdge</b>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            <code>removeEdge(container: any, container2: any)</code>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description">
+                                            <b>Returns: </b>    <code>void</code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> RejeterRemoveEdge</b>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            <code>RejeterRemoveEdge(container: any, container2: any)</code>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description">
+                                            <b>Returns: </b>    <code>void</code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
             </section>
 
             <section>
@@ -2520,6 +3081,7 @@ export class GrapheService {
       container.changeSelect&#x3D;&quot;&quot;;
       //
     }else{
+      container.message&#x3D;this.translate.instant(&quot;screenbox.msg23&quot;);
       container.nodeName&#x3D;&quot;numerique&quot;;
     }
     
@@ -2541,10 +3103,14 @@ export class GrapheService {
     const formAddEdge &#x3D; container.el.nativeElement.querySelector(&#x27;.formAddEdges&#x27;);
     const formAChangeSizeScreen &#x3D; container.el.nativeElement.querySelector(&#x27;.formAChangeSizeScreen&#x27;);
     const formChangeColor &#x3D; container.el.nativeElement.querySelector(&#x27;.formChangeColor&#x27;);
+    const formAddNode &#x3D; container.el.nativeElement.querySelector(&#x27;.formAddNode&#x27;);
+    const formRemoveEdge &#x3D; container.el.nativeElement.querySelector(&#x27;.formRemoveEdge&#x27;);
     formChangeNodeId.style.display&#x3D;&quot;none&quot;;
     formAddEdge.style.display&#x3D;&quot;none&quot;;
     formChangeColor.style.display&#x3D;&quot;none&quot;;
     formAChangeSizeScreen.style.display&#x3D;&quot;none&quot;;
+    formAddNode.style.display&#x3D;&quot;none&quot;;
+    formRemoveEdge.style.display&#x3D;&quot;none&quot;;
     this.position&#x3D;&quot;&quot;;
     this.resetColors();
     //
@@ -2561,6 +3127,26 @@ export class GrapheService {
         container.message&#x3D;this.translate.instant(&quot;grapheS.msg36&quot;)
       }
       formChangeColor.style.display&#x3D;&quot;block&quot;;
+    }else if(container.changeSelect&#x3D;&#x3D;&quot;addGrapheFromMatrix&quot;){
+      const screen&#x3D;container.el.nativeElement.querySelector(&#x27;.screen&#x27;);
+      const buttonManupilation&#x3D;container.el.nativeElement.querySelector(&#x27;.buttonManupilation&#x27;);
+      const addGrapheWithMatrix&#x3D;container.el.nativeElement.querySelector(&#x27;.addGrapheWithMatrix&#x27;);
+      const addGrapheFromEdgesList&#x3D;container.el.nativeElement.querySelector(&#x27;.addGrapheFromEdgesList&#x27;);
+      screen.style.display&#x3D;&quot;none&quot;;
+      addGrapheFromEdgesList.style.display&#x3D;&quot;none&quot;;
+      buttonManupilation.style.display&#x3D;&quot;none&quot;;
+      addGrapheWithMatrix.style.display&#x3D;&quot;block&quot;;
+      container.message&#x3D;this.translate.instant(&quot;grapheFromMatrix.msg6&quot;);
+    }else if(container.changeSelect&#x3D;&#x3D;&quot;addGrapheFromEdgesList&quot;){
+      const screen&#x3D;container.el.nativeElement.querySelector(&#x27;.screen&#x27;);
+      const buttonManupilation&#x3D;container.el.nativeElement.querySelector(&#x27;.buttonManupilation&#x27;);
+      const addGrapheWithMatrix&#x3D;container.el.nativeElement.querySelector(&#x27;.addGrapheWithMatrix&#x27;);
+      const addGrapheFromEdgesList&#x3D;container.el.nativeElement.querySelector(&#x27;.addGrapheFromEdgesList&#x27;);
+      screen.style.display&#x3D;&quot;none&quot;;
+      addGrapheFromEdgesList.style.display&#x3D;&quot;block&quot;;
+      buttonManupilation.style.display&#x3D;&quot;none&quot;;
+      addGrapheWithMatrix.style.display&#x3D;&quot;none&quot;;
+      container.message&#x3D;this.translate.instant(&quot;grapheFromMatrix.msg6&quot;);///////////////////////Chnge this Message
     }else if(container.changeSelect&#x3D;&#x3D;&quot;changeSizeScreen&quot;){
       container.message&#x3D;this.translate.instant(&quot;grapheS.msg39&quot;)
       formAChangeSizeScreen.style.display&#x3D;&quot;block&quot;;
@@ -2596,77 +3182,34 @@ export class GrapheService {
     
     this.typeGraphe&#x3D;container.typeGraphe;
     this.resetColors();
-    const formAddEdge &#x3D; container.el.nativeElement.querySelector(&#x27;.formAddEdges&#x27;);
     const formChangeNodeId&#x3D;container.el.nativeElement.querySelector(&#x27;.formChangeNodeId&#x27;);
+    const formAddEdge &#x3D; container.el.nativeElement.querySelector(&#x27;.formAddEdges&#x27;);
     const formAChangeSizeScreen &#x3D; container.el.nativeElement.querySelector(&#x27;.formAChangeSizeScreen&#x27;);
-    const formAddNode&#x3D;container.el.nativeElement.querySelector(&#x27;.formAddNode&#x27;);
-    formAChangeSizeScreen.style.display&#x3D;&quot;none&quot;;
-    formAddNode.style.display&#x3D;&quot;none&quot;;
+    const formChangeColor &#x3D; container.el.nativeElement.querySelector(&#x27;.formChangeColor&#x27;);
+    const formAddNode &#x3D; container.el.nativeElement.querySelector(&#x27;.formAddNode&#x27;);
+    const formRemoveEdge &#x3D; container.el.nativeElement.querySelector(&#x27;.formRemoveEdge&#x27;);
     formChangeNodeId.style.display&#x3D;&quot;none&quot;;
     formAddEdge.style.display&#x3D;&quot;none&quot;;
+    formChangeColor.style.display&#x3D;&quot;none&quot;;
+    formAChangeSizeScreen.style.display&#x3D;&quot;none&quot;;
+    formAddNode.style.display&#x3D;&quot;none&quot;;
+    formRemoveEdge.style.display&#x3D;&quot;none&quot;;
     this.position&#x3D;&quot;&quot;;
     container.containerHeight&#x3D;50;
-    container.nodeId&#x3D;0;
     this.cy.remove(this.cy.elements());
     container.message&#x3D;this.translate.instant(&quot;grapheS.msg1&quot;);
-    if (this.typeGraphe &#x3D;&#x3D;&#x3D; &quot;Directed Weighted&quot;) {
-      this.cy.style()
-          .selector(&#x27;edge&#x27;) // Apply the style to all edges
-          .style({
-              &#x27;width&#x27;: 4,
-              &#x27;line-color&#x27;: this.COLOR_LINE_EDGE,
-              &#x27;target-arrow-color&#x27;: this.TARGET_ARROW_COLOR,
-              &#x27;target-arrow-shape&#x27;: &#x27;triangle&#x27;,
-              &#x27;color&#x27;: this.DATA_EDGE_COLOR,
-              &#x27;curve-style&#x27;: &#x27;bezier&#x27;,
-              &#x27;label&#x27;: &quot;data(weight)&quot;,
-              &#x27;text-margin-y&#x27;: -12
-          })
-          .update();
+      if (this.typeGraphe &#x3D;&#x3D;&#x3D; &quot;Directed Weighted&quot;) {
+          this.changeStyleGraphe(this.typeGraphe);
           container.message+&#x3D;this.translate.instant(&quot;grapheS.msg18&quot;)+&quot; &quot;+this.translate.instant(&quot;grapheS.msg20&quot;);
 
       }else if (this.typeGraphe &#x3D;&#x3D;&#x3D; &quot;Directed Unweighted&quot;) {
-        this.cy.style()
-          .selector(&#x27;edge&#x27;) // Apply the style to all edges
-          .style({
-              &#x27;width&#x27;: 4,
-              &#x27;line-color&#x27;: this.COLOR_LINE_EDGE,
-              &#x27;target-arrow-color&#x27;: this.TARGET_ARROW_COLOR,
-              &#x27;target-arrow-shape&#x27;: &#x27;triangle&#x27;,
-              &#x27;color&#x27;: this.DATA_EDGE_COLOR,
-              &#x27;curve-style&#x27;: &#x27;bezier&#x27;,
-              &#x27;label&#x27;: &quot;&quot;
-          })
-          .update();
+          this.changeStyleGraphe(this.typeGraphe);
           container.message+&#x3D;this.translate.instant(&quot;grapheS.msg18&quot;)+&quot; &quot;+this.translate.instant(&quot;grapheS.msg21&quot;);
       } else if (this.typeGraphe &#x3D;&#x3D;&#x3D; &quot;Undirected Weighted&quot;) {
-        this.cy.style()
-              .selector(&#x27;edge&#x27;) // Apply the style to all edges
-              .style({
-                  &#x27;width&#x27;: 4,
-                  &#x27;line-color&#x27;: this.COLOR_LINE_EDGE,
-                  &#x27;target-arrow-color&#x27;: this.TARGET_ARROW_COLOR,
-                  &#x27;target-arrow-shape&#x27;: &#x27;triangle&#x27;,
-                  &#x27;color&#x27;: this.DATA_EDGE_COLOR,
-                  &#x27;curve-style&#x27;: &#x27;haystack&#x27;,
-                  &#x27;label&#x27;: &quot;data(weight)&quot;,
-                  &#x27;text-margin-y&#x27;: -12
-              })
-              .update();
+          this.changeStyleGraphe(this.typeGraphe);
           container.message+&#x3D;this.translate.instant(&quot;grapheS.msg19&quot;)+&quot; &quot;+this.translate.instant(&quot;grapheS.msg20&quot;);;
       } else if (this.typeGraphe &#x3D;&#x3D;&#x3D; &quot;Undirected Unweighted&quot;) {
-        this.cy.style()
-              .selector(&#x27;edge&#x27;) // Apply the style to all edges
-              .style({
-                  &#x27;width&#x27;: 4,
-                  &#x27;line-color&#x27;: this.COLOR_LINE_EDGE,
-                  &#x27;target-arrow-color&#x27;: this.TARGET_ARROW_COLOR,
-                  &#x27;target-arrow-shape&#x27;: &#x27;triangle&#x27;,
-                  &#x27;color&#x27;: this.DATA_EDGE_COLOR,
-                  &#x27;curve-style&#x27;: &#x27;haystack&#x27;,
-                  &#x27;label&#x27;: &quot;&quot;
-              })
-              .update();
+        this.changeStyleGraphe(this.typeGraphe);
         container.message+&#x3D;this.translate.instant(&quot;grapheS.msg19&quot;)+&quot; &quot;+this.translate.instant(&quot;grapheS.msg21&quot;);;
       }
   }
@@ -2685,16 +3228,19 @@ export class GrapheService {
       container.remove&#x3D;&quot;&quot;;
       container.containerHeight&#x3D;50;
       //
-      const formAddEdge &#x3D; container.el.nativeElement.querySelector(&#x27;.formAddEdges&#x27;);
       const formChangeNodeId&#x3D;container.el.nativeElement.querySelector(&#x27;.formChangeNodeId&#x27;);
+      const formAddEdge &#x3D; container.el.nativeElement.querySelector(&#x27;.formAddEdges&#x27;);
       const formAChangeSizeScreen &#x3D; container.el.nativeElement.querySelector(&#x27;.formAChangeSizeScreen&#x27;);
-      const formAddNode&#x3D;container.el.nativeElement.querySelector(&#x27;.formAddNode&#x27;);
-      formAddNode.style.display&#x3D;&quot;none&quot;;
-      formAChangeSizeScreen.style.display&#x3D;&quot;none&quot;;
-      this.position&#x3D;&quot;&quot;;
-      formAddEdge.style.display&#x3D;&quot;none&quot;;
+      const formChangeColor &#x3D; container.el.nativeElement.querySelector(&#x27;.formChangeColor&#x27;);
+      const formAddNode &#x3D; container.el.nativeElement.querySelector(&#x27;.formAddNode&#x27;);
+      const formRemoveEdge &#x3D; container.el.nativeElement.querySelector(&#x27;.formRemoveEdge&#x27;);
       formChangeNodeId.style.display&#x3D;&quot;none&quot;;
-    
+      formAddEdge.style.display&#x3D;&quot;none&quot;;
+      formChangeColor.style.display&#x3D;&quot;none&quot;;
+      formAChangeSizeScreen.style.display&#x3D;&quot;none&quot;;
+      formAddNode.style.display&#x3D;&quot;none&quot;;
+      formRemoveEdge.style.display&#x3D;&quot;none&quot;;
+      this.position&#x3D;&quot;&quot;;
       if(container.buttonClicked&#x3D;&#x3D;&quot;default&quot;){
         container.message&#x3D;this.translate.instant(&quot;grapheS.msg2&quot;);
         this.cy.fit();
@@ -2714,6 +3260,7 @@ export class GrapheService {
         this.restoreGraphe(container);
       }
     }else{
+      container.message&#x3D;this.translate.instant(&quot;screenbox.msg23&quot;);
       container.buttonClicked&#x3D;&quot;&quot;;
     }
   }
@@ -3212,6 +3759,13 @@ export class GrapheService {
                     &#x27;target-arrow-shape&#x27;: &#x27;triangle&#x27;,
                     &#x27;color&#x27;: this.DATA_EDGE_COLOR,
                 }
+            },
+            {
+              selector: &#x27;edge[source &#x3D; target]&#x27;,
+              style: {
+                &#x27;line-color&#x27;: &#x27;red&#x27;,   // Color for self-loops
+                &#x27;width&#x27;: 4              // Width for self-loops
+              }
             }
         ],
         layout: {
@@ -3310,17 +3864,33 @@ export class GrapheService {
       const formAddEdge &#x3D; container.el.nativeElement.querySelector(&#x27;.formAddEdges&#x27;);
       const formAChangeSizeScreen &#x3D; container.el.nativeElement.querySelector(&#x27;.formAChangeSizeScreen&#x27;);
       const formChangeColor &#x3D; container.el.nativeElement.querySelector(&#x27;.formChangeColor&#x27;);
+      const formAddNode &#x3D; container.el.nativeElement.querySelector(&#x27;.formAddNode&#x27;);
+      const formRemoveEdge &#x3D; container.el.nativeElement.querySelector(&#x27;.formRemoveEdge&#x27;);
       formChangeNodeId.style.display&#x3D;&quot;none&quot;;
       formAddEdge.style.display&#x3D;&quot;none&quot;;
       formChangeColor.style.display&#x3D;&quot;none&quot;;
       formAChangeSizeScreen.style.display&#x3D;&quot;none&quot;;
+      formAddNode.style.display&#x3D;&quot;none&quot;;
+      formRemoveEdge.style.display&#x3D;&quot;none&quot;;
       container.grapheS.position&#x3D;&quot;&quot;;
+      this.resetColors();
       if(container.remove&#x3D;&#x3D;&quot;reset graphe&quot;){
-        container.nodeId&#x3D;0;
+        this.Alphabets&#x3D;this.alphabets.concat(this.alphabets0.map(letter &#x3D;&gt; letter + &#x27;2&#x27;));
+        this.counter&#x3D;0;
         this.cy.remove(this.cy.elements());
         container.message&#x3D;this.translate.instant(&quot;grapheS.msg17&quot;);
+      }else if(container.remove&#x3D;&#x3D;&quot;remove edges&quot;){
+        container.message&#x3D;this.translate.instant(&quot;grapheS.msg44&quot;);
+      }else if(container.remove&#x3D;&#x3D;&quot;remove nodes&quot;){
+        container.message&#x3D;this.translate.instant(&quot;grapheS.msg43&quot;);
+      }else if(container.remove&#x3D;&#x3D;&quot;remove all&quot;){
+        container.message&#x3D;this.translate.instant(&quot;grapheS.msg45&quot;);
+      }else if(container.remove&#x3D;&#x3D;&quot;special edges&quot;){
+        formRemoveEdge.style.display&#x3D;&quot;block&quot;;
+        container.message&#x3D;this.translate.instant(&quot;grapheS.msg49&quot;);
       }
     }else{
+      container.message&#x3D;this.translate.instant(&quot;screenbox.msg23&quot;);
       container.remove&#x3D;&quot;&quot;;
     }
     
@@ -3419,12 +3989,18 @@ export class GrapheService {
     let adjacencyMatrix:Array&lt;any&gt;&#x3D;[];
     const nodes &#x3D; this.cy.nodes();
     const numNodes &#x3D; nodes.length;
-
     for (let i &#x3D; 0; i &lt; numNodes; i++) {
       const row &#x3D; [];
       for (let j &#x3D; 0; j &lt; numNodes; j++) {
-        const edge &#x3D; nodes[i].edgesTo(nodes[j]);
-        row.push(edge.length ? (edge.data(&#x27;weight&#x27;)?edge.data(&#x27;weight&#x27;):1): 0);
+        let edge:any ;
+        if(this.typeGraphe.split(&#x27; &#x27;)[0]&#x3D;&#x3D;&quot;Directed&quot;){
+          edge &#x3D; nodes[i].edgesTo(nodes[j]);
+          row.push(edge.length ? (edge.data(&#x27;weight&#x27;)?edge.data(&#x27;weight&#x27;):1): 0);
+        }else{
+          edge &#x3D; nodes[i].edgesWith(nodes[j]);
+          row.push(edge.length ? (edge.data(&#x27;weight&#x27;)?edge.data(&#x27;weight&#x27;):1): 0);
+
+        }
       }
       adjacencyMatrix.push(row);
     }
@@ -3445,6 +4021,370 @@ export class GrapheService {
           container.restoreArray.push(elem);
         }
       })
+  }
+  /**
+   * Get the degrees of all nodes in the graph.
+   *
+   * @returns {Array&lt;any&gt;} - An array of objects containing node IDs, in-degrees, out-degrees, and degrees.
+   */
+  getDegreeNodes():Array&lt;any&gt;{
+    let nodesDegre:Array&lt;any&gt; &#x3D; [];
+    let obj:any;
+    if(this.cy.nodes().length){
+      this.cy.nodes().forEach((node:any) &#x3D;&gt; {
+        obj&#x3D;{
+          id:node.data(&#x27;id&#x27;),
+          indegree:node.indegree(),
+          outdegree:node.outdegree(),
+          degree:node.degree()
+        }; 
+        nodesDegre.push(obj);
+      })
+    }
+    return nodesDegre;
+  }
+  /**
+   * Create a graph from an adjacency matrix.
+   *
+   * @param {any} elements - Graph elements, including nodes and edges.
+   * @param {boolean} directed - Whether the graph is directed.
+   * @param {boolean} weighted - Whether the graph is weighted.
+   * @param {ScreenboxComponent} container - The container object containing graph-related properties.
+   */
+  createGrapheFromAdjancyMatrix(elements:any,directed:boolean,weighted:boolean,container:any):void{
+    this.cy.elements().remove();
+    if(directed &amp;&amp; weighted){
+      container.typeGraphe&#x3D;this.typeGraphe&#x3D;&quot;Directed Weighted&quot;;
+      this.changeStyleGraphe(this.typeGraphe);
+    }else if (directed) {
+        container.typeGraphe&#x3D;this.typeGraphe&#x3D;&quot;Directed Unweighted&quot;;
+        this.changeStyleGraphe(this.typeGraphe);
+    }else if (weighted) {
+        container.typeGraphe&#x3D;this.typeGraphe&#x3D;&quot;Undirected Weighted&quot;;
+        this.changeStyleGraphe(this.typeGraphe);
+    }else{
+        container.typeGraphe&#x3D;this.typeGraphe&#x3D;&quot;Undirected Unweighted&quot;;
+        this.changeStyleGraphe(this.typeGraphe);
+    }
+    let i:number&#x3D;0;
+    elements.forEach((element:any)&#x3D;&gt;{
+      if(element.id){
+        const pos &#x3D; { x: ++i*100+i**2, y: i*50-i**2 };
+        this.cy.add({ group: &#x27;nodes&#x27;, data: { id: element.id}, position: pos });
+      }else{
+        if(weighted){
+          if(element.source &amp;&amp; element.target &amp;&amp; element.weight){
+              this.cy.add({data:{
+                source: element.source,
+                target: element.target,
+                weight: element.weight
+              }
+              }); 
+          }
+        }else{
+          if(element.source &amp;&amp; element.target){
+            this.cy.add({
+              data: {
+              source: element.source,
+              target: element.target,
+              }
+            }); 
+          }
+        }
+      }
+    });
+  }
+  /**
+   * Reject the generation of a graph from an adjacency matrix.
+   *
+   * @param {ScreenboxComponent} container - The container object containing graph-related properties.
+   * @param {GrapheFromMatrixAdjaComponent} container2 - Another container object.
+   */
+  rejeterGenerateGraphFromMatrixAdjancy(container:any,container2:any):void {
+    const screen&#x3D;container.el.nativeElement.querySelector(&#x27;.screen&#x27;);
+    const buttonManupilation&#x3D;container.el.nativeElement.querySelector(&#x27;.buttonManupilation&#x27;);
+    const addGrapheWithMatrix&#x3D;container.el.nativeElement.querySelector(&#x27;.addGrapheWithMatrix&#x27;);
+    screen.style.display&#x3D;&quot;block&quot;;
+    buttonManupilation.style.display&#x3D;&quot;block&quot;;
+    addGrapheWithMatrix.style.display&#x3D;&quot;none&quot;;
+    container2.matrixText&#x3D;&quot;&quot;;
+    container.message&#x3D;this.translate.instant(&quot;grapheFromMatrix.msg5&quot;);
+    container.changeSelect&#x3D;&quot;&quot;;
+  }
+  /**
+   * Change the style of the graph based on its type.
+   *
+   * @param {string} typeGraphe - The type of the graph (e.g., Directed Weighted).
+   */
+  changeStyleGraphe(typeGraphe:string):void{
+    if(typeGraphe&#x3D;&#x3D;&quot;Directed Weighted&quot;){
+      this.cy.style()
+        .selector(&#x27;edge&#x27;) 
+        .style({
+            &#x27;width&#x27;: 4,
+            &#x27;line-color&#x27;: this.COLOR_LINE_EDGE,
+            &#x27;target-arrow-color&#x27;: this.TARGET_ARROW_COLOR,
+            &#x27;target-arrow-shape&#x27;: &#x27;triangle&#x27;,
+            &#x27;color&#x27;: this.DATA_EDGE_COLOR,
+            &#x27;curve-style&#x27;: &#x27;bezier&#x27;,
+            &#x27;label&#x27;: &quot;data(weight)&quot;,
+            &#x27;text-margin-y&#x27;: -12
+        })
+        .update();
+    }else if(typeGraphe&#x3D;&#x3D;&quot;Directed Unweighted&quot;){
+      this.cy.style()
+        .selector(&#x27;edge&#x27;) // Apply the style to all edges
+        .style({
+            &#x27;width&#x27;: 4,
+            &#x27;line-color&#x27;: this.COLOR_LINE_EDGE,
+            &#x27;target-arrow-color&#x27;: this.TARGET_ARROW_COLOR,
+            &#x27;target-arrow-shape&#x27;: &#x27;triangle&#x27;,
+            &#x27;color&#x27;: this.DATA_EDGE_COLOR,
+            &#x27;curve-style&#x27;: &#x27;bezier&#x27;,
+            &#x27;label&#x27;: &quot;&quot;
+        })
+        .update();
+    }else if(typeGraphe&#x3D;&#x3D;&quot;Undirected Weighted&quot;){
+      this.cy.style()
+            .selector(&#x27;edge&#x27;) // Apply the style to all edges
+            .style({
+                &#x27;width&#x27;: 4,
+                &#x27;line-color&#x27;: this.COLOR_LINE_EDGE,
+                &#x27;target-arrow-color&#x27;: this.TARGET_ARROW_COLOR,
+                &#x27;target-arrow-shape&#x27;: &#x27;triangle&#x27;,
+                &#x27;color&#x27;: this.DATA_EDGE_COLOR,
+                &#x27;curve-style&#x27;: &#x27;haystack&#x27;,
+                &#x27;label&#x27;: &quot;data(weight)&quot;,
+                &#x27;text-margin-y&#x27;: -12
+            })
+            .update();
+    }else if(typeGraphe&#x3D;&#x3D;&quot;Undirected Unweighted&quot;){
+      this.cy.style()
+            .selector(&#x27;edge&#x27;) // Apply the style to all edges
+            .style({
+                &#x27;width&#x27;: 4,
+                &#x27;line-color&#x27;: this.COLOR_LINE_EDGE,
+                &#x27;target-arrow-color&#x27;: this.TARGET_ARROW_COLOR,
+                &#x27;target-arrow-shape&#x27;: &#x27;triangle&#x27;,
+                &#x27;color&#x27;: this.DATA_EDGE_COLOR,
+                &#x27;curve-style&#x27;: &#x27;haystack&#x27;,
+                &#x27;label&#x27;: &quot;&quot;
+            })
+            .update();
+    }
+  }
+  /**
+   * Create a graph from a list of edges.
+   *
+   * @param {ScreenboxComponent} container - The container object containing graph-related properties.
+   * @param {GrapheFromEdgesListComponent} container2 - Another container object.
+   */
+  createGrapheFromListEdges(container:any,container2:any):void{
+    const elements:any&#x3D;container2.sendElements();
+    let err:boolean&#x3D;false;
+    let cyElements:any&#x3D;this.cy.elements();
+    let cyType:string&#x3D;this.typeGraphe;
+    if(elements){
+      this.cy.elements().remove();
+      let typeGraphe:string&#x3D;elements[0].type;
+      container.typeGraphe&#x3D;this.typeGraphe&#x3D;typeGraphe;
+      this.changeStyleGraphe(typeGraphe);
+      let i:number&#x3D;0;
+      for(let element of elements){
+        const nodeExists &#x3D; this.cy.getElementById(element.source).nonempty();
+        const nodeExists1 &#x3D; this.cy.getElementById(element.target).nonempty();
+        if(element.source&#x3D;&#x3D;&quot;&quot;){
+          container.message&#x3D;this.translate.instant(&quot;grapheFromEdgeList.msg1&quot;);
+          err&#x3D;true;
+          break;
+        }else if(!nodeExists){
+          const pos &#x3D; { x: ++i*100+i**2, y: i*50-i**2 };
+          this.cy.add({ group: &#x27;nodes&#x27;, data: { id: element.source}, position: pos });
+        }
+        if(element.target&#x3D;&#x3D;&quot;&quot;){
+          err&#x3D;true;
+          container.message&#x3D;this.translate.instant(&quot;grapheFromEdgeList.msg1&quot;);
+          break;
+        }else if(!nodeExists1){
+          const pos &#x3D; { x: ++i*100+i**2, y: i*50-i**2 };
+          this.cy.add({ group: &#x27;nodes&#x27;, data: { id: element.target}, position: pos });
+        }
+      }
+      if(!err){
+        elements.forEach((element:any)&#x3D;&gt;{
+          if(typeGraphe.split(&#x27; &#x27;)[1]&#x3D;&#x3D;&quot;Weighted&quot;){
+            if(element.source &amp;&amp; element.target &amp;&amp; element.weight){
+                this.cy.add({data:{
+                  source: element.source,
+                  target: element.target,
+                  weight: element.weight
+                }
+                }); 
+            }
+          }else{
+            if(element.source &amp;&amp; element.target){
+              this.cy.add({
+                data: {
+                source: element.source,
+                target: element.target,
+                }
+              }); 
+            }
+          }
+        })
+      const screen&#x3D;container.el.nativeElement.querySelector(&#x27;.screen&#x27;);
+      const buttonManupilation&#x3D;container.el.nativeElement.querySelector(&#x27;.buttonManupilation&#x27;);
+      const addGrapheFromEdgesList&#x3D;container.el.nativeElement.querySelector(&#x27;.addGrapheFromEdgesList&#x27;);
+      screen.style.display&#x3D;&quot;block&quot;;
+      buttonManupilation.style.display&#x3D;&quot;block&quot;;
+      addGrapheFromEdgesList.style.display&#x3D;&quot;none&quot;;
+      container2.listEdgeTextArea&#x3D;&quot;&quot;;
+      container.message&#x3D;this.translate.instant(&quot;grapheFromEdgeList.msg7&quot;);////
+      container.changeSelect&#x3D;&quot;&quot;;
+      }else{
+        container.typeGraphe&#x3D;this.typeGraphe&#x3D;cyType;
+        this.changeStyleGraphe(typeGraphe);
+        this.cy.elements().remove();
+        this.cy.add(cyElements);
+      }
+    }else{
+      container.message&#x3D;this.translate.instant(&quot;grapheFromEdgeList.msg1&quot;);
+    }
+  }
+  /**
+   * Reject the generation of a graph from a list of edges.
+   *
+   * @param {ScreenboxComponent} container - The container object containing graph-related properties.
+   * @param {GrapheFromEdgesListComponent} container2 - Another container object.
+   */
+  rejeterGenerateGraphFromListEdges(container:any,container2:any):void {
+    const screen&#x3D;container.el.nativeElement.querySelector(&#x27;.screen&#x27;);
+    const buttonManupilation&#x3D;container.el.nativeElement.querySelector(&#x27;.buttonManupilation&#x27;);
+    const addGrapheFromEdgesList&#x3D;container.el.nativeElement.querySelector(&#x27;.addGrapheFromEdgesList&#x27;);
+    screen.style.display&#x3D;&quot;block&quot;;
+    buttonManupilation.style.display&#x3D;&quot;block&quot;;
+    addGrapheFromEdgesList.style.display&#x3D;&quot;none&quot;;
+    container2.listEdgeTextArea&#x3D;&quot;&quot;;
+    container.message&#x3D;this.translate.instant(&quot;grapheFromEdgeList.msg6&quot;);///////Change this message
+    container.changeSelect&#x3D;&quot;&quot;;
+  }
+  /**
+   * Get the density of the graph.
+   *
+   * @returns {number} - The density of the graph.
+   */
+  getDensityOfGraphe():number{
+    if(this.cy.nodes().length){
+      if(this.typeGraphe.split(&#x27; &#x27;)[0] &#x3D;&#x3D; &#x27;Directed&#x27;){
+        return this.cy.edges().length/(this.cy.nodes().length*(this.cy.nodes().length-1));
+      }else{
+        return (2*this.cy.edges().length)/(this.cy.nodes().length*(this.cy.nodes().length-1));
+      }
+    }else{
+      return 0;
+    }
+  }
+  getNodeIds():Array&lt;any&gt;{
+    const nodes:Array&lt;any&gt; &#x3D; [];
+    this.cy.nodes().forEach((node:any)&#x3D;&gt;{
+      nodes.push(node.data(&#x27;id&#x27;));
+    })
+    return nodes;
+  }
+  incidenceMatrix():Array&lt;any&gt; {
+    const nodes &#x3D; this.cy.nodes();
+    const edges &#x3D; this.cy.edges();
+  
+    // Create an empty incidence matrix
+    const incidenceMatrix:Array&lt;any&gt; &#x3D; [];
+  
+    // Initialize an empty matrix with rows corresponding to nodes and columns to edges
+    for (let i &#x3D; 0; i &lt; nodes.length; i++) {
+      const row &#x3D; [];
+      for (let j &#x3D; 0; j &lt; edges.length; j++) {
+        row.push(0); // Initialize all elements to 0
+      }
+      incidenceMatrix.push(row);
+    }
+  
+    // Iterate over edges and populate the incidence matrix
+    edges.forEach((edge:any, edgeIndex:any) &#x3D;&gt; {
+      const sourceNode &#x3D; edge.source();
+      const targetNode &#x3D; edge.target();
+  
+      // Find the indices of the source and target nodes in the nodes array
+      const sourceIndex &#x3D; nodes.indexOf(sourceNode);
+      const targetIndex &#x3D; nodes.indexOf(targetNode);
+  
+      // Set the corresponding cells in the matrix to 1 or -1 to indicate incidence
+      incidenceMatrix[sourceIndex][edgeIndex] &#x3D; 1;
+      if(sourceIndex&#x3D;&#x3D;targetIndex){
+        incidenceMatrix[sourceIndex][edgeIndex] &#x3D; 2;
+      }else if(this.typeGraphe.split(&#x27; &#x27;)[0]&#x3D;&#x3D;&quot;Directed&quot;){
+        incidenceMatrix[targetIndex][edgeIndex] &#x3D; -1;
+      }else{
+        incidenceMatrix[targetIndex][edgeIndex] &#x3D; 1;
+      }
+    });
+  
+    return incidenceMatrix;
+  }
+  getEdgeIds():Array&lt;any&gt;{
+    const edges:Array&lt;any&gt; &#x3D; [];
+    this.cy.edges().forEach((edge:any)&#x3D;&gt;{
+      let edgeText:string&#x3D;&quot;&quot;;
+      if(this.typeGraphe.split(&#x27; &#x27;)[0]&#x3D;&#x3D;&quot;Directed&quot;){
+        edgeText&#x3D;&#x60;${edge.source().id()} &gt; ${edge.target().id()}&#x60;;
+      }else{
+        edgeText&#x3D;&#x60;${edge.source().id()} - ${edge.target().id()}&#x60;;
+      }
+      edges.push(edgeText);
+    })
+    return edges;
+  }
+  removeEdge(container:any,container2:any):void{
+    let exist: boolean&#x3D;false;
+    const edges &#x3D; this.cy.edges();
+    let edgeI:any;
+    if(this.typeGraphe.split(&#x27; &#x27;)[0]&#x3D;&#x3D;&quot;Undirected&quot;){
+      for(let edge of edges){
+        if((edge.source().id()&#x3D;&#x3D;container2.sourceId &amp;&amp; edge.target().id()&#x3D;&#x3D;container2.targetId)||(edge.target().id()&#x3D;&#x3D;container2.sourceId &amp;&amp; edge.source().id()&#x3D;&#x3D;container2.targetId)){
+          edgeI&#x3D;edge;
+          exist&#x3D;true;
+          break;
+        }
+      }
+    }else{
+      for(let edge of edges){
+        if(edge.source().id()&#x3D;&#x3D;container2.sourceId &amp;&amp; edge.target().id()&#x3D;&#x3D;container2.targetId){
+          edgeI&#x3D;edge;
+          exist&#x3D;true;
+          break;
+        }
+      }
+    }
+    
+    if(exist){
+      this.cy.remove(edgeI);
+      let elem&#x3D;{status:&quot;remove&quot;,element:edgeI};
+      container.restoreArray.push(elem);
+      const formRemoveEdge &#x3D; container.el.nativeElement.querySelector(&#x27;.formRemoveEdge&#x27;);
+      formRemoveEdge.style.display&#x3D;&quot;none&quot;;
+      container.message&#x3D;this.translate.instant(&quot;grapheS.msg48&quot;,{source:container2.sourceId,target:container2.targetId});
+      container2.sourceId&#x3D;&quot;&quot;;
+      container2.targetId&#x3D;&quot;&quot;;
+      container.remove&#x3D;&quot;&quot;;
+    }else{
+      container.message&#x3D;this.translate.instant(&quot;grapheS.msg47&quot;,{source:container2.sourceId,target:container2.targetId});
+    }
+  }
+  RejeterRemoveEdge(container:any,container2:any):void{
+    const formRemoveEdge &#x3D; container.el.nativeElement.querySelector(&#x27;.formRemoveEdge&#x27;);
+    formRemoveEdge.style.display&#x3D;&quot;none&quot;;
+    container2.sourceId&#x3D;&quot;&quot;;
+    container2.targetId&#x3D;&quot;&quot;;
+    container.remove&#x3D;&quot;&quot;;
+    container.message&#x3D;this.translate.instant(&quot;grapheS.msg46&quot;);
   }
 }
 </code></pre>

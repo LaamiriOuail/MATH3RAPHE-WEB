@@ -32,28 +32,26 @@ export class GrapheService {
 
   /** A counter variable for tracking. */
   counter: number = 0;
-
+  numbersArray:number[] = Array.from(Array(200), (_, i) => i + 1);
   /** The position of something (needs a description). */
   position: any;
 
-  //----------------------------------------------------------------
-  // Private Constants for Colors
-  //----------------------------------------------------------------
+
 
   /** The color of nodes. */
-  private COLOR_NODE: any = "white";
+  COLOR_NODE: any = "white";
 
   /** The background color of nodes. */
-  private BACKGROUND_COLOR_NODE: any = "black";
+  BACKGROUND_COLOR_NODE: any = "black";
 
   /** The color of edges. */
-  private COLOR_LINE_EDGE: any = "black";
+  COLOR_LINE_EDGE: any = "black";
 
   /** The color of the target arrow on edges. */
-  private TARGET_ARROW_COLOR: any = "blue";
+  TARGET_ARROW_COLOR: any = "blue";
 
   /** The color of data associated with edges. */
-  private DATA_EDGE_COLOR: any = "red";
+  DATA_EDGE_COLOR: any = "red";
 
   //----------------------------------------------------------------
   // Private Constants for Algorithm Colors
@@ -129,10 +127,16 @@ export class GrapheService {
     const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
     const formAChangeSizeScreen = container.el.nativeElement.querySelector('.formAChangeSizeScreen');
     const formChangeColor = container.el.nativeElement.querySelector('.formChangeColor');
+    const formAddNode = container.el.nativeElement.querySelector('.formAddNode');
+    const formRemoveEdge = container.el.nativeElement.querySelector('.formRemoveEdge');
+    const formRemoveNode = container.el.nativeElement.querySelector('.formRemoveNode');
+    formRemoveNode.style.display="none";
     formChangeNodeId.style.display="none";
     formAddEdge.style.display="none";
     formChangeColor.style.display="none";
     formAChangeSizeScreen.style.display="none";
+    formAddNode.style.display="none";
+    formRemoveEdge.style.display="none";
     this.position="";
     this.resetColors();
     //
@@ -153,10 +157,22 @@ export class GrapheService {
       const screen=container.el.nativeElement.querySelector('.screen');
       const buttonManupilation=container.el.nativeElement.querySelector('.buttonManupilation');
       const addGrapheWithMatrix=container.el.nativeElement.querySelector('.addGrapheWithMatrix');
+      const addGrapheFromEdgesList=container.el.nativeElement.querySelector('.addGrapheFromEdgesList');
       screen.style.display="none";
+      addGrapheFromEdgesList.style.display="none";
       buttonManupilation.style.display="none";
       addGrapheWithMatrix.style.display="block";
       container.message=this.translate.instant("grapheFromMatrix.msg6");
+    }else if(container.changeSelect=="addGrapheFromEdgesList"){
+      const screen=container.el.nativeElement.querySelector('.screen');
+      const buttonManupilation=container.el.nativeElement.querySelector('.buttonManupilation');
+      const addGrapheWithMatrix=container.el.nativeElement.querySelector('.addGrapheWithMatrix');
+      const addGrapheFromEdgesList=container.el.nativeElement.querySelector('.addGrapheFromEdgesList');
+      screen.style.display="none";
+      addGrapheFromEdgesList.style.display="block";
+      buttonManupilation.style.display="none";
+      addGrapheWithMatrix.style.display="none";
+      container.message=this.translate.instant("grapheFromMatrix.msg6");///////////////////////Chnge this Message
     }else if(container.changeSelect=="changeSizeScreen"){
       container.message=this.translate.instant("grapheS.msg39")
       formAChangeSizeScreen.style.display="block";
@@ -192,77 +208,36 @@ export class GrapheService {
     
     this.typeGraphe=container.typeGraphe;
     this.resetColors();
-    const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
     const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
+    const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
     const formAChangeSizeScreen = container.el.nativeElement.querySelector('.formAChangeSizeScreen');
-    const formAddNode=container.el.nativeElement.querySelector('.formAddNode');
-    formAChangeSizeScreen.style.display="none";
-    formAddNode.style.display="none";
+    const formChangeColor = container.el.nativeElement.querySelector('.formChangeColor');
+    const formAddNode = container.el.nativeElement.querySelector('.formAddNode');
+    const formRemoveEdge = container.el.nativeElement.querySelector('.formRemoveEdge');
+    const formRemoveNode = container.el.nativeElement.querySelector('.formRemoveNode');
+    formRemoveNode.style.display="none";
     formChangeNodeId.style.display="none";
     formAddEdge.style.display="none";
+    formChangeColor.style.display="none";
+    formAChangeSizeScreen.style.display="none";
+    formAddNode.style.display="none";
+    formRemoveEdge.style.display="none";
     this.position="";
     container.containerHeight=50;
-    container.nodeId=0;
     this.cy.remove(this.cy.elements());
     container.message=this.translate.instant("grapheS.msg1");
-    if (this.typeGraphe === "Directed Weighted") {
-      this.cy.style()
-          .selector('edge') // Apply the style to all edges
-          .style({
-              'width': 4,
-              'line-color': this.COLOR_LINE_EDGE,
-              'target-arrow-color': this.TARGET_ARROW_COLOR,
-              'target-arrow-shape': 'triangle',
-              'color': this.DATA_EDGE_COLOR,
-              'curve-style': 'bezier',
-              'label': "data(weight)",
-              'text-margin-y': -12
-          })
-          .update();
+      if (this.typeGraphe === "Directed Weighted") {
+          this.changeStyleGraphe(this.typeGraphe);
           container.message+=this.translate.instant("grapheS.msg18")+" "+this.translate.instant("grapheS.msg20");
 
       }else if (this.typeGraphe === "Directed Unweighted") {
-        this.cy.style()
-          .selector('edge') // Apply the style to all edges
-          .style({
-              'width': 4,
-              'line-color': this.COLOR_LINE_EDGE,
-              'target-arrow-color': this.TARGET_ARROW_COLOR,
-              'target-arrow-shape': 'triangle',
-              'color': this.DATA_EDGE_COLOR,
-              'curve-style': 'bezier',
-              'label': ""
-          })
-          .update();
+          this.changeStyleGraphe(this.typeGraphe);
           container.message+=this.translate.instant("grapheS.msg18")+" "+this.translate.instant("grapheS.msg21");
       } else if (this.typeGraphe === "Undirected Weighted") {
-        this.cy.style()
-              .selector('edge') // Apply the style to all edges
-              .style({
-                  'width': 4,
-                  'line-color': this.COLOR_LINE_EDGE,
-                  'target-arrow-color': this.TARGET_ARROW_COLOR,
-                  'target-arrow-shape': 'triangle',
-                  'color': this.DATA_EDGE_COLOR,
-                  'curve-style': 'haystack',
-                  'label': "data(weight)",
-                  'text-margin-y': -12
-              })
-              .update();
+          this.changeStyleGraphe(this.typeGraphe);
           container.message+=this.translate.instant("grapheS.msg19")+" "+this.translate.instant("grapheS.msg20");;
       } else if (this.typeGraphe === "Undirected Unweighted") {
-        this.cy.style()
-              .selector('edge') // Apply the style to all edges
-              .style({
-                  'width': 4,
-                  'line-color': this.COLOR_LINE_EDGE,
-                  'target-arrow-color': this.TARGET_ARROW_COLOR,
-                  'target-arrow-shape': 'triangle',
-                  'color': this.DATA_EDGE_COLOR,
-                  'curve-style': 'haystack',
-                  'label': ""
-              })
-              .update();
+        this.changeStyleGraphe(this.typeGraphe);
         container.message+=this.translate.instant("grapheS.msg19")+" "+this.translate.instant("grapheS.msg21");;
       }
   }
@@ -281,16 +256,21 @@ export class GrapheService {
       container.remove="";
       container.containerHeight=50;
       //
-      const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
       const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
+      const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
       const formAChangeSizeScreen = container.el.nativeElement.querySelector('.formAChangeSizeScreen');
-      const formAddNode=container.el.nativeElement.querySelector('.formAddNode');
-      formAddNode.style.display="none";
-      formAChangeSizeScreen.style.display="none";
-      this.position="";
-      formAddEdge.style.display="none";
+      const formChangeColor = container.el.nativeElement.querySelector('.formChangeColor');
+      const formAddNode = container.el.nativeElement.querySelector('.formAddNode');
+      const formRemoveEdge = container.el.nativeElement.querySelector('.formRemoveEdge');
+      const formRemoveNode = container.el.nativeElement.querySelector('.formRemoveNode');
+      formRemoveNode.style.display="none";
       formChangeNodeId.style.display="none";
-    
+      formAddEdge.style.display="none";
+      formChangeColor.style.display="none";
+      formAChangeSizeScreen.style.display="none";
+      formAddNode.style.display="none";
+      formRemoveEdge.style.display="none";
+      this.position="";
       if(container.buttonClicked=="default"){
         container.message=this.translate.instant("grapheS.msg2");
         this.cy.fit();
@@ -725,7 +705,6 @@ export class GrapheService {
                   //NEW CODE
                   let elem={status:"add",element:edge};
                   container.restoreArray.push(elem);
-                  
                   container.message=this.translate.instant("grapheS.msg15",{selectedNode1:container.selectedNode[0],selectedNode2:container.selectedNode[1]});
                   container.selectedNode=[];
                   this.resetColors();
@@ -907,15 +886,35 @@ export class GrapheService {
       const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
       const formAChangeSizeScreen = container.el.nativeElement.querySelector('.formAChangeSizeScreen');
       const formChangeColor = container.el.nativeElement.querySelector('.formChangeColor');
+      const formAddNode = container.el.nativeElement.querySelector('.formAddNode');
+      const formRemoveEdge = container.el.nativeElement.querySelector('.formRemoveEdge');
+      const formRemoveNode = container.el.nativeElement.querySelector('.formRemoveNode');
       formChangeNodeId.style.display="none";
       formAddEdge.style.display="none";
       formChangeColor.style.display="none";
       formAChangeSizeScreen.style.display="none";
+      formAddNode.style.display="none";
+      formRemoveEdge.style.display="none";
+      formRemoveNode.style.display="none";
       container.grapheS.position="";
+      this.resetColors();
       if(container.remove=="reset graphe"){
-        container.nodeId=0;
+        this.Alphabets=this.alphabets.concat(this.alphabets0.map(letter => letter + '2'));
+        this.counter=0;
         this.cy.remove(this.cy.elements());
         container.message=this.translate.instant("grapheS.msg17");
+      }else if(container.remove=="remove edges"){
+        container.message=this.translate.instant("grapheS.msg44");
+      }else if(container.remove=="remove nodes"){
+        container.message=this.translate.instant("grapheS.msg43");
+      }else if(container.remove=="remove all"){
+        container.message=this.translate.instant("grapheS.msg45");
+      }else if(container.remove=="special edges"){
+        formRemoveEdge.style.display="block";
+        container.message=this.translate.instant("grapheS.msg49");
+      }else if(container.remove=="special nodes"){
+        formRemoveNode.style.display="block";
+        container.message=this.translate.instant("grapheS.msg50");
       }
     }else{
       container.message=this.translate.instant("screenbox.msg23");
@@ -1017,12 +1016,18 @@ export class GrapheService {
     let adjacencyMatrix:Array<any>=[];
     const nodes = this.cy.nodes();
     const numNodes = nodes.length;
-
     for (let i = 0; i < numNodes; i++) {
       const row = [];
       for (let j = 0; j < numNodes; j++) {
-        const edge = nodes[i].edgesTo(nodes[j]);
-        row.push(edge.length ? (edge.data('weight')?edge.data('weight'):1): 0);
+        let edge:any ;
+        if(this.typeGraphe.split(' ')[0]=="Directed"){
+          edge = nodes[i].edgesTo(nodes[j]);
+          row.push(edge.length ? (edge.data('weight')?edge.data('weight'):1): 0);
+        }else{
+          edge = nodes[i].edgesWith(nodes[j]);
+          row.push(edge.length ? (edge.data('weight')?edge.data('weight'):1): 0);
+
+        }
       }
       adjacencyMatrix.push(row);
     }
@@ -1037,13 +1042,18 @@ export class GrapheService {
    */
   isEdgeRemove(node1:any,node2:any,container:any):void{
       this.cy.edges().forEach((edge:any)=>{
-        if((edge.source().id()==node1 && edge.target().id()==node2) || (edge.source().id()==node2 && edge.target().id()==node1)){
+        if((edge.source().id()==node1 && edge.target().id()==node2)/* || (edge.source().id()==node2 && edge.target().id()==node1)*/){
           this.cy.remove(edge);
           let elem={status:"remove",element:edge};
           container.restoreArray.push(elem);
         }
       })
   }
+  /**
+   * Get the degrees of all nodes in the graph.
+   *
+   * @returns {Array<any>} - An array of objects containing node IDs, in-degrees, out-degrees, and degrees.
+   */
   getDegreeNodes():Array<any>{
     let nodesDegre:Array<any> = [];
     let obj:any;
@@ -1060,70 +1070,28 @@ export class GrapheService {
     }
     return nodesDegre;
   }
+  /**
+   * Create a graph from an adjacency matrix.
+   *
+   * @param {any} elements - Graph elements, including nodes and edges.
+   * @param {boolean} directed - Whether the graph is directed.
+   * @param {boolean} weighted - Whether the graph is weighted.
+   * @param {ScreenboxComponent} container - The container object containing graph-related properties.
+   */
   createGrapheFromAdjancyMatrix(elements:any,directed:boolean,weighted:boolean,container:any):void{
     this.cy.elements().remove();
     if(directed && weighted){
       container.typeGraphe=this.typeGraphe="Directed Weighted";
-      this.cy.style()
-          .selector('edge') 
-          .style({
-              'width': 4,
-              'line-color': this.COLOR_LINE_EDGE,
-              'target-arrow-color': this.TARGET_ARROW_COLOR,
-              'target-arrow-shape': 'triangle',
-              'color': this.DATA_EDGE_COLOR,
-              'curve-style': 'bezier',
-              'label': "data(weight)",
-              'text-margin-y': -12
-          })
-          .update();
-      container.message=""////////////////////////////////
+      this.changeStyleGraphe(this.typeGraphe);
     }else if (directed) {
         container.typeGraphe=this.typeGraphe="Directed Unweighted";
-        this.cy.style()
-          .selector('edge') // Apply the style to all edges
-          .style({
-              'width': 4,
-              'line-color': this.COLOR_LINE_EDGE,
-              'target-arrow-color': this.TARGET_ARROW_COLOR,
-              'target-arrow-shape': 'triangle',
-              'color': this.DATA_EDGE_COLOR,
-              'curve-style': 'bezier',
-              'label': ""
-          })
-          .update();
-          container.message+="";////////////////////////////////////////////////////////////////////////////////
+        this.changeStyleGraphe(this.typeGraphe);
     }else if (weighted) {
         container.typeGraphe=this.typeGraphe="Undirected Weighted";
-        this.cy.style()
-              .selector('edge') // Apply the style to all edges
-              .style({
-                  'width': 4,
-                  'line-color': this.COLOR_LINE_EDGE,
-                  'target-arrow-color': this.TARGET_ARROW_COLOR,
-                  'target-arrow-shape': 'triangle',
-                  'color': this.DATA_EDGE_COLOR,
-                  'curve-style': 'haystack',
-                  'label': "data(weight)",
-                  'text-margin-y': -12
-              })
-              .update();
-          container.message+="";////////////////////////////////////////////////////////////////
+        this.changeStyleGraphe(this.typeGraphe);
     }else{
         container.typeGraphe=this.typeGraphe="Undirected Unweighted";
-        this.cy.style()
-              .selector('edge') // Apply the style to all edges
-              .style({
-                  'width': 4,
-                  'line-color': this.COLOR_LINE_EDGE,
-                  'target-arrow-color': this.TARGET_ARROW_COLOR,
-                  'target-arrow-shape': 'triangle',
-                  'color': this.DATA_EDGE_COLOR,
-                  'curve-style': 'haystack',
-                  'label': ""
-              })
-              .update();
-        container.message+="";////////////////////////////////////////////////////////////////////////////////////
+        this.changeStyleGraphe(this.typeGraphe);
     }
     let i:number=0;
     elements.forEach((element:any)=>{
@@ -1133,27 +1101,67 @@ export class GrapheService {
       }else{
         if(weighted){
           if(element.source && element.target && element.weight){
+            if(directed){
               this.cy.add({data:{
                 source: element.source,
                 target: element.target,
                 weight: element.weight
               }
               }); 
+            }else{
+              let exist:boolean=false;
+              this.cy.edges().forEach((edge:any)=>{
+                if(edge.source().id()==element.target && edge.target().id()==element.source && edge.data("weight")==element.weight){
+                  exist=true;
+                }
+              })
+              if(!exist){
+                this.cy.add({data:{
+                  source: element.source,
+                  target: element.target,
+                  weight: element.weight
+                }
+                }); 
+              }
+            }
+              
           }
         }else{
           if(element.source && element.target){
-            this.cy.add({
-              data: {
-              source: element.source,
-              target: element.target,
+            if(directed){
+              this.cy.add({
+                data: {
+                source: element.source,
+                target: element.target,
+                }
+              }); 
+            }else{
+              let exist:boolean=false;
+              this.cy.edges().forEach((edge:any)=>{
+                if(edge.source().id()==element.target && edge.target().id()==element.source){
+                  exist=true;
+                }
+              })
+              if(!exist){
+                this.cy.add({
+                  data: {
+                  source: element.source,
+                  target: element.target,
+                  }
+                }); 
               }
-            }); 
           }
         }
       }
+    }
     });
-    this.cy.fit();
   }
+  /**
+   * Reject the generation of a graph from an adjacency matrix.
+   *
+   * @param {ScreenboxComponent} container - The container object containing graph-related properties.
+   * @param {GrapheFromMatrixAdjaComponent} container2 - Another container object.
+   */
   rejeterGenerateGraphFromMatrixAdjancy(container:any,container2:any):void {
     const screen=container.el.nativeElement.querySelector('.screen');
     const buttonManupilation=container.el.nativeElement.querySelector('.buttonManupilation');
@@ -1164,5 +1172,328 @@ export class GrapheService {
     container2.matrixText="";
     container.message=this.translate.instant("grapheFromMatrix.msg5");
     container.changeSelect="";
+  }
+  /**
+   * Change the style of the graph based on its type.
+   *
+   * @param {string} typeGraphe - The type of the graph (e.g., Directed Weighted).
+   */
+  changeStyleGraphe(typeGraphe:string):void{
+    if(typeGraphe=="Directed Weighted"){
+      this.cy.style()
+        .selector('edge') 
+        .style({
+            'width': 4,
+            'line-color': this.COLOR_LINE_EDGE,
+            'target-arrow-color': this.TARGET_ARROW_COLOR,
+            'target-arrow-shape': 'triangle',
+            'color': this.DATA_EDGE_COLOR,
+            'curve-style': 'bezier',
+            'label': "data(weight)",
+            'text-margin-y': -12
+        })
+        .update();
+    }else if(typeGraphe=="Directed Unweighted"){
+      this.cy.style()
+        .selector('edge') // Apply the style to all edges
+        .style({
+            'width': 4,
+            'line-color': this.COLOR_LINE_EDGE,
+            'target-arrow-color': this.TARGET_ARROW_COLOR,
+            'target-arrow-shape': 'triangle',
+            'color': this.DATA_EDGE_COLOR,
+            'curve-style': 'bezier',
+            'label': ""
+        })
+        .update();
+    }else if(typeGraphe=="Undirected Weighted"){
+      this.cy.style()
+            .selector('edge') // Apply the style to all edges
+            .style({
+                'width': 4,
+                'line-color': this.COLOR_LINE_EDGE,
+                'target-arrow-color': this.TARGET_ARROW_COLOR,
+                'target-arrow-shape': 'triangle',
+                'color': this.DATA_EDGE_COLOR,
+                'curve-style': 'haystack',
+                'label': "data(weight)",
+                'text-margin-y': -12
+            })
+            .update();
+    }else if(typeGraphe=="Undirected Unweighted"){
+      this.cy.style()
+            .selector('edge') // Apply the style to all edges
+            .style({
+                'width': 4,
+                'line-color': this.COLOR_LINE_EDGE,
+                'target-arrow-color': this.TARGET_ARROW_COLOR,
+                'target-arrow-shape': 'triangle',
+                'color': this.DATA_EDGE_COLOR,
+                'curve-style': 'haystack',
+                'label': ""
+            })
+            .update();
+    }
+  }
+  /**
+   * Create a graph from a list of edges.
+   *
+   * @param {ScreenboxComponent} container - The container object containing graph-related properties.
+   * @param {GrapheFromEdgesListComponent} container2 - Another container object.
+   */
+  createGrapheFromListEdges(container:any,container2:any):void{
+    const elements:any=container2.sendElements();
+    let err:boolean=false;
+    let cyElements:any=this.cy.elements();
+    let cyType:string=this.typeGraphe;
+    if(elements){
+      this.cy.elements().remove();
+      let typeGraphe:string=elements[0].type;
+      container.typeGraphe=this.typeGraphe=typeGraphe;
+      this.changeStyleGraphe(typeGraphe);
+      let i:number=0;
+      for(let element of elements){
+        const nodeExists = this.cy.getElementById(element.source).nonempty();
+        const nodeExists1 = this.cy.getElementById(element.target).nonempty();
+        if(element.source==""){
+          container.message=this.translate.instant("grapheFromEdgeList.msg1");
+          err=true;
+          break;
+        }else if(!nodeExists){
+          const pos = { x: ++i*100+i**2, y: i*50-i**2 };
+          this.cy.add({ group: 'nodes', data: { id: element.source}, position: pos });
+        }
+        if(element.target==""){
+          err=true;
+          container.message=this.translate.instant("grapheFromEdgeList.msg1");
+          break;
+        }else if(!nodeExists1){
+          const pos = { x: ++i*100+i**2, y: i*50-i**2 };
+          this.cy.add({ group: 'nodes', data: { id: element.target}, position: pos });
+        }
+      }
+      if(!err){
+        elements.forEach((element:any)=>{
+          if(typeGraphe.split(' ')[1]=="Weighted"){
+            if(element.source && element.target && element.weight){
+                this.cy.add({data:{
+                  source: element.source,
+                  target: element.target,
+                  weight: element.weight
+                }
+                }); 
+            }
+          }else{
+            if(element.source && element.target){
+              this.cy.add({
+                data: {
+                source: element.source,
+                target: element.target,
+                }
+              }); 
+            }
+          }
+        })
+      const screen=container.el.nativeElement.querySelector('.screen');
+      const buttonManupilation=container.el.nativeElement.querySelector('.buttonManupilation');
+      const addGrapheFromEdgesList=container.el.nativeElement.querySelector('.addGrapheFromEdgesList');
+      screen.style.display="block";
+      buttonManupilation.style.display="block";
+      addGrapheFromEdgesList.style.display="none";
+      container2.listEdgeTextArea="";
+      container.message=this.translate.instant("grapheFromEdgeList.msg7");////
+      container.changeSelect="";
+      }else{
+        container.typeGraphe=this.typeGraphe=cyType;
+        this.changeStyleGraphe(typeGraphe);
+        this.cy.elements().remove();
+        this.cy.add(cyElements);
+      }
+    }else{
+      container.message=this.translate.instant("grapheFromEdgeList.msg1");
+    }
+  }
+  /**
+   * Reject the generation of a graph from a list of edges.
+   *
+   * @param {ScreenboxComponent} container - The container object containing graph-related properties.
+   * @param {GrapheFromEdgesListComponent} container2 - Another container object.
+   */
+  rejeterGenerateGraphFromListEdges(container:any,container2:any):void {
+    const screen=container.el.nativeElement.querySelector('.screen');
+    const buttonManupilation=container.el.nativeElement.querySelector('.buttonManupilation');
+    const addGrapheFromEdgesList=container.el.nativeElement.querySelector('.addGrapheFromEdgesList');
+    screen.style.display="block";
+    buttonManupilation.style.display="block";
+    addGrapheFromEdgesList.style.display="none";
+    container2.listEdgeTextArea="";
+    container.message=this.translate.instant("grapheFromEdgeList.msg6");///////Change this message
+    container.changeSelect="";
+  }
+  /**
+   * Get the density of the graph.
+   *
+   * @returns {number} - The density of the graph.
+   */
+  getDensityOfGraphe():number{
+    if(this.cy.nodes().length){
+      if(this.typeGraphe.split(' ')[0] == 'Directed'){
+        return this.cy.edges().length/(this.cy.nodes().length*(this.cy.nodes().length-1));
+      }else{
+        return (2*this.cy.edges().length)/(this.cy.nodes().length*(this.cy.nodes().length-1));
+      }
+    }else{
+      return 0;
+    }
+  }
+  getNodeIds():Array<any>{
+    const nodes:Array<any> = [];
+    this.cy.nodes().forEach((node:any)=>{
+      nodes.push(node.data('id'));
+    })
+    return nodes;
+  }
+  incidenceMatrix():Array<any> {
+    const nodes = this.cy.nodes();
+    const edges = this.cy.edges();
+  
+    // Create an empty incidence matrix
+    const incidenceMatrix:Array<any> = [];
+  
+    // Initialize an empty matrix with rows corresponding to nodes and columns to edges
+    for (let i = 0; i < nodes.length; i++) {
+      const row = [];
+      for (let j = 0; j < edges.length; j++) {
+        row.push(0); // Initialize all elements to 0
+      }
+      incidenceMatrix.push(row);
+    }
+  
+    // Iterate over edges and populate the incidence matrix
+    edges.forEach((edge:any, edgeIndex:any) => {
+      const sourceNode = edge.source();
+      const targetNode = edge.target();
+  
+      // Find the indices of the source and target nodes in the nodes array
+      const sourceIndex = nodes.indexOf(sourceNode);
+      const targetIndex = nodes.indexOf(targetNode);
+  
+      // Set the corresponding cells in the matrix to 1 or -1 to indicate incidence
+      incidenceMatrix[sourceIndex][edgeIndex] = 1;
+      if(sourceIndex==targetIndex){
+        incidenceMatrix[sourceIndex][edgeIndex] = 2;
+      }else if(this.typeGraphe.split(' ')[0]=="Directed"){
+        incidenceMatrix[targetIndex][edgeIndex] = -1;
+      }else{
+        incidenceMatrix[targetIndex][edgeIndex] = 1;
+      }
+    });
+  
+    return incidenceMatrix;
+  }
+  getEdgeIds():Array<any>{
+    const edges:Array<any> = [];
+    this.cy.edges().forEach((edge:any)=>{
+      let edgeText:string="";
+      if(this.typeGraphe.split(' ')[0]=="Directed"){
+        edgeText=`${edge.source().id()} > ${edge.target().id()}`;
+      }else{
+        edgeText=`${edge.source().id()} - ${edge.target().id()}`;
+      }
+      edges.push(edgeText);
+    })
+    return edges;
+  }
+  removeEdge(container:any,container2:any):void{
+    let exist: boolean=false;
+    const edges = this.cy.edges();
+    let edgeI:any;
+    if(this.typeGraphe.split(' ')[0]=="Undirected"){
+      for(let edge of edges){
+        if((edge.source().id()==container2.sourceId && edge.target().id()==container2.targetId)||(edge.target().id()==container2.sourceId && edge.source().id()==container2.targetId)){
+          edgeI=edge;
+          exist=true;
+          break;
+        }
+      }
+    }else{
+      for(let edge of edges){
+        if(edge.source().id()==container2.sourceId && edge.target().id()==container2.targetId){
+          edgeI=edge;
+          exist=true;
+          break;
+        }
+      }
+    }
+    
+    if(exist){
+      this.cy.remove(edgeI);
+      let elem={status:"remove",element:edgeI};
+      container.restoreArray.push(elem);
+      const formRemoveEdge = container.el.nativeElement.querySelector('.formRemoveEdge');
+      formRemoveEdge.style.display="none";
+      container.message=this.translate.instant("grapheS.msg48",{source:container2.sourceId,target:container2.targetId});
+      container2.sourceId="";
+      container2.targetId="";
+      container.remove="";
+    }else{
+      container.message=this.translate.instant("grapheS.msg47",{source:container2.sourceId,target:container2.targetId});
+    }
+  }
+  RejeterRemoveEdge(container:any,container2:any):void{
+    const formRemoveEdge = container.el.nativeElement.querySelector('.formRemoveEdge');
+    formRemoveEdge.style.display="none";
+    container2.sourceId="";
+    container2.targetId="";
+    container.remove="";
+    container.message=this.translate.instant("grapheS.msg46");
+  }
+  removeNode(container:any,container2:any):void{
+    let node:any=this.cy.getElementById(container2.nodeId);
+    let exist:boolean=node.isNode();
+    if(exist){
+      node.remove();
+      let elem={status:"remove",element:node};
+      container.restoreArray.push(elem);
+      //
+      container.message=this.translate.instant("grapheS.msg52",{nodeId:container2.nodeId});
+      const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
+      const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
+      const formAChangeSizeScreen = container.el.nativeElement.querySelector('.formAChangeSizeScreen');
+      const formChangeColor = container.el.nativeElement.querySelector('.formChangeColor');
+      const formAddNode = container.el.nativeElement.querySelector('.formAddNode');
+      const formRemoveEdge = container.el.nativeElement.querySelector('.formRemoveEdge');
+      const formRemoveNode = container.el.nativeElement.querySelector('.formRemoveNode');
+      formChangeNodeId.style.display="none";
+      formAddEdge.style.display="none";
+      formChangeColor.style.display="none";
+      formAChangeSizeScreen.style.display="none";
+      formAddNode.style.display="none";
+      formRemoveEdge.style.display="none";
+      formRemoveNode.style.display="none";
+      container2.nodeId="";
+      container.remove="";
+    }else{
+      container.message=this.translate.instant("grapheS.msg53",{nodeId:container2.nodeId});
+    }
+  }
+  RejeterRemoveNode(container:any,container2:any):void{
+    const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
+    const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
+    const formAChangeSizeScreen = container.el.nativeElement.querySelector('.formAChangeSizeScreen');
+    const formChangeColor = container.el.nativeElement.querySelector('.formChangeColor');
+    const formAddNode = container.el.nativeElement.querySelector('.formAddNode');
+    const formRemoveEdge = container.el.nativeElement.querySelector('.formRemoveEdge');
+    const formRemoveNode = container.el.nativeElement.querySelector('.formRemoveNode');
+    container.message=this.translate.instant("grapheS.msg51");
+    formChangeNodeId.style.display="none";
+    formAddEdge.style.display="none";
+    formChangeColor.style.display="none";
+    formAChangeSizeScreen.style.display="none";
+    formAddNode.style.display="none";
+    formRemoveEdge.style.display="none";
+    formRemoveNode.style.display="none";
+    container2.nodeId="";
+    container.remove="";
   }
 }

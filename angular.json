@@ -31,7 +31,9 @@
               "src/styles.css",
               "src/assets/darkmode.css" 
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/mathjax/es5/tex-mml-chtml.js"
+            ]
           },
           "configurations": {
             "production": {

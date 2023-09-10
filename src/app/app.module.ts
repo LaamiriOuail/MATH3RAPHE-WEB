@@ -29,6 +29,10 @@ import { AddNodeComponent } from './components/add-node/add-node.component';
 import { ChangeSizeScreenComponent } from './components/change-size-screen/change-size-screen.component';
 import { DarkModeService } from './AllService/dark-mode.service';
 import { GrapheFromMatrixAdjaComponent } from './components/graphe-from-matrix-adja/graphe-from-matrix-adja.component';
+import { GrapheFromEdgesListComponent } from './components/graphe-from-edges-list/graphe-from-edges-list.component';
+import { RemoveEdgeComponent } from './components/remove-edge/remove-edge.component';
+import { RemoveNodeComponent } from './components/remove-node/remove-node.component';
+import { EnumerationNodeComponent } from './components/enumeration-node/enumeration-node.component';
 
 
 // Function to load translations
@@ -55,6 +59,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     AddNodeComponent,
     ChangeSizeScreenComponent,
     GrapheFromMatrixAdjaComponent,
+    GrapheFromEdgesListComponent,
+    RemoveEdgeComponent,
+    RemoveNodeComponent,
+    EnumerationNodeComponent,
   ],
   imports: [
     BrowserModule,

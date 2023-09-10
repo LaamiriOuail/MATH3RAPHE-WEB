@@ -124,7 +124,7 @@
                                     <a href="../components/MessageComponent.html" >MessageComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/RemoveEdgeComponent.html" >RemoveEdgeComponent</a>
+                                    <a href="../components/RemoveEdgeComponent.html"  class="active" >RemoveEdgeComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/ScreenComponent.html" >ScreenComponent</a>
@@ -133,7 +133,7 @@
                                     <a href="../components/ScreenboxComponent.html" >ScreenboxComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/SelectComponent.html"  class="active" >SelectComponent</a>
+                                    <a href="../components/SelectComponent.html" >SelectComponent</a>
                                 </li>
                         </ul>
                     </li>
@@ -320,7 +320,7 @@
                                            <a href="../components/MessageComponent.html" >MessageComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/RemoveEdgeComponent.html" >RemoveEdgeComponent</a>
+                                           <a href="../components/RemoveEdgeComponent.html"  class="active" >RemoveEdgeComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/ScreenComponent.html" >ScreenComponent</a>
@@ -329,7 +329,7 @@
                                            <a href="../components/ScreenboxComponent.html" >ScreenboxComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/SelectComponent.html"  class="active" >SelectComponent</a>
+                                           <a href="../components/SelectComponent.html" >SelectComponent</a>
                                        </li>
                                </ul>
                            </li>
@@ -412,7 +412,7 @@
 
 <ol class="breadcrumb">
   <li>Components</li>
-  <li>SelectComponent</li>
+  <li>RemoveEdgeComponent</li>
 </ol>
 
 
@@ -430,7 +430,7 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>src/app/components/select/select.component.ts</code>
+    <code>src/app/components/remove-edge/remove-edge.component.ts</code>
 </p>
 
 
@@ -453,19 +453,19 @@
 
             <tr>
                 <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>app-select</code></td>
+                <td class="col-md-9"><code>app-remove-edge</code></td>
             </tr>
 
             <tr>
                 <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>select.component.css</code></td>
+                <td class="col-md-9"><code>remove-edge.component.css</code></td>
             </tr>
 
 
 
             <tr>
                 <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>select.component.html</code></td>
+                <td class="col-md-9"><code>remove-edge.component.html</code></td>
             </tr>
 
 
@@ -475,21 +475,6 @@
 
     <section>
         <h3 id="inputs">Inputs</h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <code>Class</code>
-                        </td>
-                        <td class="col-md-10">
-                              <p>
-                                <em>Type:</em>    <code>string</code>
-
-                              </p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
             <table class="table table-sm table-bordered">
                 <tbody>
                     <tr>
@@ -505,98 +490,23 @@
                     </tr>
                 </tbody>
             </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <code>disableLabell</code>
-                        </td>
-                        <td class="col-md-10">
-                              <p>
-                                <em>Type:</em>    <code>string</code>
-
-                              </p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <code>functionHandler</code>
-                        </td>
-                        <td class="col-md-10">
-                              <p>
-                                <em>Type:</em>    <code>any</code>
-
-                              </p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <code>items</code>
-                        </td>
-                        <td class="col-md-10">
-                              <p>
-                                <em>Type:</em>    <code>any[]</code>
-
-                              </p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-    </section>
-
-    <section>
-        <h3 id="outputs">Outputs</h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <code>selected</code>
-                        </td>
-                        <td class="col-md-10">
-                            <em><code>$event</code> type:</em>    <code>EventEmitter&lt;string&gt;</code>
-
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
     </section>
 
 
     <section>
-        <h3 id="methods">Methods</h3>
+        <h3 id="constructor">Constructor</h3>
             <table class="table table-sm table-bordered">
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b> onChange</b>
+                            <code>constructor(grapheS: any)</code>
                         </td>
                     </tr>
     
-                    <tr>
-                        <td class="col-md-4">
-    <code>onChange()</code>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-description">
-                                    <b>Returns: </b>    <code>void</code>
-    
-                                </div>
-                        </td>
-                    </tr>
                 </tbody>
             </table>
     </section>
+
 
     <section>
         <h3 id="inputs">Properties</h3>
@@ -604,12 +514,27 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b> selectedNew</b>
+                            <b> sourceId</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <code>selectedNew:     <code>string</code>
+                            <code>sourceId:     <code>string</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> targetId</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>targetId:     <code>string</code>
     </bcode>
                         </td>
                     </tr>
@@ -618,23 +543,20 @@
     </section>
 </div>
         <div class="tab-pane fade tab-source-code" id="source">
-            <pre><code class="hljs javascript">import { Component,EventEmitter,Input, Output } from &#x27;@angular/core&#x27;;
+            <pre><code class="hljs javascript">import { Component, Input } from &#x27;@angular/core&#x27;;
+import { GrapheService } from &#x27;src/app/AllService/graphe.service&#x27;;
 
 @Component({
-  selector: &#x27;app-select&#x27;,
-  templateUrl: &#x27;./select.component.html&#x27;,
-  styleUrls: [&#x27;./select.component.css&#x27;]
+  selector: &#x27;app-remove-edge&#x27;,
+  templateUrl: &#x27;./remove-edge.component.html&#x27;,
+  styleUrls: [&#x27;./remove-edge.component.css&#x27;]
 })
-export class SelectComponent {
-  @Input() disableLabell:string&#x3D;&quot;&quot;;
+export class RemoveEdgeComponent {
+  sourceId: string&#x3D;&quot;&quot;;
+  targetId: string&#x3D;&quot;&quot;;
   @Input() container:any;
-  @Input() functionHandler:any;
-  @Input() Class:string&#x3D;&quot;&quot;;
-  @Input() items:Array&lt;any&gt;&#x3D;[];
-  @Output() selected:EventEmitter&lt;string&gt;&#x3D; new EventEmitter&lt;string&gt;();
-  selectedNew:string&#x3D;&quot;&quot;;
-  onChange():void{
-    this.selected.emit(this.selectedNew);
+  constructor(protected grapheS:GrapheService){
+
   }
 }
 </code></pre>

@@ -106,6 +106,12 @@
                                     <a href="../components/FooterComponent.html" >FooterComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/GrapheFromEdgesListComponent.html" >GrapheFromEdgesListComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/GrapheFromMatrixAdjaComponent.html" >GrapheFromMatrixAdjaComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/HeaderComponent.html" >HeaderComponent</a>
                                 </li>
                                 <li class="link">
@@ -116,6 +122,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/MessageComponent.html" >MessageComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/RemoveEdgeComponent.html" >RemoveEdgeComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/ScreenComponent.html" >ScreenComponent</a>
@@ -158,6 +167,31 @@
                         </ul>
                     </li>
             
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-info"></span>
+                            <span>Interfaces</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-interfaces-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-interfaces-links"
+                            >
+                                <li class="link">
+                                    <a href="../interfaces/IUnweightedEdge.html" >IUnweightedEdge</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/IUnweightedEdgeTyped.html" >IUnweightedEdgeTyped</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/IWeightedEdge.html" >IWeightedEdge</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/IWeightedEdgeTyped.html" >IWeightedEdgeTyped</a>
+                                </li>
+                        </ul>
+                    </li>
             
             
             
@@ -268,6 +302,12 @@
                                            <a href="../components/FooterComponent.html" >FooterComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/GrapheFromEdgesListComponent.html" >GrapheFromEdgesListComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/GrapheFromMatrixAdjaComponent.html" >GrapheFromMatrixAdjaComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/HeaderComponent.html" >HeaderComponent</a>
                                        </li>
                                        <li class="link">
@@ -278,6 +318,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/MessageComponent.html" >MessageComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/RemoveEdgeComponent.html" >RemoveEdgeComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/ScreenComponent.html" >ScreenComponent</a>
@@ -320,6 +363,31 @@
                                </ul>
                            </li>
                    
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-info"></span>
+                                   <span>Interfaces</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#interfaces-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="interfaces-links"
+                   >
+                                       <li class="link">
+                                           <a href="../interfaces/IUnweightedEdge.html" >IUnweightedEdge</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/IUnweightedEdgeTyped.html" >IUnweightedEdgeTyped</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/IWeightedEdge.html" >IWeightedEdge</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/IWeightedEdgeTyped.html" >IWeightedEdgeTyped</a>
+                                       </li>
+                               </ul>
+                           </li>
                    
                    
                    
@@ -1339,6 +1407,111 @@
                             </tr>
                         </tbody>
                     </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> getRandomColor</b>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            <code>getRandomColor()</code>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Get a random color.</p>
+            </div>
+                                        <div class="io-description">
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns: </b>    <code>string</code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                <ul>
+            <li>A randomly generated color in hexadecimal format.</li>
+            </ul>
+            
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> tarjanStronglyComponentAnimation</b>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            <code>tarjanStronglyComponentAnimation(container: any)</code>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Animate Tarjan&#39;s strongly connected components algorithm by changing node and edge colors.</p>
+            </div>
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <ul class="jsdoc-params">
+                                                        <li>
+                                                            <div>
+                                                                <b>container</b>
+                                                                    :     <code>ScreenboxComponent</code>
+            
+                                                            </div>
+                                                            <div>
+                                                                <ul>
+            <li>The container for the graph and visualization.</li>
+            </ul>
+            
+                                                            </div>
+                                                        </li>
+                                                </ul>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns: </b>    <code>void</code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> aStarAnimation</b>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            <code>aStarAnimation(container: any)</code>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description">
+                                            <b>Returns: </b>    <code>void</code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
             </section>
 
     </div>
@@ -1694,27 +1867,33 @@ export class AlgorithmService {
       const formAChangeSizeScreen &#x3D; container.el.nativeElement.querySelector(&#x27;.formAChangeSizeScreen&#x27;);
       const formChangeColor &#x3D; container.el.nativeElement.querySelector(&#x27;.formChangeColor&#x27;);
       const formAddNode &#x3D; container.el.nativeElement.querySelector(&#x27;.formAddNode&#x27;);
+      const formRemoveEdge &#x3D; container.el.nativeElement.querySelector(&#x27;.formRemoveEdge&#x27;);
       formChangeNodeId.style.display&#x3D;&quot;none&quot;;
       formAddEdge.style.display&#x3D;&quot;none&quot;;
-      formAddNode.style.display&#x3D;&quot;none&quot;;
       formChangeColor.style.display&#x3D;&quot;none&quot;;
       formAChangeSizeScreen.style.display&#x3D;&quot;none&quot;;
+      formAddNode.style.display&#x3D;&quot;none&quot;;
+      formRemoveEdge.style.display&#x3D;&quot;none&quot;;
       container.grapheS.position&#x3D;&quot;&quot;;
       container.message&#x3D;this.translate.instant(&quot;algoS.msg7&quot;,{algorithm:container.algorithm});
       if(container.algorithm&#x3D;&#x3D;&quot;floydWarshall&quot;){
         this.floydWarshallAlgorithm(container);
-      }else if((container.algorithm&#x3D;&#x3D;&quot;dijkstra&quot; || container.algorithm&#x3D;&#x3D;&quot;dijkstraAB&quot;)&amp;&amp; !this.isAllEdgePositive(container)){
+      }else if(container.algorithm&#x3D;&#x3D;&quot;tarjan&quot;){
+        container.message&#x3D;&quot;Tarjan(SCCs): &quot;;
+        this.tarjanStronglyComponentAnimation(container);
+      }
+      else if((container.algorithm&#x3D;&#x3D;&quot;dijkstra&quot; || container.algorithm&#x3D;&#x3D;&quot;dijkstraAB&quot;)&amp;&amp; !this.isAllEdgePositive(container)){
         container.message&#x3D;container.translate.instant(&quot;algoS.msg10&quot;);
         container.algorithm&#x3D;&quot;&quot;;
       }else if(container.algorithm&#x3D;&#x3D;&quot;kruskal&quot; || container.algorithm&#x3D;&#x3D;&quot;prime&quot;){
         if(this.isGraphConnected(container)&#x3D;&#x3D;true &amp;&amp; container.typeGraphe.split(&quot; &quot;)[0]&#x3D;&#x3D;&quot;Undirected&quot; /*&amp;&amp; container.typeGraphe.split(&quot; &quot;)[1]&#x3D;&#x3D;&quot;Weighted&quot;*/){
           container.grapheS.resetColors();
           if(container.algorithm&#x3D;&#x3D;&quot;kruskal&quot;){
-            this.kruskalAnimation(container);
             container.message&#x3D;&quot;Kruskal(MST): &quot;;
+            this.kruskalAnimation(container);
           }else{
-            this.primeAniamantion(container);
             container.message&#x3D;&quot;Prime(MST): &quot;;
+            this.primeAniamantion(container);
           }
         }else{
           if(container.algorithm&#x3D;&#x3D;&quot;kruskal&quot;){
@@ -1727,6 +1906,8 @@ export class AlgorithmService {
     }else{
       if(!container.grapheS.cy.nodes().length){
         container.message&#x3D;container.translate.instant(&quot;algoS.msg11&quot;);
+      }else if(container.typeGraphe&#x3D;&#x3D;&quot;&quot;){
+        container.message&#x3D;this.translate.instant(&quot;screenbox.msg23&quot;);
       }
       container.algorithm&#x3D;&quot;&quot;;
     }
@@ -1864,8 +2045,76 @@ export class AlgorithmService {
       }
     })
   }
-  //Tarjan Strongly Component 
+  /**
+   * Get a random color.
+   *
+   * @returns {string} - A randomly generated color in hexadecimal format.
+   */
+  getRandomColor():string {
+    const letters:string &#x3D; &#x27;0123456789ABCDEF&#x27;;
+    let color:string &#x3D; &#x27;#&#x27;;
+    for (let i &#x3D; 0; i &lt; 6; i++) {
+      color +&#x3D; letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+  /**
+   * Animate Tarjan&#x27;s strongly connected components algorithm by changing node and edge colors.
+   *
+   * @param {ScreenboxComponent} container - The container for the graph and visualization.
+   */
+  tarjanStronglyComponentAnimation(container:any):void{
+    const { cut, components } &#x3D; container.grapheS.cy.elements().tarjanStronglyConnected();
+    let message:string&#x3D;&quot;&quot;;
+    let i:number&#x3D;0;
+    components.forEach((component:any, index:any) &#x3D;&gt; {
+      setTimeout(()&#x3D;&gt;{
+        message&#x3D;this.translate.instant(&quot;algoS.msg13&quot;,{index:++i});
+        const color:string &#x3D; this.getRandomColor(); 
+        const backgroundColor:string &#x3D; this.getRandomColor();
+        const fleshColor:string&#x3D;this.getRandomColor();
+        setTimeout(()&#x3D;&gt;{
+          component.nodes().style({
+            &#x27;background-color&#x27;: backgroundColor,
+            &#x27;border-color&#x27;: color,
+            &#x27;color&#x27;: color,
+          });
+        },10)
+        component.nodes().forEach((node:any)&#x3D;&gt;{
+          message+&#x3D;node.data(&#x27;id&#x27;)+&quot;,&quot;
+        })
+        message&#x3D;message.substring(0, message.length-1);
+        setTimeout(()&#x3D;&gt;{
+          component.edges().style({
+            &#x27;line-color&#x27;:backgroundColor,
+          });
+        },10)
+       
+        if(container.typeGraphe.split(&quot; &quot;)[1]&#x3D;&#x3D;&quot;Weighted&quot;){
+          setTimeout(()&#x3D;&gt;{
+            component.edges().style({
+              &#x27;color&#x27;: color,
+            });
+          },10)
+          
+        }
+        if(container.typeGraphe.split(&quot; &quot;)[0]&#x3D;&#x3D;&quot;Directed&quot;){
+          setTimeout(()&#x3D;&gt;{
+            component.edges().style({
+              &#x27;target-arrow-color&#x27;: fleshColor,
+            });
+          },10)
+        }
+        container.message+&#x3D;message+&quot; || &quot;;
+      },i*20000)
+      
+    });
+    
+  }
+  
+  aStarAnimation(container:any):void{
 
+  }
 }</code></pre>
     </div>
 </div>

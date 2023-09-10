@@ -11,6 +11,10 @@
     "fr": "French",
     "ar": "Arabic"
   },
+  "matrix":{
+    "adjMatrix":"Adjacency Matrix : ",
+    "IncMatrix":"Incidence Matrix : "
+  },
   "info": {
     "s":"s",
     "w":"w",
@@ -36,7 +40,8 @@
     "degree":"Degree",
     "indegree":"In-Degree",
     "outdegree":"Out-Degree",
-    "idNode":"Node Id"
+    "idNode":"Node Id",
+    "density":"density"
   },
   "screenbox": {
     "msg1": "Type of graph",
@@ -84,7 +89,11 @@
     "msg43": "Size of Screen",
     "msg44": "Enter screen width",
     "msg45": "Enter screen height",
-    "msg46": "Create using adjacency matrix"
+    "msg46": "Create using adjacency matrix",
+    "msg47": "Create using list of edges",
+    "msg48": "Special edge",
+    "msg49": "Special node"
+
 
 
   },
@@ -130,7 +139,18 @@
     "msg39": "Enter the new screen height.",
     "msg40": "The screen size change operation has been canceled.",
     "msg41": "The graph contains no nodes!",
-    "msg42": "Bellman Ford algorithm: First node selected with ID: {{nodeId}}. Now select the second node."
+    "msg42": "Bellman Ford algorithm: First node selected with ID: {{nodeId}}. Now select the second node.",
+    "msg43": "Click on the point you want to remove",
+    "msg44": "Click on the edge you want to remove",
+    "msg45": "Click on the edge or point you want to remove",
+    "msg46": "L'opération de suppression d'un bord spécifique a été annulée",
+    "msg47": "Le graphe ne contient pas de bord source {{source}} et cible {{target}}" ,
+    "msg48": "The deletion of the edge with source {{source}} and target {{target}} was successful",
+    "msg49": "Please enter the information of the edge you want to delete" ,
+    "msg50": "Enter the information of the point you want to delete",
+    "msg51": "The deletion of the selected point has been canceled",
+    "msg52": "Point deleted: {{nodeId}}",
+    "msg53": "The chart does not contain the point: {{nodeId}}"
   },
   "algoS": {
     "msg1": "Breadth First Search (BFS) Path: ",
@@ -145,7 +165,8 @@
     "msg10": "Dijkstra's algorithm is only applicable to a weighted positive graph",
     "msg11": "The graph is empty",
     "msg12": "Prime algorithm is only applicable to a weighted connected undirected graph",
-    "msg13": "Component {{index}} : "
+    "msg13": "Component {{index}} : ",
+    "msg14": "The Tarjane algorithm does not apply to undirected graphs"
   },
   "saveUploadS": {
     "msg1": "File uploaded successfully",
@@ -157,6 +178,25 @@
     "msg3": "The matrix is not square.",
     "msg4": "Graphe generate from matrix successfully",
     "msg5": "The process of generate graphe from matrix is rejected",
-    "msg6": "Enter the adjancency matrix to genearate graphe"
+    "msg6": "Enter the adjancency matrix to genearate graphe",
+    "msg7": "Generate Graph",
+    "msg8": "Rejeter"
+  },
+  "grapheFromEdgeList":{
+    "msg1":"Syntax Error",
+    "msg2": "Input is empty.",
+    "msg3":"Type Error",
+    "msg4": "Generate Graph",
+    "msg5": "Rejeter",
+    "msg6": "The process of generate graphe from list of edges is rejected",
+    "msg7": "Graphe generate from list of edges successfully"
+  },
+  "extendedFormat": {
+    "title": "Extended format",
+    "description": "Using extended format you may set up directed and weighted edges.",
+    "undirectedUnweighted": "Undirected Unweighted",
+    "directedUnweighted": "Directed Unweighted",
+    "undirectedWeighted": "Undirected Weighted",
+    "directedWeighted": "Directed Weighted"
   }
 }

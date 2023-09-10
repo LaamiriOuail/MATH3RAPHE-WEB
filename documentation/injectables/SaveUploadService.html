@@ -106,6 +106,12 @@
                                     <a href="../components/FooterComponent.html" >FooterComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/GrapheFromEdgesListComponent.html" >GrapheFromEdgesListComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/GrapheFromMatrixAdjaComponent.html" >GrapheFromMatrixAdjaComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/HeaderComponent.html" >HeaderComponent</a>
                                 </li>
                                 <li class="link">
@@ -116,6 +122,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/MessageComponent.html" >MessageComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/RemoveEdgeComponent.html" >RemoveEdgeComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/ScreenComponent.html" >ScreenComponent</a>
@@ -158,6 +167,31 @@
                         </ul>
                     </li>
             
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-info"></span>
+                            <span>Interfaces</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-interfaces-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-interfaces-links"
+                            >
+                                <li class="link">
+                                    <a href="../interfaces/IUnweightedEdge.html" >IUnweightedEdge</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/IUnweightedEdgeTyped.html" >IUnweightedEdgeTyped</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/IWeightedEdge.html" >IWeightedEdge</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/IWeightedEdgeTyped.html" >IWeightedEdgeTyped</a>
+                                </li>
+                        </ul>
+                    </li>
             
             
             
@@ -268,6 +302,12 @@
                                            <a href="../components/FooterComponent.html" >FooterComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/GrapheFromEdgesListComponent.html" >GrapheFromEdgesListComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/GrapheFromMatrixAdjaComponent.html" >GrapheFromMatrixAdjaComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/HeaderComponent.html" >HeaderComponent</a>
                                        </li>
                                        <li class="link">
@@ -278,6 +318,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/MessageComponent.html" >MessageComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/RemoveEdgeComponent.html" >RemoveEdgeComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/ScreenComponent.html" >ScreenComponent</a>
@@ -320,6 +363,31 @@
                                </ul>
                            </li>
                    
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-info"></span>
+                                   <span>Interfaces</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#interfaces-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="interfaces-links"
+                   >
+                                       <li class="link">
+                                           <a href="../interfaces/IUnweightedEdge.html" >IUnweightedEdge</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/IUnweightedEdgeTyped.html" >IUnweightedEdgeTyped</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/IWeightedEdge.html" >IWeightedEdge</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/IWeightedEdgeTyped.html" >IWeightedEdgeTyped</a>
+                                       </li>
+                               </ul>
+                           </li>
                    
                    
                    
@@ -842,10 +910,14 @@ export class SaveUploadService {
       const formAddEdge &#x3D; container.el.nativeElement.querySelector(&#x27;.formAddEdges&#x27;);
       const formAChangeSizeScreen &#x3D; container.el.nativeElement.querySelector(&#x27;.formAChangeSizeScreen&#x27;);
       const formChangeColor &#x3D; container.el.nativeElement.querySelector(&#x27;.formChangeColor&#x27;);
+      const formAddNode &#x3D; container.el.nativeElement.querySelector(&#x27;.formAddNode&#x27;);
+      const formRemoveEdge &#x3D; container.el.nativeElement.querySelector(&#x27;.formRemoveEdge&#x27;);
       formChangeNodeId.style.display&#x3D;&quot;none&quot;;
       formAddEdge.style.display&#x3D;&quot;none&quot;;
       formChangeColor.style.display&#x3D;&quot;none&quot;;
       formAChangeSizeScreen.style.display&#x3D;&quot;none&quot;;
+      formAddNode.style.display&#x3D;&quot;none&quot;;
+      formRemoveEdge.style.display&#x3D;&quot;none&quot;;
       container.grapheS.position&#x3D;&quot;&quot;;
       if(container.saveUpload&#x3D;&#x3D;&quot;upload&quot;){
         this.uploadJSON(container);
@@ -862,9 +934,11 @@ export class SaveUploadService {
           this.savePNG(container,false);
         }
       }else{
-          if(!container.grapheS.cy.nodes().length &amp;&amp; container.typeGraphe!&#x3D;&quot;&quot;){
+          if(!container.grapheS.cy.nodes().length){
             container.message&#x3D;this.translate.instant(&quot;algoS.msg11&quot;);
-          } 
+          } else if(container.typeGraphe&#x3D;&#x3D;&quot;&quot;){
+            container.message&#x3D;this.translate.instant(&quot;screenbox.msg23&quot;);
+          }
           container.typeGraphe&#x3D;&quot;&quot;;
       }
   }

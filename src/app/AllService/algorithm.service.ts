@@ -24,14 +24,14 @@ export class AlgorithmService {
    */
   bfsAnimation(rootNodeId: string,container:any): void {
     const root = container.grapheS.cy.$(`#${rootNodeId}`);
-    const visited = new Set();
+    const visited:Array<string> = [];
     const path: { [nodeId: string]: string } = {}; // To store the BFS path
-    
-    container.grapheS.cy.elements().bfs({
+    let j:number=0;
+    let bfs:any=container.grapheS.cy.elements().bfs({
       roots: root,
       visit: (v:any, e:any, u:any, i:any, depth:any) => {
         setTimeout(() => {
-          visited.add(v.id());
+          visited.push(v.id());
           v.style('background-color', container.grapheS.BACKGROUND_COLOR_NODE_ALGO); // Update node color
           v.style('color',container.grapheS.COLOR_NODE_ALGO);
           if (u && e) {
@@ -42,13 +42,26 @@ export class AlgorithmService {
             e.style('color', container.grapheS.DATA_EDGE_COLOR_ALGO)
             path[v.id()] = u.id();
           }
-          if (i === visited.size - 1) {
+          if (i == visited.length-1 ) {
             this.printBFSPath(rootNodeId, path, v.id(),container); // Print path when all nodes are visited
           }
         }, i * 2000); // Animation delay
+        j=i;
       },
       directed: (container.grapheS.typeGraphe.split(" ")[0]=="Directed")
     });
+    setTimeout(() => {
+      let path:string="";
+      for(let i:number=0;i<visited.length;i++) {
+        if(i!=visited.length-1){
+          path+=`\t${visited[i]}\t,`;
+        }else{
+          path+=`\t${visited[i]}\t`;
+        }
+      }
+      container.message=`Bfs path: ${path}`;
+    },++j*2000)
+    container.algorithm="";
   }
   /**
    * Print the BFS path in the container message.
@@ -79,14 +92,14 @@ export class AlgorithmService {
  */
   dfsAnimation(rootNodeId: string, container: any): void {
     const root = container.grapheS.cy.$(`#${rootNodeId}`);
-    const visited = new Set();
+    const visited:Array<string> = [];
     const path: { [nodeId: string]: string } = {}; // Pour stocker le chemin DFS
-    
+    let j:number=0;
     container.grapheS.cy.elements().dfs({
         roots: root,
         visit: (v: any, e: any, u: any, i: any, depth: any) => {
             setTimeout(() => {
-                visited.add(v.id());
+                visited.push(v.id());
                 v.style('background-color', container.grapheS.BACKGROUND_COLOR_NODE_ALGO); // Update node color
                 v.style('color',container.grapheS.COLOR_NODE_ALGO);
 
@@ -98,13 +111,26 @@ export class AlgorithmService {
                   e.style('color', container.grapheS.DATA_EDGE_COLOR_ALGO)
                     path[v.id()] = u.id();
                 }
-                if (i === visited.size - 1) {
+                if (i === visited.length - 1) {
                     this.printDFSPath(rootNodeId, path, v.id(), container); // Afficher le chemin lorsque tous les nœuds sont visités
                 }
             }, i * 2000); // Délai d'animation
+            j=i;
         },
         directed: (container.grapheS.typeGraphe.split(" ")[0]=="Directed")
     });
+    setTimeout(() => {
+      let path:string="";
+      for(let i:number=0;i<visited.length;i++) {
+        if(i!=visited.length-1){
+          path+=`\t${visited[i]}\t,`;
+        }else{
+          path+=`\t${visited[i]}\t`;
+        }
+      }
+      container.message=`Dfs path: ${path}`;
+    },++j*2000)
+    container.algorithm="";
   }
 
   /**
@@ -166,7 +192,7 @@ export class AlgorithmService {
       container.grapheS.resetColors();
       container.message=lastMessage;
     },i*10000)
-    
+    container.algorithm="";
   }
   /**
    * Animate Dijkstra's algorithm by updating node and edge styles.
@@ -207,6 +233,7 @@ export class AlgorithmService {
     });
     const pathString = pathNodes.join(' -> ');
     container.message = this.translate.instant("algoS.msg3",{rootNodeId,targetNodeId,pathString,distanceToTarget});
+    container.algorithm="";
   }
 
   /**
@@ -247,6 +274,7 @@ export class AlgorithmService {
     });
     const pathString = pathNodes.join(' -> ');
     container.message = this.translate.instant("algoS.msg3",{rootNodeId,targetNodeId,pathString,distanceToTarget});
+    container.algorithm="";
   }
 
   /**
@@ -287,7 +315,7 @@ export class AlgorithmService {
       container.grapheS.resetColors();
       container.message=lastMessage;
     },i*10000)
-    
+    container.algorithm="";
   }
 
   /**
@@ -326,6 +354,7 @@ export class AlgorithmService {
         }
       });
     });
+    container.algorithm="";
   }
 
   /**
@@ -349,18 +378,26 @@ export class AlgorithmService {
       const formAChangeSizeScreen = container.el.nativeElement.querySelector('.formAChangeSizeScreen');
       const formChangeColor = container.el.nativeElement.querySelector('.formChangeColor');
       const formAddNode = container.el.nativeElement.querySelector('.formAddNode');
+      const formRemoveEdge = container.el.nativeElement.querySelector('.formRemoveEdge');
+      const formRemoveNode = container.el.nativeElement.querySelector('.formRemoveNode');
+      formRemoveNode.style.display="none";
       formChangeNodeId.style.display="none";
       formAddEdge.style.display="none";
-      formAddNode.style.display="none";
       formChangeColor.style.display="none";
       formAChangeSizeScreen.style.display="none";
+      formAddNode.style.display="none";
+      formRemoveEdge.style.display="none";
       container.grapheS.position="";
       container.message=this.translate.instant("algoS.msg7",{algorithm:container.algorithm});
       if(container.algorithm=="floydWarshall"){
         this.floydWarshallAlgorithm(container);
       }else if(container.algorithm=="tarjan"){
-        container.message="Tarjan(SCCs): ";
-        this.tarjanStronglyComponentAnimation(container);
+        if(container.typeGraphe.split(" ")[0]=="Directed"){
+          this.tarjanStronglyComponentAnimation(container);
+        }else{
+          container.message=this.translate.instant("algoS.msg14");
+          container.algorithm=="tarjan"
+        }
       }
       else if((container.algorithm=="dijkstra" || container.algorithm=="dijkstraAB")&& !this.isAllEdgePositive(container)){
         container.message=container.translate.instant("algoS.msg10");
@@ -381,6 +418,9 @@ export class AlgorithmService {
           }else{
             container.message=container.translate.instant("algoS.msg12");
           }
+          setTimeout(()=>{
+            container.algorithm="";
+          },2);
         }
       }
     }else{
@@ -500,6 +540,7 @@ export class AlgorithmService {
     container.grapheS.cy.nodes().forEach((node:any)=>{
       container.grapheS.changeColorNode(node, container.grapheS.BACKGROUND_COLOR_NODE_ALGO,container.grapheS.COLOR_NODE_ALGO,++i*2000);
     })
+    container.algorithm="";
   }
 
   /**
@@ -524,6 +565,7 @@ export class AlgorithmService {
         },j)
       }
     })
+    container.algorithm="";
   }
   /**
    * Get a random color.
@@ -547,9 +589,11 @@ export class AlgorithmService {
     const { cut, components } = container.grapheS.cy.elements().tarjanStronglyConnected();
     let message:string="";
     let i:number=0;
+    container.message="Tarjan(SCCs): ";
     components.forEach((component:any, index:any) => {
       setTimeout(()=>{
         message=this.translate.instant("algoS.msg13",{index:++i});
+        container.algorithm="";
         const color:string = this.getRandomColor(); 
         const backgroundColor:string = this.getRandomColor();
         const fleshColor:string=this.getRandomColor();
@@ -587,9 +631,7 @@ export class AlgorithmService {
         }
         container.message+=message+" || ";
       },i*20000)
-      
     });
-    
   }
   
   aStarAnimation(container:any):void{

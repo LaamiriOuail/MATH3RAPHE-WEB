@@ -106,7 +106,7 @@
                                     <a href="../components/FooterComponent.html" >FooterComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/GrapheFromEdgesListComponent.html" >GrapheFromEdgesListComponent</a>
+                                    <a href="../components/GrapheFromEdgesListComponent.html"  class="active" >GrapheFromEdgesListComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/GrapheFromMatrixAdjaComponent.html" >GrapheFromMatrixAdjaComponent</a>
@@ -133,7 +133,7 @@
                                     <a href="../components/ScreenboxComponent.html" >ScreenboxComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/SelectComponent.html"  class="active" >SelectComponent</a>
+                                    <a href="../components/SelectComponent.html" >SelectComponent</a>
                                 </li>
                         </ul>
                     </li>
@@ -302,7 +302,7 @@
                                            <a href="../components/FooterComponent.html" >FooterComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/GrapheFromEdgesListComponent.html" >GrapheFromEdgesListComponent</a>
+                                           <a href="../components/GrapheFromEdgesListComponent.html"  class="active" >GrapheFromEdgesListComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/GrapheFromMatrixAdjaComponent.html" >GrapheFromMatrixAdjaComponent</a>
@@ -329,7 +329,7 @@
                                            <a href="../components/ScreenboxComponent.html" >ScreenboxComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/SelectComponent.html"  class="active" >SelectComponent</a>
+                                           <a href="../components/SelectComponent.html" >SelectComponent</a>
                                        </li>
                                </ul>
                            </li>
@@ -412,7 +412,7 @@
 
 <ol class="breadcrumb">
   <li>Components</li>
-  <li>SelectComponent</li>
+  <li>GrapheFromEdgesListComponent</li>
 </ol>
 
 
@@ -430,7 +430,7 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>src/app/components/select/select.component.ts</code>
+    <code>src/app/components/graphe-from-edges-list/graphe-from-edges-list.component.ts</code>
 </p>
 
 
@@ -453,19 +453,19 @@
 
             <tr>
                 <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>app-select</code></td>
+                <td class="col-md-9"><code>app-graphe-from-edges-list</code></td>
             </tr>
 
             <tr>
                 <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>select.component.css</code></td>
+                <td class="col-md-9"><code>graphe-from-edges-list.component.css</code></td>
             </tr>
 
 
 
             <tr>
                 <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>select.component.html</code></td>
+                <td class="col-md-9"><code>graphe-from-edges-list.component.html</code></td>
             </tr>
 
 
@@ -479,71 +479,13 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
-                            <code>Class</code>
-                        </td>
-                        <td class="col-md-10">
-                              <p>
-                                <em>Type:</em>    <code>string</code>
-
-                              </p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
                             <code>container</code>
                         </td>
                         <td class="col-md-10">
+                            <div><p>Input container object for handling graph-related properties.</p>
+</div>
                               <p>
                                 <em>Type:</em>    <code>any</code>
-
-                              </p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <code>disableLabell</code>
-                        </td>
-                        <td class="col-md-10">
-                              <p>
-                                <em>Type:</em>    <code>string</code>
-
-                              </p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <code>functionHandler</code>
-                        </td>
-                        <td class="col-md-10">
-                              <p>
-                                <em>Type:</em>    <code>any</code>
-
-                              </p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <code>items</code>
-                        </td>
-                        <td class="col-md-10">
-                              <p>
-                                <em>Type:</em>    <code>any[]</code>
 
                               </p>
                         </td>
@@ -551,24 +493,58 @@
                 </tbody>
             </table>
     </section>
+
 
     <section>
-        <h3 id="outputs">Outputs</h3>
+        <h3 id="constructor">Constructor</h3>
             <table class="table table-sm table-bordered">
                 <tbody>
                     <tr>
-                        <td class="col-md-2">
-                            <code>selected</code>
+                        <td class="col-md-4">
+                            <code>constructor(grapheS: any, translate: TranslateService)</code>
                         </td>
-                        <td class="col-md-10">
-                            <em><code>$event</code> type:</em>    <code>EventEmitter&lt;string&gt;</code>
-
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Constructor for the GrapheFromEdgesListComponent.</p>
+    </div>
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <ul class="jsdoc-params">
+                                                <li>
+                                                    <div>
+                                                        <b>grapheS</b>
+                                                            :     <code><a href="../injectables/GrapheService.html" target="_self" >GrapheService</a></code>
+    
+                                                    </div>
+                                                    <div>
+                                                        <ul>
+    <li>The GrapheService instance for handling graph operations.</li>
+    </ul>
+    
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div>
+                                                        <b>translate</b>
+                                                            :     <code>TranslateService</code>
+    
+                                                    </div>
+                                                    <div>
+                                                        <ul>
+    <li>The TranslateService for language localization.</li>
+    </ul>
+    
+                                                    </div>
+                                                </li>
+                                        </ul>
+                                </div>
                         </td>
                     </tr>
                 </tbody>
             </table>
     </section>
-
 
     <section>
         <h3 id="methods">Methods</h3>
@@ -576,22 +552,196 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b> onChange</b>
+                            <b> parseExtendedFormat</b>
                         </td>
                     </tr>
     
                     <tr>
                         <td class="col-md-4">
-    <code>onChange()</code>
+    <code>parseExtendedFormat()</code>
                         </td>
                     </tr>
     
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-description"><p>Parses the extended format list of edges and returns an array of parsed edge objects.</p>
+    </div>
                                 <div class="io-description">
-                                    <b>Returns: </b>    <code>void</code>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>any[]</code>
     
                                 </div>
+                                    <div class="io-description">
+                                        <ul>
+    <li>An array of parsed edge objects.</li>
+    </ul>
+    
+                                    </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> parseEdge</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>parseEdge(line: string)</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Parses a single edge from a line of text and returns an edge object.</p>
+    </div>
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <ul class="jsdoc-params">
+                                                <li>
+                                                    <div>
+                                                        <b>line</b>
+                                                    </div>
+                                                    <div>
+                                                        <ul>
+    <li>The input line containing edge information.</li>
+    </ul>
+    
+                                                    </div>
+                                                </li>
+                                        </ul>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>IWeightedEdgeTyped | IUnweightedEdgeTyped</code>
+    
+                                </div>
+                                    <div class="io-description">
+                                        <ul>
+    <li>The parsed edge object.</li>
+    </ul>
+    
+                                    </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> isSameTypeGraphe</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>isSameTypeGraphe(edges: any[])</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Checks if all edges have the same type of graph (e.g., Directed Weighted).&gt;} edges - An array of edge objects to check.</p>
+    </div>
+                                <div class="io-description">
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>boolean</code>
+    
+                                </div>
+                                    <div class="io-description">
+                                        <ul>
+    <li><code>true</code> if all edges have the same type, otherwise <code>false</code>.</li>
+    </ul>
+    
+                                    </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> sendElements</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>sendElements()</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Sends the parsed graph elements to the parent component.</p>
+    </div>
+                                <div class="io-description">
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>any</code>
+    
+                                </div>
+                                    <div class="io-description">
+                                        <ul>
+    <li>The parsed graph elements or <code>false</code> if there is a type mismatch.</li>
+    </ul>
+    
+                                    </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> containsInvalidCharacters</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>containsInvalidCharacters(inputString: string)</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Checks if a given input string contains invalid characters.</p>
+    </div>
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <ul class="jsdoc-params">
+                                                <li>
+                                                    <div>
+                                                        <b>inputString</b>
+                                                    </div>
+                                                    <div>
+                                                        <ul>
+    <li>The input string to check for invalid characters.</li>
+    </ul>
+    
+                                                    </div>
+                                                </li>
+                                        </ul>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>boolean</code>
+    
+                                </div>
+                                    <div class="io-description">
+                                        <ul>
+    <li><code>true</code> if the input contains invalid characters, otherwise <code>false</code>.</li>
+    </ul>
+    
+                                    </div>
                         </td>
                     </tr>
                 </tbody>
@@ -604,13 +754,19 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b> selectedNew</b>
+                            <b> listEdgeTextArea</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <code>selectedNew:     <code>string</code>
+                            <code>listEdgeTextArea:     <code>string</code>
     </bcode>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>The text area input for the list of edges.</p>
+    </div>
                         </td>
                     </tr>
                 </tbody>
@@ -618,23 +774,214 @@
     </section>
 </div>
         <div class="tab-pane fade tab-source-code" id="source">
-            <pre><code class="hljs javascript">import { Component,EventEmitter,Input, Output } from &#x27;@angular/core&#x27;;
+            <pre><code class="hljs javascript">import { Component, Input } from &#x27;@angular/core&#x27;;
+import { TranslateService } from &#x27;@ngx-translate/core&#x27;;
+import { GrapheService } from &#x27;src/app/AllService/graphe.service&#x27;;
+/**
+ * Represents a weighted edge in a graph.
+ *
+ * @interface IWeightedEdgeTyped
+ */
+interface IWeightedEdgeTyped {
+  /**
+   * The source node of the edge.
+   *
+   * @type {string}
+   * @memberof IWeightedEdgeTyped
+   */
+  source: string;
+
+  /**
+   * The target node of the edge.
+   *
+   * @type {string}
+   * @memberof IWeightedEdgeTyped
+   */
+  target: string;
+
+  /**
+   * The weight of the edge.
+   *
+   * @type {number}
+   * @memberof IWeightedEdgeTyped
+   */
+  weight: number;
+
+  /**
+   * The type of the edge.
+   *
+   * @type {string}
+   * @memberof IWeightedEdgeTyped
+   */
+  type: string;
+}
+
+/**
+ * Represents an unweighted edge in a graph.
+ *
+ * @interface IUnweightedEdgeTyped
+ */
+interface IUnweightedEdgeTyped {
+  /**
+   * The source node of the edge.
+   *
+   * @type {string}
+   * @memberof IUnweightedEdgeTyped
+   */
+  source: string;
+
+  /**
+   * The target node of the edge.
+   *
+   * @type {string}
+   * @memberof IUnweightedEdgeTyped
+   */
+  target: string;
+
+  /**
+   * The type of the edge.
+   *
+   * @type {string}
+   * @memberof IUnweightedEdgeTyped
+   */
+  type: string;
+}
 
 @Component({
-  selector: &#x27;app-select&#x27;,
-  templateUrl: &#x27;./select.component.html&#x27;,
-  styleUrls: [&#x27;./select.component.css&#x27;]
+  selector: &#x27;app-graphe-from-edges-list&#x27;,
+  templateUrl: &#x27;./graphe-from-edges-list.component.html&#x27;,
+  styleUrls: [&#x27;./graphe-from-edges-list.component.css&#x27;]
 })
-export class SelectComponent {
-  @Input() disableLabell:string&#x3D;&quot;&quot;;
+export class GrapheFromEdgesListComponent {
+  /**
+   * Constructor for the GrapheFromEdgesListComponent.
+   *
+   * @param {GrapheService} grapheS - The GrapheService instance for handling graph operations.
+   * @param {TranslateService} translate - The TranslateService for language localization.
+   */
+  constructor(protected grapheS:GrapheService,protected translate:TranslateService){}
+  /**
+   * The text area input for the list of edges.
+   */
+  listEdgeTextArea:string&#x3D;&quot;&quot;;
+  /**
+   * Input container object for handling graph-related properties.
+   */
   @Input() container:any;
-  @Input() functionHandler:any;
-  @Input() Class:string&#x3D;&quot;&quot;;
-  @Input() items:Array&lt;any&gt;&#x3D;[];
-  @Output() selected:EventEmitter&lt;string&gt;&#x3D; new EventEmitter&lt;string&gt;();
-  selectedNew:string&#x3D;&quot;&quot;;
-  onChange():void{
-    this.selected.emit(this.selectedNew);
+  /**
+   * Parses the extended format list of edges and returns an array of parsed edge objects.
+   *
+   * @returns {Array&lt;any&gt;} - An array of parsed edge objects.
+   */
+  parseExtendedFormat():Array&lt;any&gt; {
+    const lines &#x3D; this.listEdgeTextArea.split(&#x27;\n&#x27;);
+    const edges:Array&lt;any&gt; &#x3D; [];
+    if(lines.length&#x3D;&#x3D;0){
+      this.container.message&#x3D;this.translate.instant(&quot;grapheFromEdgeList.msg2&quot;);
+    }
+    for (const line of lines) {
+      const edge &#x3D; this.parseEdge(line);
+      if (edge &amp;&amp; !this.containsInvalidCharacters(edge?.source) &amp;&amp; !this.containsInvalidCharacters(edge?.source)) {
+        edges.push(edge);
+      }else{
+        this.container.message&#x3D;this.translate.instant(&quot;grapheFromEdgeList.msg1&quot;);
+        break;
+      }
+    }
+  
+    return edges;
+  }
+  /**
+   * Parses a single edge from a line of text and returns an edge object.
+   *
+   * @param {string} line - The input line containing edge information.
+   * @returns {IWeightedEdgeTyped|IUnweightedEdgeTyped|null} - The parsed edge object.
+   */
+  parseEdge(line:string):IWeightedEdgeTyped|IUnweightedEdgeTyped|null {
+    const matchDirectedWeighted &#x3D; line.match(/\s*([^(-]*)\s*-\(([\d.]+)\)-&gt;\s*([^(-]*)\s*/);
+    const matchDirected &#x3D; line.match(/\s*([^(-]*)\s*&gt;\s*([^(-]*)\s*/);
+    const matchUndirectedWeighted &#x3D; line.match(/\s*([^(-]*)\s*-\(([\d.]+)\)-\s*([^(-]*)\s*/);
+    const matchUndirected &#x3D; line.match(/\s*([^(-]*)\s*-\s*([^(-]*)\s*/);
+  
+    if (matchDirectedWeighted) {//OK
+      return {
+        source: matchDirectedWeighted[1].trim(),
+        target: matchDirectedWeighted[3].trim(),
+        weight: Number(matchDirectedWeighted[2]),
+        type: &#x27;Directed Weighted&#x27;,
+      };
+    } else if (matchDirected) {//OK
+      return {
+        source: matchDirected[1].trim(),
+        target: matchDirected[2].trim(),
+        type: &#x27;Directed Unweighted&#x27;,
+      };
+    } else if (matchUndirectedWeighted) {
+      console.log(matchUndirectedWeighted[2]);
+      console.log(matchUndirectedWeighted[1]);
+      console.log(matchUndirectedWeighted[3]);
+      return {
+        source: matchUndirectedWeighted[1].trim(),
+        target: matchUndirectedWeighted[3].trim(),
+        weight: Number(matchUndirectedWeighted[2]),
+        type: &#x27;Undirected Weighted&#x27;,
+      };
+    } else if (matchUndirected) {//OK
+      return {
+        source: matchUndirected[1].trim(),
+        target: matchUndirected[2].trim(),
+        type: &#x27;Undirected Unweighted&#x27;,
+      };
+    }
+  
+    return null;
+  }
+  /**
+  * Checks if all edges have the same type of graph (e.g., Directed Weighted).
+  *
+  * @param {Array&lt;IUnweightedEdge|IWeightedEdge|null&gt;} edges - An array of edge objects to check.
+  * @returns {boolean} - &#x60;true&#x60; if all edges have the same type, otherwise &#x60;false&#x60;.
+  */
+  isSameTypeGraphe(edges:Array&lt;any&gt;): boolean {
+    let isSameTypeGraphe:boolean&#x3D;true;
+    let firstType:string&#x3D;edges[0]?.type;
+    if(firstType){
+      for (const edge of edges) {
+        if(edge.type!&#x3D;firstType){
+          console.log(&quot; Type Error&quot;)
+          isSameTypeGraphe&#x3D;false;
+          break;
+        }
+      }
+    }else{
+      isSameTypeGraphe&#x3D;false;
+    }
+    return isSameTypeGraphe;
+  }
+  /**
+   * Sends the parsed graph elements to the parent component.
+   *
+   * @returns {any} - The parsed graph elements or &#x60;false&#x60; if there is a type mismatch.
+   */
+  sendElements():any{
+    if(this.isSameTypeGraphe(this.parseExtendedFormat())){
+      return this.parseExtendedFormat();
+    }else{
+      this.container.message&#x3D;this.translate.instant(&quot;grapheFromEdgeList.msg3&quot;);
+      return false;
+    }
+  }
+  /**
+   * Checks if a given input string contains invalid characters.
+   *
+   * @param {string} inputString - The input string to check for invalid characters.
+   * @returns {boolean} - &#x60;true&#x60; if the input contains invalid characters, otherwise &#x60;false&#x60;.
+   */
+  containsInvalidCharacters(inputString:string) :boolean{
+    // Define a regular expression pattern for valid characters
+    const invalidCharactersPattern &#x3D; /[&lt;&gt; ()&amp;;:-]/;
+    // Test the inputString against the pattern
+    return invalidCharactersPattern.test(inputString);
   }
 }
 </code></pre>

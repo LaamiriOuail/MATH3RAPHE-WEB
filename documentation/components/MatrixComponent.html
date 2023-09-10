@@ -106,6 +106,12 @@
                                     <a href="../components/FooterComponent.html" >FooterComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/GrapheFromEdgesListComponent.html" >GrapheFromEdgesListComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/GrapheFromMatrixAdjaComponent.html" >GrapheFromMatrixAdjaComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/HeaderComponent.html" >HeaderComponent</a>
                                 </li>
                                 <li class="link">
@@ -116,6 +122,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/MessageComponent.html" >MessageComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/RemoveEdgeComponent.html" >RemoveEdgeComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/ScreenComponent.html" >ScreenComponent</a>
@@ -158,6 +167,31 @@
                         </ul>
                     </li>
             
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-info"></span>
+                            <span>Interfaces</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-interfaces-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-interfaces-links"
+                            >
+                                <li class="link">
+                                    <a href="../interfaces/IUnweightedEdge.html" >IUnweightedEdge</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/IUnweightedEdgeTyped.html" >IUnweightedEdgeTyped</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/IWeightedEdge.html" >IWeightedEdge</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/IWeightedEdgeTyped.html" >IWeightedEdgeTyped</a>
+                                </li>
+                        </ul>
+                    </li>
             
             
             
@@ -268,6 +302,12 @@
                                            <a href="../components/FooterComponent.html" >FooterComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/GrapheFromEdgesListComponent.html" >GrapheFromEdgesListComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/GrapheFromMatrixAdjaComponent.html" >GrapheFromMatrixAdjaComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/HeaderComponent.html" >HeaderComponent</a>
                                        </li>
                                        <li class="link">
@@ -278,6 +318,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/MessageComponent.html" >MessageComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/RemoveEdgeComponent.html" >RemoveEdgeComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/ScreenComponent.html" >ScreenComponent</a>
@@ -320,6 +363,31 @@
                                </ul>
                            </li>
                    
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-info"></span>
+                                   <span>Interfaces</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#interfaces-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="interfaces-links"
+                   >
+                                       <li class="link">
+                                           <a href="../interfaces/IUnweightedEdge.html" >IUnweightedEdge</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/IUnweightedEdgeTyped.html" >IUnweightedEdgeTyped</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/IWeightedEdge.html" >IWeightedEdge</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/IWeightedEdgeTyped.html" >IWeightedEdgeTyped</a>
+                                       </li>
+                               </ul>
+                           </li>
                    
                    
                    
@@ -412,26 +480,6 @@
     </table>
 </section>
 
-    <section>
-        <h3 id="inputs">Inputs</h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <code>adjacencyMatrixFormatted</code>
-                        </td>
-                        <td class="col-md-10">
-                            <div><p>Input property representing the formatted adjacency matrix.</p>
-</div>
-                              <p>
-                                <em>Type:</em>    <code>string</code>
-
-                              </p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-    </section>
 
 
     <section>
@@ -440,7 +488,7 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor()</code>
+                            <code>constructor(el: any, grapheS: any, darkModeS: any)</code>
                         </td>
                     </tr>
     
@@ -457,7 +505,9 @@
 
 </div>
         <div class="tab-pane fade tab-source-code" id="source">
-            <pre><code class="hljs javascript">import { Component, Input, AfterViewChecked } from &#x27;@angular/core&#x27;;
+            <pre><code class="hljs javascript">import { Component, Input, ElementRef } from &#x27;@angular/core&#x27;;
+import { DarkModeService } from &#x27;src/app/AllService/dark-mode.service&#x27;;
+import { GrapheService } from &#x27;src/app/AllService/graphe.service&#x27;;
 
 /**
  * Angular component for displaying a matrix.
@@ -467,25 +517,12 @@
   templateUrl: &#x27;./matrix.component.html&#x27;,
   styleUrls: [&#x27;./matrix.component.css&#x27;]
 })
-export class MatrixComponent implements AfterViewChecked {
-  /**
-   * Input property representing the formatted adjacency matrix.
-   */
-  @Input() adjacencyMatrixFormatted: string &#x3D; &quot;&quot;;
-
+export class MatrixComponent {
   /**
    * Initializes a new instance of the MatrixComponent class.
    */
-  constructor() {}
-
-  /**
-   * Angular lifecycle hook called after the view has been checked.
-   * This hook is used for rendering MathJax content in the matrix.
-   */
-  ngAfterViewChecked(): void {
-    // Call MathJax rendering here if needed
-    // Example: MathJax.Hub.Queue([&quot;Typeset&quot;, MathJax.Hub]);
-  }
+  constructor(private el:ElementRef,protected grapheS:GrapheService,protected darkModeS:DarkModeService) {}
+  
 }
 </code></pre>
         </div>

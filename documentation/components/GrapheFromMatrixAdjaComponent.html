@@ -109,7 +109,7 @@
                                     <a href="../components/GrapheFromEdgesListComponent.html" >GrapheFromEdgesListComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/GrapheFromMatrixAdjaComponent.html" >GrapheFromMatrixAdjaComponent</a>
+                                    <a href="../components/GrapheFromMatrixAdjaComponent.html"  class="active" >GrapheFromMatrixAdjaComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/HeaderComponent.html" >HeaderComponent</a>
@@ -133,7 +133,7 @@
                                     <a href="../components/ScreenboxComponent.html" >ScreenboxComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/SelectComponent.html"  class="active" >SelectComponent</a>
+                                    <a href="../components/SelectComponent.html" >SelectComponent</a>
                                 </li>
                         </ul>
                     </li>
@@ -305,7 +305,7 @@
                                            <a href="../components/GrapheFromEdgesListComponent.html" >GrapheFromEdgesListComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/GrapheFromMatrixAdjaComponent.html" >GrapheFromMatrixAdjaComponent</a>
+                                           <a href="../components/GrapheFromMatrixAdjaComponent.html"  class="active" >GrapheFromMatrixAdjaComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/HeaderComponent.html" >HeaderComponent</a>
@@ -329,7 +329,7 @@
                                            <a href="../components/ScreenboxComponent.html" >ScreenboxComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/SelectComponent.html"  class="active" >SelectComponent</a>
+                                           <a href="../components/SelectComponent.html" >SelectComponent</a>
                                        </li>
                                </ul>
                            </li>
@@ -412,7 +412,7 @@
 
 <ol class="breadcrumb">
   <li>Components</li>
-  <li>SelectComponent</li>
+  <li>GrapheFromMatrixAdjaComponent</li>
 </ol>
 
 
@@ -430,7 +430,7 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>src/app/components/select/select.component.ts</code>
+    <code>src/app/components/graphe-from-matrix-adja/graphe-from-matrix-adja.component.ts</code>
 </p>
 
 
@@ -453,19 +453,19 @@
 
             <tr>
                 <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>app-select</code></td>
+                <td class="col-md-9"><code>app-graphe-from-matrix-adja</code></td>
             </tr>
 
             <tr>
                 <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>select.component.css</code></td>
+                <td class="col-md-9"><code>graphe-from-matrix-adja.component.css</code></td>
             </tr>
 
 
 
             <tr>
                 <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>select.component.html</code></td>
+                <td class="col-md-9"><code>graphe-from-matrix-adja.component.html</code></td>
             </tr>
 
 
@@ -479,71 +479,13 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
-                            <code>Class</code>
-                        </td>
-                        <td class="col-md-10">
-                              <p>
-                                <em>Type:</em>    <code>string</code>
-
-                              </p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
                             <code>container</code>
                         </td>
                         <td class="col-md-10">
+                            <div><p>Input container object for handling graph-related properties.</p>
+</div>
                               <p>
                                 <em>Type:</em>    <code>any</code>
-
-                              </p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <code>disableLabell</code>
-                        </td>
-                        <td class="col-md-10">
-                              <p>
-                                <em>Type:</em>    <code>string</code>
-
-                              </p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <code>functionHandler</code>
-                        </td>
-                        <td class="col-md-10">
-                              <p>
-                                <em>Type:</em>    <code>any</code>
-
-                              </p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <code>items</code>
-                        </td>
-                        <td class="col-md-10">
-                              <p>
-                                <em>Type:</em>    <code>any[]</code>
 
                               </p>
                         </td>
@@ -551,24 +493,58 @@
                 </tbody>
             </table>
     </section>
+
 
     <section>
-        <h3 id="outputs">Outputs</h3>
+        <h3 id="constructor">Constructor</h3>
             <table class="table table-sm table-bordered">
                 <tbody>
                     <tr>
-                        <td class="col-md-2">
-                            <code>selected</code>
+                        <td class="col-md-4">
+                            <code>constructor(grapheS: any, translate: TranslateService)</code>
                         </td>
-                        <td class="col-md-10">
-                            <em><code>$event</code> type:</em>    <code>EventEmitter&lt;string&gt;</code>
-
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Constructor for the GrapheFromMatrixAdjaComponent.</p>
+    </div>
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <ul class="jsdoc-params">
+                                                <li>
+                                                    <div>
+                                                        <b>grapheS</b>
+                                                            :     <code><a href="../injectables/GrapheService.html" target="_self" >GrapheService</a></code>
+    
+                                                    </div>
+                                                    <div>
+                                                        <ul>
+    <li>The GrapheService instance for handling graph operations.</li>
+    </ul>
+    
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div>
+                                                        <b>translate</b>
+                                                            :     <code>TranslateService</code>
+    
+                                                    </div>
+                                                    <div>
+                                                        <ul>
+    <li>The TranslateService for language localization.</li>
+    </ul>
+    
+                                                    </div>
+                                                </li>
+                                        </ul>
+                                </div>
                         </td>
                     </tr>
                 </tbody>
             </table>
     </section>
-
 
     <section>
         <h3 id="methods">Methods</h3>
@@ -576,22 +552,222 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b> onChange</b>
+                            <b> generateGraph</b>
                         </td>
                     </tr>
     
                     <tr>
                         <td class="col-md-4">
-    <code>onChange()</code>
+    <code>generateGraph()</code>
                         </td>
                     </tr>
     
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-description"><p>Generates a graph based on the provided adjacency matrix.</p>
+    </div>
                                 <div class="io-description">
                                     <b>Returns: </b>    <code>void</code>
     
                                 </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> parseAdjacencyMatrix</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>parseAdjacencyMatrix(matrixText: string)</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Parses the input adjacency matrix in text format and returns a 2D array.</p>
+    </div>
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <ul class="jsdoc-params">
+                                                <li>
+                                                    <div>
+                                                        <b>matrixText</b>
+                                                    </div>
+                                                    <div>
+                                                        <ul>
+    <li>The adjacency matrix in text format.</li>
+    </ul>
+    
+                                                    </div>
+                                                </li>
+                                        </ul>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>any</code>
+    
+                                </div>
+                                    <div class="io-description">
+                                        <ul>
+    <li>The parsed 2D array representing the adjacency matrix or <code>false</code> if parsing fails.</li>
+    </ul>
+    
+                                    </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> createGraphElements</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>createGraphElements(adjacencyMatrix: number[][])</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Creates graph elements (nodes and edges) from the parsed adjacency matrix.</p>
+    </div>
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <ul class="jsdoc-params">
+                                                <li>
+                                                    <div>
+                                                        <b>adjacencyMatrix</b>
+                                                            :     <code>Array</code>
+    
+                                                    </div>
+                                                    <div>
+                                                        <ul>
+    <li>The parsed adjacency matrix.</li>
+    </ul>
+    
+                                                    </div>
+                                                </li>
+                                        </ul>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>any[]</code>
+    
+                                </div>
+                                    <div class="io-description">
+                                        <ul>
+    <li>An array of graph elements.</li>
+    </ul>
+    
+                                    </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> isWeighted</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>isWeighted(adjacencyMatrix: number[][])</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Checks if the adjacency matrix represents a weighted graph.</p>
+    </div>
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <ul class="jsdoc-params">
+                                                <li>
+                                                    <div>
+                                                        <b>adjacencyMatrix</b>
+                                                            :     <code>Array</code>
+    
+                                                    </div>
+                                                    <div>
+                                                        <ul>
+    <li>The adjacency matrix.</li>
+    </ul>
+    
+                                                    </div>
+                                                </li>
+                                        </ul>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>boolean</code>
+    
+                                </div>
+                                    <div class="io-description">
+                                        <ul>
+    <li><code>true</code> if the graph is weighted, otherwise <code>false</code>.</li>
+    </ul>
+    
+                                    </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> isSymmetric</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>isSymmetric(matrix: number[][])</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Checks if the adjacency matrix is symmetric, indicating an undirected graph.</p>
+    </div>
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <ul class="jsdoc-params">
+                                                <li>
+                                                    <div>
+                                                        <b>matrix</b>
+                                                            :     <code>Array</code>
+    
+                                                    </div>
+                                                    <div>
+                                                        <ul>
+    <li>The adjacency matrix.</li>
+    </ul>
+    
+                                                    </div>
+                                                </li>
+                                        </ul>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                                    <div class="io-description">
+                                        <ul>
+    <li><code>true</code> if the matrix is symmetric, indicating an undirected graph, otherwise <code>false</code>.</li>
+    </ul>
+    
+                                    </div>
                         </td>
                     </tr>
                 </tbody>
@@ -604,13 +780,19 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b> selectedNew</b>
+                            <b> matrixText</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <code>selectedNew:     <code>string</code>
+                            <code>matrixText:     <code>string</code>
     </bcode>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>The adjacency matrix in text format.</p>
+    </div>
                         </td>
                     </tr>
                 </tbody>
@@ -618,24 +800,246 @@
     </section>
 </div>
         <div class="tab-pane fade tab-source-code" id="source">
-            <pre><code class="hljs javascript">import { Component,EventEmitter,Input, Output } from &#x27;@angular/core&#x27;;
+            <pre><code class="hljs javascript">import { Component, Input } from &#x27;@angular/core&#x27;;
+import { TranslateService } from &#x27;@ngx-translate/core&#x27;;
+import { GrapheService } from &#x27;src/app/AllService/graphe.service&#x27;;
+/**
+ * Represents a weighted edge in a graph.
+ *
+ * @interface IWeightedEdge
+ */
+interface IWeightedEdge {
+  /**
+   * The source node of the edge.
+   *
+   * @type {string}
+   * @memberof IWeightedEdge
+   */
+  source: string;
 
+  /**
+   * The target node of the edge.
+   *
+   * @type {string}
+   * @memberof IWeightedEdge
+   */
+  target: string;
+
+  /**
+   * The weight of the edge.
+   *
+   * @type {number}
+   * @memberof IWeightedEdge
+   */
+  weight: number;
+}
+
+/**
+ * Represents an unweighted edge in a graph.
+ *
+ * @interface IUnweightedEdge
+ */
+interface IUnweightedEdge {
+  /**
+   * The source node of the edge.
+   *
+   * @type {string}
+   * @memberof IUnweightedEdge
+   */
+  source: string;
+
+  /**
+   * The target node of the edge.
+   *
+   * @type {string}
+   * @memberof IUnweightedEdge
+   */
+  target: string;
+}
 @Component({
-  selector: &#x27;app-select&#x27;,
-  templateUrl: &#x27;./select.component.html&#x27;,
-  styleUrls: [&#x27;./select.component.css&#x27;]
+  selector: &#x27;app-graphe-from-matrix-adja&#x27;,
+  templateUrl: &#x27;./graphe-from-matrix-adja.component.html&#x27;,
+  styleUrls: [&#x27;./graphe-from-matrix-adja.component.css&#x27;]
 })
-export class SelectComponent {
-  @Input() disableLabell:string&#x3D;&quot;&quot;;
+export class GrapheFromMatrixAdjaComponent {
+  /**
+   * Input container object for handling graph-related properties.
+   */
   @Input() container:any;
-  @Input() functionHandler:any;
-  @Input() Class:string&#x3D;&quot;&quot;;
-  @Input() items:Array&lt;any&gt;&#x3D;[];
-  @Output() selected:EventEmitter&lt;string&gt;&#x3D; new EventEmitter&lt;string&gt;();
-  selectedNew:string&#x3D;&quot;&quot;;
-  onChange():void{
-    this.selected.emit(this.selectedNew);
+  /**
+   * The adjacency matrix in text format.
+   */
+  matrixText:string&#x3D;&quot;&quot;;
+  /**
+   * Constructor for the GrapheFromMatrixAdjaComponent.
+   *
+   * @param {GrapheService} grapheS - The GrapheService instance for handling graph operations.
+   * @param {TranslateService} translate - The TranslateService for language localization.
+   */
+  constructor(protected grapheS:GrapheService,protected translate:TranslateService){}
+  /**
+   * Generates a graph based on the provided adjacency matrix.
+   */
+  generateGraph() {
+    // Parse the matrix into a 2D array
+    const adjacencyMatrix &#x3D; this.parseAdjacencyMatrix(this.matrixText);
+    if(adjacencyMatrix){
+      const elements:Array&lt;any&gt;&#x3D;this.createGraphElements(adjacencyMatrix);
+      this.grapheS.createGrapheFromAdjancyMatrix(elements,!this.isSymmetric(adjacencyMatrix),this.isWeighted(adjacencyMatrix),this.container);
+      const screen&#x3D;this.container.el.nativeElement.querySelector(&#x27;.screen&#x27;);
+      const buttonManupilation&#x3D;this.container.el.nativeElement.querySelector(&#x27;.buttonManupilation&#x27;);
+      const addGrapheWithMatrix&#x3D;this.container.el.nativeElement.querySelector(&#x27;.addGrapheWithMatrix&#x27;);
+      screen.style.display&#x3D;&quot;block&quot;;
+      buttonManupilation.style.display&#x3D;&quot;block&quot;;
+      addGrapheWithMatrix.style.display&#x3D;&quot;none&quot;;
+      this.matrixText&#x3D;&quot;&quot;;
+      this.container.message&#x3D;this.translate.instant(&quot;grapheFromMatrix.msg4&quot;);
+      this.container.changeSelect&#x3D;&quot;&quot;;
+    }
   }
+  /**
+   * Parses the input adjacency matrix in text format and returns a 2D array.
+   *
+   * @param {string} matrixText - The adjacency matrix in text format.
+   * @returns {any} - The parsed 2D array representing the adjacency matrix or &#x60;false&#x60; if parsing fails.
+   */
+  parseAdjacencyMatrix(matrixText:string):any {
+    // Remove leading and trailing whitespace
+    matrixText &#x3D; matrixText.trim();
+    let err:boolean&#x3D;false;
+    let matrix:any;
+    // Check if the input is empty
+    if (matrixText.length &#x3D;&#x3D;&#x3D; 0) {
+        this.container.message&#x3D;this.translate.instant(&#x27;grapheFromMatrix.msg2&#x27;);
+        err&#x3D;true;
+    }
+    if(!err){
+      // Split the text by newline to get rows
+      const rows &#x3D; matrixText.split(&#x27;\n&#x27;);
+      const numRows &#x3D; rows.length;
+
+      // Initialize a flag to check if the matrix is square
+      let isSquare &#x3D; true;
+
+      // Parse each row into an array of numbers and validate the format
+      matrix &#x3D; rows.map((row:any, rowIndex:any) &#x3D;&gt; {
+          const values &#x3D; row.trim().split(/\s+/).map(Number);
+          // Check if the matrix is square by comparing the number of columns
+          if (values.length !&#x3D;&#x3D; numRows) {
+              isSquare &#x3D; false;
+          }
+          return values;
+      });
+      for (let i &#x3D; 0; i &lt; matrix.length; i++) {
+        for (let j &#x3D; 0; j &lt; matrix[i].length; j++) {
+          if (Number.isNaN(matrix[i][j])) {
+            err&#x3D;true;
+            this.container.message&#x3D;this.translate.instant(&#x27;grapheFromMatrix.msg1&#x27;);
+            break;
+          }
+        }
+      }
+      
+      // Check if the matrix is square
+      if (!isSquare) {
+        err&#x3D;true;
+        this.container.message&#x3D;this.translate.instant(&#x27;grapheFromMatrix.msg3&#x27;);
+      }
+    }
+    if(err&#x3D;&#x3D;true){
+      matrix&#x3D;false;
+    }
+    return matrix;
+  }
+  /**
+   * Creates graph elements (nodes and edges) from the parsed adjacency matrix.
+   *
+   * @param {Array&lt;Array&lt;number&gt;&gt;} adjacencyMatrix - The parsed adjacency matrix.
+   * @returns {Array&lt;any&gt;} - An array of graph elements.
+   */
+  createGraphElements(adjacencyMatrix: Array&lt;Array&lt;number&gt;&gt;): Array&lt;any&gt; {
+    let elements: Array&lt;any&gt; &#x3D; [];
+    const isDirected: boolean &#x3D; !this.isSymmetric(adjacencyMatrix);
+    const isWeighted: boolean &#x3D; this.isWeighted(adjacencyMatrix);
+  
+    // Create nodes
+    for (let i &#x3D; 0; i &lt; adjacencyMatrix.length; i++) {
+      elements.push({ id: i.toString() });
+    }
+  
+    // Create edges based on adjacency matrix
+    for (let i &#x3D; 0; i &lt; adjacencyMatrix.length; i++) {
+      for (let j &#x3D; 0; j &lt; adjacencyMatrix[i].length; j++) {
+        let edge:IUnweightedEdge|IWeightedEdge;
+        if (i !&#x3D;&#x3D; j &amp;&amp; adjacencyMatrix[i][j] !&#x3D;&#x3D; 0) {
+          edge &#x3D; {
+            source: i.toString(),
+            target: j.toString(),
+          };
+          if (isWeighted) {
+            edge &#x3D; {
+              source: i.toString(),
+              target: j.toString(),
+              weight: adjacencyMatrix[i][j]
+            };
+          }
+          elements.push(edge);
+        }
+      }
+    }
+  
+    return elements;
+  }
+  /**
+   * Checks if the adjacency matrix represents a weighted graph.
+   *
+   * @param {Array&lt;Array&lt;number&gt;&gt;} adjacencyMatrix - The adjacency matrix.
+   * @returns {boolean} - &#x60;true&#x60; if the graph is weighted, otherwise &#x60;false&#x60;.
+   */
+  isWeighted(adjacencyMatrix:Array&lt;Array&lt;number&gt;&gt;):boolean{
+    let weighted:boolean&#x3D;false;
+    for (let i &#x3D; 0; i &lt; adjacencyMatrix.length; i++) {
+      if(weighted){
+        break;
+      }
+      for (let j &#x3D; 0; j &lt; adjacencyMatrix[i].length; j++) {
+          if (adjacencyMatrix[i][j] !&#x3D; 1 &amp;&amp; adjacencyMatrix[i][j] !&#x3D; 0) {
+            weighted&#x3D;true;
+            break;
+          }
+      }
+    }
+    return weighted;
+  }
+  /**
+   * Checks if the adjacency matrix is symmetric, indicating an undirected graph.
+   *
+   * @param {Array&lt;Array&lt;number&gt;&gt;} matrix - The adjacency matrix.
+   * @returns {boolean} - &#x60;true&#x60; if the matrix is symmetric, indicating an undirected graph, otherwise &#x60;false&#x60;.
+   */
+  isSymmetric(matrix:Array&lt;Array&lt;number&gt;&gt;) {
+    if (!Array.isArray(matrix) || matrix.length &#x3D;&#x3D;&#x3D; 0 || matrix[0].length &#x3D;&#x3D;&#x3D; 0) {
+      return false; // Not a valid matrix
+    }
+  
+    const numRows &#x3D; matrix.length;
+    const numCols &#x3D; matrix[0].length;
+  
+    if (numRows !&#x3D;&#x3D; numCols) {
+      return false; // Not a square matrix, so it can&#x27;t be symmetric
+    }
+  
+    for (let i &#x3D; 0; i &lt; numRows; i++) {
+      for (let j &#x3D; 0; j &lt; numCols; j++) {
+        if (matrix[i][j] !&#x3D;&#x3D; matrix[j][i]) {
+          return false; // The matrix is not symmetric
+        }
+      }
+    }
+  
+    return true; // The matrix is symmetric
+  }
+
 }
 </code></pre>
         </div>

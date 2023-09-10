@@ -137,9 +137,11 @@ export class SaveUploadService {
               container.grapheS.cy.fit();
               container.grapheS.cy.reset()
             } else {
+              container.saveUpload="";
               container.message=this.translate.instant("saveUploadS.msg2");
             }
           } catch (error) {
+            container.saveUpload="";
             container.message=this.translate.instant("saveUploadS.msg2");
           }
         };
@@ -164,10 +166,16 @@ export class SaveUploadService {
       const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
       const formAChangeSizeScreen = container.el.nativeElement.querySelector('.formAChangeSizeScreen');
       const formChangeColor = container.el.nativeElement.querySelector('.formChangeColor');
+      const formAddNode = container.el.nativeElement.querySelector('.formAddNode');
+      const formRemoveEdge = container.el.nativeElement.querySelector('.formRemoveEdge');
+      const formRemoveNode = container.el.nativeElement.querySelector('.formRemoveNode');
+      formRemoveNode.style.display="none";
       formChangeNodeId.style.display="none";
       formAddEdge.style.display="none";
       formChangeColor.style.display="none";
       formAChangeSizeScreen.style.display="none";
+      formAddNode.style.display="none";
+      formRemoveEdge.style.display="none";
       container.grapheS.position="";
       if(container.saveUpload=="upload"){
         this.uploadJSON(container);
