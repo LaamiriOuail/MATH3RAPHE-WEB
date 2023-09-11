@@ -1407,12 +1407,13 @@ export class GrapheService {
       const targetIndex = nodes.indexOf(targetNode);
   
       // Set the corresponding cells in the matrix to 1 or -1 to indicate incidence
-      incidenceMatrix[sourceIndex][edgeIndex] = 1;
       if(sourceIndex==targetIndex){
         incidenceMatrix[sourceIndex][edgeIndex] = 2;
       }else if(this.typeGraphe.split(' ')[0]=="Directed"){
-        incidenceMatrix[targetIndex][edgeIndex] = -1;
+        incidenceMatrix[targetIndex][edgeIndex] = 1;
+        incidenceMatrix[sourceIndex][edgeIndex] = -1;
       }else{
+        incidenceMatrix[sourceIndex][edgeIndex] = 1;
         incidenceMatrix[targetIndex][edgeIndex] = 1;
       }
     });
