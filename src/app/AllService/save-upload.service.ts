@@ -136,6 +136,8 @@ export class SaveUploadService {
               container.message=this.translate.instant("saveUploadS.msg1");
               container.grapheS.cy.fit();
               container.grapheS.cy.reset()
+              container.restoreArray=[];
+
             } else {
               container.saveUpload="";
               container.message=this.translate.instant("saveUploadS.msg2");

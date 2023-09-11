@@ -123,6 +123,7 @@ export class GrapheService {
     container.remove="";
     container.containerHeight=50;
     container.buttonClicked="";
+    container.restoreArray=[];
     const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
     const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
     const formAChangeSizeScreen = container.el.nativeElement.querySelector('.formAChangeSizeScreen');
@@ -284,10 +285,13 @@ export class GrapheService {
           container.buttonClicked="";
         }
       }else if(container.buttonClicked=="restore"){
-        container.message=this.translate.instant("grapheS.msg6");
-        this.Alphabets=this.alphabets.concat(this.alphabets0.map(letter => letter + '2'));
-        this.counter=0;
-        this.restoreGraphe(container);
+        if(!container.restoreArray.length){
+          container.message=this.translate.instant("grapheS.msg60")
+        }else{
+          this.Alphabets=this.alphabets.concat(this.alphabets0.map(letter => letter + '2'));
+          this.counter=0;
+          this.restoreGraphe(container);
+        }        
       }
     }else{
       container.message=this.translate.instant("screenbox.msg23");
@@ -609,6 +613,10 @@ export class GrapheService {
   OnScreenTap(container:any):void{
     this.cy.on('tap', (evt:any)=> {
       if (evt.target === this.cy && container.buttonClicked==="addVertices" && this.typeGraphe!="") {
+          //Use all possile name of node , case of node deleted id
+          this.Alphabets=this.alphabets.concat(this.alphabets0.map(letter => letter + '2'));
+          this.counter=0;
+          //
           let pos = evt.position || evt.cyPosition;
           let node:any;
           if(container.nodeName=="numerique"){
@@ -952,10 +960,29 @@ export class GrapheService {
       if(elem.status=="add"){
         if(element.isNode() || element.isEdge()){
           element.remove();
+          if(element.isNode()){
+            container.message=this.translate.instant("grapheS.msg55",{nodeId:element.data('id')});
+          }else{
+            if(this.typeGraphe.split(" ")[1]=="Weighted"){
+              container.message=this.translate.instant("grapheS.msg58",{source:element.source().id(),target:element.target().id(),weight:element.data("weight")});
+            }else{
+              container.message=this.translate.instant("grapheS.msg59",{source:element.source().id(),target:element.target().id()});
+            }
+            
+          }
         }
       }else{
         if(element.isNode() || element.isEdge()){
           this.cy.add(element);
+          if(element.isNode()){
+            container.message=this.translate.instant("grapheS.msg54",{nodeId:element.data('id')});
+          }else{
+            if(this.typeGraphe.split(" ")[1]=="Weighted"){
+              container.message=this.translate.instant("grapheS.msg57",{source:element.source().id(),target:element.target().id(),weight:element.data("weight")});
+            }else{
+              container.message=this.translate.instant("grapheS.msg56",{source:element.source().id(),target:element.target().id()});
+            }
+          }
         }
       }
     }
@@ -1302,6 +1329,7 @@ export class GrapheService {
       addGrapheFromEdgesList.style.display="none";
       container2.listEdgeTextArea="";
       container.message=this.translate.instant("grapheFromEdgeList.msg7");////
+      container.restoreArray=[];
       container.changeSelect="";
       }else{
         container.typeGraphe=this.typeGraphe=cyType;

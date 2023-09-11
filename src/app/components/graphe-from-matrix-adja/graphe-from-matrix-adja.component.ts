@@ -96,6 +96,7 @@ export class GrapheFromMatrixAdjaComponent {
       this.matrixText="";
       this.container.message=this.translate.instant("grapheFromMatrix.msg4");
       this.container.changeSelect="";
+      this.container.restoreArray=[];
     }
   }
   /**
