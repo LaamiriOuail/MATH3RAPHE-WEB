@@ -119,12 +119,12 @@ export class SaveUploadService {
           try {
             const json = JSON.parse(e.target?.result as string);
             let largestNodeId = 0;
-            json.elements.nodes.forEach((node: any) => {
-              const nodeId = parseInt(node.data.id);
+            for(let k:number=0;k<json.elements.nodes.length;k++){
+              const nodeId = parseInt(json.elements.nodes[k].data.id);
               if (nodeId > largestNodeId) {
                 largestNodeId = nodeId;
               }
-            });
+            }
             container.nodeId=largestNodeId;
             // Check if the typeGraphe property exists
             if (json.typeGraphe) {

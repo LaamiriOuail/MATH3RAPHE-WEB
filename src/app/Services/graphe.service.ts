@@ -115,7 +115,7 @@ export class GrapheService {
   *
   * @param {ScreenboxComponent} container - The container object.
   */
-  changeChanges(container:any){
+  changeChanges(container:any):void{
     //DRY
     container.selectedNode=[];
     container.algorithm="";
@@ -389,67 +389,68 @@ export class GrapheService {
   changeNodeId(container:any,container2:any):void{
     const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
     let idExists=false;
-    this.cy.nodes().forEach((node:any)=>{
-      if(node.data('id')==container2.newNodeId){
+    for(let k:number=0;k<this.cy.nodes().length;k++){
+      if(this.cy.nodes()[k].data('id')==container2.newNodeId){
         container.message=this.translate.instant("grapheS.msg23");
         idExists=true;
+        break;
       }
-    })
+    }
 
     if(idExists==false){
       let node = this.cy.getElementById(container.selectedNode[0]);
       let elem:any;
       let nodeNew=this.cy.add({ group: 'nodes', data: { id: container2.newNodeId}, position: { x: node.position('x'),y: node.position('y'),}});
-      
-      this.cy.edges().forEach((edge:any)=>{
+      for(let k:number=0;k<this.cy.edges().length;k++){
         if(this.typeGraphe.split(" ")[1]=="Unweighted"){
-            if (edge.source().id() === node.id()) {
-              elem={status:"remove",element:edge};
-              container.restoreArray.push(elem);
+          if (this.cy.edges()[k].source().id() === node.id()) {
+            elem={status:"remove",element:this.cy.edges()[k]};
+            container.restoreArray.push(elem);
+            this.cy.add({
+                group: 'edges',
+                data: {
+                    source: nodeNew.id(),
+                    target: this.cy.edges()[k].target().id(),
+                }
+            });
+          } else if (this.cy.edges()[k].target().id() === node.id()) {
+            elem={status:"remove",element:this.cy.edges()[k]};
+            container.restoreArray.push(elem);
               this.cy.add({
                   group: 'edges',
                   data: {
-                      source: nodeNew.id(),
-                      target: edge.target().id(),
+                      source: this.cy.edges()[k].source().id(),
+                      target: nodeNew.id(),
                   }
               });
-            } else if (edge.target().id() === node.id()) {
-              elem={status:"remove",element:edge};
-              container.restoreArray.push(elem);
-                this.cy.add({
-                    group: 'edges',
-                    data: {
-                        source: edge.source().id(),
-                        target: nodeNew.id(),
-                    }
-                });
-            }
-        }else if(this.typeGraphe.split(" ")[1]=="Weighted"){
-            if (edge.source().id() === node.id()) {
-              elem={status:"remove",element:edge};
-              container.restoreArray.push(elem);
+          }
+      }else if(this.typeGraphe.split(" ")[1]=="Weighted"){
+          if (this.cy.edges()[k].source().id() === node.id()) {
+            elem={status:"remove",element:this.cy.edges()[k]};
+            container.restoreArray.push(elem);
+            this.cy.add({
+                group: 'edges',
+                data: {
+                    source: nodeNew.id(),
+                    target: this.cy.edges()[k].target().id(),
+                    weight: this.cy.edges()[k].data('weight') 
+                }
+            });
+          } else if (this.cy.edges()[k].target().id() === node.id()) {
+            elem={status:"remove",element:this.cy.edges()[k]};
+            container.restoreArray.push(elem);
               this.cy.add({
                   group: 'edges',
                   data: {
-                      source: nodeNew.id(),
-                      target: edge.target().id(),
-                      weight: edge.data('weight') 
+                      source: this.cy.edges()[k].source().id(),
+                      target: nodeNew.id(),
+                      weight: this.cy.edges()[k].data('weight') 
                   }
               });
-            } else if (edge.target().id() === node.id()) {
-              elem={status:"remove",element:edge};
-              container.restoreArray.push(elem);
-                this.cy.add({
-                    group: 'edges',
-                    data: {
-                        source: edge.source().id(),
-                        target: nodeNew.id(),
-                        weight: edge.data('weight') 
-                    }
-                });
-            }
-        }
-      })
+          }
+      }
+      }
+      
       //Restore
       elem={status:"remove",element:node};
       container.restoreArray.push(elem);
@@ -576,12 +577,13 @@ export class GrapheService {
     const formAddNode=container.el.nativeElement.querySelector('.formAddNode');
     let exist:boolean=false;
     if(container2.nodeId){
-      this.cy.nodes().forEach((node:any)=>{
-        if(node.data('id')==container2.nodeId){
+      for(let k:number=0;k<this.cy.nodes().length;k++){
+        if(this.cy.nodes()[k].data('id')==container2.nodeId){
           container.message=this.translate.instant('grapheS.msg23');
           exist=true;
+          break;
         }
-      })
+      }
       if(!exist){
         let node=this.cy.add({ group: 'nodes', data: { id: container2.nodeId}, position: this.position });
         let elem={status:"add",element:node};
@@ -622,18 +624,19 @@ export class GrapheService {
           let pos = evt.position || evt.cyPosition;
           let node:any;
           if(container.nodeName=="numerique"){
-            this.cy.nodes().forEach((node:any)=>{
-              if(node.data('id')==this.counter+1){
+            for(let k:number=0;k<this.cy.nodes().length;k++){
+              if(this.cy.nodes()[k].data('id')==this.counter+1){
                 ++this.counter;
               }
-            })
+            }
             node=this.cy.add({ group: 'nodes', data: { id: ++this.counter}, position: pos });
           }else if(container.nodeName=="alphabic"){
-            this.cy.nodes().forEach((node:any)=>{
-              if(node.data('id')==this.Alphabets[0]){
+            for(let k:number=0;k<this.cy.nodes().length;k++){
+              if(this.cy.nodes()[k].data('id')==this.Alphabets[0]){
                 this.Alphabets.shift();
               }
-            })
+            }
+
             node=this.cy.add({ group: 'nodes', data: { id: this.Alphabets.shift()}, position: pos });
           }else if(container.nodeName=="customText"){
             const formAddNode=container.el.nativeElement.querySelector('.formAddNode');
@@ -867,10 +870,10 @@ export class GrapheService {
    */
   changeColorNodes(): void {
     setTimeout(() => {
-      this.cy.nodes().forEach((node:any)=>{
-        node.style('background-color',this.BACKGROUND_COLOR_NODE);
-        node.style('color',this.COLOR_NODE);
-      })
+      for(let k:number=0;k<this.cy.nodes().length;k++){
+        this.cy.nodes()[k].style('background-color',this.BACKGROUND_COLOR_NODE);
+        this.cy.nodes()[k].style('color',this.COLOR_NODE);
+      }
     },10)
   }
   /**
@@ -878,15 +881,16 @@ export class GrapheService {
    */
   changeColorEdges(): void {
     setTimeout(() => {
-      this.cy.edges().forEach((edge:any)=>{
-        edge.style('line-color',this.COLOR_LINE_EDGE);
+      for(let k:number=0;k<this.cy.edges().length;k++){
+        this.cy.edges()[k].style('line-color',this.COLOR_LINE_EDGE);
         if(this.typeGraphe.split(" ")[1]=="Weighted"){
-          edge.style('color',this.DATA_EDGE_COLOR);
+          this.cy.edges()[k].style('color',this.DATA_EDGE_COLOR);
         }
         if(this.typeGraphe.split(" ")[0]=="Directed"){
-          edge.style('target-arrow-color', this.TARGET_ARROW_COLOR);
+          this.cy.edges()[k].style('target-arrow-color', this.TARGET_ARROW_COLOR);
         }
-      })
+      }
+
     },10)
   }
   /**
@@ -953,13 +957,14 @@ export class GrapheService {
    */
   searcheEdgeChnageBC(container:any,source:string,target:string,lineColor:string):void{
     const edges = this.cy.elements('edge'); // Select only edges
-    edges.forEach((edge:any) => {
-        const edgeSourceId = edge.source().id();
-        const edgeTargetId = edge.target().id();
-        if (edgeSourceId === source && edgeTargetId === target) {
-            edge.style('line-color', lineColor);
-        }
-    });
+    for(let k:number=0;k<edges.length;k++){
+      const edgeSourceId = edges[k].source().id();
+      const edgeTargetId =  edges[k].target().id();
+      if (edgeSourceId === source && edgeTargetId === target) {
+        edges[k].style('line-color', lineColor);
+      }
+    }
+
   }
   /**
    * Restores the graph by adding or removing elements based on the restoreArray.
@@ -1008,11 +1013,11 @@ export class GrapheService {
   getListeOfEdge():string {
     let listOfEdge:string="";
     let i:number=0;
-    this.cy?.edges().forEach((edge:any) => {
+    for(let k:number=0;k<this.cy?.edges().length;k++){
       i++;
-      let element:string=`(${this.translate.instant("info.s")}: ${edge.source().id()},${this.translate.instant("info.t")}: ${edge.target().id()}`;
+      let element:string=`(${this.translate.instant("info.s")}: ${this.cy?.edges()[k].source().id()},${this.translate.instant("info.t")}: ${this.cy?.edges()[k].target().id()}`;
       if(this.typeGraphe.split(" ")[1]=="Weighted"){
-        element+=`,${this.translate.instant("info.w")}: ${edge.data('weight')}) `;
+        element+=`,${this.translate.instant("info.w")}: ${this.cy?.edges()[k].data('weight')}) `;
       }else{
         element+=") ";
       }
@@ -1020,7 +1025,7 @@ export class GrapheService {
         element+=" --- ";
       }
       listOfEdge+=element;
-    });
+    }
     return listOfEdge;
   }
   /**
@@ -1031,13 +1036,13 @@ export class GrapheService {
   getListOfNode():string{
     let listOfNode:string="";
     let i:number=0;
-    this.cy?.nodes().forEach((node:any) => {
+    for(let k:number=0;k<this.cy?.nodes().length;k++){
       i++;
-      listOfNode+=`${node.data("id")} `;
+      listOfNode+=`${this.cy?.nodes()[k].data("id")} `;
       if(i!=this.cy?.nodes().length){
         listOfNode+=" --- ";
       }
-    });
+    }
     return listOfNode;
   }
   /**
@@ -1081,13 +1086,13 @@ export class GrapheService {
    * @param {ScreenboxComponent} container - The container object containing graph-related properties.
    */
   isEdgeRemove(node1:any,node2:any,container:any):void{
-      this.cy.edges().forEach((edge:any)=>{
-        if((edge.source().id()==node1 && edge.target().id()==node2)/* || (edge.source().id()==node2 && edge.target().id()==node1)*/){
-          this.cy.remove(edge);
-          let elem={status:"remove",element:edge};
-          container.restoreArray.push(elem);
-        }
-      })
+    for(let k:number=0;k<this.cy.edges().length;k++){
+      if((this.cy.edges()[k].source().id()==node1 && this.cy.edges()[k].target().id()==node2)/* || (edge.source().id()==node2 && edge.target().id()==node1)*/){
+        this.cy.remove(this.cy.edges()[k]);
+        let elem={status:"remove",element:this.cy.edges()[k]};
+        container.restoreArray.push(elem);
+      }
+    }
   }
   /**
    * Get the degrees of all nodes in the graph.
@@ -1098,15 +1103,15 @@ export class GrapheService {
     let nodesDegre:Array<any> = [];
     let obj:any;
     if(this.cy.nodes().length){
-      this.cy.nodes().forEach((node:any) => {
+      for(let k:number=0;k<this.cy.nodes().length;k++){
         obj={
-          id:node.data('id'),
-          indegree:node.indegree(),
-          outdegree:node.outdegree(),
-          degree:node.degree()
+          id:this.cy.nodes()[k].data('id'),
+          indegree:this.cy.nodes()[k].indegree(),
+          outdegree:this.cy.nodes()[k].outdegree(),
+          degree:this.cy.nodes()[k].degree()
         }; 
         nodesDegre.push(obj);
-      })
+      }
     }
     return nodesDegre;
   }
@@ -1134,32 +1139,32 @@ export class GrapheService {
         this.changeStyleGraphe(this.typeGraphe);
     }
     let i:number=0;
-    elements.forEach((element:any)=>{
-      if(element.id){
+    for(let k:number=0;k<elements.length;k++){
+      if(elements[k].id){
         const pos = { x: ++i*100+i**2, y: i*50-i**2 };
-        this.cy.add({ group: 'nodes', data: { id: element.id}, position: pos });
+        this.cy.add({ group: 'nodes', data: { id: elements[k].id}, position: pos });
       }else{
         if(weighted){
-          if(element.source && element.target && element.weight){
+          if(elements[k].source && elements[k].target && elements[k].weight){
             if(directed){
               this.cy.add({data:{
-                source: element.source,
-                target: element.target,
-                weight: element.weight
+                source: elements[k].source,
+                target: elements[k].target,
+                weight: elements[k].weight
               }
               }); 
             }else{
               let exist:boolean=false;
-              this.cy.edges().forEach((edge:any)=>{
-                if(edge.source().id()==element.target && edge.target().id()==element.source && edge.data("weight")==element.weight){
+              for(let m=0;m<this.cy.edges().length;m++){
+                if(this.cy.edges()[m].source().id()==elements[k].target && this.cy.edges()[m].target().id()==elements[k].source && this.cy.edges()[m].data("weight")==elements[k].weight){
                   exist=true;
                 }
-              })
+              }
               if(!exist){
                 this.cy.add({data:{
-                  source: element.source,
-                  target: element.target,
-                  weight: element.weight
+                  source: elements[k].source,
+                  target: elements[k].target,
+                  weight: elements[k].weight
                 }
                 }); 
               }
@@ -1167,26 +1172,26 @@ export class GrapheService {
               
           }
         }else{
-          if(element.source && element.target){
+          if(elements[k].source && elements[k].target){
             if(directed){
               this.cy.add({
                 data: {
-                source: element.source,
-                target: element.target,
+                source: elements[k].source,
+                target: elements[k].target,
                 }
               }); 
             }else{
               let exist:boolean=false;
-              this.cy.edges().forEach((edge:any)=>{
-                if(edge.source().id()==element.target && edge.target().id()==element.source){
+              for(let m:number=0;m<this.cy.edges().length;m++){
+                if(this.cy.edges()[m].source().id()==elements[k].target && this.cy.edges()[m].target().id()==elements[k].source){
                   exist=true;
                 }
-              })
+              }
               if(!exist){
                 this.cy.add({
                   data: {
-                  source: element.source,
-                  target: element.target,
+                  source: elements[k].source,
+                  target: elements[k].target,
                   }
                 }); 
               }
@@ -1194,7 +1199,8 @@ export class GrapheService {
         }
       }
     }
-    });
+    }
+   
   }
   /**
    * Reject the generation of a graph from an adjacency matrix.
@@ -1313,27 +1319,27 @@ export class GrapheService {
         }
       }
       if(!err){
-        elements.forEach((element:any)=>{
+        for(let k: number=0;k<elements.length;k++){
           if(typeGraphe.split(' ')[1]=="Weighted"){
-            if(element.source && element.target && element.weight){
+            if(elements[k].source && elements[k].target && elements[k].weight){
                 this.cy.add({data:{
-                  source: element.source,
-                  target: element.target,
-                  weight: element.weight
+                  source: elements[k].source,
+                  target: elements[k].target,
+                  weight: elements[k].weight
                 }
                 }); 
             }
           }else{
-            if(element.source && element.target){
+            if(elements[k].source && elements[k].target){
               this.cy.add({
                 data: {
-                source: element.source,
-                target: element.target,
+                source: elements[k].source,
+                target: elements[k].target,
                 }
               }); 
             }
           }
-        })
+        }
       const screen=container.el.nativeElement.querySelector('.screen');
       const buttonManupilation=container.el.nativeElement.querySelector('.buttonManupilation');
       const addGrapheFromEdgesList=container.el.nativeElement.querySelector('.addGrapheFromEdgesList');
@@ -1389,9 +1395,10 @@ export class GrapheService {
   }
   getNodeIds():Array<any>{
     const nodes:Array<any> = [];
-    this.cy.nodes().forEach((node:any)=>{
-      nodes.push(node.data('id'));
-    })
+    for(let k:number=0;k<this.cy.nodes().length;k++){
+      nodes.push(this.cy.nodes()[k].data('id'));
+    }
+
     return nodes;
   }
   incidenceMatrix():Array<any> {
@@ -1409,41 +1416,39 @@ export class GrapheService {
       }
       incidenceMatrix.push(row);
     }
-  
-    // Iterate over edges and populate the incidence matrix
-    edges.forEach((edge:any, edgeIndex:any) => {
+    for(let edgeIndex:number = 0; edgeIndex < edges.length; edgeIndex++) {
+      const edge = edges[edgeIndex];
       const sourceNode = edge.source();
       const targetNode = edge.target();
-  
+    
       // Find the indices of the source and target nodes in the nodes array
       const sourceIndex = nodes.indexOf(sourceNode);
       const targetIndex = nodes.indexOf(targetNode);
-  
+    
       // Set the corresponding cells in the matrix to 1 or -1 to indicate incidence
-      if(sourceIndex==targetIndex){
+      if (sourceIndex === targetIndex) {
         incidenceMatrix[sourceIndex][edgeIndex] = 2;
-      }else if(this.typeGraphe.split(' ')[0]=="Directed"){
+      } else if (this.typeGraphe.split(' ')[0] === "Directed") {
         incidenceMatrix[targetIndex][edgeIndex] = 1;
         incidenceMatrix[sourceIndex][edgeIndex] = -1;
-      }else{
+      } else {
         incidenceMatrix[sourceIndex][edgeIndex] = 1;
         incidenceMatrix[targetIndex][edgeIndex] = 1;
       }
-    });
-  
+    }
     return incidenceMatrix;
   }
   getEdgeIds():Array<any>{
     const edges:Array<any> = [];
-    this.cy.edges().forEach((edge:any)=>{
+    for(let k:number=0;k<this.cy.edges().length;k++){
       let edgeText:string="";
       if(this.typeGraphe.split(' ')[0]=="Directed"){
-        edgeText=`${edge.source().id()} > ${edge.target().id()}`;
+        edgeText=`${this.cy.edges()[k].source().id()} > ${this.cy.edges()[k].target().id()}`;
       }else{
-        edgeText=`${edge.source().id()} - ${edge.target().id()}`;
+        edgeText=`${this.cy.edges()[k].source().id()} - ${this.cy.edges()[k].target().id()}`;
       }
       edges.push(edgeText);
-    })
+    }
     return edges;
   }
   removeEdge(container:any,container2:any):void{
@@ -1540,9 +1545,9 @@ export class GrapheService {
   }
   getAdjancyList():Array<any>{
     const adjacencyList:Array<any> = [];
-      this.cy.nodes().forEach((node:any) => {
-        const outgoingEdges = node.outgoers();
-        const incomersEdges = node.incomers();
+    for(let k:number=0;k<this.cy.nodes().length;k++){
+      const outgoingEdges = this.cy.nodes()[k].outgoers();
+        const incomersEdges = this.cy.nodes()[k].incomers();
         let adjNode:Array<any>=outgoingEdges.map((edge:any) => edge.target().id());
         let elements:Array<any>=incomersEdges.map((edge:any) => edge.source().id());
         let adjanString:string="";
@@ -1558,7 +1563,7 @@ export class GrapheService {
           }else{
             let edge:any;
             for(let element of this.cy.edges()){
-              if(element.target().id()==adjNode[i] && element.source().id()==node.id()){
+              if(element.target().id()==adjNode[i] && element.source().id()==this.cy.nodes()[k].id()){
                 edge=element;
                 break;
               }
@@ -1584,7 +1589,7 @@ export class GrapheService {
             }else{
               let edge:any;
               for(let element of this.cy.edges()){
-                if(element.source().id()==adjNode[i] && element.target().id()==node.id()){
+                if(element.source().id()==adjNode[i] && element.target().id()==this.cy.nodes()[k].id()){
                   edge=element;
                   break;
                 }
@@ -1608,11 +1613,12 @@ export class GrapheService {
           }
         }
         const adjacencyListEntry = {
-          node: node.id(),
+          node: this.cy.nodes()[k].id(),
           adjacentNodes: adjanString
         };
         adjacencyList.push(adjacencyListEntry);
-        });
+    }
+   
     return adjacencyList;
   }
   randomPosition():void{

@@ -174,20 +174,21 @@ export class AlgorithmService {
     });
     let lastMessage:string="||";
     let i:number=0;
-    container.grapheS.cy.nodes().forEach((node:any) => {
-        if (node.id() !== rootNodeId) {
-            const targetNodeId = node.data('id');
-            const pathToTarget = dijkstra.pathTo(container.grapheS.cy.$(`#${targetNodeId}`));
-            const distanceToTarget = dijkstra.distanceTo(container.grapheS.cy.$(`#${targetNodeId}`));
-            const pathNodes = pathToTarget.nodes().map((node:any) => node.data('id'));
-            const pathString = pathNodes.join(' -> ');
-            setTimeout(()=>{
-              container.grapheS.resetColors();
-              this.dijkstraAnimation(rootNodeId,targetNodeId,container);
-              lastMessage += this.translate.instant('algoS.msg4', { rootNodeId,targetNodeId,pathString,distanceToTarget });
-            },i++*10000);
-          }
-    });
+    for(let j:number=0;j<container.grapheS.cy.nodes().length;j++){
+      if (container.grapheS.cy.nodes()[j].id() !== rootNodeId) {
+        const targetNodeId = container.grapheS.cy.nodes()[j].data('id');
+        const pathToTarget = dijkstra.pathTo(container.grapheS.cy.$(`#${targetNodeId}`));
+        const distanceToTarget = dijkstra.distanceTo(container.grapheS.cy.$(`#${targetNodeId}`));
+        const pathNodes = pathToTarget.nodes().map((node:any) => node.data('id'));
+        const pathString = pathNodes.join(' -> ');
+        setTimeout(()=>{
+          container.grapheS.resetColors();
+          this.dijkstraAnimation(rootNodeId,targetNodeId,container);
+          lastMessage += this.translate.instant('algoS.msg4', { rootNodeId,targetNodeId,pathString,distanceToTarget });
+        },i++*10000);
+      }
+    }
+    
     setTimeout(()=>{
       container.grapheS.resetColors();
       container.message=lastMessage;
@@ -219,18 +220,18 @@ export class AlgorithmService {
     const pathNodes = pathToTarget.nodes().map((node: any) => node.data('id'));
     let lastNode:any=pathToTarget.nodes().first();
     container.grapheS.changeColorNode(targetNode, container.grapheS.BACKGROUND_COLOR_NODE,container.grapheS.COLOR_NODE);
-    pathToTarget.nodes().forEach((node: any) =>{
+    for(let j:number=0;j<pathToTarget.nodes().length;j++){
       setTimeout(() =>{
-        node.style('background-color', container.grapheS.BACKGROUND_COLOR_NODE_ALGO);
-        node.style('color',container.grapheS.COLOR_NODE_ALGO);
-        console.log(i);
+        pathToTarget.nodes()[j].style('background-color', container.grapheS.BACKGROUND_COLOR_NODE_ALGO);
+        pathToTarget.nodes()[j].style('color',container.grapheS.COLOR_NODE_ALGO);
         if(i!=1){
-          container.grapheS.searcheEdgeChnageBC(container,lastNode.data('id'),node.data('id'),container.grapheS.COLOR_LINE_EDGE_ALGO);
+          container.grapheS.searcheEdgeChnageBC(container,lastNode.data('id'),pathToTarget.nodes()[j].data('id'),container.grapheS.COLOR_LINE_EDGE_ALGO);
         }
-        lastNode=node;
+        lastNode=pathToTarget.nodes()[j];
       },i*2000);
       i++;
-    });
+    }
+    
     const pathString = pathNodes.join(' -> ');
     container.message = this.translate.instant("algoS.msg3",{rootNodeId,targetNodeId,pathString,distanceToTarget});
     container.algorithm="";
@@ -260,18 +261,18 @@ export class AlgorithmService {
     const pathNodes = pathToTarget.nodes().map((node: any) => node.data('id'));
     let lastNode:any=pathToTarget.nodes().first();
     container.grapheS.changeColorNode(targetNode, container.grapheS.BACKGROUND_COLOR_NODE,container.grapheS.COLOR_NODE);
-    pathToTarget.nodes().forEach((node: any) =>{
+    for(let j:number=0;j<pathToTarget.nodes().length;j++){
       setTimeout(() =>{
-        node.style('background-color', container.grapheS.BACKGROUND_COLOR_NODE_ALGO);
-        node.style('color',container.grapheS.COLOR_NODE_ALGO);
-        console.log(i);
+        pathToTarget.nodes()[j].style('background-color', container.grapheS.BACKGROUND_COLOR_NODE_ALGO);
+        pathToTarget.nodes()[j].style('color',container.grapheS.COLOR_NODE_ALGO);
         if(i!=1){
-          container.grapheS.searcheEdgeChnageBC(container,lastNode.data('id'),node.data('id'),container.grapheS.COLOR_LINE_EDGE_ALGO);
+          container.grapheS.searcheEdgeChnageBC(container,lastNode.data('id'),pathToTarget.nodes()[j].data('id'),container.grapheS.COLOR_LINE_EDGE_ALGO);
         }
-        lastNode=node;
+        lastNode=pathToTarget.nodes()[j];
       },i*2000);
       i++;
-    });
+    }
+   
     const pathString = pathNodes.join(' -> ');
     container.message = this.translate.instant("algoS.msg3",{rootNodeId,targetNodeId,pathString,distanceToTarget});
     container.algorithm="";
@@ -297,20 +298,20 @@ export class AlgorithmService {
     });
     let lastMessage:string="||";
     let i:number=0;
-    container.grapheS.cy.nodes().forEach((node:any) => {
-        if (node.id() !== rootNodeId) {
-            const targetNodeId = node.data('id');
-            const pathToTarget = bellmanFord.pathTo(container.grapheS.cy.$(`#${targetNodeId}`));
-            const distanceToTarget = bellmanFord.distanceTo(container.grapheS.cy.$(`#${targetNodeId}`));
-            const pathNodes = pathToTarget.nodes().map((node:any) => node.data('id'));
-            const pathString = pathNodes.join(' -> ');
-            setTimeout(()=>{
-              container.grapheS.resetColors();
-              this.bellmanFordAnimation(rootNodeId,targetNodeId,container);
-              lastMessage += this.translate.instant('algoS.msg4', { rootNodeId,targetNodeId,pathString,distanceToTarget });
-            },i++*10000);
-          }
-    });
+    for(let j:number=0;j<container.grapheS.cy.nodes().length;j++){
+      if (container.grapheS.cy.nodes()[j].id() !== rootNodeId) {
+        const targetNodeId = container.grapheS.cy.nodes()[j].data('id');
+        const pathToTarget = bellmanFord.pathTo(container.grapheS.cy.$(`#${targetNodeId}`));
+        const distanceToTarget = bellmanFord.distanceTo(container.grapheS.cy.$(`#${targetNodeId}`));
+        const pathNodes = pathToTarget.nodes().map((node:any) => node.data('id'));
+        const pathString = pathNodes.join(' -> ');
+        setTimeout(()=>{
+          container.grapheS.resetColors();
+          this.bellmanFordAnimation(rootNodeId,targetNodeId,container);
+          lastMessage += this.translate.instant('algoS.msg4', { rootNodeId,targetNodeId,pathString,distanceToTarget });
+        },i++*10000);
+    }
+    }
     setTimeout(()=>{
       container.grapheS.resetColors();
       container.message=lastMessage;
@@ -336,14 +337,13 @@ export class AlgorithmService {
     });
 
     container.message = "||";
-    let space:string="     ";
-    cy.nodes().forEach((nodeA: any) => {
-      cy.nodes().forEach((nodeB: any) => {
-        if (nodeA.id() !== nodeB.id()) {
-          const distance = floydWarshall.distance(nodeA, nodeB);
-          const pathToNodeB = floydWarshall.path(nodeA, nodeB);
-          let rootNodeId=nodeA.data("id");
-          let targetNodeId=nodeB.data("id");
+    for(let j:number=0;j<cy.nodes().length;j++){
+      for(let k:number=0;k<cy.nodes().length;k++){
+        if (cy.nodes()[j].id() !== cy.nodes()[k].id()) {
+          const distance = floydWarshall.distance(cy.nodes()[j], cy.nodes()[k]);
+          const pathToNodeB = floydWarshall.path(cy.nodes()[j], cy.nodes()[k]);
+          let rootNodeId=cy.nodes()[j].data("id");
+          let targetNodeId=cy.nodes()[k].data("id");
           if (distance !== Infinity) {
             const pathNodes = pathToNodeB.nodes().map((node: any) => node.data('id'));
             const pathString = pathNodes.join(' -> ');
@@ -352,8 +352,9 @@ export class AlgorithmService {
             container.message += this.translate.instant("algoS.msg6",{rootNodeId, targetNodeId});
           }
         }
-      });
-    });
+      }
+    }
+ 
     container.algorithm="";
   }
 
@@ -445,13 +446,13 @@ export class AlgorithmService {
     while (queue.length > 0) {
       var currentNode = queue.shift();
       var neighbors = currentNode.neighborhood().nodes();
-
-      neighbors.forEach((neighbor:any) =>{
-        if (!visitedNodes.has(neighbor.id())) {
-          visitedNodes.add(neighbor.id());
-          queue.push(neighbor);
+      for(let j:number=0;j<neighbors.length;j++){
+        if (!visitedNodes.has(neighbors[j].id())) {
+          visitedNodes.add(neighbors[j].id());
+          queue.push(neighbors[j]);
         }
-      });
+      }
+
     }
   }
 
@@ -477,11 +478,12 @@ export class AlgorithmService {
   isAllEdgePositive(container:any):boolean{
     let allPositive:boolean=true;
     if(container.typeGraphe.split(" ")[1]=="Weighted"){
-      container.grapheS.cy.edges().forEach((edge:any)=>{
-        if(edge.data('weight')<=0){
+      for(let j:number=0;j<container.grapheS.cy.edges().length;j++){
+        if(container.grapheS.cy.edges()[j].data('weight')<=0){
           allPositive=false;
         }
-      })
+      }
+
     }
     return allPositive;
     
@@ -525,21 +527,23 @@ export class AlgorithmService {
   kruskalAnimation(container:any):void{
     let i:number=0;
     let j:number=0;
-    this.MinimumSpanningTreeEdges(container).forEach((edge:any)=>{
-      container.grapheS.changeColorEdge(edge,container.grapheS.DATA_EDGE_COLOR_ALGO,container.grapheS.COLOR_LINE_EDGE_ALGO,container.grapheS.TARGET_ARROW_COLOR_ALGO,j=++i*2000);
+    for(let k:number=0;k<this.MinimumSpanningTreeEdges(container).length;k++){
+      container.grapheS.changeColorEdge(this.MinimumSpanningTreeEdges(container)[k],container.grapheS.DATA_EDGE_COLOR_ALGO,container.grapheS.COLOR_LINE_EDGE_ALGO,container.grapheS.TARGET_ARROW_COLOR_ALGO,j=++i*2000);
       if(i!=container.grapheS.cy.nodes().length - 1){
         setTimeout(()=>{
-          container.message+=`(s:${edge.source().id()},t:${edge.target().id()},w:${edge.data("weight")||1})  ||`;
+          container.message+=`(s:${this.MinimumSpanningTreeEdges(container)[k].source().id()},t:${this.MinimumSpanningTreeEdges(container)[k].target().id()},w:${this.MinimumSpanningTreeEdges(container)[k].data("weight")||1})  ||`;
         },j)
       }else{
         setTimeout(()=>{
-          container.message+=`(s:${edge.source().id()},t:${edge.target().id()},w:${edge.data("weight")||1})`;
+          container.message+=`(s:${this.MinimumSpanningTreeEdges(container)[k].source().id()},t:${this.MinimumSpanningTreeEdges(container)[k].target().id()},w:${this.MinimumSpanningTreeEdges(container)[k].data("weight")||1})`;
         },j)
       }
-    })
-    container.grapheS.cy.nodes().forEach((node:any)=>{
-      container.grapheS.changeColorNode(node, container.grapheS.BACKGROUND_COLOR_NODE_ALGO,container.grapheS.COLOR_NODE_ALGO,++i*2000);
-    })
+    }
+
+    for(let k:number=0;k<container.grapheS.cy.nodes().length;k++){
+      container.grapheS.changeColorNode(container.grapheS.cy.nodes()[k], container.grapheS.BACKGROUND_COLOR_NODE_ALGO,container.grapheS.COLOR_NODE_ALGO,++i*2000);
+    }
+
     container.algorithm="";
   }
 
@@ -551,20 +555,21 @@ export class AlgorithmService {
   primeAniamantion(container:any):void{
     let i:number=0;
     let j:number=0;
-    this.MinimumSpanningTreeEdges(container).forEach((edge:any)=>{
-      container.grapheS.changeColorNode(edge.source(), container.grapheS.BACKGROUND_COLOR_NODE_ALGO,container.grapheS.COLOR_NODE_ALGO,++i*2000);
-      container.grapheS.changeColorEdge(edge,container.grapheS.DATA_EDGE_COLOR_ALGO,container.grapheS.COLOR_LINE_EDGE_ALGO,container.grapheS.TARGET_ARROW_COLOR_ALGO,j=++i*2000);
+    for(let k:number=0;k<this.MinimumSpanningTreeEdges(container).length;k++){
+      container.grapheS.changeColorNode(this.MinimumSpanningTreeEdges(container)[k].source(), container.grapheS.BACKGROUND_COLOR_NODE_ALGO,container.grapheS.COLOR_NODE_ALGO,++i*2000);
+      container.grapheS.changeColorEdge(this.MinimumSpanningTreeEdges(container)[k],container.grapheS.DATA_EDGE_COLOR_ALGO,container.grapheS.COLOR_LINE_EDGE_ALGO,container.grapheS.TARGET_ARROW_COLOR_ALGO,j=++i*2000);
       if(i/2!=container.grapheS.cy.nodes().length - 1){
         setTimeout(()=>{
-          container.message+=`(s:${edge.source().id()},t:${edge.target().id()},w:${edge.data("weight")||1})  ||`;
+          container.message+=`(s:${this.MinimumSpanningTreeEdges(container)[k].source().id()},t:${this.MinimumSpanningTreeEdges(container)[k].target().id()},w:${this.MinimumSpanningTreeEdges(container)[k].data("weight")||1})  ||`;
         },j)
       }else{
-        container.grapheS.changeColorNode(edge.target(), container.grapheS.BACKGROUND_COLOR_NODE_ALGO,container.grapheS.COLOR_NODE_ALGO,j);
+        container.grapheS.changeColorNode(this.MinimumSpanningTreeEdges(container)[k].target(), container.grapheS.BACKGROUND_COLOR_NODE_ALGO,container.grapheS.COLOR_NODE_ALGO,j);
         setTimeout(()=>{
-          container.message+=`(s:${edge.source().id()},t:${edge.target().id()},w:${edge.data("weight")||1})`;
+          container.message+=`(s:${this.MinimumSpanningTreeEdges(container)[k].source().id()},t:${this.MinimumSpanningTreeEdges(container)[k].target().id()},w:${this.MinimumSpanningTreeEdges(container)[k].data("weight")||1})`;
         },j)
       }
-    })
+    }
+
     container.algorithm="";
   }
   /**
@@ -590,7 +595,7 @@ export class AlgorithmService {
     let message:string="";
     let i:number=0;
     container.message="Tarjan(SCCs): ";
-    components.forEach((component:any, index:any) => {
+    for(let k:number=0;k<components.length;k++){
       setTimeout(()=>{
         message=this.translate.instant("algoS.msg13",{index:++i});
         container.algorithm="";
@@ -598,25 +603,25 @@ export class AlgorithmService {
         const backgroundColor:string = this.getRandomColor();
         const fleshColor:string=this.getRandomColor();
         setTimeout(()=>{
-          component.nodes().style({
+          components[k].nodes().style({
             'background-color': backgroundColor,
             'border-color': color,
             'color': color,
           });
         },10)
-        component.nodes().forEach((node:any)=>{
-          message+=node.data('id')+","
-        })
+        for(let m:number=0;m<components[k].nodes().length;m++){
+          message+=components[k][m].data('id')+","
+        }
         message=message.substring(0, message.length-1);
         setTimeout(()=>{
-          component.edges().style({
+          components[k].edges().style({
             'line-color':backgroundColor,
           });
         },10)
        
         if(container.typeGraphe.split(" ")[1]=="Weighted"){
           setTimeout(()=>{
-            component.edges().style({
+            components[k].edges().style({
               'color': color,
             });
           },10)
@@ -624,14 +629,15 @@ export class AlgorithmService {
         }
         if(container.typeGraphe.split(" ")[0]=="Directed"){
           setTimeout(()=>{
-            component.edges().style({
+            components[k].edges().style({
               'target-arrow-color': fleshColor,
             });
           },10)
         }
         container.message+=message+" || ";
       },i*20000)
-    });
+    }
+    
   }
   
   aStarAnimation(container:any):void{
