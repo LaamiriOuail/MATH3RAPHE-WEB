@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import * as cytoscape from 'cytoscape';
-
+interface IPosition{
+  x: number,
+  y:number
+}
 /**
  * Service for managing and interacting with the Cytoscape graph.
  */
@@ -14,7 +17,7 @@ export class GrapheService {
 
   /** The type of the graph (e.g., Directed, Undirected, Weighted). */
   public typeGraphe: string = "";
-
+  
   /** Array of lowercase alphabet characters. */
   alphabets0: string[] = Array.from({ length: 26 }, (_, i) =>
     String.fromCharCode(65 + i)
@@ -30,6 +33,7 @@ export class GrapheService {
     this.alphabets0.map(letter => letter + '2')
   );
 
+  positions:Array<IPosition>=[{x: 241, y: 46},{x: 493, y: 47},{x: 261, y: 174},{x: 541, y: 174},{x: 719, y: 41},{x: 736, y: 165},{x: 295, y: 314},{x: 530, y: 301},{x: 772, y: 299},{x: 845, y: 43},{x: 885, y: 178},{x: 875, y: 276},{x: 82, y: 5},{x: 106, y: 144},{x: 121.28128725008331, y: 263.51311061937736},{x: 382, y: 87},{x: 617, y: 105},{x: 592, y: 217},{x: 323, y: 264},{x: 835, y: 319},{x: 82, y: 24},{x: 98, y: 274},{x: 88, y: 173},{x: 380, y: 23},{x: 739, y: 73},{x: 702, y: 211},{x: 577, y: 287},{x: 351, y: 323},{x: 350, y: 200},{x: 533, y: 108},{x: 1221, y: 49},{x: 970, y: 133},{x: 1227, y: 227},{x: 1154, y: 353},{x: 919, y: 378},{x: 887, y: 239},{x: 958, y: 48}]
   /** A counter variable for tracking. */
   counter: number = 0;
   numbersArray:number[] = Array.from(Array(200), (_, i) => i + 1);
@@ -622,6 +626,7 @@ export class GrapheService {
           this.counter=0;
           //
           let pos = evt.position || evt.cyPosition;
+
           let node:any;
           if(container.nodeName=="numerique"){
             for(let k:number=0;k<this.cy.nodes().length;k++){
@@ -1141,8 +1146,7 @@ export class GrapheService {
     let i:number=0;
     for(let k:number=0;k<elements.length;k++){
       if(elements[k].id){
-        const pos = { x: ++i*100+i**2, y: i*50-i**2 };
-        this.cy.add({ group: 'nodes', data: { id: elements[k].id}, position: pos });
+        this.cy.add({ group: 'nodes', data: { id: elements[k].id}, position: this.positions[i++] });
       }else{
         if(weighted){
           if(elements[k].source && elements[k].target && elements[k].weight){
@@ -1298,24 +1302,22 @@ export class GrapheService {
       container.typeGraphe=this.typeGraphe=typeGraphe;
       this.changeStyleGraphe(typeGraphe);
       let i:number=0;
-      for(let element of elements){
-        const nodeExists = this.cy.getElementById(element.source).nonempty();
-        const nodeExists1 = this.cy.getElementById(element.target).nonempty();
-        if(element.source==""){
+      for(let k:number=0;k<elements.length;k++){
+        const nodeExists = this.cy.getElementById(elements[k].source).nonempty();
+        const nodeExists1 = this.cy.getElementById(elements[k].target).nonempty();
+        if(elements[k].source==""){
           container.message=this.translate.instant("grapheFromEdgeList.msg1");
           err=true;
           break;
         }else if(!nodeExists){
-          const pos = { x: ++i*100+i**2, y: i*50-i**2 };
-          this.cy.add({ group: 'nodes', data: { id: element.source}, position: pos });
+          this.cy.add({ group: 'nodes', data: { id: elements[k].source}, position: this.positions[i++] });
         }
-        if(element.target==""){
+        if(elements[k].target==""){
           err=true;
           container.message=this.translate.instant("grapheFromEdgeList.msg1");
           break;
         }else if(!nodeExists1){
-          const pos = { x: ++i*100+i**2, y: i*50-i**2 };
-          this.cy.add({ group: 'nodes', data: { id: element.target}, position: pos });
+          this.cy.add({ group: 'nodes', data: { id: elements[k].target}, position: this.positions[i++] });
         }
       }
       if(!err){
@@ -1618,7 +1620,6 @@ export class GrapheService {
         };
         adjacencyList.push(adjacencyListEntry);
     }
-   
     return adjacencyList;
   }
   randomPosition():void{
