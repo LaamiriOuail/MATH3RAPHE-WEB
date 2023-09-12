@@ -8,9 +8,9 @@ import { ScreenboxComponent } from './screenbox/screenbox.component';
 import { FooterComponent } from './footer/footer.component';
 import { FormsModule } from '@angular/forms';
 
-import { GrapheService } from './AllService/graphe.service';
-import { AlgorithmService } from './AllService/algorithm.service';
-import { SaveUploadService } from './AllService/save-upload.service';
+import { GrapheService } from './Services/graphe.service';
+import { AlgorithmService } from './Services/algorithm.service';
+import { SaveUploadService } from './Services/save-upload.service';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { InfoComponent } from './components/info/info.component';
@@ -27,7 +27,7 @@ import { ChangeIdNodeComponent } from './components/change-id-node/change-id-nod
 import { ChangeColorComponent } from './components/change-color/change-color.component';
 import { AddNodeComponent } from './components/add-node/add-node.component';
 import { ChangeSizeScreenComponent } from './components/change-size-screen/change-size-screen.component';
-import { DarkModeService } from './AllService/dark-mode.service';
+import { DarkModeService } from './Services/dark-mode.service';
 import { GrapheFromMatrixAdjaComponent } from './components/graphe-from-matrix-adja/graphe-from-matrix-adja.component';
 import { GrapheFromEdgesListComponent } from './components/graphe-from-edges-list/graphe-from-edges-list.component';
 import { RemoveEdgeComponent } from './components/remove-edge/remove-edge.component';

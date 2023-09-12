@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { DarkModeService } from './AllService/dark-mode.service';
+import { DarkModeService } from './Services/dark-mode.service';
 
 @Component({
   selector: 'app-root',

@@ -1,9 +1,9 @@
 import { Component, ElementRef, OnDestroy, OnInit } from '@angular/core';
-import { GrapheService } from '../AllService/graphe.service';
-import { SaveUploadService } from '../AllService/save-upload.service';
-import { AlgorithmService } from '../AllService/algorithm.service';
+import { GrapheService } from '../Services/graphe.service';
+import { SaveUploadService } from '../Services/save-upload.service';
+import { AlgorithmService } from '../Services/algorithm.service';
 import { TranslateService } from '@ngx-translate/core';
-import { DarkModeService } from '../AllService/dark-mode.service';
+import { DarkModeService } from '../Services/dark-mode.service';
 
 /**
  * Angular component representing the screen box.

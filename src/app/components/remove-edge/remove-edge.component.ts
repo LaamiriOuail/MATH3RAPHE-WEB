@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { GrapheService } from 'src/app/AllService/graphe.service';
+import { GrapheService } from 'src/app/Services/graphe.service';
 
 @Component({
   selector: 'app-remove-edge',

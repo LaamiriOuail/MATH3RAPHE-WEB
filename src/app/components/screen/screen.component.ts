@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DarkModeService } from 'src/app/AllService/dark-mode.service';
+import { DarkModeService } from 'src/app/Services/dark-mode.service';
 
 /**
  * Angular component for displaying the main screen.

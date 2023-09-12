@@ -3,7 +3,7 @@
  */
 import { Component, Input } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { GrapheService } from 'src/app/AllService/graphe.service';
+import { GrapheService } from 'src/app/Services/graphe.service';
 /**
  * Represents a weighted edge in a graph.
  *

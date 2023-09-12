@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { GrapheService } from '../AllService/graphe.service';
+import { GrapheService } from '../Services/graphe.service';
 
 @Component({
   selector: 'app-contact',

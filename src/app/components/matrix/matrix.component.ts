@@ -1,6 +1,6 @@
 import { Component, Input, ElementRef } from '@angular/core';
-import { DarkModeService } from 'src/app/AllService/dark-mode.service';
-import { GrapheService } from 'src/app/AllService/graphe.service';
+import { DarkModeService } from 'src/app/Services/dark-mode.service';
+import { GrapheService } from 'src/app/Services/graphe.service';
 
 /**
  * Angular component for displaying a matrix.
