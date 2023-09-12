@@ -13,7 +13,9 @@
   },
   "matrix":{
     "adjMatrix":"Matrice adjacente :",
-    "IncMatrix":"Matrice d'incidence :"
+    "IncMatrix":"Matrice d'incidence :",
+    "adjNode": "Noeuds adjacents",
+    "adjancyList": "Liste d'adjacence du graphe"
   },
   "info": {
     "s":"s",

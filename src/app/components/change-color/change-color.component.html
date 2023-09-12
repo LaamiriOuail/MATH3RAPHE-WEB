@@ -1,5 +1,5 @@
 <div  class="formEdge">
-    <span *ngIf="(container.changeSelect=='changeColorNodes' || container.typeGraphe.split(' ')[1]=='Weighted')&&(container.changeSelect!='changeColorScreen')">
+    <span *ngIf="(container.changeSelect=='changeColorNodes' || container.typeGraphe.split(' ')[1]=='Weighted' || container.changeSelect=='changeColorNodesAlgo')&&(container.changeSelect!='changeColorScreen')">
         <label for="color">{{"screenbox.msg33" |translate}} &nbsp;&nbsp;:&nbsp;</label>
         <input id="color" type="color" class="form-input"  [(ngModel)]="color">&nbsp;&nbsp;&nbsp;&nbsp;
     </span>

@@ -18,7 +18,7 @@ export class ChangeSizeScreenComponent {
   /**
    * The height input field for changing the screen height.
    */
-  height: any = "400";
+  height: any = localStorage.getItem('screenHeight');
 
   /**
    * Initializes a new instance of the ChangeSizeScreenComponent class.

@@ -13,7 +13,9 @@
   },
   "matrix":{
     "adjMatrix":"Adjacency Matrix : ",
-    "IncMatrix":"Incidence Matrix : "
+    "IncMatrix":"Incidence Matrix : ",
+    "adjNode": "Adjacent Nodes",
+    "adjancyList": "Graph Adjacency List"
   },
   "info": {
     "s":"s",

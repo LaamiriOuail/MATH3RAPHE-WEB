@@ -309,13 +309,14 @@ export class GrapheService {
     const screen=container.el.nativeElement.querySelector('.scr');
     if(container2.height){
       screen.style.height =container2.height+'px';
+      localStorage.setItem('screenHeight', screen.style.height.toString());
       container.message=this.translate.instant("grapheS.msg37",{height:container2.height});
     }else{
-      screen.style.height =400+'px';//default value
+      container2.height=screen.style.height =400+'px';//default value
+      localStorage.setItem('screenHeight', screen.style.height.toString());
       container.message=this.translate.instant("grapheS.msg38");
     }
     container.changeSelect="";
-    // container2.height=null;
     formAChangeSizeScreen.style.display="none";
   }
   /**
@@ -327,7 +328,7 @@ export class GrapheService {
   RejeterChangeSizeScreen(container:any,container2:any):void{
     const formAChangeSizeScreen = container.el.nativeElement.querySelector('.formAChangeSizeScreen');
     const screen=container.el.nativeElement.querySelector('.scr');
-    container2.height=screen.style.height.slice(0,-2);
+    container2.height=screen.style.height.slice(0,-2)||400;
     container.changeSelect="";
     formAChangeSizeScreen.style.display="none";
     container.message=this.translate.instant("grapheS.msg40")
@@ -545,6 +546,7 @@ export class GrapheService {
       container.message=this.translate.instant("grapheS.msg33")
     }else if(container.changeSelect=="changeColorScreen"){
       screen.style.backgroundColor=container2.bgColor;
+      localStorage.setItem("ScreenColor",screen.style.backgroundColor.toString());
     }
     container.changeSelect="";
     formChangeColor.style.display="none";
@@ -769,6 +771,17 @@ export class GrapheService {
    * @param {ScreenboxComponent} Container - The container element for the graph.
    */
   OnInit(Container:any):void{
+    const screen=Container.el.nativeElement.querySelector('.scr');
+    if(localStorage.getItem('screenHeight')){
+      screen.style.height=localStorage.getItem('screenHeight');
+    }else{
+      localStorage.setItem('screenHeight', screen.style.height.toString());
+    }  
+    if(localStorage.getItem("ScreenColor")){
+      screen.style.backgroundColor=localStorage.getItem("ScreenColor");
+    }else{
+      localStorage.setItem("ScreenColor",screen.style.backgroundColor.toString());
+    }
     const container = Container.el.nativeElement.querySelector('.scr');
       this.cy = cytoscape({
         container,
@@ -1524,5 +1537,99 @@ export class GrapheService {
     formRemoveNode.style.display="none";
     container2.nodeId="";
     container.remove="";
+  }
+  getAdjancyList():Array<any>{
+    const adjacencyList:Array<any> = [];
+      this.cy.nodes().forEach((node:any) => {
+        const outgoingEdges = node.outgoers();
+        const incomersEdges = node.incomers();
+        let adjNode:Array<any>=outgoingEdges.map((edge:any) => edge.target().id());
+        let elements:Array<any>=incomersEdges.map((edge:any) => edge.source().id());
+        let adjanString:string="";
+        adjNode = adjNode.filter(item => item !== undefined);
+        elements = elements.filter(item => item !== undefined);
+        for(let i:number=0;i<adjNode.length;i++){
+          if(this.typeGraphe.split(" ")[1]!="Weighted"){
+            if(i!=adjNode.length-1){
+              adjanString+=`${adjNode[i]} ~> `;
+            }else{
+              adjanString+=`${adjNode[i]}`
+            }
+          }else{
+            let edge:any;
+            for(let element of this.cy.edges()){
+              if(element.target().id()==adjNode[i] && element.source().id()==node.id()){
+                edge=element;
+                break;
+              }
+            }
+            if(i!=adjNode.length-1){
+              adjanString+=`${adjNode[i]} (${edge.data("weight")}) ~> `;
+            }else{
+              adjanString+=`${adjNode[i]} (${edge.data("weight")})`
+            }
+          }
+          
+        }
+        if(this.typeGraphe.split(" ")[0]!="Directed"){
+          for(let i:number=0;i<elements.length;i++){
+            if(this.typeGraphe.split(" ")[1]!="Weighted"){
+              if(i==0 && adjNode.length){
+                adjanString+=` ~> ${elements[i]} ~> `;
+              }else if(i!=elements.length-1){
+                adjanString+=` ${elements[i]} ~> `;
+              }else{
+                adjanString+=`${elements[i]}`;
+              }
+            }else{
+              let edge:any;
+              for(let element of this.cy.edges()){
+                if(element.source().id()==adjNode[i] && element.target().id()==node.id()){
+                  edge=element;
+                  break;
+                }
+              }
+              if(i==0 && adjNode.length){
+                adjanString+=` ~> ${elements[i]} (${edge.data("weight")}) ~> `;
+              }else if(i!=elements.length-1){
+                adjanString+=` ${elements[i]} (${edge.data("weight")}) ~> `;
+              }else{
+                adjanString+=`${elements[i]} (${edge.data("weight")})`;
+              }
+            }
+              
+          }
+        }
+        if(adjanString){
+          if(adjanString.slice(-3)=="~> "){
+            adjanString+=" NULL";
+          }else {
+            adjanString+=" ~> NULL";
+          }
+        }
+        const adjacencyListEntry = {
+          node: node.id(),
+          adjacentNodes: adjanString
+        };
+        adjacencyList.push(adjacencyListEntry);
+        });
+    return adjacencyList;
+  }
+  randomPosition():void{
+    let options = {
+      name: 'random',
+      fit: true, // whether to fit to viewport
+      padding: 30, // fit padding
+      boundingBox: undefined, // constrain layout bounds; { x1, y1, x2, y2 } or { x1, y1, w, h }
+      animate: false, // whether to transition the node positions
+      animationDuration: 500, // duration of animation in ms if enabled
+      animationEasing: undefined, // easing of animation if enabled
+      animateFilter: function ( node:any, i:any ){ return true; }, // a function that determines whether the node should be animated.  All nodes animated by default on animate enabled.  Non-animated nodes are positioned immediately when the layout starts
+      ready: undefined, // callback on layoutready
+      stop: undefined, // callback on layoutstop
+      transform: function (node:any, position:any ){ return position; } // transform a given node position. Useful for changing flow direction in discrete layouts 
+    };
+    
+    this.cy.layout( options );
   }
 }

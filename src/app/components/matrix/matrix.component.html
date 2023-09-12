@@ -35,6 +35,24 @@
                 </tbody>
             </table>
         </span>
+        <br/><br/>
+        <h3><th>{{'matrix.adjancyList'|translate}}</th></h3>
+        <span *ngIf="grapheS.cy.edges().length">
+            <table class="degree-table">
+                <thead>
+                    <tr>
+                    <th>{{"info.idNode"|translate}}</th>
+                    <th>{{'matrix.adjNode'|translate}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let entry of grapheS.getAdjancyList()">
+                        <td >{{ entry.node }}</td>
+                        <td [innerHTML]="">{{ entry.adjacentNodes||"NULL" }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </span>
             
         
     </div>
