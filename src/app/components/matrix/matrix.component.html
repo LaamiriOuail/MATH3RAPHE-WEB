@@ -1,7 +1,7 @@
 <div [ngClass]="{'dark': darkModeS.isDarkMode}">
     <div id="matrix">
         <h3>{{"matrix.adjMatrix"|translate}}</h3>
-        <span *ngIf="grapheS.cy.nodes().length">
+        <span *ngIf="grapheS.cy.edges().length">
             <table class="degree-table">
                 <thead>
                     <tr>

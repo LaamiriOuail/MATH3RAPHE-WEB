@@ -4,6 +4,7 @@ import { SaveUploadService } from '../Services/save-upload.service';
 import { AlgorithmService } from '../Services/algorithm.service';
 import { TranslateService } from '@ngx-translate/core';
 import { DarkModeService } from '../Services/dark-mode.service';
+import { GeneratePDFService } from '../Services/generate-pdf.service';
 
 /**
  * Angular component representing the screen box.

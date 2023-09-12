@@ -56,6 +56,8 @@
                         <option value="saveJPGScreen" [disabled]="!typeGraphe || !grapheS.getNodeIds().length">{{"screenbox.msg27"|translate}}</option>
                         <option value="savePNG" [disabled]="!typeGraphe || !grapheS.getNodeIds().length">{{"screenbox.msg24"|translate}}</option>
                         <option value="savePNGScreen" [disabled]="!typeGraphe || !grapheS.getNodeIds().length">{{"screenbox.msg26"|translate}}</option>
+                        <option value="savePDF" [disabled]="!typeGraphe || !grapheS.getNodeIds().length">save PDF</option>
+
                     </select>
             </div>
             <app-add-weighted-edge dir='{{"info.dir"|translate}}' class="formAddEdges" [nodeS]="selectedNode[0]" [nodeT]="selectedNode[1]" [container]="this" (weight)="onWeightChange($event)" />

@@ -33,6 +33,7 @@ import { GrapheFromEdgesListComponent } from './components/graphe-from-edges-lis
 import { RemoveEdgeComponent } from './components/remove-edge/remove-edge.component';
 import { RemoveNodeComponent } from './components/remove-node/remove-node.component';
 import { EnumerationNodeComponent } from './components/enumeration-node/enumeration-node.component';
+import { GeneratePDFService } from './Services/generate-pdf.service';
 
 
 // Function to load translations
@@ -79,7 +80,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     CommonModule
     
   ],
-  providers: [GrapheService,AlgorithmService,SaveUploadService,DarkModeService],
+  providers: [GrapheService,AlgorithmService,SaveUploadService,DarkModeService,GeneratePDFService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
