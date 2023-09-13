@@ -25,6 +25,10 @@
                     </select>
                     <select  id="Algorithm" [(ngModel)]="algorithm" (ngModelChange)="algoS.changeAlgorithm(this)">
                         <option value="" disabled selected>{{"screenbox.msg18"|translate}}</option>
+                        <option value="degrenodes" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">degree nodes</option>
+                        <option value="matrixAdjancy" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">matrice incidente</option>
+                        <option value="matrixIncident" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">matrice adjacent</option>
+                        <option value="listeAdjancy" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">liste adjacent</option>
                         <option value="bfs" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">BFS</option>
                         <option value="dfs" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">DFS</option>
                         <option value="bellmanFord" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">Bellman Ford</option>
@@ -72,6 +76,6 @@
         <app-graphe-from-edges-list class="addGrapheFromEdgesList" [container]="this" dir='{{"info.dir"|translate}}'/>
         <app-message [message]="message" class="msgBoxC"  [container]="this"/>
         <app-screen class="screen" />
-        <app-info id="info" [grapheS]="grapheS" [algoS]="algoS"/>
+        <app-info id="info" [container]="this" [grapheS]="grapheS" [algoS]="algoS"/>
      </div> 
 </div>

@@ -12,7 +12,7 @@
         <p>{{ "info.listOfNodes" | translate }} : {{ grapheS.getListOfNode() || ("info.empty" | translate) }}</p>
         <p>{{ "info.connected" | translate }} : {{ (algoS.isGraphConnected(this))?("info.yes" | translate) : ("info.no" | translate) }}</p>
         <p>{{ "info.density" |translate}} : {{grapheS.getDensityOfGraphe()| number: '1.1-3'}}</p>
-        <span *ngIf="grapheS.cy.edges().length">
+        <span *ngIf="grapheS.cy.edges().length<7 && grapheS.cy.nodes().length<10">
             <table class="degree-table">
                 <thead>
                     <tr>
@@ -35,6 +35,6 @@
         
     </div>
     <div id='{{"info.classRight"|translate}}'>
-        <app-matrix dir='{{"info.dir"|translate}}'></app-matrix>        
+        <app-matrix dir='{{"info.dir"|translate}}' [container]="container"></app-matrix>        
     </div>
 </div>

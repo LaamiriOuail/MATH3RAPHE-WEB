@@ -396,7 +396,7 @@ export class AlgorithmService {
           this.tarjanStronglyComponentAnimation(container);
         }else{
           container.message=this.translate.instant("algoS.msg14");
-          container.algorithm=="tarjan"
+          container.algorithm=""
         }
       }
       else if((container.algorithm=="dijkstra" || container.algorithm=="dijkstraAB")&& !this.isAllEdgePositive(container)){
@@ -412,6 +412,7 @@ export class AlgorithmService {
             container.message="Prime(MST): ";
             this.primeAniamantion(container);
           }
+          container.algorithm=""
         }else{
           if(container.algorithm=="kruskal"){
             container.message=container.translate.instant("algoS.msg8");

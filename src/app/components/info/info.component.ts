@@ -12,13 +12,9 @@ export class InfoComponent {
   /**
    * Input property to receive data from a parent component related to the graph.
    */
-  @Input() grapheS: any;
-
-  /**
-   * Input property to receive data from a parent component related to algorithms.
-   */
-  @Input() algoS: any;
-
+  @Input() container: any;
+  @Input() grapheS:any;
+  @Input() algoS:any;
   /**
    * Initializes a new instance of the InfoComponent class.
    */

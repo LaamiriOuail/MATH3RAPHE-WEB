@@ -1,59 +1,85 @@
 <div [ngClass]="{'dark': darkModeS.isDarkMode}">
     <div id="matrix">
-        <h3>{{"matrix.adjMatrix"|translate}}</h3>
-        <span *ngIf="grapheS.cy.edges().length">
-            <table class="degree-table">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th *ngFor="let nodeId of grapheS.getNodeIds()">{{nodeId}}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let row of grapheS.matrixAdjancy(); let i = index">
-                        <td class="vertical-header"><b>{{ grapheS.getNodeIds()[i] }}</b></td> 
-                        <td *ngFor="let element of row">{{ element }}</td>
-                    </tr>
-                </tbody>
-            </table> 
+        <span *ngIf="container.algorithm=='matrixAdjancy'">
+            <h3>{{"matrix.adjMatrix"|translate}}</h3>
+            <span *ngIf="grapheS.cy.edges().length">
+                <table class="degree-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th *ngFor="let nodeId of grapheS.getNodeIds()">{{nodeId}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let row of grapheS.matrixAdjancy(); let i = index">
+                            <td class="vertical-header"><b>{{ grapheS.getNodeIds()[i] }}</b></td> 
+                            <td *ngFor="let element of row">{{ element }}</td>
+                        </tr>
+                    </tbody>
+                </table> 
+            </span> 
         </span>
-        <br/><br/>
-        <h3>{{"matrix.IncMatrix"|translate}}</h3>
-        <span *ngIf="grapheS.cy.edges().length">
-            <table class="degree-table">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th *ngFor="let edgeId of grapheS.getEdgeIds()">{{edgeId}}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let row of grapheS.incidenceMatrix(); let i = index">
-                        <td class="vertical-header"><b>{{ grapheS.getNodeIds()[i] }}</b></td> 
-                        <td *ngFor="let element of row">{{element}}</td>
-                    </tr>
-                </tbody>
-            </table>
+        <span *ngIf="container.algorithm=='matrixIncident'">
+            <h3>{{"matrix.IncMatrix"|translate}}</h3>
+            <span *ngIf="grapheS.cy.edges().length">
+                <table class="degree-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th *ngFor="let edgeId of grapheS.getEdgeIds()">{{edgeId}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let row of grapheS.incidenceMatrix(); let i = index">
+                            <td class="vertical-header"><b>{{ grapheS.getNodeIds()[i] }}</b></td> 
+                            <td *ngFor="let element of row">{{element}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </span>
         </span>
-        <br/><br/>
-        <h3><th>{{'matrix.adjancyList'|translate}}</th></h3>
-        <span *ngIf="grapheS.cy.edges().length">
-            <table class="degree-table">
-                <thead>
-                    <tr>
-                    <th>{{"info.idNode"|translate}}</th>
-                    <th>{{'matrix.adjNode'|translate}}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let entry of grapheS.getAdjancyList()">
-                        <td >{{ entry.node }}</td>
-                        <td [innerHTML]="">{{ entry.adjacentNodes||"NULL" }}</td>
-                    </tr>
-                </tbody>
-            </table>
+        <span *ngIf="container.algorithm=='listeAdjancy'">
+            <h3>{{'matrix.adjancyList'|translate}}</h3>
+            <span *ngIf="grapheS.cy.edges().length">
+                <table class="degree-table">
+                    <thead>
+                        <tr>
+                        <th>{{"info.idNode"|translate}}</th>
+                        <th>{{'matrix.adjNode'|translate}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let entry of grapheS.getAdjancyList()">
+                            <td >{{ entry.node }}</td>
+                            <td [innerHTML]="">{{ entry.adjacentNodes||"NULL" }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </span>
         </span>
-            
+        <span *ngIf="container.algorithm=='degrenodes'">
+            <h3> degree of nodes : </h3>
+            <span>
+                <table class="degree-table">
+                    <thead>
+                        <tr>
+                            <th>{{"info.idNode"|translate}}</th>
+                            <th *ngIf="container.grapheS.typeGraphe.split(' ')[0] == 'Directed'">{{"info.indegree"|translate}}</th>
+                            <th *ngIf="container.grapheS.typeGraphe.split(' ')[0] == 'Directed'">{{"info.outdegree"|translate}}</th>
+                            <th>{{"info.degree"|translate}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let node of container.grapheS.getDegreeNodes()">
+                            <td>{{node.id}}</td>
+                            <td *ngIf="container.grapheS.typeGraphe.split(' ')[0] == 'Directed'">{{node.indegree}}</td>
+                            <td *ngIf="container.grapheS.typeGraphe.split(' ')[0] == 'Directed'">{{node.outdegree}}</td>
+                            <td>{{node.degree}}</td>
+                        </tr>
+                    </tbody>
+                </table> 
+            </span>
+        </span>
         
     </div>
 </div>

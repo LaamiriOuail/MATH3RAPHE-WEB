@@ -13,7 +13,8 @@ import { GrapheService } from 'src/app/Services/graphe.service';
 export class MatrixComponent {
   /**
    * Initializes a new instance of the MatrixComponent class.
-   */
+  */
+  @Input() container:any;
   constructor(private el:ElementRef,protected grapheS:GrapheService,protected darkModeS:DarkModeService) {}
   
 }
