@@ -326,6 +326,24 @@ export class SaveUploadService {
       this.doc.text(text,  (595.276-widthInPoints)/2, lastheight); // Replace 'Document Title' with your desired title
       this.doc.setTextColor(0, 0, 0);//black
       this.doc.setFontSize(14); // Set font size
+
+      text=`Type of graph : ${container.typeGraphe}`;
+      lastheight+=30;
+      this.doc.text(text, 20, lastheight); // Replace 'Document Title' with your desired title
+
+      text=`number of nodes : ${container.grapheS.cy.nodes().length}`;
+      lastheight+=30;
+      this.doc.text(text, 20, lastheight); // Replace 'Document Title' with your desired title
+      
+      text=`number of edges : ${container.grapheS.cy.edges().length}`;
+      lastheight+=30;
+      this.doc.text(text, 20, lastheight); // Replace 'Document Title' with your desired title
+
+      text=`Density : ${container.grapheS.getDensityOfGraphe()}`;
+      lastheight+=30;
+      this.doc.text(text, 20, lastheight); // Replace 'Document Title' with your desired title
+
+
       text=`List of nodes : `;
       lastheight+=30;
       this.doc.text(text, 20, lastheight); // Replace 'Document Title' with your desired title
