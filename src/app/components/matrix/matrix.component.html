@@ -2,7 +2,7 @@
     <div id="matrix">
         <h3>{{"matrix.adjMatrix"|translate}}</h3>
         <span *ngIf="grapheS.cy.edges().length">
-            <table class="degree-table">
+            <table class="degree-table" dir="ltr">
                 <thead>
                     <tr>
                         <th></th>
@@ -20,7 +20,7 @@
         <br/><br/>
         <h3>{{"matrix.IncMatrix"|translate}}</h3>
         <span *ngIf="grapheS.cy.edges().length">
-            <table class="degree-table">
+            <table class="degree-table" dir="ltr">
                 <thead>
                     <tr>
                         <th></th>
@@ -36,7 +36,7 @@
             </table>
         </span>
         <br/><br/>
-        <h3><th>{{'matrix.adjancyList'|translate}}</th></h3>
+        <h3><th>{{'matrix.adjancyList'|translate}} : </th></h3>
         <span *ngIf="grapheS.cy.edges().length">
             <table class="degree-table">
                 <thead>
@@ -48,7 +48,7 @@
                 <tbody>
                     <tr *ngFor="let entry of grapheS.getAdjancyList()">
                         <td >{{ entry.node }}</td>
-                        <td [innerHTML]="">{{ entry.adjacentNodes||"NULL" }}</td>
+                        <td >~> {{ entry.adjacentNodes||" NULL" }}</td>
                     </tr>
                 </tbody>
             </table>

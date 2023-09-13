@@ -595,48 +595,50 @@ export class AlgorithmService {
     let message:string="";
     let i:number=0;
     container.message="Tarjan(SCCs): ";
-    for(let k:number=0;k<components.length;k++){
-      setTimeout(()=>{
-        message=this.translate.instant("algoS.msg13",{index:++i});
-        container.algorithm="";
-        const color:string = this.getRandomColor(); 
-        const backgroundColor:string = this.getRandomColor();
-        const fleshColor:string=this.getRandomColor();
+    container.grapheS.cy.batch(()=>{
+      for(let k:number=0;k<components.length;k++){
         setTimeout(()=>{
-          components[k].nodes().style({
-            'background-color': backgroundColor,
-            'border-color': color,
-            'color': color,
-          });
-        },10)
-        for(let m:number=0;m<components[k].nodes().length;m++){
-          message+=components[k][m].data('id')+","
-        }
-        message=message.substring(0, message.length-1);
-        setTimeout(()=>{
-          components[k].edges().style({
-            'line-color':backgroundColor,
-          });
-        },10)
-       
-        if(container.typeGraphe.split(" ")[1]=="Weighted"){
+          message=this.translate.instant("algoS.msg13",{index:++i});
+          container.algorithm="";
+          const color:string = this.getRandomColor(); 
+          const backgroundColor:string = this.getRandomColor();
+          const fleshColor:string=this.getRandomColor();
           setTimeout(()=>{
-            components[k].edges().style({
+            components[k].nodes().style({
+              'background-color': backgroundColor,
+              'border-color': color,
               'color': color,
             });
           },10)
-          
-        }
-        if(container.typeGraphe.split(" ")[0]=="Directed"){
+          for(let m:number=0;m<components[k].nodes().length;m++){
+            message+=components[k][m].data('id')+","
+          }
+          message=message.substring(0, message.length-1);
           setTimeout(()=>{
             components[k].edges().style({
-              'target-arrow-color': fleshColor,
+              'line-color':backgroundColor,
             });
           },10)
-        }
-        container.message+=message+" || ";
-      },i*20000)
-    }
+         
+          if(container.typeGraphe.split(" ")[1]=="Weighted"){
+            setTimeout(()=>{
+              components[k].edges().style({
+                'color': color,
+              });
+            },10)
+            
+          }
+          if(container.typeGraphe.split(" ")[0]=="Directed"){
+            setTimeout(()=>{
+              components[k].edges().style({
+                'target-arrow-color': fleshColor,
+              });
+            },10)
+          }
+          container.message+=message+" || ";
+        },i*20000)
+      }
+    })
     
   }
   

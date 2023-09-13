@@ -828,13 +828,31 @@ export class GrapheService {
    * Resets the visual styles of nodes and edges in the graph to their default colors.
    */
   resetColors(): void {
-    setTimeout(() => {
-      this.cy.nodes().style('background-color', this.BACKGROUND_COLOR_NODE);
-      this.cy.nodes().style('color', this.COLOR_NODE);
-      this.cy.edges().style('line-color', this.COLOR_LINE_EDGE);
-      this.cy.edges().style('color', this.DATA_EDGE_COLOR);
-      this.cy.edges().style('target-arrow-color', this.TARGET_ARROW_COLOR);
-    },10)
+    const resetStyles = async () => {
+      await this.delay(10); // Replace this with your delay function (see below)
+      
+      this.cy.batch(() => {
+        this.cy.nodes().style({
+          'background-color': this.BACKGROUND_COLOR_NODE,
+          'color': this.COLOR_NODE,
+        });
+  
+        this.cy.edges().style({
+          'line-color': this.COLOR_LINE_EDGE,
+          'color': this.DATA_EDGE_COLOR,
+          'target-arrow-color': this.TARGET_ARROW_COLOR,
+        });
+      });
+    };
+  
+    resetStyles();
+  }
+  
+  // Implement your own delay function using Promises
+  delay(ms: number): Promise<void> {
+    return new Promise((resolve) => {
+      setTimeout(resolve, ms);
+    });
   }
   /**
    * Changes the background color and text color of a given node.
@@ -844,11 +862,17 @@ export class GrapheService {
    * @param {string} color - The new text color.
    * @param {number} time - Optional. Time delay before applying the color change.
    */
-  changeColorNode(node:any,bgcolor:string,color:string,time:number=10): void {
-    setTimeout(() => {
-      node.style('background-color',bgcolor);
-      node.style('color',color);
-    },time);
+  changeColorNode(node: any, bgcolor: string, color: string, time: number = 10): void {
+    const changeStyles = async () => {
+      await this.delay(time);
+  
+      node.style({
+        'background-color': bgcolor,
+        'color': color,
+      });
+    };
+  
+    changeStyles();
   }
   /**
    * Changes the visual styles of a given edge, including line color, data color, and target arrow color.
@@ -859,33 +883,44 @@ export class GrapheService {
    * @param {string} targetArrowColor - The new target arrow color (used for directed graphs).
    * @param {number} time - Optional. Time delay before applying the color change.
    */
-  changeColorEdge(edge:any,color:string,lineEdgeColor:string,targetArrowColor:string,time:number=10): void {
-    setTimeout(() => {
-        edge.style('line-color',lineEdgeColor);
-        if(this.typeGraphe.split(" ")[1]=="Weighted"){
-          edge.style('color',color);
-        }
-        if(this.typeGraphe.split(" ")[0]=="Directed"){
-          edge.style('target-arrow-color', targetArrowColor);
-        }
-      },time)
+  changeColorEdge(edge: any, color: string, lineEdgeColor: string, targetArrowColor: string, time: number = 10): void {
+    const changeStyles = async () => {
+      await this.delay(time);
+  
+      edge.style({
+        'line-color': lineEdgeColor,
+      });
+  
+      if (this.typeGraphe.split(" ")[1] === "Weighted") {
+        edge.style('color', color);
+      }
+  
+      if (this.typeGraphe.split(" ")[0] === "Directed") {
+        edge.style('target-arrow-color', targetArrowColor);
+      }
+    };
+  
+    changeStyles();
   }
   /**
    * Resets the visual styles of all nodes in the graph to their default colors.
    */
   changeColorNodes(): void {
-    setTimeout(() => {
+    const changeStylesNodes = async () => {
+      await this.delay(10);
       for(let k:number=0;k<this.cy.nodes().length;k++){
         this.cy.nodes()[k].style('background-color',this.BACKGROUND_COLOR_NODE);
         this.cy.nodes()[k].style('color',this.COLOR_NODE);
       }
-    },10)
+    };
+    changeStylesNodes();
   }
   /**
    * Resets the visual styles of all edges in the graph to their default colors.
    */
   changeColorEdges(): void {
-    setTimeout(() => {
+    const changeStylesEdges = async () => {
+      await this.delay(10);
       for(let k:number=0;k<this.cy.edges().length;k++){
         this.cy.edges()[k].style('line-color',this.COLOR_LINE_EDGE);
         if(this.typeGraphe.split(" ")[1]=="Weighted"){
@@ -895,8 +930,8 @@ export class GrapheService {
           this.cy.edges()[k].style('target-arrow-color', this.TARGET_ARROW_COLOR);
         }
       }
-
-    },10)
+    };
+    changeStylesEdges();
   }
   /**
    * Handles actions related to removing elements from the graph and resetting the graph properties.
@@ -1023,6 +1058,24 @@ export class GrapheService {
       let element:string=`(${this.translate.instant("info.s")}: ${this.cy?.edges()[k].source().id()},${this.translate.instant("info.t")}: ${this.cy?.edges()[k].target().id()}`;
       if(this.typeGraphe.split(" ")[1]=="Weighted"){
         element+=`,${this.translate.instant("info.w")}: ${this.cy?.edges()[k].data('weight')}) `;
+      }else{
+        element+=") ";
+      }
+      if(i!=this.cy?.edges().length){
+        element+=" --- ";
+      }
+      listOfEdge+=element;
+    }
+    return listOfEdge;
+  }
+  getListeOfEdgeEn():string {
+    let listOfEdge:string="";
+    let i:number=0;
+    for(let k:number=0;k<this.cy?.edges().length;k++){
+      i++;
+      let element:string=`(s: ${this.cy?.edges()[k].source().id()},t: ${this.cy?.edges()[k].target().id()}`;
+      if(this.typeGraphe.split(" ")[1]=="Weighted"){
+        element+=`,w: ${this.cy?.edges()[k].data('weight')}) `;
       }else{
         element+=") ";
       }

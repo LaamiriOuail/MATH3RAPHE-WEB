@@ -209,7 +209,7 @@ export class SaveUploadService {
           } else if(container.typeGraphe==""){
             container.message=this.translate.instant("screenbox.msg23");
           }
-          container.typeGraphe="";
+          container.saveUpload="";
       }
   }
   infoDOc(docName:string,username:string,emailUser:string,urlSite:string):void{
@@ -316,47 +316,85 @@ export class SaveUploadService {
     }
   }
   infoGrapheDoc(container:any,lastheight:number):void{
-    this.doc.setFontSize(22); // Set font size
-    let text:string="Graph Information : "
-    let arrayString:string[] = [];
-    let widthInPoints:number = this.doc.getStringUnitWidth(text) * this.doc.getFontSize();
-    this.doc.setTextColor(255, 0, 0);//red
-    lastheight+=10;
-    this.doc.text(text,  (595.276-widthInPoints)/2, lastheight); // Replace 'Document Title' with your desired title
-    this.doc.setTextColor(0, 0, 0);//black
-    this.doc.setFontSize(14); // Set font size
-    text=`List of nodes : `;
-    lastheight+=30;
-    this.doc.text(text, 20, lastheight); // Replace 'Document Title' with your desired title
-    text=container.grapheS.getListOfNode();
-    widthInPoints = this.doc.getStringUnitWidth(text) * this.doc.getFontSize();
-    if(widthInPoints>575.276){
-      arrayString=text.split("---");
-      text="";
+    if(container.grapheS.cy.nodes().length){
+      this.doc.setFontSize(22); // Set font size
+      let text:string="Graph Information : "
+      let arrayString:string[] = [];
+      let widthInPoints:number = this.doc.getStringUnitWidth(text) * this.doc.getFontSize();
+      this.doc.setTextColor(255, 0, 0);//red
+      lastheight+=10;
+      this.doc.text(text,  (595.276-widthInPoints)/2, lastheight); // Replace 'Document Title' with your desired title
+      this.doc.setTextColor(0, 0, 0);//black
+      this.doc.setFontSize(14); // Set font size
+      text=`List of nodes : `;
       lastheight+=30;
-      for(let i:number=0 ;i<length;i++){
-        text+=arrayString.shift()+" ,";
-        if(this.doc.getStringUnitWidth(text) * this.doc.getFontSize()>505.276){
-          break;
+      this.doc.text(text, 20, lastheight); // Replace 'Document Title' with your desired title
+      text=container.grapheS.getListOfNode();
+      widthInPoints = this.doc.getStringUnitWidth(text) * this.doc.getFontSize();
+      if(widthInPoints>575.276){
+        arrayString=text.split("---");
+        text="";
+        lastheight+=30;
+        for(let i:number=0 ;i<length;i++){
+          text+=arrayString.shift()+" ,";
+          if(this.doc.getStringUnitWidth(text) * this.doc.getFontSize()>505.276){
+            break;
+          }
+        }
+        this.doc.text(text, 30, lastheight); 
+        // this.lastElementHeight+=10;
+      }else{
+        lastheight+=30;
+        this.doc.text(text, 30, lastheight); // Replace 'Document Title' with your desired title
+        // yPosition+=30;
+      }
+      while(arrayString.length){
+        text="";
+        lastheight+=30;
+        for(let i:number=0 ;i<length;i++){
+          text+=arrayString.shift()+" ,";
+          if(this.doc.getStringUnitWidth(text) * this.doc.getFontSize()>505.276){
+            break;
+          }
+        }
+        this.doc.text(text, 30, lastheight); 
+      }
+      if(container.grapheS.cy.edges().length){
+        //---
+        text=`List of edges : `;
+        lastheight+=30;
+        this.doc.text(text, 20, lastheight); // Replace 'Document Title' with your desired title
+        text=container.grapheS.getListeOfEdgeEn();
+        widthInPoints = this.doc.getStringUnitWidth(text) * this.doc.getFontSize();
+        if(widthInPoints>575.276){
+          arrayString=text.split("---");
+          text="";
+          lastheight+=30;
+          for(let i:number=0 ;i<length;i++){
+            text+=arrayString.shift()+" ---";
+            if(this.doc.getStringUnitWidth(text) * this.doc.getFontSize()>505.276){
+              break;
+            }
+          }
+          this.doc.text(text, 30, lastheight); 
+          // this.lastElementHeight+=10;
+        }else{
+          lastheight+=30;
+          this.doc.text(text, 30, lastheight); // Replace 'Document Title' with your desired title
+          // yPosition+=30;
+        }
+        while(arrayString.length){
+          text="";
+          lastheight+=30;
+          for(let i:number=0 ;i<length;i++){
+            text+=arrayString.shift()+" ,";
+            if(this.doc.getStringUnitWidth(text) * this.doc.getFontSize()>505.276){
+              break;
+            }
+          }
+          this.doc.text(text, 30, lastheight); 
         }
       }
-      this.doc.text(text, 30, lastheight); 
-      // this.lastElementHeight+=10;
-    }else{
-      lastheight+=30;
-      this.doc.text(text, 30, lastheight); // Replace 'Document Title' with your desired title
-      // yPosition+=30;
-    }
-    while(arrayString.length){
-      text="";
-      lastheight+=30;
-      for(let i:number=0 ;i<length;i++){
-        text+=arrayString.shift()+" ,";
-        if(this.doc.getStringUnitWidth(text) * this.doc.getFontSize()>505.276){
-          break;
-        }
-      }
-      this.doc.text(text, 30, lastheight); 
     }
     
   }
