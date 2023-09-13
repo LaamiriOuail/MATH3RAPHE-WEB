@@ -14,8 +14,9 @@
   "matrix":{
     "adjMatrix":"Matrice adjacente :",
     "IncMatrix":"Matrice d'incidence :",
-    "adjNode": "Noeuds adjacents",
-    "adjancyList": "Liste d'adjacence du graphe"
+    "adjNode": "Noeuds adjacents : ",
+    "adjancyList": "Liste d'adjacence du graphe : ",
+    "degreeList": "degré des sommets : "
   },
   "info": {
     "s":"s",

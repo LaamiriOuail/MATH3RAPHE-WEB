@@ -1,6 +1,6 @@
 <div [ngClass]="{'dark': darkModeS.isDarkMode}">
     <div id="matrix">
-        <span *ngIf="container.algorithm=='matrixAdjancy'">
+        <span *ngIf="container.algorithm=='matrixIncident'">
             <h3>{{"matrix.adjMatrix"|translate}}</h3>
             <span *ngIf="grapheS.cy.edges().length">
                 <table class="degree-table">
@@ -19,7 +19,7 @@
                 </table> 
             </span> 
         </span>
-        <span *ngIf="container.algorithm=='matrixIncident'">
+        <span *ngIf="container.algorithm=='matrixAdjancy'">
             <h3>{{"matrix.IncMatrix"|translate}}</h3>
             <span *ngIf="grapheS.cy.edges().length">
                 <table class="degree-table">
@@ -57,8 +57,8 @@
                 </table>
             </span>
         </span>
-        <span *ngIf="container.algorithm=='degrenodes'">
-            <h3> degree of nodes : </h3>
+        <span *ngIf="container.algorithm!='matrixAdjancy'&&container.algorithm!='matrixIncident'&&container.algorithm!='listeAdjancy'">
+            <h3> {{'matrix.degreeList'|translate}} </h3>
             <span>
                 <table class="degree-table">
                     <thead>

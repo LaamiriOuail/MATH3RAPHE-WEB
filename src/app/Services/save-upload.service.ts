@@ -166,7 +166,9 @@ export class SaveUploadService {
       container.buttonClicked="";
       container.containerHeight=50;
       container.selectedNode=[];
-      container.algorithm="";
+      if(container.algorithm!="degrenodes"&&container.algorithm!="matrixAdjancy"&&container.algorithm!="matrixIncident"&&container.algorithm!="listeAdjancy"){
+        container.algorithm="";
+      }
       const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
       const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
       const formAChangeSizeScreen = container.el.nativeElement.querySelector('.formAChangeSizeScreen');

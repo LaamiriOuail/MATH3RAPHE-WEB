@@ -12,10 +12,11 @@
     "ar": "Arabic"
   },
   "matrix":{
-    "adjMatrix":"Adjacency Matrix : ",
-    "IncMatrix":"Incidence Matrix : ",
-    "adjNode": "Adjacent Nodes",
-    "adjancyList": "Graph Adjacency List"
+    "adjMatrix": "Adjacency Matrix : ",
+    "IncMatrix": "Incidence Matrix : ",
+    "adjNode": "Adjacent Nodes : ",
+    "adjancyList": "Graph Adjacency List : ",
+    "degreeList": "Degree of nodes : "
   },
   "info": {
     "s":"s",

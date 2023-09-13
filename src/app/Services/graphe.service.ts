@@ -91,7 +91,10 @@ export class GrapheService {
     if(this.typeGraphe!=""){
       //DRY
       container.selectedNode=[];
-      container.algorithm="";
+      if(container.algorithm!="degrenodes"&&container.algorithm!="matrixAdjancy"&&container.algorithm!="matrixIncident"&&container.algorithm!="listeAdjancy"){
+        container.algorithm="";
+      }
+      
       container.saveUpload = "";
       container.remove="";
       container.containerHeight=50;
@@ -118,7 +121,9 @@ export class GrapheService {
   changeChanges(container:any){
     //DRY
     container.selectedNode=[];
-    container.algorithm="";
+    if(container.algorithm!="degrenodes"&&container.algorithm!="matrixAdjancy"&&container.algorithm!="matrixIncident"&&container.algorithm!="listeAdjancy"){
+      container.algorithm="";
+    }
     container.saveUpload = "";
     container.remove="";
     container.containerHeight=50;
@@ -199,7 +204,9 @@ export class GrapheService {
     //DRY
     container.selectedNode=[];
     container.buttonClicked="";
-    container.algorithm="";
+    if(container.algorithm!="degrenodes"&&container.algorithm!="matrixAdjancy"&&container.algorithm!="matrixIncident"&&container.algorithm!="listeAdjancy"){
+      container.algorithm="";
+    }
     container.saveUpload = "";
     container.remove="";
     container.changeSelect="";
@@ -252,7 +259,9 @@ export class GrapheService {
       //DRY
       container.changeSelect="";
       container.selectedNode=[];
-      container.algorithm="";
+      if(container.algorithm!="degrenodes"&&container.algorithm!="matrixAdjancy"&&container.algorithm!="matrixIncident"&&container.algorithm!="listeAdjancy"){
+        container.algorithm="";
+      }
       container.saveUpload = "";
       container.remove="";
       container.containerHeight=50;
@@ -901,7 +910,10 @@ export class GrapheService {
       container.buttonClicked="";
       container.containerHeight=50;
       container.selectedNode=[];
-      container.algorithm="";
+      container.saveUpload="";
+      if(container.algorithm!="degrenodes"&&container.algorithm!="matrixAdjancy"&&container.algorithm!="matrixIncident"&&container.algorithm!="listeAdjancy"){
+        container.algorithm="";
+      }
       //
       const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
       const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');

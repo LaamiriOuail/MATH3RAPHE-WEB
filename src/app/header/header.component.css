@@ -9,7 +9,7 @@
   color: #f0f0f0;/*Dark*/
   display: flex;
   align-items: center;
-  padding: 10px;
+  padding: 20px;
   transition: 0.4s;
 }
 
@@ -97,7 +97,7 @@
   color: #000;/*Dark*/
   display: flex;
   align-items: center;
-  padding: 10px;
+  padding: 20px;
   transition: 0.4s;
 }
 .light .language-select{

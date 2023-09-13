@@ -11,8 +11,6 @@ import { FormsModule } from '@angular/forms';
 import { GrapheService } from './Services/graphe.service';
 import { AlgorithmService } from './Services/algorithm.service';
 import { SaveUploadService } from './Services/save-upload.service';
-import { AboutComponent } from './about/about.component';
-import { ContactComponent } from './contact/contact.component';
 import { InfoComponent } from './components/info/info.component';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -47,8 +45,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     HeaderComponent,
     ScreenboxComponent,
     FooterComponent,
-    AboutComponent,
-    ContactComponent,
     InfoComponent,
     MessageComponent,
     ScreenComponent,
