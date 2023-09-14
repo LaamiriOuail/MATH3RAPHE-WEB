@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DarkModeService } from '../Services/dark-mode.service';
+import { DarkModeService } from '../../Services/dark-mode.service';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({

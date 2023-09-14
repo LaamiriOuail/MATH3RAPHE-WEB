@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import * as cytoscape from 'cytoscape';
-
+interface IPosition{
+  x:number;
+  y:number;
+}
 /**
  * Service for managing and interacting with the Cytoscape graph.
  */
@@ -35,6 +38,18 @@ export class GrapheService {
   numbersArray:number[] = Array.from(Array(200), (_, i) => i + 1);
   /** The position of something (needs a description). */
   position: any;
+  POSITIONS:IPosition[] = 
+  [
+    {x: 241, y: 46},{x: 493, y: 47},{x: 261, y: 174},{x: 541, y: 174},
+    {x: 719, y: 41},{x: 736, y: 165},{x: 295, y: 314},{x: 530, y: 301},
+    {x: 772, y: 299},{x: 845, y: 43},{x: 885, y: 178},{x: 875, y: 276},
+    {x: 82, y: 5},{x: 106, y: 144},{x: 121.28128725008331, y: 263.51311061937736},
+    {x: 382, y: 87},{x: 617, y: 105},{x: 592, y: 217},{x: 323, y: 264},{x: 835, y: 319},
+    {x: 82, y: 24},{x: 98, y: 274},{x: 88, y: 173},{x: 380, y: 23},{x: 739, y: 73},
+    {x: 702, y: 211},{x: 577, y: 287},{x: 351, y: 323},{x: 350, y: 200},{x: 533, y: 108},
+    {x: 1221, y: 49},{x: 970, y: 133},{x: 1227, y: 227},{x: 1154, y: 353},{x: 919, y: 378},
+    {x: 887, y: 239},{x: 958, y: 48}
+  ];
 
 
 
@@ -102,10 +117,13 @@ export class GrapheService {
       const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
       const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
       const formChangeColor = container.el.nativeElement.querySelector('.formChangeColor');
+      const formAddNode=container.el.nativeElement.querySelector('.formAddNode');
+      formAddNode.style.display="none";
       formChangeNodeId.style.display="none";
       formAddEdge.style.display="none";
       formChangeColor.style.display="none";
       container.changeSelect="";
+      this.position=null;
       //
     }else{
       container.message=this.translate.instant("screenbox.msg23");
@@ -630,7 +648,9 @@ export class GrapheService {
           //
           let pos = evt.position || evt.cyPosition;
           let node:any;
+          const formAddNode=container.el.nativeElement.querySelector('.formAddNode');
           if(container.nodeName=="numerique"){
+            formAddNode.style.display="none";
             this.cy.nodes().forEach((node:any)=>{
               if(node.data('id')==this.counter+1){
                 ++this.counter;
@@ -638,6 +658,7 @@ export class GrapheService {
             })
             node=this.cy.add({ group: 'nodes', data: { id: ++this.counter}, position: pos });
           }else if(container.nodeName=="alphabic"){
+            formAddNode.style.display="none";
             this.cy.nodes().forEach((node:any)=>{
               if(node.data('id')==this.Alphabets[0]){
                 this.Alphabets.shift();
@@ -645,7 +666,6 @@ export class GrapheService {
             })
             node=this.cy.add({ group: 'nodes', data: { id: this.Alphabets.shift()}, position: pos });
           }else if(container.nodeName=="customText"){
-            const formAddNode=container.el.nativeElement.querySelector('.formAddNode');
             formAddNode.style.display="block";
             this.position=pos;
           }
@@ -1148,7 +1168,7 @@ export class GrapheService {
     let i:number=0;
     elements.forEach((element:any)=>{
       if(element.id){
-        const pos = { x: ++i*100+i**2, y: i*50-i**2 };
+        const pos = this.POSITIONS[i++];
         this.cy.add({ group: 'nodes', data: { id: element.id}, position: pos });
       }else{
         if(weighted){
@@ -1312,7 +1332,7 @@ export class GrapheService {
           err=true;
           break;
         }else if(!nodeExists){
-          const pos = { x: ++i*100+i**2, y: i*50-i**2 };
+          const pos = this.POSITIONS[i++];
           this.cy.add({ group: 'nodes', data: { id: element.source}, position: pos });
         }
         if(element.target==""){
@@ -1320,7 +1340,7 @@ export class GrapheService {
           container.message=this.translate.instant("grapheFromEdgeList.msg1");
           break;
         }else if(!nodeExists1){
-          const pos = { x: ++i*100+i**2, y: i*50-i**2 };
+          const pos = this.POSITIONS[i++];
           this.cy.add({ group: 'nodes', data: { id: element.target}, position: pos });
         }
       }
