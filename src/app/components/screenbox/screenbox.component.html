@@ -1,13 +1,13 @@
 <div [ngClass]="{'light': !darkModeS.isDarkMode}">
     <div class="grapheop">
-        <div class="buttonManupilation">
+        <div *ngIf="changeSelect!='addGrapheFromMatrix'&&changeSelect!='addGrapheFromEdgesList'" class="buttonManupilation">
             <div class="button-list" dir='{{"info.dir"|translate}}'>
                     <select  id="typeGraphe" [(ngModel)]="typeGraphe" (ngModelChange)="grapheS.changeTypeGraphe(this)">
-                        <option value="" disabled selected>{{"screenbox.msg1"|translate}}</option>
-                        <option value="Directed Weighted">{{"screenbox.msg2"|translate}}</option>
-                        <option value="Directed Unweighted">{{"screenbox.msg3"|translate}}</option>
-                        <option value="Undirected Weighted">{{"screenbox.msg4"|translate}}</option>
-                        <option value="Undirected Unweighted">{{"screenbox.msg5"|translate}}</option>
+                            <option value="" disabled selected>{{"screenbox.msg1"|translate}}</option>
+                            <option value="Directed Weighted">{{"screenbox.msg2"|translate}}</option>
+                            <option value="Directed Unweighted">{{"screenbox.msg3"|translate}}</option>
+                            <option value="Undirected Weighted">{{"screenbox.msg4"|translate}}</option>
+                            <option value="Undirected Unweighted">{{"screenbox.msg5"|translate}}</option>
                     </select>
                     <!--<app-select [Class]="ClassSelect" [container]="this" [functionHandler]="grapheS.changeTypeGraphe" [disableLabell]="disableTypeGraphe" [items]="TypeGrapheItems" (selected)="chngeTypeGraphe($event)"/>-->
                     <button id="restore" (click)="getButtonClickedId($event)"  ><i class="fa fa-undo"></i> &nbsp;{{"screenbox.msg6"|translate}}</button>
@@ -15,67 +15,68 @@
                     <button id="addVertices" (click)="getButtonClickedId($event)"><i class="fa fa-plus"></i>&nbsp;  {{"screenbox.msg8"|translate}}</button>
                     <button id="addEdges" (click)="getButtonClickedId($event)"  ><i class="fa fa-plus"></i>&nbsp; {{"screenbox.msg9"|translate}}</button>
                     <select  id="remove" [(ngModel)]="remove" (ngModelChange)="grapheS.onRemoveChange(this)">
-                        <option value="" disabled selected>{{"screenbox.msg13"|translate}}</option>
-                        <option value="remove nodes" [disabled]="!typeGraphe || !grapheS.getNodeIds().length">{{"screenbox.msg15"|translate}}</option>
-                        <option value="special nodes" [disabled]="!typeGraphe || !grapheS.getNodeIds().length">{{"screenbox.msg49"|translate}}</option>
-                        <option value="remove edges" [disabled]="!typeGraphe || !grapheS.getEdgeIds().length">{{"screenbox.msg14"|translate}}</option>
-                        <option value="special edges" [disabled]="!typeGraphe || !grapheS.getEdgeIds().length">{{"screenbox.msg48"|translate}}</option>
-                        <option value="remove all" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">{{"screenbox.msg16"|translate}}</option>
-                        <option value="reset graphe" [disabled]="!typeGraphe || !grapheS.getNodeIds().length">{{"screenbox.msg17"|translate}}</option>
+                            <option value="" disabled selected>{{"screenbox.msg13"|translate}}</option>
+                            <option value="remove nodes" [disabled]="!typeGraphe || !grapheS.getNodeIds().length">{{"screenbox.msg15"|translate}}</option>
+                            <option value="special nodes" [disabled]="!typeGraphe || !grapheS.getNodeIds().length">{{"screenbox.msg49"|translate}}</option>
+                            <option value="remove edges" [disabled]="!typeGraphe || !grapheS.getEdgeIds().length">{{"screenbox.msg14"|translate}}</option>
+                            <option value="special edges" [disabled]="!typeGraphe || !grapheS.getEdgeIds().length">{{"screenbox.msg48"|translate}}</option>
+                            <option value="remove all" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">{{"screenbox.msg16"|translate}}</option>
+                            <option value="reset graphe" [disabled]="!typeGraphe || !grapheS.getNodeIds().length">{{"screenbox.msg17"|translate}}</option>
                     </select>
                     <select  id="Algorithm" [(ngModel)]="algorithm" (ngModelChange)="algoS.changeAlgorithm(this)">
-                        <option value="" disabled selected>{{"screenbox.msg18"|translate}}</option>
-                        <option value="degrenodes" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">degree nodes</option>
-                        <option value="matrixAdjancy" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">matrice incidente</option>
-                        <option value="matrixIncident" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">matrice adjacent</option>
-                        <option value="listeAdjancy" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">liste adjacent</option>
-                        <option value="bfs" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">BFS</option>
-                        <option value="dfs" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">DFS</option>
-                        <option value="bellmanFord" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">Bellman Ford</option>
-                        <option value="bellmanFordAB" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">Bell-Ford AB</option>
-                        <option value="dijkstra" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">Dijkstra</option>
-                        <option value="dijkstraAB" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">Dijkstra AB</option>
-                        <option value="floydWarshall" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">Floyd Warshall</option>
-                        <option value="kruskal" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">Kruskal</option>
-                        <option value="prime" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">Prime</option>
-                        <option value="tarjan" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">Trajan(SCCs)</option>
+                            <option value="" disabled selected>{{"screenbox.msg18"|translate}}</option>
+                            <option value="degrenodes" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">degree nodes</option>
+                            <option value="matrixAdjancy" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">matrice incidente</option>
+                            <option value="matrixIncident" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">matrice adjacent</option>
+                            <option value="listeAdjancy" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">liste adjacent</option>
+                            <option value="bfs" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">BFS</option>
+                            <option value="dfs" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">DFS</option>
+                            <option value="bellmanFord" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">Bellman Ford</option>
+                            <option value="bellmanFordAB" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">Bell-Ford AB</option>
+                            <option value="dijkstra" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">Dijkstra</option>
+                            <option value="dijkstraAB" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">Dijkstra AB</option>
+                            <option value="floydWarshall" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">Floyd Warshall</option>
+                            <option value="kruskal" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">Kruskal</option>
+                            <option value="prime" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">Prime</option>
+                            <option value="tarjan" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">Trajan(SCCs)</option>
                     </select>
                     <select  id="changeSelect" [(ngModel)]="changeSelect" (ngModelChange)="grapheS.changeChanges(this)">
-                        <option value="" disabled selected>{{"screenbox.msg29"|translate}}</option>
-                        <option value="addGrapheFromMatrix">{{"screenbox.msg46"|translate}}</option>
-                        <option value="addGrapheFromEdgesList">{{"screenbox.msg47"|translate}}</option>
-                        <option value="changeIdNode" [disabled]="!typeGraphe || !grapheS.getNodeIds().length">{{"screenbox.msg30"|translate}}</option>
-                        <option value="changeColorNodes" [disabled]="!typeGraphe || !grapheS.getNodeIds().length">{{"screenbox.msg31"|translate}}</option>
-                        <option value="changeColorEdges" [disabled]="!typeGraphe || !grapheS.getEdgeIds().length">{{"screenbox.msg32"|translate}}</option>
-                        <option value="changeColorNodesAlgo" [disabled]="!typeGraphe || !grapheS.getNodeIds().length">{{"screenbox.msg36"|translate}}</option>
-                        <option value="changeColorEdgesAlgo" [disabled]="!typeGraphe || !grapheS.getEdgeIds().length">{{"screenbox.msg37"|translate}}</option>
-                        <option value="changeColorScreen" >{{"screenbox.msg38"|translate}}</option>
-                        <option value="changeSizeScreen" >{{"screenbox.msg43"|translate}}</option>
+                            <option value="" disabled selected>{{"screenbox.msg29"|translate}}</option>
+                            <option value="addGrapheFromMatrix">{{"screenbox.msg46"|translate}}</option>
+                            <option value="addGrapheFromEdgesList">{{"screenbox.msg47"|translate}}</option>
+                            <option value="changeIdNode" [disabled]="!typeGraphe || !grapheS.getNodeIds().length">{{"screenbox.msg30"|translate}}</option>
+                            <option value="changeColorNodes" [disabled]="!typeGraphe || !grapheS.getNodeIds().length">{{"screenbox.msg31"|translate}}</option>
+                            <option value="changeColorEdges" [disabled]="!typeGraphe || !grapheS.getEdgeIds().length">{{"screenbox.msg32"|translate}}</option>
+                            <option value="changeColorNodesAlgo" [disabled]="!typeGraphe || !grapheS.getNodeIds().length">{{"screenbox.msg36"|translate}}</option>
+                            <option value="changeColorEdgesAlgo" [disabled]="!typeGraphe || !grapheS.getEdgeIds().length">{{"screenbox.msg37"|translate}}</option>
+                            <option value="changeColorScreen" >{{"screenbox.msg38"|translate}}</option>
+                            <option value="changeSizeScreen" >{{"screenbox.msg43"|translate}}</option>
                     </select>
                     <select  id="saveUpload" [(ngModel)]="saveUpload" (ngModelChange)="saveUploadS.OnSaveUploadChange(this)">
-                        <option value="" disabled selected>{{"screenbox.msg10"|translate}}</option>
-                        <option value="save" [disabled]="!typeGraphe || !grapheS.getNodeIds().length">{{"screenbox.msg11"|translate}}</option>
-                        <option value="upload">{{"screenbox.msg12"|translate}}</option>
-                        <option value="saveJPG" [disabled]="!typeGraphe || !grapheS.getNodeIds().length">{{"screenbox.msg25"|translate}}</option>
-                        <option value="saveJPGScreen" [disabled]="!typeGraphe || !grapheS.getNodeIds().length">{{"screenbox.msg27"|translate}}</option>
-                        <option value="savePNG" [disabled]="!typeGraphe || !grapheS.getNodeIds().length">{{"screenbox.msg24"|translate}}</option>
-                        <option value="savePNGScreen" [disabled]="!typeGraphe || !grapheS.getNodeIds().length">{{"screenbox.msg26"|translate}}</option>
-                        <option value="savePDF" [disabled]="!typeGraphe || !grapheS.getNodeIds().length">save PDF</option>
+                            <option value="" disabled selected>{{"screenbox.msg10"|translate}}</option>
+                            <option value="save" [disabled]="!typeGraphe || !grapheS.getNodeIds().length">{{"screenbox.msg11"|translate}}</option>
+                            <option value="upload">{{"screenbox.msg12"|translate}}</option>
+                            <option value="saveJPG" [disabled]="!typeGraphe || !grapheS.getNodeIds().length">{{"screenbox.msg25"|translate}}</option>
+                            <option value="saveJPGScreen" [disabled]="!typeGraphe || !grapheS.getNodeIds().length">{{"screenbox.msg27"|translate}}</option>
+                            <option value="savePNG" [disabled]="!typeGraphe || !grapheS.getNodeIds().length">{{"screenbox.msg24"|translate}}</option>
+                            <option value="savePNGScreen" [disabled]="!typeGraphe || !grapheS.getNodeIds().length">{{"screenbox.msg26"|translate}}</option>
+                            <option value="savePDF" [disabled]="!typeGraphe || !grapheS.getNodeIds().length">save PDF</option>
 
                     </select>
             </div>
-            <app-add-weighted-edge dir='{{"info.dir"|translate}}' class="formAddEdges" [nodeS]="selectedNode[0]" [nodeT]="selectedNode[1]" [container]="this" (weight)="onWeightChange($event)" />
-            <app-change-id-node dir='{{"info.dir"|translate}}' class="formChangeNodeId" [lastNodeId]="selectedNode[0]" [container]="this"/>
-            <app-change-color dir='{{"info.dir"|translate}}' class="formChangeColor" [container]="this"/>
-            <app-add-node dir='{{"info.dir"|translate}}' class="formAddNode" [container]="this"/>
-            <app-remove-edge dir='{{"info.dir"|translate}}' class="formRemoveEdge" [container]="this"/>
-            <app-remove-node dir='{{"info.dir"|translate}}' class="formRemoveNode" [container]="this"/>
-            <app-change-size-screen dir='{{"info.dir"|translate}}' class="formAChangeSizeScreen" [container]="this"/>
+            <!--<router-outlet></router-outlet>-->
+            <app-add-weighted-edge *ngIf="selectedNode[0] && selectedNode[1]" dir='{{"info.dir"|translate}}' class="formAddEdges" [nodeS]="selectedNode[0]" [nodeT]="selectedNode[1]" [container]="this" (weight)="onWeightChange($event)" />
+            <app-change-id-node *ngIf="changeSelect=='changeIdNode'" dir='{{"info.dir"|translate}}' class="formChangeNodeId" [lastNodeId]="selectedNode[0]" [container]="this"/>
+            <app-change-color *ngIf="changeSelect=='changeColorNodes'||changeSelect=='changeColorEdges'||changeSelect=='changeColorNodesAlgo'||changeSelect=='changeColorEdgesAlgo'||changeSelect=='changeColorScreen'" dir='{{"info.dir"|translate}}' class="formChangeColor" [container]="this"/>
+            <app-add-node *ngIf="buttonClicked=='addVertices' && nodeName=='customText' && grapheS.position" dir='{{"info.dir"|translate}}' class="formAddNode" [container]="this"/>
+            <app-remove-edge *ngIf="remove=='special edges'" dir='{{"info.dir"|translate}}' class="formRemoveEdge" [container]="this"/>
+            <app-remove-node *ngIf="remove=='special nodes'" dir='{{"info.dir"|translate}}' class="formRemoveNode" [container]="this"/>
+            <app-change-size-screen *ngIf="changeSelect=='changeSizeScreen'" dir='{{"info.dir"|translate}}' class="formAChangeSizeScreen" [container]="this"/>
         </div>
-        <app-graphe-from-matrix-adja class="addGrapheWithMatrix" [container]="this" dir='{{"info.dir"|translate}}'/>
-        <app-graphe-from-edges-list class="addGrapheFromEdgesList" [container]="this" dir='{{"info.dir"|translate}}'/>
+        <app-graphe-from-matrix-adja *ngIf="changeSelect=='addGrapheFromMatrix'" class="addGrapheWithMatrix" [container]="this" dir='{{"info.dir"|translate}}'/>
+        <app-graphe-from-edges-list *ngIf="changeSelect=='addGrapheFromEdgesList'" class="addGrapheFromEdgesList" [container]="this" dir='{{"info.dir"|translate}}'/>
         <app-message [message]="message" class="msgBoxC"  [container]="this"/>
-        <app-screen class="screen" />
+        <app-screen *ngIf="changeSelect!='addGrapheFromMatrix'&&changeSelect!='addGrapheFromEdgesList'" class="screen" />
         <app-info id="info" [container]="this" [grapheS]="grapheS" [algoS]="algoS"/>
-     </div> 
+    </div> 
 </div>

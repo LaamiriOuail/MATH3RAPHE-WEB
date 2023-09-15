@@ -16,12 +16,10 @@
 .addGrapheWithMatrix{
   grid-column: 1/4;
   grid-row: 1/2;
-  display: none;
 }
 .addGrapheFromEdgesList{
   grid-column: 1/4;
   grid-row: 1/2;
-  display: none;
 }
 .screen {
   grid-column: 1/4;
@@ -106,7 +104,7 @@ transform: translateY(-1px);
   transform: translateY(0);
 }
 
-
+/* 
 .formAddEdges{
 display: none;
 }
@@ -127,7 +125,7 @@ display: none;
 }
 .formAChangeSizeScreen{
   display: none;
-}
+} */
 /* #msg{
   grid-column: 1/4;
   grid-row: 2/3;

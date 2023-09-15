@@ -87,12 +87,12 @@ export class GrapheFromMatrixAdjaComponent {
     if(adjacencyMatrix){
       const elements:Array<any>=this.createGraphElements(adjacencyMatrix);
       this.grapheS.createGrapheFromAdjancyMatrix(elements,!this.isSymmetric(adjacencyMatrix),this.isWeighted(adjacencyMatrix),this.container);
-      const screen=this.container.el.nativeElement.querySelector('.screen');
-      const buttonManupilation=this.container.el.nativeElement.querySelector('.buttonManupilation');
-      const addGrapheWithMatrix=this.container.el.nativeElement.querySelector('.addGrapheWithMatrix');
-      screen.style.display="block";
-      buttonManupilation.style.display="block";
-      addGrapheWithMatrix.style.display="none";
+      // const screen=this.container.el.nativeElement.querySelector('.screen');
+      // const buttonManupilation=this.container.el.nativeElement.querySelector('.buttonManupilation');
+      // const addGrapheWithMatrix=this.container.el.nativeElement.querySelector('.addGrapheWithMatrix');
+      // screen.style.display="block";
+      // buttonManupilation.style.display="block";
+      // addGrapheWithMatrix.style.display="none";
       this.matrixText="";
       this.container.message=this.translate.instant("grapheFromMatrix.msg4");
       this.container.changeSelect="";

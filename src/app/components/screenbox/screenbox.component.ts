@@ -15,7 +15,7 @@ import { GeneratePDFService } from '../../Services/generate-pdf.service';
   styleUrls: ['./screenbox.component.css'],
 })
 export class ScreenboxComponent implements OnInit,OnDestroy {
-  private buttonClicked:string="";
+  buttonClicked:string="";
   private restoreArray:Array<any> =[] ;
   typeGraphe: string = "";
   weight?:number;

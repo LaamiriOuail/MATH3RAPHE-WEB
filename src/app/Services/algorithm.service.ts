@@ -463,10 +463,13 @@ export class AlgorithmService {
    * @returns {boolean} True if the graph is connected; otherwise, false.
    */
   isGraphConnected(container:any):boolean{
-    var startNode = container.grapheS.cy.nodes().first(); 
-    var visitedNodes = new Set();
-    this.bfs(startNode,visitedNodes);
-    return visitedNodes.size === container.grapheS.cy.nodes().size();
+    if(container.grapheS.cy?.nodes().length){
+      var startNode = container.grapheS.cy.nodes().first(); 
+      var visitedNodes = new Set();
+      this.bfs(startNode,visitedNodes);
+      return visitedNodes.size === container.grapheS.cy.nodes().size();
+    }
+    return false;
   }
 
   /**

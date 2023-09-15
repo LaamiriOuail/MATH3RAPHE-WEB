@@ -114,14 +114,14 @@ export class GrapheService {
       container.remove="";
       container.containerHeight=50;
       this.resetColors();
-      const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
-      const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
-      const formChangeColor = container.el.nativeElement.querySelector('.formChangeColor');
-      const formAddNode=container.el.nativeElement.querySelector('.formAddNode');
-      formAddNode.style.display="none";
-      formChangeNodeId.style.display="none";
-      formAddEdge.style.display="none";
-      formChangeColor.style.display="none";
+      // const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
+      // const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
+      // const formChangeColor = container.el.nativeElement.querySelector('.formChangeColor');
+      // const formAddNode=container.el.nativeElement.querySelector('.formAddNode');
+      // formAddNode.style.display="none";
+      // formChangeNodeId.style.display="none";
+      // formAddEdge.style.display="none";
+      // formChangeColor.style.display="none";
       container.changeSelect="";
       this.position=null;
       //
@@ -147,20 +147,20 @@ export class GrapheService {
     container.containerHeight=50;
     container.buttonClicked="";
     container.restoreArray=[];
-    const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
-    const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
-    const formAChangeSizeScreen = container.el.nativeElement.querySelector('.formAChangeSizeScreen');
-    const formChangeColor = container.el.nativeElement.querySelector('.formChangeColor');
-    const formAddNode = container.el.nativeElement.querySelector('.formAddNode');
-    const formRemoveEdge = container.el.nativeElement.querySelector('.formRemoveEdge');
-    const formRemoveNode = container.el.nativeElement.querySelector('.formRemoveNode');
-    formRemoveNode.style.display="none";
-    formChangeNodeId.style.display="none";
-    formAddEdge.style.display="none";
-    formChangeColor.style.display="none";
-    formAChangeSizeScreen.style.display="none";
-    formAddNode.style.display="none";
-    formRemoveEdge.style.display="none";
+    // const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
+    // const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
+    // const formAChangeSizeScreen = container.el.nativeElement.querySelector('.formAChangeSizeScreen');
+    // const formChangeColor = container.el.nativeElement.querySelector('.formChangeColor');
+    // const formAddNode = container.el.nativeElement.querySelector('.formAddNode');
+    // const formRemoveEdge = container.el.nativeElement.querySelector('.formRemoveEdge');
+    // const formRemoveNode = container.el.nativeElement.querySelector('.formRemoveNode');
+    // formRemoveNode.style.display="none";
+    // formChangeNodeId.style.display="none";
+    // formAddEdge.style.display="none";
+    // formChangeColor.style.display="none";
+    // formAChangeSizeScreen.style.display="none";
+    // formAddNode.style.display="none";
+    // formRemoveEdge.style.display="none";
     this.position="";
     this.resetColors();
     //
@@ -176,7 +176,7 @@ export class GrapheService {
       }else if(container.changeSelect=="changeColorScreen") {
         container.message=this.translate.instant("grapheS.msg36")
       }
-      formChangeColor.style.display="block";
+      // formChangeColor.style.display="block";
     }else if(container.changeSelect=="addGrapheFromMatrix"){
       const screen=container.el.nativeElement.querySelector('.screen');
       const buttonManupilation=container.el.nativeElement.querySelector('.buttonManupilation');
@@ -199,7 +199,7 @@ export class GrapheService {
       container.message=this.translate.instant("grapheFromMatrix.msg6");///////////////////////Chnge this Message
     }else if(container.changeSelect=="changeSizeScreen"){
       container.message=this.translate.instant("grapheS.msg39")
-      formAChangeSizeScreen.style.display="block";
+      // formAChangeSizeScreen.style.display="block";
     }else if(container.changeSelect=="changeIdNode"){
       if(this.typeGraphe && this.cy.nodes().length){
         container.message=this.translate.instant("grapheS.msg24")
@@ -234,20 +234,20 @@ export class GrapheService {
     
     this.typeGraphe=container.typeGraphe;
     this.resetColors();
-    const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
-    const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
-    const formAChangeSizeScreen = container.el.nativeElement.querySelector('.formAChangeSizeScreen');
-    const formChangeColor = container.el.nativeElement.querySelector('.formChangeColor');
-    const formAddNode = container.el.nativeElement.querySelector('.formAddNode');
-    const formRemoveEdge = container.el.nativeElement.querySelector('.formRemoveEdge');
-    const formRemoveNode = container.el.nativeElement.querySelector('.formRemoveNode');
-    formRemoveNode.style.display="none";
-    formChangeNodeId.style.display="none";
-    formAddEdge.style.display="none";
-    formChangeColor.style.display="none";
-    formAChangeSizeScreen.style.display="none";
-    formAddNode.style.display="none";
-    formRemoveEdge.style.display="none";
+    // const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
+    // const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
+    // const formAChangeSizeScreen = container.el.nativeElement.querySelector('.formAChangeSizeScreen');
+    // const formChangeColor = container.el.nativeElement.querySelector('.formChangeColor');
+    // const formAddNode = container.el.nativeElement.querySelector('.formAddNode');
+    // const formRemoveEdge = container.el.nativeElement.querySelector('.formRemoveEdge');
+    // const formRemoveNode = container.el.nativeElement.querySelector('.formRemoveNode');
+    // formRemoveNode.style.display="none";
+    // formChangeNodeId.style.display="none";
+    // formAddEdge.style.display="none";
+    // formChangeColor.style.display="none";
+    // formAChangeSizeScreen.style.display="none";
+    // formAddNode.style.display="none";
+    // formRemoveEdge.style.display="none";
     this.position="";
     container.containerHeight=50;
     this.cy.remove(this.cy.elements());
@@ -284,20 +284,20 @@ export class GrapheService {
       container.remove="";
       container.containerHeight=50;
       //
-      const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
-      const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
-      const formAChangeSizeScreen = container.el.nativeElement.querySelector('.formAChangeSizeScreen');
-      const formChangeColor = container.el.nativeElement.querySelector('.formChangeColor');
-      const formAddNode = container.el.nativeElement.querySelector('.formAddNode');
-      const formRemoveEdge = container.el.nativeElement.querySelector('.formRemoveEdge');
-      const formRemoveNode = container.el.nativeElement.querySelector('.formRemoveNode');
-      formRemoveNode.style.display="none";
-      formChangeNodeId.style.display="none";
-      formAddEdge.style.display="none";
-      formChangeColor.style.display="none";
-      formAChangeSizeScreen.style.display="none";
-      formAddNode.style.display="none";
-      formRemoveEdge.style.display="none";
+      // const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
+      // const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
+      // const formAChangeSizeScreen = container.el.nativeElement.querySelector('.formAChangeSizeScreen');
+      // const formChangeColor = container.el.nativeElement.querySelector('.formChangeColor');
+      // const formAddNode = container.el.nativeElement.querySelector('.formAddNode');
+      // const formRemoveEdge = container.el.nativeElement.querySelector('.formRemoveEdge');
+      // const formRemoveNode = container.el.nativeElement.querySelector('.formRemoveNode');
+      // formRemoveNode.style.display="none";
+      // formChangeNodeId.style.display="none";
+      // formAddEdge.style.display="none";
+      // formChangeColor.style.display="none";
+      // formAChangeSizeScreen.style.display="none";
+      // formAddNode.style.display="none";
+      // formRemoveEdge.style.display="none";
       this.position="";
       if(container.buttonClicked=="default"){
         container.message=this.translate.instant("grapheS.msg2");
@@ -332,7 +332,7 @@ export class GrapheService {
    * @param {ChangeSizeScreenComponent} container2 - Another container object.
    */
   changeSizeScreen(container:any,container2:any):void{
-    const formAChangeSizeScreen = container.el.nativeElement.querySelector('.formAChangeSizeScreen');
+    // const formAChangeSizeScreen = container.el.nativeElement.querySelector('.formAChangeSizeScreen');
     const screen=container.el.nativeElement.querySelector('.scr');
     if(container2.height){
       screen.style.height =container2.height+'px';
@@ -344,7 +344,7 @@ export class GrapheService {
       container.message=this.translate.instant("grapheS.msg38");
     }
     container.changeSelect="";
-    formAChangeSizeScreen.style.display="none";
+    // formAChangeSizeScreen.style.display="none";
   }
   /**
    * Rejects the changes made to the screen size and restores the previous size.
@@ -353,11 +353,11 @@ export class GrapheService {
    * @param {ChangeSizeScreenComponent} container2 - Another container object.
    */
   RejeterChangeSizeScreen(container:any,container2:any):void{
-    const formAChangeSizeScreen = container.el.nativeElement.querySelector('.formAChangeSizeScreen');
+    // const formAChangeSizeScreen = container.el.nativeElement.querySelector('.formAChangeSizeScreen');
     const screen=container.el.nativeElement.querySelector('.scr');
     container2.height=screen.style.height.slice(0,-2)||400;
     container.changeSelect="";
-    formAChangeSizeScreen.style.display="none";
+    // formAChangeSizeScreen.style.display="none";
     container.message=this.translate.instant("grapheS.msg40")
   }
   /**
@@ -367,7 +367,7 @@ export class GrapheService {
    * @param {AddWeightedEdgeComponent} container2 - Another container object.
    */
   addWeightedEdge(container:any,container2:any):void{
-    const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
+    // const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
     if(container.weight!=0){
       this.isEdgeRemove(container.selectedNode[0],container.selectedNode[1],container);
       let data={
@@ -382,7 +382,7 @@ export class GrapheService {
       let elem={status:"add",element:edge};
       container.restoreArray.push(elem);
       //
-      formAddEdge.style.display='none';
+      // formAddEdge.style.display='none';
       container.message=this.translate.instant("grapheS.msg7",{selectedNode1:container.selectedNode[0],selectedNode2:container.selectedNode[1],weight:container.weight});
       container.weight=null;
       container2.weightForm=null;
@@ -401,8 +401,8 @@ export class GrapheService {
   RejeterAddEdgeWeighted(container:any,container2:any):void{
     container.selectedNode=[];
     container.weight=null;
-    const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
-    formAddEdge.style.display='none';
+    // const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
+    // formAddEdge.style.display='none';
     this.resetColors();
     container.message=this.translate.instant("grapheS.msg9");
     container2.weightForm=null;
@@ -414,7 +414,7 @@ export class GrapheService {
    * @param {ChangeIdNodeComponent} container2 - Another container object.
    */
   changeNodeId(container:any,container2:any):void{
-    const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
+    // const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
     let idExists=false;
     this.cy.nodes().forEach((node:any)=>{
       if(node.data('id')==container2.newNodeId){
@@ -487,7 +487,7 @@ export class GrapheService {
       container.message=this.translate.instant("grapheS.msg25",{last:container.selectedNode[0],new:container2.newNodeId});
       //Initialiation
       container.nodeIdChanged=container2.newNodeId;
-      formChangeNodeId.style.display = 'none';
+      // formChangeNodeId.style.display = 'none';
       container.selectedNode=[];
       container2.newNodeId=null;
       this.resetColors();
@@ -500,8 +500,8 @@ export class GrapheService {
    * @param {ChangeIdNodeComponent} container2 - Another container object.
    */
   RejeterChangeNodeId(container:any,container2:any):void{
-    const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
-    formChangeNodeId.style.display = 'none';
+    // const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
+    // formChangeNodeId.style.display = 'none';
     container.selectedNode=[];
     container2.newNodeId=null;
     this.resetColors();
@@ -514,7 +514,7 @@ export class GrapheService {
    * @param {ChangeColorComponent} container2 - Another container object.
    */
   changeColor(container:any,container2:any){
-    const formChangeColor = container.el.nativeElement.querySelector('.formChangeColor');
+    // const formChangeColor = container.el.nativeElement.querySelector('.formChangeColor');
     const screen=container.el.nativeElement.querySelector('.scr');
     if(container.changeSelect=="changeColorNodes"){
       this.COLOR_NODE=container2.color;
@@ -576,7 +576,7 @@ export class GrapheService {
       localStorage.setItem("ScreenColor",screen.style.backgroundColor.toString());
     }
     container.changeSelect="";
-    formChangeColor.style.display="none";
+    // formChangeColor.style.display="none";
   }
   /**
    * Rejects the color changes and resets the form.
@@ -584,14 +584,14 @@ export class GrapheService {
    * @param {ScreenboxComponent} container - The container object.
    */
   RejeterChangeColor(container:any):void {
-    const formChangeColor = container.el.nativeElement.querySelector('.formChangeColor');
+    // const formChangeColor = container.el.nativeElement.querySelector('.formChangeColor');
     if(container.changeSelect=="changeColorNodes"){
       container.message=this.translate.instant("grapheS.msg28")
     }else{
       container.message=this.translate.instant("grapheS.msg29")
     }
     container.changeSelect="";
-    formChangeColor.style.display="none";
+    // formChangeColor.style.display="none";
   }
   /**
    * Adds a new node to the graph if it doesn't already exist.
@@ -600,7 +600,7 @@ export class GrapheService {
    * @param {AddNodeComponent} container2 - Another container object containing the new node ID.
    */
   addNode(container:any,container2:any):void{
-    const formAddNode=container.el.nativeElement.querySelector('.formAddNode');
+    // const formAddNode=container.el.nativeElement.querySelector('.formAddNode');
     let exist:boolean=false;
     if(container2.nodeId){
       this.cy.nodes().forEach((node:any)=>{
@@ -614,7 +614,7 @@ export class GrapheService {
         let elem={status:"add",element:node};
         container.restoreArray.push(elem);
         container.message=this.translate.instant("grapheS.msg10",{nodeId:node.data('id')});
-        formAddNode.style.display="none";
+        // formAddNode.style.display="none";
         this.position="";
         container2.nodeId=null;
       }
@@ -629,8 +629,8 @@ export class GrapheService {
    * @param {AddNodeComponent} container2 - Another container object containing the new node ID.
    */
   RejeterAddNode(container:any,container2:any):void{
-    const formAddNode=container.el.nativeElement.querySelector('.formAddNode');
-    formAddNode.style.display="none";
+    // const formAddNode=container.el.nativeElement.querySelector('.formAddNode');
+    // formAddNode.style.display="none";
     this.position="";
     container2.nodeId=null;
   }
@@ -648,9 +648,9 @@ export class GrapheService {
           //
           let pos = evt.position || evt.cyPosition;
           let node:any;
-          const formAddNode=container.el.nativeElement.querySelector('.formAddNode');
+          // const formAddNode=container.el.nativeElement.querySelector('.formAddNode');
           if(container.nodeName=="numerique"){
-            formAddNode.style.display="none";
+            // formAddNode.style.display="none";
             this.cy.nodes().forEach((node:any)=>{
               if(node.data('id')==this.counter+1){
                 ++this.counter;
@@ -658,7 +658,7 @@ export class GrapheService {
             })
             node=this.cy.add({ group: 'nodes', data: { id: ++this.counter}, position: pos });
           }else if(container.nodeName=="alphabic"){
-            formAddNode.style.display="none";
+            // formAddNode.style.display="none";
             this.cy.nodes().forEach((node:any)=>{
               if(node.data('id')==this.Alphabets[0]){
                 this.Alphabets.shift();
@@ -666,7 +666,7 @@ export class GrapheService {
             })
             node=this.cy.add({ group: 'nodes', data: { id: this.Alphabets.shift()}, position: pos });
           }else if(container.nodeName=="customText"){
-            formAddNode.style.display="block";
+            // formAddNode.style.display="block";
             this.position=pos;
           }
           if(container.nodeName!="customText"){
@@ -702,8 +702,8 @@ export class GrapheService {
    * @param {ScreenboxComponent} container - The container object.
    */
   OnNodeTap(container:any):void{
-    const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
-    const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
+    // const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
+    // const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
     this.cy.on('tap', 'node',  (evt:any)=> {
       var node = evt.target;
       if(container.remove=="remove nodes" || container.remove=="remove all"){
@@ -720,7 +720,7 @@ export class GrapheService {
         }
         this.changeColorNode(node, this.BACKGROUND_COLOR_NODE_ALGO,this.COLOR_NODE_ALGO);
         container.selectedNode.push(node.data('id'));
-        formChangeNodeId.style.display = 'block';
+        // formChangeNodeId.style.display = 'block';
       }else if(container.buttonClicked==="addEdges"){
           this.resetColors();
           if(container.selectedNode.length<1){
@@ -731,7 +731,7 @@ export class GrapheService {
               this.changeColorNode(node, this.BACKGROUND_COLOR_NODE_ALGO,this.COLOR_NODE_ALGO);
               container.selectedNode.push(node.data('id'));
               if(this.typeGraphe=="Directed Weighted" || this.typeGraphe=="Undirected Weighted"){
-                  formAddEdge.style.display = 'block';
+                  // formAddEdge.style.display = 'block';
                   container.message=this.translate.instant("grapheS.msg14",{selectedNode1:container.selectedNode[0],selectedNode2:container.selectedNode[1]});
               }else{
                 this.isEdgeRemove(container.selectedNode[0],container.selectedNode[1],container);
@@ -747,7 +747,7 @@ export class GrapheService {
                   container.message=this.translate.instant("grapheS.msg15",{selectedNode1:container.selectedNode[0],selectedNode2:container.selectedNode[1]});
                   container.selectedNode=[];
                   this.resetColors();
-                  formAddEdge.style.display='none';
+                  // formAddEdge.style.display='none';
               }  
           }
       }else if(container.algorithm=="bfs"){
@@ -849,13 +849,15 @@ export class GrapheService {
    * Resets the visual styles of nodes and edges in the graph to their default colors.
    */
   resetColors(): void {
-    setTimeout(() => {
-      this.cy.nodes().style('background-color', this.BACKGROUND_COLOR_NODE);
-      this.cy.nodes().style('color', this.COLOR_NODE);
-      this.cy.edges().style('line-color', this.COLOR_LINE_EDGE);
-      this.cy.edges().style('color', this.DATA_EDGE_COLOR);
-      this.cy.edges().style('target-arrow-color', this.TARGET_ARROW_COLOR);
-    },10)
+    if(this.cy.nodes().length){
+      setTimeout(() => {
+        this.cy.nodes().style('background-color', this.BACKGROUND_COLOR_NODE);
+        this.cy.nodes().style('color', this.COLOR_NODE);
+        this.cy.edges().style('line-color', this.COLOR_LINE_EDGE);
+        this.cy.edges().style('color', this.DATA_EDGE_COLOR);
+        this.cy.edges().style('target-arrow-color', this.TARGET_ARROW_COLOR);
+      },10)
+    }
   }
   /**
    * Changes the background color and text color of a given node.
@@ -935,20 +937,20 @@ export class GrapheService {
         container.algorithm="";
       }
       //
-      const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
-      const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
-      const formAChangeSizeScreen = container.el.nativeElement.querySelector('.formAChangeSizeScreen');
-      const formChangeColor = container.el.nativeElement.querySelector('.formChangeColor');
-      const formAddNode = container.el.nativeElement.querySelector('.formAddNode');
-      const formRemoveEdge = container.el.nativeElement.querySelector('.formRemoveEdge');
-      const formRemoveNode = container.el.nativeElement.querySelector('.formRemoveNode');
-      formChangeNodeId.style.display="none";
-      formAddEdge.style.display="none";
-      formChangeColor.style.display="none";
-      formAChangeSizeScreen.style.display="none";
-      formAddNode.style.display="none";
-      formRemoveEdge.style.display="none";
-      formRemoveNode.style.display="none";
+      // const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
+      // const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
+      // const formAChangeSizeScreen = container.el.nativeElement.querySelector('.formAChangeSizeScreen');
+      // const formChangeColor = container.el.nativeElement.querySelector('.formChangeColor');
+      // const formAddNode = container.el.nativeElement.querySelector('.formAddNode');
+      // const formRemoveEdge = container.el.nativeElement.querySelector('.formRemoveEdge');
+      // const formRemoveNode = container.el.nativeElement.querySelector('.formRemoveNode');
+      // formChangeNodeId.style.display="none";
+      // formAddEdge.style.display="none";
+      // formChangeColor.style.display="none";
+      // formAChangeSizeScreen.style.display="none";
+      // formAddNode.style.display="none";
+      // formRemoveEdge.style.display="none";
+      // formRemoveNode.style.display="none";
       container.grapheS.position="";
       this.resetColors();
       if(container.remove=="reset graphe"){
@@ -963,10 +965,10 @@ export class GrapheService {
       }else if(container.remove=="remove all"){
         container.message=this.translate.instant("grapheS.msg45");
       }else if(container.remove=="special edges"){
-        formRemoveEdge.style.display="block";
+        // formRemoveEdge.style.display="block";
         container.message=this.translate.instant("grapheS.msg49");
       }else if(container.remove=="special nodes"){
-        formRemoveNode.style.display="block";
+        // formRemoveNode.style.display="block";
         container.message=this.translate.instant("grapheS.msg50");
       }
     }else{
@@ -1235,12 +1237,12 @@ export class GrapheService {
    * @param {GrapheFromMatrixAdjaComponent} container2 - Another container object.
    */
   rejeterGenerateGraphFromMatrixAdjancy(container:any,container2:any):void {
-    const screen=container.el.nativeElement.querySelector('.screen');
-    const buttonManupilation=container.el.nativeElement.querySelector('.buttonManupilation');
-    const addGrapheWithMatrix=container.el.nativeElement.querySelector('.addGrapheWithMatrix');
-    screen.style.display="block";
-    buttonManupilation.style.display="block";
-    addGrapheWithMatrix.style.display="none";
+    // const screen=container.el.nativeElement.querySelector('.screen');
+    // const buttonManupilation=container.el.nativeElement.querySelector('.buttonManupilation');
+    // const addGrapheWithMatrix=container.el.nativeElement.querySelector('.addGrapheWithMatrix');
+    // screen.style.display="block";
+    // buttonManupilation.style.display="block";
+    // addGrapheWithMatrix.style.display="none";
     container2.matrixText="";
     container.message=this.translate.instant("grapheFromMatrix.msg5");
     container.changeSelect="";
@@ -1366,12 +1368,12 @@ export class GrapheService {
             }
           }
         })
-      const screen=container.el.nativeElement.querySelector('.screen');
-      const buttonManupilation=container.el.nativeElement.querySelector('.buttonManupilation');
-      const addGrapheFromEdgesList=container.el.nativeElement.querySelector('.addGrapheFromEdgesList');
-      screen.style.display="block";
-      buttonManupilation.style.display="block";
-      addGrapheFromEdgesList.style.display="none";
+      // const screen=container.el.nativeElement.querySelector('.screen');
+      // const buttonManupilation=container.el.nativeElement.querySelector('.buttonManupilation');
+      // const addGrapheFromEdgesList=container.el.nativeElement.querySelector('.addGrapheFromEdgesList');
+      // screen.style.display="block";
+      // buttonManupilation.style.display="block";
+      // addGrapheFromEdgesList.style.display="none";
       container2.listEdgeTextArea="";
       container.message=this.translate.instant("grapheFromEdgeList.msg7");////
       container.restoreArray=[];
@@ -1393,12 +1395,12 @@ export class GrapheService {
    * @param {GrapheFromEdgesListComponent} container2 - Another container object.
    */
   rejeterGenerateGraphFromListEdges(container:any,container2:any):void {
-    const screen=container.el.nativeElement.querySelector('.screen');
-    const buttonManupilation=container.el.nativeElement.querySelector('.buttonManupilation');
-    const addGrapheFromEdgesList=container.el.nativeElement.querySelector('.addGrapheFromEdgesList');
-    screen.style.display="block";
-    buttonManupilation.style.display="block";
-    addGrapheFromEdgesList.style.display="none";
+    // const screen=container.el.nativeElement.querySelector('.screen');
+    // const buttonManupilation=container.el.nativeElement.querySelector('.buttonManupilation');
+    // const addGrapheFromEdgesList=container.el.nativeElement.querySelector('.addGrapheFromEdgesList');
+    // screen.style.display="block";
+    // buttonManupilation.style.display="block";
+    // addGrapheFromEdgesList.style.display="none";
     container2.listEdgeTextArea="";
     container.message=this.translate.instant("grapheFromEdgeList.msg6");///////Change this message
     container.changeSelect="";
@@ -1409,7 +1411,7 @@ export class GrapheService {
    * @returns {number} - The density of the graph.
    */
   getDensityOfGraphe():number{
-    if(this.cy.nodes().length){
+    if(this.cy?.nodes().length){
       if(this.typeGraphe.split(' ')[0] == 'Directed'){
         return this.cy.edges().length/(this.cy.nodes().length*(this.cy.nodes().length-1));
       }else{
@@ -1504,8 +1506,8 @@ export class GrapheService {
       this.cy.remove(edgeI);
       let elem={status:"remove",element:edgeI};
       container.restoreArray.push(elem);
-      const formRemoveEdge = container.el.nativeElement.querySelector('.formRemoveEdge');
-      formRemoveEdge.style.display="none";
+      // const formRemoveEdge = container.el.nativeElement.querySelector('.formRemoveEdge');
+      // formRemoveEdge.style.display="none";
       container.message=this.translate.instant("grapheS.msg48",{source:container2.sourceId,target:container2.targetId});
       container2.sourceId="";
       container2.targetId="";
@@ -1515,8 +1517,8 @@ export class GrapheService {
     }
   }
   RejeterRemoveEdge(container:any,container2:any):void{
-    const formRemoveEdge = container.el.nativeElement.querySelector('.formRemoveEdge');
-    formRemoveEdge.style.display="none";
+    // const formRemoveEdge = container.el.nativeElement.querySelector('.formRemoveEdge');
+    // formRemoveEdge.style.display="none";
     container2.sourceId="";
     container2.targetId="";
     container.remove="";
@@ -1531,20 +1533,20 @@ export class GrapheService {
       container.restoreArray.push(elem);
       //
       container.message=this.translate.instant("grapheS.msg52",{nodeId:container2.nodeId});
-      const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
-      const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
-      const formAChangeSizeScreen = container.el.nativeElement.querySelector('.formAChangeSizeScreen');
-      const formChangeColor = container.el.nativeElement.querySelector('.formChangeColor');
-      const formAddNode = container.el.nativeElement.querySelector('.formAddNode');
-      const formRemoveEdge = container.el.nativeElement.querySelector('.formRemoveEdge');
-      const formRemoveNode = container.el.nativeElement.querySelector('.formRemoveNode');
-      formChangeNodeId.style.display="none";
-      formAddEdge.style.display="none";
-      formChangeColor.style.display="none";
-      formAChangeSizeScreen.style.display="none";
-      formAddNode.style.display="none";
-      formRemoveEdge.style.display="none";
-      formRemoveNode.style.display="none";
+      // const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
+      // const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
+      // const formAChangeSizeScreen = container.el.nativeElement.querySelector('.formAChangeSizeScreen');
+      // const formChangeColor = container.el.nativeElement.querySelector('.formChangeColor');
+      // const formAddNode = container.el.nativeElement.querySelector('.formAddNode');
+      // const formRemoveEdge = container.el.nativeElement.querySelector('.formRemoveEdge');
+      // const formRemoveNode = container.el.nativeElement.querySelector('.formRemoveNode');
+      // formChangeNodeId.style.display="none";
+      // formAddEdge.style.display="none";
+      // formChangeColor.style.display="none";
+      // formAChangeSizeScreen.style.display="none";
+      // formAddNode.style.display="none";
+      // formRemoveEdge.style.display="none";
+      // formRemoveNode.style.display="none";
       container2.nodeId="";
       container.remove="";
     }else{
@@ -1552,21 +1554,21 @@ export class GrapheService {
     }
   }
   RejeterRemoveNode(container:any,container2:any):void{
-    const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
-    const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
-    const formAChangeSizeScreen = container.el.nativeElement.querySelector('.formAChangeSizeScreen');
-    const formChangeColor = container.el.nativeElement.querySelector('.formChangeColor');
-    const formAddNode = container.el.nativeElement.querySelector('.formAddNode');
-    const formRemoveEdge = container.el.nativeElement.querySelector('.formRemoveEdge');
-    const formRemoveNode = container.el.nativeElement.querySelector('.formRemoveNode');
+    // const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
+    // const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
+    // const formAChangeSizeScreen = container.el.nativeElement.querySelector('.formAChangeSizeScreen');
+    // const formChangeColor = container.el.nativeElement.querySelector('.formChangeColor');
+    // const formAddNode = container.el.nativeElement.querySelector('.formAddNode');
+    // const formRemoveEdge = container.el.nativeElement.querySelector('.formRemoveEdge');
+    // const formRemoveNode = container.el.nativeElement.querySelector('.formRemoveNode');
     container.message=this.translate.instant("grapheS.msg51");
-    formChangeNodeId.style.display="none";
-    formAddEdge.style.display="none";
-    formChangeColor.style.display="none";
-    formAChangeSizeScreen.style.display="none";
-    formAddNode.style.display="none";
-    formRemoveEdge.style.display="none";
-    formRemoveNode.style.display="none";
+    // formChangeNodeId.style.display="none";
+    // formAddEdge.style.display="none";
+    // formChangeColor.style.display="none";
+    // formAChangeSizeScreen.style.display="none";
+    // formAddNode.style.display="none";
+    // formRemoveEdge.style.display="none";
+    // formRemoveNode.style.display="none";
     container2.nodeId="";
     container.remove="";
   }
@@ -1646,22 +1648,5 @@ export class GrapheService {
         adjacencyList.push(adjacencyListEntry);
         });
     return adjacencyList;
-  }
-  randomPosition():void{
-    let options = {
-      name: 'random',
-      fit: true, // whether to fit to viewport
-      padding: 30, // fit padding
-      boundingBox: undefined, // constrain layout bounds; { x1, y1, x2, y2 } or { x1, y1, w, h }
-      animate: false, // whether to transition the node positions
-      animationDuration: 500, // duration of animation in ms if enabled
-      animationEasing: undefined, // easing of animation if enabled
-      animateFilter: function ( node:any, i:any ){ return true; }, // a function that determines whether the node should be animated.  All nodes animated by default on animate enabled.  Non-animated nodes are positioned immediately when the layout starts
-      ready: undefined, // callback on layoutready
-      stop: undefined, // callback on layoutstop
-      transform: function (node:any, position:any ){ return position; } // transform a given node position. Useful for changing flow direction in discrete layouts 
-    };
-    
-    this.cy.layout( options );
   }
 }
