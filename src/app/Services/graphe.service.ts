@@ -983,13 +983,13 @@ export class GrapheService {
    * @param {string} target - The target node ID.
    * @param {string} lineColor - The new line color for the edge.
    */
-  searcheEdgeChnageBC(container:any,source:string,target:string,lineColor:string):void{
+  searcheEdgeChnageBC(container:any,source:string,target:string,color:string,lineEdgeColor:string,targetArrowColor:string,time:number=10):void{
     const edges = this.cy.elements('edge'); // Select only edges
     edges.forEach((edge:any) => {
         const edgeSourceId = edge.source().id();
         const edgeTargetId = edge.target().id();
         if (edgeSourceId === source && edgeTargetId === target) {
-            edge.style('line-color', lineColor);
+            this.changeColorEdge(edge,color,lineEdgeColor,targetArrowColor,time);
         }
     });
   }
