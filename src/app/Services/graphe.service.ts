@@ -1419,6 +1419,11 @@ export class GrapheService {
       return 0;
     }
   }
+  /**
+   * Get an array of node IDs in the graph.
+   *
+   * @returns {Array<string>} - An array of node IDs.
+   */
   getNodeIds():Array<any>{
     const nodes:Array<any> = [];
     this.cy.nodes().forEach((node:any)=>{
@@ -1426,6 +1431,11 @@ export class GrapheService {
     })
     return nodes;
   }
+  /**
+   * Calculate the incidence matrix of the graph.
+   *
+   * @returns {Array<any>} - The incidence matrix of the graph.
+   */
   incidenceMatrix():Array<any> {
     const nodes = this.cy.nodes();
     const edges = this.cy.edges();
@@ -1465,6 +1475,11 @@ export class GrapheService {
   
     return incidenceMatrix;
   }
+  /**
+   * Get an array of edge IDs in the graph.
+   *
+   * @returns {Array<string>} - An array of edge IDs.
+   */
   getEdgeIds():Array<any>{
     const edges:Array<any> = [];
     this.cy.edges().forEach((edge:any)=>{
@@ -1478,6 +1493,12 @@ export class GrapheService {
     })
     return edges;
   }
+  /**
+   * Remove an edge from the graph.
+   *
+   * @param {ScreenboxComponent} container - The container for the graph.
+   * @param {RemoveEdgeComponent} container2 - Additional container.
+   */
   removeEdge(container:any,container2:any):void{
     let exist: boolean=false;
     const edges = this.cy.edges();
@@ -1514,6 +1535,12 @@ export class GrapheService {
       container.message=this.translate.instant("grapheS.msg47",{source:container2.sourceId,target:container2.targetId});
     }
   }
+  /**
+   * Reject the removal of an edge from the graph.
+   *
+   * @param {ScreenboxComponent} container - The container for the graph.
+   * @param {RemoveEdgeComponent} container2 - Additional container.
+   */
   RejeterRemoveEdge(container:any,container2:any):void{
     const formRemoveEdge = container.el.nativeElement.querySelector('.formRemoveEdge');
     formRemoveEdge.style.display="none";
@@ -1522,6 +1549,12 @@ export class GrapheService {
     container.remove="";
     container.message=this.translate.instant("grapheS.msg46");
   }
+  /**
+   * Remove a node from the graph.
+   *
+   * @param {ScreenboxComponent} container - The container for the graph.
+   * @param {RemoveNodeComponent} container2 - Additional container.
+   */
   removeNode(container:any,container2:any):void{
     let node:any=this.cy.getElementById(container2.nodeId);
     let exist:boolean=node.isNode();
@@ -1551,6 +1584,12 @@ export class GrapheService {
       container.message=this.translate.instant("grapheS.msg53",{nodeId:container2.nodeId});
     }
   }
+  /**
+   * Reject the removal of a node from the graph.
+   *
+   * @param {ScreenboxComponent} container - The container for the graph.
+   * @param {RemoveNodeComponent} container2 - Additional container.
+   */
   RejeterRemoveNode(container:any,container2:any):void{
     const formChangeNodeId=container.el.nativeElement.querySelector('.formChangeNodeId');
     const formAddEdge = container.el.nativeElement.querySelector('.formAddEdges');
@@ -1570,6 +1609,11 @@ export class GrapheService {
     container2.nodeId="";
     container.remove="";
   }
+  /**
+   * Get the adjacency list of the graph.
+   *
+   * @returns {Array<any>} - The adjacency list of the graph.
+   */
   getAdjancyList():Array<any>{
     const adjacencyList:Array<any> = [];
       this.cy.nodes().forEach((node:any) => {
@@ -1646,22 +1690,5 @@ export class GrapheService {
         adjacencyList.push(adjacencyListEntry);
         });
     return adjacencyList;
-  }
-  randomPosition():void{
-    let options = {
-      name: 'random',
-      fit: true, // whether to fit to viewport
-      padding: 30, // fit padding
-      boundingBox: undefined, // constrain layout bounds; { x1, y1, x2, y2 } or { x1, y1, w, h }
-      animate: false, // whether to transition the node positions
-      animationDuration: 500, // duration of animation in ms if enabled
-      animationEasing: undefined, // easing of animation if enabled
-      animateFilter: function ( node:any, i:any ){ return true; }, // a function that determines whether the node should be animated.  All nodes animated by default on animate enabled.  Non-animated nodes are positioned immediately when the layout starts
-      ready: undefined, // callback on layoutready
-      stop: undefined, // callback on layoutstop
-      transform: function (node:any, position:any ){ return position; } // transform a given node position. Useful for changing flow direction in discrete layouts 
-    };
-    
-    this.cy.layout( options );
   }
 }

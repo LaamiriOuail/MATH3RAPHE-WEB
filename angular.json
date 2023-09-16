@@ -23,7 +23,7 @@
               "core-js/modules/es.string.split.js","core-js/modules/es.string.starts-with.js",
               "core-js/modules/es.string.trim.js","core-js/modules/web.dom-collections.iterator.js"
             ],
-            "outputPath": "docs",
+            "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [

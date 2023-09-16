@@ -31,7 +31,6 @@ import { GrapheFromEdgesListComponent } from './components/graphe-from-edges-lis
 import { RemoveEdgeComponent } from './components/remove-edge/remove-edge.component';
 import { RemoveNodeComponent } from './components/remove-node/remove-node.component';
 import { EnumerationNodeComponent } from './components/enumeration-node/enumeration-node.component';
-import { GeneratePDFService } from './Services/generate-pdf.service';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
 
@@ -83,7 +82,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     })
     
   ],
-  providers: [GrapheService,AlgorithmService,SaveUploadService,DarkModeService,GeneratePDFService],
+  providers: [GrapheService,AlgorithmService,SaveUploadService,DarkModeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

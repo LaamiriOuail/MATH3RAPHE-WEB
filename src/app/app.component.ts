@@ -12,9 +12,9 @@ export class AppComponent implements OnInit {
   constructor(private translate: TranslateService,protected darkModeS:DarkModeService) {
   }
   ngOnInit(): void {
-    this.translate.setDefaultLang("en");
-    // this.translate.use("fr");
-    // this.translate.use("en");
-    // this.translate.use(localStorage.getItem('language')??"en");
+    // this.translate.setDefaultLang("en");
+    this.translate.use("fr");
+    this.translate.use("ar");
+    this.translate.use("en");
   }
 }
