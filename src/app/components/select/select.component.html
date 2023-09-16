@@ -1,4 +1,0 @@
-<select class={{Class}} [(ngModel)]="selectedNew" (ngModelChange)="functionHandler(container);onChange()">
-    <option *ngIf="disableLabell!=''" value="" disabled selected>disableLabell</option>
-    <option *ngFor="let item of items" value={{item.value}}>{{item.label}}</option>
-</select>

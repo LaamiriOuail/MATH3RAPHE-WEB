@@ -1,9 +1,22 @@
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import * as cytoscape from 'cytoscape';
-interface IPosition{
-  x:number;
-  y:number;
+/**
+ * Represents a 2D position with x and y coordinates.
+ * @interface
+ */
+interface IPosition {
+  /**
+   * The x-coordinate of the position.
+   * @type {number}
+   */
+  x: number;
+
+  /**
+   * The y-coordinate of the position.
+   * @type {number}
+   */
+  y: number;
 }
 /**
  * Service for managing and interacting with the Cytoscape graph.

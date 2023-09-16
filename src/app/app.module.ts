@@ -20,7 +20,6 @@ import { MessageComponent } from './components/message/message.component';
 import { ScreenComponent } from './components/screen/screen.component';
 import { AddWeightedEdgeComponent } from './components/add-weighted-edge/add-weighted-edge.component';
 import { MatrixComponent } from './components/matrix/matrix.component';
-import { SelectComponent } from './components/select/select.component';
 import { ChangeIdNodeComponent } from './components/change-id-node/change-id-node.component';
 import { ChangeColorComponent } from './components/change-color/change-color.component';
 import { AddNodeComponent } from './components/add-node/add-node.component';
@@ -50,7 +49,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     ScreenComponent,
     AddWeightedEdgeComponent,
     MatrixComponent,
-    SelectComponent,
     ChangeIdNodeComponent,
     ChangeColorComponent,
     AddNodeComponent,
