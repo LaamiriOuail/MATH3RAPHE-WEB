@@ -7,21 +7,17 @@ import { TranslateService } from '@ngx-translate/core';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent{
-  lang:any=localStorage.getItem('language') || "en";
-  languages = [
-    { code: 'en', name: 'English' },
-    { code: 'fr', name: 'Français' },
-    { code: 'ar', name: 'العربية' }
-  ];
+export class HeaderComponent implements OnInit{
+  lang:string="";
   constructor(protected darkModeS:DarkModeService,private translate:TranslateService){
   }
-
+  ngOnInit(): void {
+    this.lang="en";
+  }
   toggleDarkMode():void{
     this.darkModeS.toggleDarkMode();
   }
   changeLanguage(event: any) {
-    localStorage.setItem('language', event.target.value);
     this.translate.use(event.target.value);
   }
 }
