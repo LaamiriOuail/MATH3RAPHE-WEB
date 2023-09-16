@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { DarkModeService } from './Services/dark-mode.service';
 
@@ -7,9 +7,14 @@ import { DarkModeService } from './Services/dark-mode.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'pfa';
   constructor(private translate: TranslateService,protected darkModeS:DarkModeService) {
-      translate.setDefaultLang(localStorage.getItem('language') || "en");
+  }
+  ngOnInit(): void {
+    this.translate.use("ar");
+    this.translate.use("fr");
+    this.translate.use("en");
+    this.translate.use(localStorage.getItem('language') || "en")
   }
 }
