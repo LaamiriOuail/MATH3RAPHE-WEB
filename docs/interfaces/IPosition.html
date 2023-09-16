@@ -132,9 +132,6 @@
                                 <li class="link">
                                     <a href="../components/ScreenboxComponent.html" >ScreenboxComponent</a>
                                 </li>
-                                <li class="link">
-                                    <a href="../components/SelectComponent.html" >SelectComponent</a>
-                                </li>
                         </ul>
                     </li>
             
@@ -331,9 +328,6 @@
                                        <li class="link">
                                            <a href="../components/ScreenboxComponent.html" >ScreenboxComponent</a>
                                        </li>
-                                       <li class="link">
-                                           <a href="../components/SelectComponent.html" >SelectComponent</a>
-                                       </li>
                                </ul>
                            </li>
                    
@@ -444,6 +438,13 @@
             <code>src/app/Services/graphe.service.ts</code>
         </p>
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Represents a 2D position with x and y coordinates.</p>
+
+            </p>
 
 
 
@@ -474,6 +475,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The x-coordinate of the position.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -500,6 +507,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The y-coordinate of the position.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -508,9 +521,22 @@
         <pre><code class="hljs javascript">import { Injectable } from &#x27;@angular/core&#x27;;
 import { TranslateService } from &#x27;@ngx-translate/core&#x27;;
 import * as cytoscape from &#x27;cytoscape&#x27;;
-interface IPosition{
-  x:number;
-  y:number;
+/**
+ * Represents a 2D position with x and y coordinates.
+ * @interface
+ */
+interface IPosition {
+  /**
+   * The x-coordinate of the position.
+   * @type {number}
+   */
+  x: number;
+
+  /**
+   * The y-coordinate of the position.
+   * @type {number}
+   */
+  y: number;
 }
 /**
  * Service for managing and interacting with the Cytoscape graph.

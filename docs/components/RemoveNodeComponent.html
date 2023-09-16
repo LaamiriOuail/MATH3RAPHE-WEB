@@ -132,9 +132,6 @@
                                 <li class="link">
                                     <a href="../components/ScreenboxComponent.html" >ScreenboxComponent</a>
                                 </li>
-                                <li class="link">
-                                    <a href="../components/SelectComponent.html" >SelectComponent</a>
-                                </li>
                         </ul>
                     </li>
             
@@ -331,9 +328,6 @@
                                        <li class="link">
                                            <a href="../components/ScreenboxComponent.html" >ScreenboxComponent</a>
                                        </li>
-                                       <li class="link">
-                                           <a href="../components/SelectComponent.html" >SelectComponent</a>
-                                       </li>
                                </ul>
                            </li>
                    
@@ -439,6 +433,13 @@
     <code>src/app/components/remove-node/remove-node.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Angular component for removing a node from the graph.</p>
+
+    </p>
 
 
 <section>
@@ -488,6 +489,8 @@
                             <code>container</code>
                         </td>
                         <td class="col-md-10">
+                            <div><p>Input property to receive data from a parent component related to the node removal.</p>
+</div>
                               <p>
                                 <em>Type:</em>    <code>any</code>
 
@@ -509,6 +512,28 @@
                         </td>
                     </tr>
     
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Initializes a new instance of the RemoveNodeComponent class.</p>
+    </div>
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <ul class="jsdoc-params">
+                                                <li>
+                                                    <div>
+                                                        <b>grapheS</b>
+                                                    </div>
+                                                    <div>
+                                                        <ul>
+    <li>An instance of the GrapheService for graph-related operations.</li>
+    </ul>
+    
+                                                    </div>
+                                                </li>
+                                        </ul>
+                                </div>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
     </section>
@@ -529,24 +554,46 @@
     </bcode>
                         </td>
                     </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>The ID of the node to be removed from the graph.</p>
+    </div>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
     </section>
 </div>
         <div class="tab-pane fade tab-source-code" id="source">
-            <pre><code class="hljs javascript">import { Component,Input } from &#x27;@angular/core&#x27;;
+            <pre><code class="hljs javascript">import { Component, Input } from &#x27;@angular/core&#x27;;
 import { GrapheService } from &#x27;src/app/Services/graphe.service&#x27;;
 
+/**
+ * Angular component for removing a node from the graph.
+ */
 @Component({
   selector: &#x27;app-remove-node&#x27;,
   templateUrl: &#x27;./remove-node.component.html&#x27;,
   styleUrls: [&#x27;./remove-node.component.css&#x27;]
 })
 export class RemoveNodeComponent {
-  @Input() container:any;
-  nodeId:string&#x3D;&quot;&quot;
-  constructor(protected grapheS:GrapheService){
-    
+  /**
+   * Input property to receive data from a parent component related to the node removal.
+   * @input container - An object containing data related to the node removal.
+   */
+  @Input() container: any;
+
+  /**
+   * The ID of the node to be removed from the graph.
+   */
+  nodeId: string &#x3D; &quot;&quot;;
+
+  /**
+   * Initializes a new instance of the RemoveNodeComponent class.
+   * @param grapheS - An instance of the GrapheService for graph-related operations.
+   */
+  constructor(protected grapheS: GrapheService) {
+
   }
 }
 </code></pre>

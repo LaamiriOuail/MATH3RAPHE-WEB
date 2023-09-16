@@ -132,9 +132,6 @@
                                 <li class="link">
                                     <a href="../components/ScreenboxComponent.html" >ScreenboxComponent</a>
                                 </li>
-                                <li class="link">
-                                    <a href="../components/SelectComponent.html" >SelectComponent</a>
-                                </li>
                         </ul>
                     </li>
             
@@ -331,9 +328,6 @@
                                        <li class="link">
                                            <a href="../components/ScreenboxComponent.html" >ScreenboxComponent</a>
                                        </li>
-                                       <li class="link">
-                                           <a href="../components/SelectComponent.html" >SelectComponent</a>
-                                       </li>
                                </ul>
                            </li>
                    
@@ -439,6 +433,13 @@
     <code>src/app/components/remove-edge/remove-edge.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Angular component for removing an edge from the graph.</p>
+
+    </p>
 
 
 <section>
@@ -488,6 +489,8 @@
                             <code>container</code>
                         </td>
                         <td class="col-md-10">
+                            <div><p>Input property to receive data from a parent component related to the edge removal.</p>
+</div>
                               <p>
                                 <em>Type:</em>    <code>any</code>
 
@@ -509,6 +512,28 @@
                         </td>
                     </tr>
     
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Initializes a new instance of the RemoveEdgeComponent class.</p>
+    </div>
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <ul class="jsdoc-params">
+                                                <li>
+                                                    <div>
+                                                        <b>grapheS</b>
+                                                    </div>
+                                                    <div>
+                                                        <ul>
+    <li>An instance of the GrapheService for graph-related operations.</li>
+    </ul>
+    
+                                                    </div>
+                                                </li>
+                                        </ul>
+                                </div>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
     </section>
@@ -529,6 +554,12 @@
     </bcode>
                         </td>
                     </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>The ID of the source node of the edge to be removed.</p>
+    </div>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <table class="table table-sm table-bordered">
@@ -544,6 +575,12 @@
     </bcode>
                         </td>
                     </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>The ID of the target node of the edge to be removed.</p>
+    </div>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
     </section>
@@ -552,16 +589,36 @@
             <pre><code class="hljs javascript">import { Component, Input } from &#x27;@angular/core&#x27;;
 import { GrapheService } from &#x27;src/app/Services/graphe.service&#x27;;
 
+/**
+ * Angular component for removing an edge from the graph.
+ */
 @Component({
   selector: &#x27;app-remove-edge&#x27;,
   templateUrl: &#x27;./remove-edge.component.html&#x27;,
   styleUrls: [&#x27;./remove-edge.component.css&#x27;]
 })
 export class RemoveEdgeComponent {
-  sourceId: string&#x3D;&quot;&quot;;
-  targetId: string&#x3D;&quot;&quot;;
-  @Input() container:any;
-  constructor(protected grapheS:GrapheService){
+  /**
+   * Input property to receive data from a parent component related to the edge removal.
+   * @input container - An object containing data related to the edge removal.
+   */
+  @Input() container: any;
+
+  /**
+   * The ID of the source node of the edge to be removed.
+   */
+  sourceId: string &#x3D; &quot;&quot;;
+
+  /**
+   * The ID of the target node of the edge to be removed.
+   */
+  targetId: string &#x3D; &quot;&quot;;
+
+  /**
+   * Initializes a new instance of the RemoveEdgeComponent class.
+   * @param grapheS - An instance of the GrapheService for graph-related operations.
+   */
+  constructor(protected grapheS: GrapheService) {
 
   }
 }

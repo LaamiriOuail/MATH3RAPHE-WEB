@@ -132,9 +132,6 @@
                                 <li class="link">
                                     <a href="../components/ScreenboxComponent.html" >ScreenboxComponent</a>
                                 </li>
-                                <li class="link">
-                                    <a href="../components/SelectComponent.html" >SelectComponent</a>
-                                </li>
                         </ul>
                     </li>
             
@@ -331,9 +328,6 @@
                                        <li class="link">
                                            <a href="../components/ScreenboxComponent.html" >ScreenboxComponent</a>
                                        </li>
-                                       <li class="link">
-                                           <a href="../components/SelectComponent.html" >SelectComponent</a>
-                                       </li>
                                </ul>
                            </li>
                    
@@ -439,7 +433,19 @@
     <code>src/app/components/enumeration-node/enumeration-node.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Component for enumerating nodes.</p>
 
+    </p>
+
+    <p class="comment">
+        <h3>Example</h3>
+    </p>
+    <div class="io-description">
+    </div>
 
 <section>
     <h3>Metadata</h3>
@@ -488,6 +494,8 @@
                             <code>container</code>
                         </td>
                         <td class="col-md-10">
+                            <div><p>Input property to receive a container.</p>
+</div>
                               <p>
                                 <em>Type:</em>    <code>any</code>
 
@@ -509,6 +517,30 @@
                         </td>
                     </tr>
     
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Creates an instance of EnumerationNodeComponent.</p>
+    </div>
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <ul class="jsdoc-params">
+                                                <li>
+                                                    <div>
+                                                        <b>grapheS</b>
+                                                            :     <code><a href="../injectables/GrapheService.html" target="_self" >GrapheService</a></code>
+    
+                                                    </div>
+                                                    <div>
+                                                        <ul>
+    <li>The graph service.</li>
+    </ul>
+    
+                                                    </div>
+                                                </li>
+                                        </ul>
+                                </div>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
     </section>
@@ -516,18 +548,31 @@
 
 </div>
         <div class="tab-pane fade tab-source-code" id="source">
-            <pre><code class="hljs javascript">import { Component,Input } from &#x27;@angular/core&#x27;;
+            <pre><code class="hljs javascript">import { Component, Input } from &#x27;@angular/core&#x27;;
 import { GrapheService } from &#x27;src/app/Services/graphe.service&#x27;;
 
+/**
+ * Component for enumerating nodes.
+ * @Component
+ */
 @Component({
   selector: &#x27;app-enumeration-node&#x27;,
   templateUrl: &#x27;./enumeration-node.component.html&#x27;,
   styleUrls: [&#x27;./enumeration-node.component.css&#x27;]
 })
 export class EnumerationNodeComponent {
-  @Input() container:any;
-  constructor(protected grapheS:GrapheService){
-    
+  /**
+   * Input property to receive a container.
+   * @Input
+   * @type {any}
+   */
+  @Input() container: any;
+
+  /**
+   * Creates an instance of EnumerationNodeComponent.
+   * @param {GrapheService} grapheS - The graph service.
+   */
+  constructor(protected grapheS: GrapheService) {
   }
 }
 </code></pre>

@@ -132,9 +132,6 @@
                                 <li class="link">
                                     <a href="../components/ScreenboxComponent.html" >ScreenboxComponent</a>
                                 </li>
-                                <li class="link">
-                                    <a href="../components/SelectComponent.html" >SelectComponent</a>
-                                </li>
                         </ul>
                     </li>
             
@@ -331,9 +328,6 @@
                                        <li class="link">
                                            <a href="../components/ScreenboxComponent.html" >ScreenboxComponent</a>
                                        </li>
-                                       <li class="link">
-                                           <a href="../components/SelectComponent.html" >SelectComponent</a>
-                                       </li>
                                </ul>
                            </li>
                    
@@ -491,6 +485,39 @@
                         </td>
                     </tr>
     
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Constructs the HeaderComponent.</p>
+    </div>
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <ul class="jsdoc-params">
+                                                <li>
+                                                    <div>
+                                                        <b>darkModeS</b>
+                                                    </div>
+                                                    <div>
+                                                        <ul>
+    <li>An instance of DarkModeService for handling dark mode.</li>
+    </ul>
+    
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div>
+                                                        <b>translate</b>
+                                                    </div>
+                                                    <div>
+                                                        <ul>
+    <li>An instance of TranslateService for language translation.</li>
+    </ul>
+    
+                                                    </div>
+                                                </li>
+                                        </ul>
+                                </div>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
     </section>
@@ -513,6 +540,8 @@
     
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-description"><p>Toggles the application&#39;s dark mode when the dark mode button is clicked.</p>
+    </div>
                                 <div class="io-description">
                                     <b>Returns: </b>    <code>void</code>
     
@@ -537,10 +566,31 @@
     
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-description"><p>Changes the application&#39;s language based on the user&#39;s selection.</p>
+    </div>
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <ul class="jsdoc-params">
+                                                <li>
+                                                    <div>
+                                                        <b>event</b>
+                                                    </div>
+                                                    <div>
+                                                        <ul>
+    <li>The event containing the selected language.</li>
+    </ul>
+    
+                                                    </div>
+                                                </li>
+                                        </ul>
+                                </div>
                                 <div class="io-description">
                                     <b>Returns: </b>    <code>void</code>
     
                                 </div>
+                                    <div class="io-description">
+                                        
+                                    </div>
                         </td>
                     </tr>
                 </tbody>
@@ -562,6 +612,12 @@
     </bcode>
                         </td>
                     </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>Stores the selected language (&#39;en&#39;, &#39;fr&#39;, &#39;ar&#39;). </p>
+    </div>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
     </section>
@@ -576,16 +632,36 @@ import { TranslateService } from &#x27;@ngx-translate/core&#x27;;
   templateUrl: &#x27;./header.component.html&#x27;,
   styleUrls: [&#x27;./header.component.css&#x27;]
 })
-export class HeaderComponent implements OnInit{
-  lang:string&#x3D;&quot;&quot;;
-  constructor(protected darkModeS:DarkModeService,private translate:TranslateService){
+export class HeaderComponent implements OnInit {
+  /** Stores the selected language (&#x27;en&#x27;, &#x27;fr&#x27;, &#x27;ar&#x27;). */
+  lang: string &#x3D; &quot;&quot;;
+
+  /**
+   * Constructs the HeaderComponent.
+   * @param darkModeS - An instance of DarkModeService for handling dark mode.
+   * @param translate - An instance of TranslateService for language translation.
+   */
+  constructor(protected darkModeS: DarkModeService, private translate: TranslateService) {
   }
+
+  /**
+   * Initializes the component. Sets the default language to &#x27;en&#x27;.
+   */
   ngOnInit(): void {
-    this.lang&#x3D;&quot;en&quot;;
+    this.lang &#x3D; &quot;en&quot;;
   }
-  toggleDarkMode():void{
+
+  /**
+   * Toggles the application&#x27;s dark mode when the dark mode button is clicked.
+   */
+  toggleDarkMode(): void {
     this.darkModeS.toggleDarkMode();
   }
+
+  /**
+   * Changes the application&#x27;s language based on the user&#x27;s selection.
+   * @param event - The event containing the selected language.
+   */
   changeLanguage(event: any) {
     this.translate.use(event.target.value);
   }

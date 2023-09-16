@@ -132,9 +132,6 @@
                                 <li class="link">
                                     <a href="../components/ScreenboxComponent.html" >ScreenboxComponent</a>
                                 </li>
-                                <li class="link">
-                                    <a href="../components/SelectComponent.html" >SelectComponent</a>
-                                </li>
                         </ul>
                     </li>
             
@@ -331,9 +328,6 @@
                                        <li class="link">
                                            <a href="../components/ScreenboxComponent.html" >ScreenboxComponent</a>
                                        </li>
-                                       <li class="link">
-                                           <a href="../components/SelectComponent.html" >SelectComponent</a>
-                                       </li>
                                </ul>
                            </li>
                    
@@ -439,7 +433,19 @@
     <code>src/app/components/footer/footer.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Component for the footer.</p>
 
+    </p>
+
+    <p class="comment">
+        <h3>Example</h3>
+    </p>
+    <div class="io-description">
+    </div>
 
 <section>
     <h3>Metadata</h3>
@@ -491,6 +497,30 @@
                         </td>
                     </tr>
     
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Creates an instance of FooterComponent.</p>
+    </div>
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <ul class="jsdoc-params">
+                                                <li>
+                                                    <div>
+                                                        <b>darkModeS</b>
+                                                            :     <code><a href="../injectables/DarkModeService.html" target="_self" >DarkModeService</a></code>
+    
+                                                    </div>
+                                                    <div>
+                                                        <ul>
+    <li>The dark mode service.</li>
+    </ul>
+    
+                                                    </div>
+                                                </li>
+                                        </ul>
+                                </div>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
     </section>
@@ -501,14 +531,21 @@
             <pre><code class="hljs javascript">import { Component } from &#x27;@angular/core&#x27;;
 import { DarkModeService } from &#x27;../../Services/dark-mode.service&#x27;;
 
+/**
+ * Component for the footer.
+ * @Component
+ */
 @Component({
   selector: &#x27;app-footer&#x27;,
   templateUrl: &#x27;./footer.component.html&#x27;,
   styleUrls: [&#x27;./footer.component.css&#x27;]
 })
 export class FooterComponent {
-  constructor(protected darkModeS:DarkModeService){
-    
+  /**
+   * Creates an instance of FooterComponent.
+   * @param {DarkModeService} darkModeS - The dark mode service.
+   */
+  constructor(protected darkModeS: DarkModeService) {
   }
 }
 </code></pre>

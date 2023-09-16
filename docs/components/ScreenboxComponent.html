@@ -132,9 +132,6 @@
                                 <li class="link">
                                     <a href="../components/ScreenboxComponent.html"  class="active" >ScreenboxComponent</a>
                                 </li>
-                                <li class="link">
-                                    <a href="../components/SelectComponent.html" >SelectComponent</a>
-                                </li>
                         </ul>
                     </li>
             
@@ -330,9 +327,6 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/ScreenboxComponent.html"  class="active" >ScreenboxComponent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../components/SelectComponent.html" >SelectComponent</a>
                                        </li>
                                </ul>
                            </li>
@@ -665,7 +659,7 @@
                                                     </div>
                                                     <div>
                                                         <ul>
-    <li>The new weight value(app-add-weighted-edge Output).</li>
+    <li>The new weight value (app-add-weighted-edge Output).</li>
     </ul>
     
                                                     </div>
@@ -687,13 +681,13 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b> chngeTypeGraphe</b>
+                            <b> changeTypeGraphe</b>
                         </td>
                     </tr>
     
                     <tr>
                         <td class="col-md-4">
-    <code>chngeTypeGraphe(data: string)</code>
+    <code>changeTypeGraphe(data: string)</code>
                         </td>
                     </tr>
     
@@ -981,7 +975,6 @@ import { SaveUploadService } from &#x27;../../Services/save-upload.service&#x27;
 import { AlgorithmService } from &#x27;../../Services/algorithm.service&#x27;;
 import { TranslateService } from &#x27;@ngx-translate/core&#x27;;
 import { DarkModeService } from &#x27;../../Services/dark-mode.service&#x27;;
-import { GeneratePDFService } from &#x27;../../Services/generate-pdf.service&#x27;;
 
 /**
  * Angular component representing the screen box.
@@ -991,22 +984,23 @@ import { GeneratePDFService } from &#x27;../../Services/generate-pdf.service&#x2
   templateUrl: &#x27;./screenbox.component.html&#x27;,
   styleUrls: [&#x27;./screenbox.component.css&#x27;],
 })
-export class ScreenboxComponent implements OnInit,OnDestroy {
-  private buttonClicked:string&#x3D;&quot;&quot;;
-  private restoreArray:Array&lt;any&gt; &#x3D;[] ;
+export class ScreenboxComponent implements OnInit, OnDestroy {
+  private buttonClicked: string &#x3D; &quot;&quot;;
+  private restoreArray: Array&lt;any&gt; &#x3D; [];
   typeGraphe: string &#x3D; &quot;&quot;;
-  weight?:number;
-  containerHeight:number&#x3D;70;//Height of msg box
-  selectedNode:Array&lt;string&gt;&#x3D;[];
-  message:string&#x3D;&quot;&quot;;
-  algorithm:string&#x3D;&quot;&quot;;
-  nodeNamingMethode:string&#x3D;&quot;&quot;;
-  remove:string&#x3D;&quot;&quot;;
-  saveUpload:string&#x3D;&quot;&quot;;
-  changeSelect:string&#x3D;&quot;&quot;;
-  nodeName:string&#x3D;&quot;numerique&quot;;
-  private nodeId:number&#x3D;0;//Increment and assign a new node
-  private nodeIdChanged:any;
+  weight?: number;
+  containerHeight: number &#x3D; 70; // Height of the message box
+  selectedNode: Array&lt;string&gt; &#x3D; [];
+  message: string &#x3D; &quot;&quot;;
+  algorithm: string &#x3D; &quot;&quot;;
+  nodeNamingMethode: string &#x3D; &quot;&quot;;
+  remove: string &#x3D; &quot;&quot;;
+  saveUpload: string &#x3D; &quot;&quot;;
+  changeSelect: string &#x3D; &quot;&quot;;
+  nodeName: string &#x3D; &quot;numerique&quot;;
+  private nodeId: number &#x3D; 0; // Increment and assign a new node
+  private nodeIdChanged: any;
+
   /**
    * Initializes a new instance of the ScreenboxComponent class.
    *
@@ -1017,8 +1011,15 @@ export class ScreenboxComponent implements OnInit,OnDestroy {
    * @param {TranslateService} translate - The TranslateService instance.
    * @param {DarkModeService} darkModeS - The DarkModeService instance.
    */
-  constructor(private el: ElementRef,protected grapheS:GrapheService,protected algoS:AlgorithmService,protected saveUploadS:SaveUploadService,protected translate:TranslateService,protected darkModeS:DarkModeService) {
-  }
+  constructor(
+    private el: ElementRef,
+    protected grapheS: GrapheService,
+    protected algoS: AlgorithmService,
+    protected saveUploadS: SaveUploadService,
+    protected translate: TranslateService,
+    protected darkModeS: DarkModeService
+  ) {}
+
   /**
    * Angular lifecycle hook called when the component is initialized.
    */
@@ -1028,40 +1029,43 @@ export class ScreenboxComponent implements OnInit,OnDestroy {
     this.grapheS.OnEdgeTap(this);
     this.grapheS.OnNodeTap(this);
   }
+
   /**
    * Angular lifecycle hook called when the component is destroyed.
    */
   ngOnDestroy(): void {
     this.grapheS.OnDestroy();
   }
+
   /**
    * Gets the ID of the button that was clicked and triggers relevant actions.
    *
    * @param {any} event - The event containing the click target.
    */
   getButtonClickedId(event: any): void {
-    this.buttonClicked&#x3D; event.target.id;
+    this.buttonClicked &#x3D; event.target.id;
     this.grapheS.resetColors();
     this.grapheS.onChangeButtonClicked(this);
   }
+
   /**
    * Handles the change in weight.
    *
-   * @param {number} newWeight - The new weight value(app-add-weighted-edge Output).
+   * @param {number} newWeight - The new weight value (app-add-weighted-edge Output).
    */
   onWeightChange(newWeight: number): void {
-    this.weight&#x3D;newWeight;
+    this.weight &#x3D; newWeight;
   }
+
   /**
    * Changes the type of the graph.
    *
    * @param {string} data - The new graph type data.
    */
-  chngeTypeGraphe(data:string): void {
-    this.typeGraphe&#x3D;data;
+  changeTypeGraphe(data: string): void {
+    this.typeGraphe &#x3D; data;
   }
 }
-
 </code></pre>
         </div>
     </div>
