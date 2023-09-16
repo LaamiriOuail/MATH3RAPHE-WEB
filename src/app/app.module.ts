@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -32,6 +32,7 @@ import { RemoveEdgeComponent } from './components/remove-edge/remove-edge.compon
 import { RemoveNodeComponent } from './components/remove-node/remove-node.component';
 import { EnumerationNodeComponent } from './components/enumeration-node/enumeration-node.component';
 import { GeneratePDFService } from './Services/generate-pdf.service';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 
 // Function to load translations
@@ -73,7 +74,13 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
-    CommonModule
+    CommonModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
     
   ],
   providers: [GrapheService,AlgorithmService,SaveUploadService,DarkModeService,GeneratePDFService],
