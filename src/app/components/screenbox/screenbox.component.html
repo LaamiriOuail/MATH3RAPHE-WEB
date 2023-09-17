@@ -26,8 +26,8 @@
                     <select  id="Algorithm" [(ngModel)]="algorithm" (ngModelChange)="algoS.changeAlgorithm(this)">
                         <option value="" disabled selected>{{"screenbox.msg18"|translate}}</option>
                         <option value="degrenodes" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">degree nodes</option>
-                        <option value="matrixAdjancy" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">matrice incidente</option>
-                        <option value="matrixIncident" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">matrice adjacent</option>
+                        <option value="matrixAdjancy" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">matrice adjacent</option>
+                        <option value="matrixIncident" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">matrice incidente</option>
                         <option value="listeAdjancy" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">liste adjacent</option>
                         <option value="bfs" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">BFS</option>
                         <option value="dfs" [disabled]="!typeGraphe || !grapheS.getNodeIds().length || !grapheS.getEdgeIds().length">DFS</option>
