@@ -43,7 +43,7 @@ export class AlgorithmService {
             path[v.id()] = u.id();
           }
           if (i == visited.length-1 ) {
-            this.printPath(rootNodeId, path, v.id(),container); // Print path when all nodes are visited
+            this.printPath(rootNodeId, path, v.id(),container,"bfs"); // Print path when all nodes are visited
           }
         }, i * 2000); // Animation delay
         j=i;
@@ -92,7 +92,7 @@ export class AlgorithmService {
                     path[v.id()] = u.id();
                 }
                 if (i === visited.length - 1) {
-                    this.printPath(rootNodeId, path, v.id(), container); // Afficher le chemin lorsque tous les nœuds sont visités
+                    this.printPath(rootNodeId, path, v.id(), container,"dfs"); // Afficher le chemin lorsque tous les nœuds sont visités
                 }
             }, i * 2000); // Délai d'animation
             j=i;
@@ -120,8 +120,9 @@ export class AlgorithmService {
    * @param {Object} path - The DFS path object.
    * @param {string} targetNodeId - The ID of the target node.
    * @param {ScreenboxComponent} container - The container for the graph and visualization.
+   * @param {string} algo - The algorithm name
    */
-  printPath(rootNodeId: string, path: { [nodeId: string]: string }, targetNodeId: string, container: any): void {
+  printPath(rootNodeId: string, path: { [nodeId: string]: string }, targetNodeId: string, container: any,algo:string): void {
       const pathNodes = [];
       let currentNode = targetNodeId;
 
@@ -132,9 +133,9 @@ export class AlgorithmService {
       pathNodes.push(rootNodeId);
 
       const PathString = pathNodes.reverse().join(' -> ');
-      if(container.algorithm=="dfs"){
+      if(algo=="dfs"){
         container.message = this.translate.instant('algoS.msg2') + PathString;
-      }else if(container.algorithm=="bfs"){
+      }else if(algo=="bfs"){
         container.message = this.translate.instant('algoS.msg1') + PathString;
       }
   }
@@ -349,7 +350,19 @@ export class AlgorithmService {
       formAddNode.style.display="none";
       formRemoveEdge.style.display="none";
       container.grapheS.position="";
-      container.message=this.translate.instant("algoS.msg7",{algorithm:container.algorithm});
+      if(container.algorithm!="degrenodes" && container.algorithm!="matrixAdjancy" && container.algorithm!="matrixIncident" && container.algorithm!="listeAdjancy"){
+        container.message=this.translate.instant("algoS.msg7",{algorithm:container.algorithm});
+      }else{
+        if(container.algorithm=="degrenodes"){
+          container.message=this.translate.instant("algoS.msg15");
+        }else if(container.algorithm=="matrixAdjancy"){
+          container.message=this.translate.instant("algoS.msg16");
+        }else if(container.algorithm=="matrixIncident"){
+          container.message=this.translate.instant("algoS.msg17");
+        }else{
+          container.message=this.translate.instant("algoS.msg18");
+        }
+      }
       if(container.algorithm=="floydWarshall"){
         this.floydWarshallAlgorithm(container);
       }else if(container.algorithm=="tarjan"){

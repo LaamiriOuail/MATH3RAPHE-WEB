@@ -173,7 +173,11 @@
     "msg11": "Le graphe est vide",
     "msg12": "L'algorithme premier n'est applicable qu'à un graphe non orienté connecté pondéré",
     "msg13": "Composante : {{index}} : ",
-    "msg14": "L'algorithme Tarjane ne s'applique pas aux graphes non orientés"
+    "msg14": "L'algorithme Tarjane ne s'applique pas aux graphes non orientés",
+    "msg15": "Tableau des degrés des nœuds affiché avec succès",
+    "msg16": "Matrice d'adjacence affichée avec succès",
+    "msg17": "Matrice d'incidence affichée avec succès",
+    "msg18": "Liste d'adjacence affichée avec succès"
     
   },
   "saveUploadS": {

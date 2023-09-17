@@ -176,7 +176,11 @@
     "msg11": "The graph is empty",
     "msg12": "Prime algorithm is only applicable to a weighted connected undirected graph",
     "msg13": "Component {{index}} : ",
-    "msg14": "The Tarjane algorithm does not apply to undirected graphs"
+    "msg14": "The Tarjane algorithm does not apply to undirected graphs",
+    "msg15": "Degree of node table showed successfully",
+    "msg16": "Matrix adjacency showed successfully",
+    "msg17": "Matrix incidence showed successfully",
+    "msg18": "List adjacency showed successfully"
   },
   "saveUploadS": {
     "msg1": "File uploaded successfully",
