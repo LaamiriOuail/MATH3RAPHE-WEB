@@ -161,6 +161,9 @@ export class GrapheFromMatrixAdjaComponent {
    */
   createGraphElements(adjacencyMatrix: Array<Array<number>>): Array<any> {
     let elements: Array<any> = [];
+    this.grapheS.Alphabets=this.grapheS.alphabets.concat(
+      this.grapheS.alphabets0.map(letter => letter + '2')
+    );
     const isDirected: boolean = !this.isSymmetric(adjacencyMatrix);
     const isWeighted: boolean = this.isWeighted(adjacencyMatrix);
     
@@ -168,17 +171,18 @@ export class GrapheFromMatrixAdjaComponent {
     for (let i = 0; i < adjacencyMatrix.length; i++) {
       if(this.container.nodeName=="numerique"){
         this.grapheS.counter=i;
-        elements.push({id:++this.grapheS.counter});
+        elements.push({id:(++this.grapheS.counter).toString()});
+      }else if(this.container.nodeName=="numerique0"){
+        if(i==0){
+          elements.push({id:'0'});
+        }else{
+          this.grapheS.counter=i;
+          elements.push({id:this.grapheS.counter.toString()});
+        }
       }else if(this.container.nodeName=="alphabic"){
         this.grapheS.counter=i;
         elements.push({id:this.grapheS.Alphabets[i]});
       }
-    }
-    let arrayNemming:Array<any>=[];
-    if(this.container.nodeName=="numerique"){
-      arrayNemming=this.grapheS.numbersArray;
-    }else if(this.container.nodeName=="alphabic"){
-      arrayNemming=this.grapheS.Alphabets;
     }
     // Create edges based on adjacency matrix
     for (let i = 0; i < adjacencyMatrix.length; i++) {
@@ -192,10 +196,16 @@ export class GrapheFromMatrixAdjaComponent {
                 target: (j+1).toString(),
                 weight: adjacencyMatrix[i][j]
               };
+            }else if(this.container.nodeName=="numerique0"){
+              edge = {
+                source: (i).toString(),
+                target: (j).toString(),
+                weight: adjacencyMatrix[i][j]
+              };
             }else if(this.container.nodeName=="alphabic"){
               edge = {
-                source: arrayNemming[i],
-                target: arrayNemming[j],
+                source: this.grapheS.Alphabets[i],
+                target: this.grapheS.Alphabets[j],
                 weight: adjacencyMatrix[i][j]
               };
             }
@@ -204,10 +214,14 @@ export class GrapheFromMatrixAdjaComponent {
               edge = {
                 source: (i+1).toString(),
                 target: (j+1).toString()              };
+            }else if(this.container.nodeName=="numerique0"){
+              edge = {
+                source: (i).toString(),
+                target: (j).toString()              };
             }else if(this.container.nodeName=="alphabic"){
               edge = {
-                source: arrayNemming[i],
-                target: arrayNemming[j],
+                source: this.grapheS.Alphabets[i],
+                target: this.grapheS.Alphabets[j],
               };
             }
           }

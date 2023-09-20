@@ -49,6 +49,7 @@ export class GrapheService {
   /** A counter variable for tracking. */
   counter: number = 0;
   numbersArray:number[] = Array.from(Array(200), (_, i) => i + 1);
+  numbersArray0:number[] = Array.from(Array(200), (_, i) => i );
   /** The position of something (needs a description). */
   position: any;
   POSITIONS:IPosition[] = 
@@ -1187,7 +1188,7 @@ export class GrapheService {
     }
     let i:number=0;
     elements.forEach((element:any)=>{
-      if(element.id){
+      if(element?.id){
         const pos = this.POSITIONS[i++];
         this.cy.add({ group: 'nodes', data: { id: element.id}, position: pos });
       }else{
