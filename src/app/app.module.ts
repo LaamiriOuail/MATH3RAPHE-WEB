@@ -1,5 +1,5 @@
 import { NgModule, isDevMode } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -80,7 +80,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     })
     
   ],
-  providers: [GrapheService,AlgorithmService,SaveUploadService,DarkModeService],
+  providers: [GrapheService,AlgorithmService,SaveUploadService,DarkModeService,provideClientHydration()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

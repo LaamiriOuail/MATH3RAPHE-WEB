@@ -132,6 +132,60 @@
             ],
             "scripts": []
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/pfa/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": false,
+              "vendorChunk": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "configurations": {
+            "development": {
+              "browserTarget": "pfa:build:development",
+              "serverTarget": "pfa:server:development"
+            },
+            "production": {
+              "browserTarget": "pfa:build:production",
+              "serverTarget": "pfa:server:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "pfa:build:production",
+              "serverTarget": "pfa:server:production"
+            },
+            "development": {
+              "browserTarget": "pfa:build:development",
+              "serverTarget": "pfa:server:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }

@@ -108,7 +108,7 @@ export class GrapheFromEdgesListComponent {
     }
     for (const line of lines) {
       const edge = this.parseEdge(line);
-      if (edge && !this.containsInvalidCharacters(edge?.source) && !this.containsInvalidCharacters(edge?.source)) {
+      if (edge && !this.containsInvalidCharacters(edge?.source) && !this.containsInvalidCharacters(edge?.target)) {
         edges.push(edge);
       }else{
         this.container.message=this.translate.instant("grapheFromEdgeList.msg1");
@@ -124,36 +124,34 @@ export class GrapheFromEdgesListComponent {
    * @param {string} line - The input line containing edge information.
    * @returns {IWeightedEdgeTyped|IUnweightedEdgeTyped|null} - The parsed edge object.
    */
-  parseEdge(line:string):IWeightedEdgeTyped|IUnweightedEdgeTyped|null {
-    const matchDirectedWeighted = line.match(/\s*([^(-]*)\s*-\(([\d.]+)\)->\s*([^(-]*)\s*/);
+  parseEdge(line: string): IWeightedEdgeTyped | IUnweightedEdgeTyped | null {
+    const matchDirectedWeighted = line.match(/\s*([^(-]*)\s*-\(([-\d.]+)\)->\s*([^(-]*)\s*/);
     const matchDirected = line.match(/\s*([^(-]*)\s*>\s*([^(-]*)\s*/);
-    const matchUndirectedWeighted = line.match(/\s*([^(-]*)\s*-\(([\d.]+)\)-\s*([^(-]*)\s*/);
+    const matchUndirectedWeighted = line.match(/\s*([^(-]*)\s*-\(([-\d.]+)\)-\s*([^(-]*)\s*/);
     const matchUndirected = line.match(/\s*([^(-]*)\s*-\s*([^(-]*)\s*/);
   
-    if (matchDirectedWeighted) {//OK
+    if (matchDirectedWeighted) {
+      console.log(matchDirectedWeighted[2]);
       return {
         source: matchDirectedWeighted[1].trim(),
         target: matchDirectedWeighted[3].trim(),
         weight: Number(matchDirectedWeighted[2]),
         type: 'Directed Weighted',
       };
-    } else if (matchDirected) {//OK
+    } else if (matchDirected) {
       return {
         source: matchDirected[1].trim(),
         target: matchDirected[2].trim(),
         type: 'Directed Unweighted',
       };
     } else if (matchUndirectedWeighted) {
-      console.log(matchUndirectedWeighted[2]);
-      console.log(matchUndirectedWeighted[1]);
-      console.log(matchUndirectedWeighted[3]);
       return {
         source: matchUndirectedWeighted[1].trim(),
         target: matchUndirectedWeighted[3].trim(),
         weight: Number(matchUndirectedWeighted[2]),
         type: 'Undirected Weighted',
       };
-    } else if (matchUndirected) {//OK
+    } else if (matchUndirected) {
       return {
         source: matchUndirected[1].trim(),
         target: matchUndirected[2].trim(),
@@ -163,6 +161,7 @@ export class GrapheFromEdgesListComponent {
   
     return null;
   }
+  
   /**
   * Checks if all edges have the same type of graph (e.g., Directed Weighted).
   *
