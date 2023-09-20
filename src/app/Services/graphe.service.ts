@@ -657,19 +657,26 @@ export class GrapheService {
       if (evt.target === this.cy && container.buttonClicked==="addVertices" && this.typeGraphe!="") {
           //Use all possile name of node , case of node deleted id
           this.Alphabets=this.alphabets.concat(this.alphabets0.map(letter => letter + '2'));
-          this.counter=0;
           //
           let pos = evt.position || evt.cyPosition;
           let node:any;
           const formAddNode=container.el.nativeElement.querySelector('.formAddNode');
-          if(container.nodeName=="numerique"){
+          if(container.nodeName=="numerique" || container.nodeName=="numerique0"){
+            if(container.nodeName=="numerique"){
+              this.counter=1;
+            }else if(container.nodeName=="numerique0"){
+              this.counter=0;
+            }
             formAddNode.style.display="none";
-            this.cy.nodes().forEach((node:any)=>{
-              if(node.data('id')==this.counter+1){
-                ++this.counter;
-              }
-            })
-            node=this.cy.add({ group: 'nodes', data: { id: ++this.counter}, position: pos });
+            if(this.cy.nodes().length){
+              this.cy.nodes().forEach((node:any)=>{
+                if(node.data('id')>=this.counter){
+                  this.counter=Number(node.data('id'))+1;
+                }
+              })
+            }
+            
+            node=this.cy.add({ group: 'nodes', data: { id: this.counter}, position: pos });
           }else if(container.nodeName=="alphabic"){
             formAddNode.style.display="none";
             this.cy.nodes().forEach((node:any)=>{
