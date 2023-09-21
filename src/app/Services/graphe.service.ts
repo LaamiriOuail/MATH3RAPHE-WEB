@@ -26,7 +26,9 @@ interface IPosition {
 })
 export class GrapheService {
   /** The Cytoscape instance used to manage and render the graph. */
-  public cy: any;
+  public cy: any; 
+  /** The Cytoscape instance used to help on manage and render the graph. */
+  public cyHelper: any;
 
   /** The type of the graph (e.g., Directed, Undirected, Weighted). */
   public typeGraphe: string = "";

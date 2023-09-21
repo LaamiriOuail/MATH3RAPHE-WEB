@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
    * The title of the application.
    * @type {string}
    */
-  title = 'pfa';
+  title = 'math3raphe';
 
   /**
    * Creates an instance of AppComponent.
@@ -31,10 +31,6 @@ export class AppComponent implements OnInit {
    * Initializes the component.
    */
   ngOnInit(): void {
-    // Use the following lines to switch between languages
-    this.translate.use("fr"); // French
-    this.translate.use("ar"); // Arabic
-    this.translate.use("en"); // English
     this.meta.addTag({keywords:'math3raphe, MATH3RAPHE, Theory de graphe,graph theory, network analysis, data visualization, algorithms, mathematical modeling'});
     this.meta.addTag({desciption:'MATH3RAPHE-WEB est une application web progressive (PWA) basée sur Angular qui apporte la puissance de la théorie des graphes à votre navigateur. Explorez et visualisez des graphes en temps réel, exécutez des algorithmes de la théorie des graphes et créez des représentations visuelles de ces concepts mathématiques passionnants.'});
   }
