@@ -7,10 +7,10 @@ WORKDIR /usr/src/app
 # Copy the package.json and package-lock.json files to the container
 COPY package*.json ./
 
-RUN npm install -g npm@10.4.0
+RUN npm install -g npm@latest
 
 # Install dependencies
-RUN npm install --force
+RUN npm install --force --timeout=60000
 
 # Copy the Angular app source code to the container
 COPY . .

@@ -4,14 +4,13 @@
 1. [Introduction](#introduction)
 2. [Installation](#installation)
 3. [Usage](#usage)
-4. [Contributing](#contributing)
-5. [License](#license)
+4. [License](#license)
 
 ## Introduction
 
 MATH3RAPHE is a Progressive Web Application (PWA) built with Angular, bringing the fascinating world of graph theory right to your web browser. With this powerful tool, you can explore and visualize real-time graphs, run graph theory algorithms, and create stunning visual representations of mathematical concepts.
 
-I would like to express my heartfelt gratitude to my invaluable mentor, **[Dr. abderrahim ghadi]()**, for his guidance and support throughout this project. His insights and advice have been instrumental in bringing this vision to life.
+I would like to express my heartfelt gratitude to my invaluable mentor, **[Dr. abderrahim ghadi](https://www.linkedin.com/in/abderrahim-ghadi-03657025/)**, for his guidance and support throughout this project. His insights and advice have been instrumental in bringing this vision to life.
 
 ## Installation
 ### From the browser :
@@ -60,7 +59,27 @@ Open : *http://localhost:5000*
 
 ## Usage
 
-This section provides instructions on how to use the project.
+### Open application : *https://math3raphe.web.app*
+
+![From the browser](docs/readme/images/first-image-browser.png)
+
+### Change language : 
+
+![From the browser](docs/readme/images/usage-change-language.png)
+
+### Change theme : 
+
+![From the browser](docs/readme/images/usage-change-theme.png)
+
+
+
+
+
+
+
+
+
+
 
 
 ## License
