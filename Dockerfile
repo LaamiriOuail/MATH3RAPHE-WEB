@@ -9,6 +9,7 @@ COPY package*.json ./
 
 RUN npm install -g npm@latest
 
+RUN npm config set registry https://registry.npmjs.org/
 # Install dependencies
 RUN npm install --force --timeout=60000
 

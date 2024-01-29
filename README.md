@@ -71,9 +71,18 @@ Open : *http://localhost:5000*
 
 ![From the browser](docs/readme/images/usage-change-theme.png)
 
+### Select graph type : 
 
+![From the browser](docs/readme/images/usage-select-graphe-type.png)
 
+### Add nodes : 
 
+![From the browser](docs/readme/images/usage-add-nodes.png)
+#### select the nodes enumeration type : 
+![From the browser](docs/readme/images/usage-choose-the-namming-type-of-nodes.png)
+
+#### Click on the workspace to add new node : 
+![From the browser](docs/readme/images/usage-click-on-the-workspace-to-add-new-node.png)
 
 
 
