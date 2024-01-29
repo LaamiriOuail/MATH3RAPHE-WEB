@@ -10,7 +10,7 @@ COPY package*.json ./
 RUN npm install -g npm@10.4.0
 
 # Install dependencies
-RUN npm install --legacy-peer-deps
+RUN npm install --force
 
 # Copy the Angular app source code to the container
 COPY . .
